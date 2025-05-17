@@ -1,34 +1,28 @@
-## 📄 About Me
-I'm a seasoned technical content professional with over 10 years of experience in the cybersecurity industry. I've progressed through multiple roles (Support, Onboarding, Training, Leadership) culminating in Senior Instructional Designer where I specialized in translating complex technical concepts into clear, accessible documentation and learning solutions.
+# Technical Writing & Instructional Design Portfolio
 
-My work has consistently improved user adoption, reduced support needs, and accelerated onboarding across global audiences. My core strengths include:
-- Creating comprehensive technical enablement content that accelerates product adoption
-- Designing documentation that has demonstrably reduced onboarding times and support tickets
-- Developing clear, structured information architecture that improved content discoverability
-- Delivering projects on time without compromising quality and attention to detail
-- Serving as a trusted technical knowledge resource for complex concepts
+Welcome to my technical documentation portfolio repository. This space showcases sample documentation I've created to demonstrate my approach to making complex technical concepts clear and accessible.
 
-I'm passionate about bridging the gap between technical complexity and user understanding. My background in cybersecurity implementation and support gives me valuable insight into both product functionality and end-user needs.
+## 📂 Portfolio Contents
 
-## 🔧 Technical Skills
-- **Documentation Types:** Technical implementation guides, security feature tutorials, administrator manuals, end-user knowledge base articles, interactive learning modules, video-based training content
-- **Content Strategy:** Learning path design, documentation architecture, audience-appropriate complexity scaling, content reuse frameworks, searchable knowledge structures, performance-based objectives
-- **Authoring Tools:** Confluence for knowledge management, Camtasia for video creation, JIRA for project tracking, Snagit/Greenshot for image editing, Chrome DevTools for HTML editing, LMS platforms for training delivery
-- **Technical Knowledge:** Email security systems, authentication protocols, cloud security architecture, enterprise deployment processes, compliance requirements, technical enablement methodologies
-- **Project Collaboration:** SME knowledge extraction, cross-functional team coordination, technical accuracy validation, iterative content improvement, user feedback implementation
+This repository contains examples of:
 
-## 📚 Current Focus
-- Advancing my expertise in Git-based documentation workflows
-- Developing comprehensive API reference documentation skills
-- Creating effective developer-focused content
-- Building proficiency in user-centered documentation methodologies
+- **User Guides & Tutorials**: Step-by-step instructions for technical products
+- **API Documentation**: Clear reference documentation for developers
+- **Knowledge Base Articles**: Concise solutions to common technical problems
+- **Training Materials**: Educational content for technical product users
 
-## 🎯 Projects I'd Like to Work On
-- Creating helpful user guides and technical instructions
-- Building resources that make developers' jobs easier
-- Developing materials that help users understand complex products
-- Improving how documentation gets created and shared
+Each folder contains examples that demonstrate different documentation styles and approaches. All samples reflect my experience creating technical enablement content that improves user adoption and reduces support needs.
 
-## 📫 Connect With Me
+## 🔍 About These Samples
+
+The documents in this portfolio demonstrate my ability to:
+- Organize complex information in a user-friendly way
+- Create clear, concise technical instructions
+- Design documentation for different audience needs
+- Apply consistent formatting and terminology
+
+## 📫 Contact
+
+Interested in discussing a technical writing project? Reach out to me:
 - LinkedIn: [linkedin.com/in/coreyrollins](https://www.linkedin.com/in/coreyrollins/)
-- Email: corey.p.rollins@gmail.com 
+- Email: corey.p.rollins@gmail.com
