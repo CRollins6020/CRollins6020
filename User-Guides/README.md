@@ -5,5 +5,5 @@ designed to help users accomplish tasks clearly and efficiently.
 
 ## Samples
 
-- [Sample User Onboarding Guide](user-onboarding.md)
+- [Entra MFA Admin Guide](entra-mfa-guide.md)
 - [Troubleshooting Workflow Tutorial](troubleshooting-guide.md)

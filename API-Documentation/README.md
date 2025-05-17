@@ -1,7 +1,7 @@
 # API Documentation
 
-This section contains examples of API documentation focused on helping developers integrate
-with or use a service.
+This section contains examples of API documentation focused on helping developers
+integrate with or use a service.
 
 ## Samples
 
