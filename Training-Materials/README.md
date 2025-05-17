@@ -1,6 +1,7 @@
 # Training Materials
 
-This section includes training documents or slides designed for user enablement, product education, or internal onboarding.
+This section includes training documents or slides designed for user enablement,
+product education, or internal onboarding.
 
 ## Samples
 

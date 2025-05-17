@@ -2,7 +2,12 @@
 
 **Hi there — and welcome.**
 
-This is my technical documentation portfolio, a space I use to practice Technical Writing as I continue to self-teach and grow in the field. I’ve included sample docs that reflect how I approach making complex topics more clear and approachable. My background is in SaaS enablement, where I worked as a Senior Instructional Designer, and I’m now shifting into Technical Writing with a focus on clarity, usability, and real-world impact.
+This is my technical documentation portfolio, a space I use to practice Technical
+Writing as I continue to self-teach and grow in the field. I’ve included sample
+docs that reflect how I approach making complex topics more clear and
+approachable. My background is in SaaS enablement, where I worked as a Senior
+Instructional Designer, and I’m now shifting into Technical Writing with a focus
+on clarity, usability, and real-world impact.
 
 ## 📂 Portfolio Contents
 
@@ -13,7 +18,9 @@ Here, you'll find examples of my work across several documentation types, includ
 - [**Knowledge Base Articles**](./Knowledge-Base): Concise solutions to common technical problems  
 - [**Training Materials**](./Training-Materials): Educational content for technical product users
 
-Each folder includes a landing page and sample documentation to demonstrate various writing styles and use cases. These reflect my experience creating technical enablement content that supports product adoption and reduces support needs.
+Each folder includes a landing page and sample documentation to demonstrate various
+writing styles and use cases. These reflect my experience creating technical
+enablement content that supports product adoption and reduces support needs.
 
 ## 🔍 About These Samples
 

@@ -1,6 +1,7 @@
 # Microsoft Entra ID Multi-Factor Authentication: Administrator's Guide
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Prerequisites](#prerequisites)
 3. [Accessing MFA Controls in Microsoft Entra ID](#accessing-mfa-controls-in-microsoft-entra-id)
@@ -14,15 +15,20 @@
 
 ## Introduction
 
-Multi-Factor Authentication (MFA) is a critical security feature that requires users to provide two or more verification methods to access resources. This guide will walk you through setting up and managing Microsoft Entra ID MFA for your organization.
+Multi-Factor Authentication (MFA) is a critical security feature that requires
+users to provide two or more verification methods to access resources. This
+guide will walk you through setting up and managing Microsoft Entra ID MFA for
+your organization.
 
 By implementing MFA, you can:
+
 - Reduce the risk of unauthorized access by up to 99.9%
 - Meet compliance requirements for various regulations
 - Protect against credential theft and phishing attacks
 - Provide a layered security approach for your organization
 
-This guide is intended for IT administrators responsible for configuring identity and access management settings in Microsoft Entra ID.
+This guide is intended for IT administrators responsible for configuring identity
+and access management settings in Microsoft Entra ID.
 
 ## Prerequisites
 
@@ -50,10 +56,12 @@ Before configuring MFA, ensure you have:
 There are several ways to access MFA settings in the Entra admin center:
 
 **Method 1: Through Security settings**
+
 1. In the left navigation menu, select **Protection**
 2. Select **Authentication methods**
 
 **Method 2: Through identity settings**
+
 1. In the left navigation menu, select **Identity**
 2. Select **Protection**
 3. Select **Authentication methods**
@@ -62,14 +70,16 @@ There are several ways to access MFA settings in the Entra admin center:
 
 ## Enabling MFA for Your Organization
 
-Microsoft Entra ID offers several approaches to enable MFA. We'll cover the two most common methods:
+Microsoft Entra ID offers several approaches to enable MFA. We'll cover the two
+most common methods:
 
 1. Security Defaults (simplest)
 2. Conditional Access Policies (recommended for most organizations)
 
 ### Method 1: Enable Security Defaults
 
-Security defaults is the simplest way to enable MFA across your organization. When enabled, all users will be required to register for MFA.
+Security defaults is the simplest way to enable MFA across your organization.
+When enabled, all users will be required to register for MFA.
 
 1. In the Microsoft Entra admin center, select **Properties** from the left navigation
 2. Scroll to the bottom and select **Manage security defaults**
@@ -78,7 +88,9 @@ Security defaults is the simplest way to enable MFA across your organization. Wh
 
 ![Security defaults toggle in the Properties section](https://example.com/placeholder-for-security-defaults.png)
 
-**Important:** Security defaults will require MFA for all users, including administrators, with no exceptions. For more granular control, use Conditional Access policies instead.
+**Important:** Security defaults will require MFA for all users, including
+administrators, with no exceptions. For more granular control, use Conditional
+Access policies instead.
 
 ### Method 2: Use Conditional Access Policies (Recommended)
 
@@ -90,7 +102,8 @@ We'll cover setting up Conditional Access policies in detail in [Section 6](#cre
 
 ## Setting Up Authentication Methods
 
-Authentication methods determine how users can verify their identity when prompted for MFA. Microsoft Entra ID supports several methods:
+Authentication methods determine how users can verify their identity when
+prompted for MFA. Microsoft Entra ID supports several methods:
 
 - Microsoft Authenticator app (recommended)
 - SMS text messages
@@ -132,7 +145,9 @@ Repeat similar steps for other authentication methods you wish to enable.
 
 ## Creating Conditional Access Policies
 
-Conditional Access policies allow you to create rules that control when MFA is required based on various signals such as user, location, device, and application.
+Conditional Access policies allow you to create rules that control when MFA is
+required based on various signals such as user, location, device, and
+application.
 
 ### Create a Basic MFA Policy for All Users
 
@@ -181,7 +196,7 @@ If you have Microsoft Entra ID Premium P2, you can create risk-based policies:
 2. Name it "Require MFA for High-Risk Sign-ins"
 3. Under **Assignments**:
    - Select **All users**
-   
+
 4. Under **Conditions**:
    - Select **Sign-in risk**
    - Set risk level to **High**
@@ -191,11 +206,13 @@ If you have Microsoft Entra ID Premium P2, you can create risk-based policies:
 
 6. Enable the policy and save
 
-This policy will only trigger MFA when Microsoft's risk detection system identifies suspicious sign-in attempts.
+This policy will only trigger MFA when Microsoft's risk detection system identifies
+suspicious sign-in attempts.
 
 ## Managing User Enrollment
 
-Once MFA is enabled, users will need to register their authentication methods. You can manage this process in several ways:
+Once MFA is enabled, users will need to register their authentication methods.
+You can manage this process in several ways:
 
 ### View MFA Status for Users
 
@@ -264,6 +281,7 @@ Review sign-in logs to troubleshoot MFA issues and monitor authentication attemp
 **Symptoms:** Users receive errors when trying to register for MFA.
 
 **Possible Solutions:**
+
 1. Ensure the user has a valid license assigned
 2. Verify that the authentication method is enabled in your policies
 3. Check that the user is included in the target group for the authentication method
@@ -272,17 +290,16 @@ Review sign-in logs to troubleshoot MFA issues and monitor authentication attemp
 ### Users Locked Out After MFA Changes
 
 **Symptoms:** Administrators or users cannot access resources after MFA changes.
-
 **Solutions:**
+
 1. Use an emergency access account (break glass account) that is excluded from MFA
 2. Reset the user's authentication methods through the admin portal
 3. If using Conditional Access, temporarily disable the policy affecting the user
 
 ### Mobile App Not Receiving Notifications
 
-**Symptoms:** Users don't receive push notifications on their authenticator app.
-
 **Solutions:**
+
 1. Verify the user's device has internet connectivity
 2. Ensure battery optimization is disabled for the authenticator app
 3. Have the user restart the authenticator app
@@ -290,10 +307,12 @@ Review sign-in logs to troubleshoot MFA issues and monitor authentication attemp
 
 ### SMS or Voice Call Not Received
 
-**Symptoms:** Users don't receive SMS codes or phone calls.
-
 **Solutions:**
+
 1. Verify the phone number is entered correctly (with correct country code)
+2. Check if the user is in an area with poor cellular reception
+3. Try the alternative method (if SMS fails, try voice call or vice versa)
+4. Ensure the phone carrier isn't blocking automated messages
 2. Check if the user is in an area with poor cellular reception
 3. Try the alternative method (if SMS fails, try voice call or vice versa)
 4. Ensure the phone carrier isn't blocking automated messages
