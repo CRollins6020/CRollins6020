@@ -8,12 +8,12 @@ This is my technical documentation portfolio, a space I use to practice Technica
 
 Here, you'll find examples of my work across several documentation types, including:
 
-- **User Guides & Tutorials**: Step-by-step instructions for technical products
-- **API Documentation**: Clear reference documentation for developers
-- **Knowledge Base Articles**: Concise solutions to common technical problems
-- **Training Materials**: Educational content for technical product users
+- [**User Guides & Tutorials**](./User-Guides): Step-by-step instructions for technical products  
+- [**API Documentation**](./API-Documentation): Clear reference documentation for developers  
+- [**Knowledge Base Articles**](./Knowledge-Base): Concise solutions to common technical problems  
+- [**Training Materials**](./Training-Materials): Educational content for technical product users
 
-Each folder contains examples that demonstrate different documentation styles and approaches. All samples reflect my experience creating technical enablement content that improves user adoption and reduces support needs.
+Each folder includes a landing page and sample documentation to demonstrate various writing styles and use cases. These reflect my experience creating technical enablement content that supports product adoption and reduces support needs.
 
 ## 🔍 About These Samples
 
