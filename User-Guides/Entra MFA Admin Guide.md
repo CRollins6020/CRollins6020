@@ -55,7 +55,7 @@ Before configuring MFA, ensure you have:
 2. Sign in with your administrator account credentials
 3. If prompted for MFA, complete the authentication process
 
-![Screenshot of MFA configuration screen](./User-Guideses/Images/entra-login-prompt-1.png)
+![Screenshot of MFA configuration screen](C:\Users\rolli\OneDrive\Documents\GitHub\CRollins6020\User-Guides\Images\Entra Login Prompt 1.png)
 
 ### Step 2: Navigate to MFA settings
 
