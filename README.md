@@ -1,5 +1,3 @@
-# Corey Rollins
-
 ## 📄 About Me
 I'm a seasoned technical content professional with over 10 years of experience in the cybersecurity industry. I've progressed through multiple roles (Support, Onboarding, Training, Leadership) culminating in Senior Instructional Designer where I specialized in translating complex technical concepts into clear, accessible documentation and learning solutions.
 
@@ -25,7 +23,7 @@ I'm passionate about bridging the gap between technical complexity and user unde
 - Creating effective developer-focused content
 - Building proficiency in user-centered documentation methodologies
 
-## Projects I'd Like to Work On
+## 🎯 Projects I'd Like to Work On
 - Creating helpful user guides and technical instructions
 - Building resources that make developers' jobs easier
 - Developing materials that help users understand complex products
