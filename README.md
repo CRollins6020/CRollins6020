@@ -1,10 +1,12 @@
 # Technical Writing & Instructional Design Portfolio
 
-Welcome to my technical documentation portfolio repository. This space showcases sample documentation I've created to demonstrate my approach to making complex technical concepts clear and accessible.
+**Hi there — and welcome.** 
+
+This is my technical documentation portfolio, a space I use to practice Technical Writing as I continue to self-teach and grow in the field. I’ve included sample docs that reflect how I approach making complex topics more clear and approachable. My background is in SaaS enablement, where I worked as a Senior Instructional Designer, and I’m now shifting into Technical Writing with a focus on clarity, usability, and real-world impact. 
 
 ## 📂 Portfolio Contents
 
-This repository contains examples of:
+Here, you'll find examples of my work across several documentation types, including:
 
 - **User Guides & Tutorials**: Step-by-step instructions for technical products
 - **API Documentation**: Clear reference documentation for developers
