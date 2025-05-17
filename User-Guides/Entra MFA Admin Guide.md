@@ -1,10 +1,12 @@
-# Microsoft Entra ID Multi-Factor Authentication: Administrator's Guide
+# Microsoft Entra ID: Multi-Factor Authentication
+
+*Administrator's Guide*
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
 2. [Prerequisites](#prerequisites)
-3. [Accessing MFA Controls in Microsoft Entra ID](#accessing-mfa-controls-in-microsoft-entra-id)
+3. [Accessing MFA Controls](#accessing-mfa-controls-in-microsoft-entra-id)
 4. [Enabling MFA for Your Organization](#enabling-mfa-for-your-organization)
 5. [Setting Up Authentication Methods](#setting-up-authentication-methods)
 6. [Creating Conditional Access Policies](#creating-conditional-access-policies)
@@ -13,33 +15,37 @@
 9. [Troubleshooting Common Issues](#troubleshooting-common-issues)
 10. [Best Practices](#best-practices)
 
+---
+
 ## Introduction
 
-Multi-Factor Authentication (MFA) is a critical security feature that requires
-users to provide two or more verification methods to access resources. This
-guide will walk you through setting up and managing Microsoft Entra ID MFA for
-your organization.
+Multi-Factor Authentication (MFA) is a critical security feature that requires users to provide two or more verification methods to access resources. This guide will walk you through setting up and managing Microsoft Entra ID MFA for your organization.
 
-By implementing MFA, you can:
+### Benefits of MFA Implementation
 
 - Reduce the risk of unauthorized access by up to 99.9%
 - Meet compliance requirements for various regulations
 - Protect against credential theft and phishing attacks
 - Provide a layered security approach for your organization
 
-This guide is intended for IT administrators responsible for configuring identity
-and access management settings in Microsoft Entra ID.
+This guide is intended for IT administrators responsible for configuring identity and access management settings in Microsoft Entra ID.
+
+---
 
 ## Prerequisites
 
 Before configuring MFA, ensure you have:
 
-- A Microsoft Entra ID tenant (free, Premium P1, or Premium P2)
-- Global Administrator or Security Administrator role
-- Microsoft Entra ID users created for your organization
-- Microsoft Edge or Google Chrome browser (recommended)
+| Requirement | Details |
+|-------------|---------|
+| **Licensing** | Microsoft Entra ID tenant (free, Premium P1, or Premium P2) |
+| **Administrative Access** | Global Administrator or Security Administrator role |
+| **Environment Setup** | Microsoft Entra ID users created for your organization |
+| **Recommended Tools** | Microsoft Edge or Google Chrome browser |
 
-*Note: Some advanced features require Microsoft Entra ID Premium P1 or P2 licenses.*
+> **Note:** Some advanced features require Microsoft Entra ID Premium P1 or P2 licenses.
+
+---
 
 ## Accessing MFA Controls in Microsoft Entra ID
 
@@ -49,7 +55,7 @@ Before configuring MFA, ensure you have:
 2. Sign in with your administrator account credentials
 3. If prompted for MFA, complete the authentication process
 
-![Microsoft Entra admin center login page showing username and password fields with Sign in button](https://example.com/placeholder-for-entra-login.png)
+![Microsoft Entra admin center login page](https://example.com/placeholder-for-entra-login.png)
 
 ### Step 2: Navigate to MFA settings
 
@@ -57,60 +63,55 @@ There are several ways to access MFA settings in the Entra admin center:
 
 **Method 1: Through Security settings**
 
-1. In the left navigation menu, select **Protection**
-2. Select **Authentication methods**
+Protection → Authentication methods
 
 **Method 2: Through identity settings**
 
-1. In the left navigation menu, select **Identity**
-2. Select **Protection**
-3. Select **Authentication methods**
+Identity → Protection → Authentication methods
 
-![Microsoft Entra admin center navigation showing the path to Authentication methods](https://example.com/placeholder-for-navigation.png)
+![Microsoft Entra admin center navigation](https://example.com/placeholder-for-navigation.png)
+
+---
 
 ## Enabling MFA for Your Organization
 
-Microsoft Entra ID offers several approaches to enable MFA. We'll cover the two
-most common methods:
+Microsoft Entra ID offers two primary approaches to enable MFA:
 
-1. Security Defaults (simplest)
-2. Conditional Access Policies (recommended for most organizations)
+### Method 1: Enable Security Defaults (simplest)
 
-### Method 1: Enable Security Defaults
-
-Security defaults is the simplest way to enable MFA across your organization.
-When enabled, all users will be required to register for MFA.
+Security defaults is the most straightforward way to enable MFA across your organization.
 
 1. In the Microsoft Entra admin center, select **Properties** from the left navigation
 2. Scroll to the bottom and select **Manage security defaults**
 3. Set the **Enable security defaults** toggle to **Yes**
 4. Select **Save**
 
-![Security defaults toggle in the Properties section](https://example.com/placeholder-for-security-defaults.png)
+![Security defaults toggle](https://example.com/placeholder-for-security-defaults.png)
 
-**Important:** Security defaults will require MFA for all users, including
-administrators, with no exceptions. For more granular control, use Conditional
-Access policies instead.
+> **Important:** Security defaults will require MFA for all users, including administrators, with no exceptions. For more granular control, use Conditional Access policies instead.
 
-### Method 2: Use Conditional Access Policies (Recommended)
+### Method 2: Use Conditional Access Policies (recommended)
 
 Conditional Access provides more granular control over when and how MFA is required.
 
-*Note: Conditional Access requires Microsoft Entra ID Premium P1 or P2 licenses.*
+> **Note:** Conditional Access requires Microsoft Entra ID Premium P1 or P2 licenses.
 
 We'll cover setting up Conditional Access policies in detail in [Section 6](#creating-conditional-access-policies).
 
+---
+
 ## Setting Up Authentication Methods
 
-Authentication methods determine how users can verify their identity when
-prompted for MFA. Microsoft Entra ID supports several methods:
+Authentication methods determine how users can verify their identity when prompted for MFA. Microsoft Entra ID supports several methods:
 
-- Microsoft Authenticator app (recommended)
-- SMS text messages
-- Voice calls
-- FIDO2 security keys
-- Hardware tokens (OATH)
-- Email one-time passcodes
+| Method | Security Level | Use Case |
+|--------|---------------|----------|
+| **Microsoft Authenticator app** | High | Recommended primary method |
+| **FIDO2 security keys** | High | Best for high-security scenarios |
+| **Hardware tokens (OATH)** | Medium-High | Good for disconnected environments |
+| **SMS text messages** | Medium | Acceptable for most users |
+| **Voice calls** | Medium | Alternative when SMS isn't available |
+| **Email one-time passcodes** | Low | Backup method only |
 
 ### Configure Authentication Methods
 
@@ -118,7 +119,7 @@ prompted for MFA. Microsoft Entra ID supports several methods:
 2. Select **Policies** from the top menu
 3. For each authentication method, select the method name to configure its settings
 
-![Authentication methods policy page showing available methods](https://example.com/placeholder-for-auth-methods.png)
+![Authentication methods policy page](https://example.com/placeholder-for-auth-methods.png)
 
 ### Configure Microsoft Authenticator (Recommended Primary Method)
 
@@ -132,7 +133,7 @@ prompted for MFA. Microsoft Entra ID supports several methods:
    - Enable **Require number matching for push notifications** (recommended)
 5. Click **Save**
 
-![Microsoft Authenticator configuration settings](https://example.com/placeholder-for-authenticator-config.png)
+![Microsoft Authenticator configuration](https://example.com/placeholder-for-authenticator-config.png)
 
 ### Configure SMS Authentication
 
@@ -143,11 +144,11 @@ prompted for MFA. Microsoft Entra ID supports several methods:
 
 Repeat similar steps for other authentication methods you wish to enable.
 
+---
+
 ## Creating Conditional Access Policies
 
-Conditional Access policies allow you to create rules that control when MFA is
-required based on various signals such as user, location, device, and
-application.
+Conditional Access policies allow you to create rules that control when MFA is required based on various signals such as user, location, device, and application.
 
 ### Create a Basic MFA Policy for All Users
 
@@ -166,7 +167,7 @@ application.
    - Select **Cloud apps**
    - Choose **All cloud apps**
 
-![Conditional Access policy assignments section](https://example.com/placeholder-for-ca-assignments.png)
+![Conditional Access policy assignments](https://example.com/placeholder-for-ca-assignments.png)
 
 #### Conditions (Optional)
 
@@ -175,7 +176,7 @@ application.
    - **Client apps**: Ensure "Browser" and "Mobile apps and desktop clients" are selected
    - **Device state**: You can exclude compliant devices if desired
 
-#### Access controls
+#### Access Controls
 
 7. Under **Access controls**:
    - Click **Grant**
@@ -183,7 +184,7 @@ application.
    - Ensure **Require all the selected controls** is selected
    - Click **Select**
 
-![Conditional Access access controls showing MFA requirement](https://example.com/placeholder-for-ca-controls.png)
+![Conditional Access access controls](https://example.com/placeholder-for-ca-controls.png)
 
 8. Set **Enable policy** to **On**
 9. Click **Create** to activate the policy
@@ -196,7 +197,7 @@ If you have Microsoft Entra ID Premium P2, you can create risk-based policies:
 2. Name it "Require MFA for High-Risk Sign-ins"
 3. Under **Assignments**:
    - Select **All users**
-
+   
 4. Under **Conditions**:
    - Select **Sign-in risk**
    - Set risk level to **High**
@@ -206,13 +207,13 @@ If you have Microsoft Entra ID Premium P2, you can create risk-based policies:
 
 6. Enable the policy and save
 
-This policy will only trigger MFA when Microsoft's risk detection system identifies
-suspicious sign-in attempts.
+This policy will only trigger MFA when Microsoft's risk detection system identifies suspicious sign-in attempts.
+
+---
 
 ## Managing User Enrollment
 
-Once MFA is enabled, users will need to register their authentication methods.
-You can manage this process in several ways:
+Once MFA is enabled, users will need to register their authentication methods. You can manage this process in several ways:
 
 ### View MFA Status for Users
 
@@ -221,7 +222,7 @@ You can manage this process in several ways:
 3. Select **Authentication methods**
 4. View the registered methods for that user
 
-![User authentication methods page showing registered methods](https://example.com/placeholder-for-user-methods.png)
+![User authentication methods page](https://example.com/placeholder-for-user-methods.png)
 
 ### Reset a User's MFA Settings
 
@@ -243,7 +244,9 @@ For bulk management of MFA:
 3. Click **Multi-factor authentication** from the top menu
 4. Use the available options to enable, disable, or enforce MFA for the selected users
 
-*Note: This legacy MFA portal is being phased out in favor of Conditional Access policies.*
+> **Note:** This legacy MFA portal is being phased out in favor of Conditional Access policies.
+
+---
 
 ## Reporting and Monitoring
 
@@ -255,7 +258,7 @@ Monitor MFA usage and identify potential issues using the built-in reporting fea
 2. Select **Authentication methods activity**
 3. View the report showing MFA registration status across your organization
 
-![MFA registration report showing percentage of users registered](https://example.com/placeholder-for-mfa-report.png)
+![MFA registration report](https://example.com/placeholder-for-mfa-report.png)
 
 ### Sign-in Logs
 
@@ -274,6 +277,8 @@ Review sign-in logs to troubleshoot MFA issues and monitor authentication attemp
 
 ![Sign-in logs showing MFA-related events](https://example.com/placeholder-for-signin-logs.png)
 
+---
+
 ## Troubleshooting Common Issues
 
 ### Users Cannot Register for MFA
@@ -282,40 +287,40 @@ Review sign-in logs to troubleshoot MFA issues and monitor authentication attemp
 
 **Possible Solutions:**
 
-1. Ensure the user has a valid license assigned
-2. Verify that the authentication method is enabled in your policies
-3. Check that the user is included in the target group for the authentication method
-4. Clear the user's browser cache or try a different browser
+- Ensure the user has a valid license assigned
+- Verify that the authentication method is enabled in your policies
+- Check that the user is included in the target group for the authentication method
+- Clear the user's browser cache or try a different browser
 
 ### Users Locked Out After MFA Changes
 
 **Symptoms:** Administrators or users cannot access resources after MFA changes.
+
 **Solutions:**
 
-1. Use an emergency access account (break glass account) that is excluded from MFA
-2. Reset the user's authentication methods through the admin portal
-3. If using Conditional Access, temporarily disable the policy affecting the user
+- Use an emergency access account (break glass account) that is excluded from MFA
+- Reset the user's authentication methods through the admin portal
+- If using Conditional Access, temporarily disable the policy affecting the user
 
 ### Mobile App Not Receiving Notifications
 
 **Solutions:**
 
-1. Verify the user's device has internet connectivity
-2. Ensure battery optimization is disabled for the authenticator app
-3. Have the user restart the authenticator app
-4. If necessary, delete and re-register the account in the authenticator app
+- Verify the user's device has internet connectivity
+- Ensure battery optimization is disabled for the authenticator app
+- Have the user restart the authenticator app
+- If necessary, delete and re-register the account in the authenticator app
 
 ### SMS or Voice Call Not Received
 
 **Solutions:**
 
-1. Verify the phone number is entered correctly (with correct country code)
-2. Check if the user is in an area with poor cellular reception
-3. Try the alternative method (if SMS fails, try voice call or vice versa)
-4. Ensure the phone carrier isn't blocking automated messages
-2. Check if the user is in an area with poor cellular reception
-3. Try the alternative method (if SMS fails, try voice call or vice versa)
-4. Ensure the phone carrier isn't blocking automated messages
+- Verify the phone number is entered correctly (with correct country code)
+- Check if the user is in an area with poor cellular reception
+- Try the alternative method (if SMS fails, try voice call or vice versa)
+- Ensure the phone carrier isn't blocking automated messages
+
+---
 
 ## Best Practices
 
