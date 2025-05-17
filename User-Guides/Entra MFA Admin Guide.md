@@ -55,7 +55,7 @@ Before configuring MFA, ensure you have:
 2. Sign in with your administrator account credentials
 3. If prompted for MFA, complete the authentication process
 
-![Microsoft Entra Admin Center login page](./Images/Entra-Login-Prompt-1.png)
+![Microsoft Entra Admin Center login page](/Images/Entra-Login-Prompt-1.png)
 
 ### Step 2: Navigate to MFA settings
 
