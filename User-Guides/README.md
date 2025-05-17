@@ -5,5 +5,5 @@ designed to help users accomplish tasks clearly and efficiently.
 
 ## Samples
 
-- [Entra MFA Admin Guide](entra-mfa-guide.md)
-- [Troubleshooting Workflow Tutorial](troubleshooting-guide.md)
+- [Entra MFA Administration Guide](Entra%20MFA%20Admin%20Guide.md)
+- [Setting Up DLP in Microsoft 365: A Step-by-Step Tutorial](MS%20DLP%20365%20Tutorial.md)
