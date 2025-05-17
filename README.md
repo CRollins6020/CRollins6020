@@ -1,8 +1,8 @@
 # Technical Writing & Instructional Design Portfolio
 
-**Hi there — and welcome.** 
+**Hi there — and welcome.**
 
-This is my technical documentation portfolio, a space I use to practice Technical Writing as I continue to self-teach and grow in the field. I’ve included sample docs that reflect how I approach making complex topics more clear and approachable. My background is in SaaS enablement, where I worked as a Senior Instructional Designer, and I’m now shifting into Technical Writing with a focus on clarity, usability, and real-world impact. 
+This is my technical documentation portfolio, a space I use to practice Technical Writing as I continue to self-teach and grow in the field. I’ve included sample docs that reflect how I approach making complex topics more clear and approachable. My background is in SaaS enablement, where I worked as a Senior Instructional Designer, and I’m now shifting into Technical Writing with a focus on clarity, usability, and real-world impact.
 
 ## 📂 Portfolio Contents
 
@@ -18,6 +18,7 @@ Each folder contains examples that demonstrate different documentation styles an
 ## 🔍 About These Samples
 
 The documents in this portfolio demonstrate my ability to:
+
 - Organize complex information in a user-friendly way
 - Create clear, concise technical instructions
 - Design documentation for different audience needs
@@ -26,5 +27,6 @@ The documents in this portfolio demonstrate my ability to:
 ## 📫 Contact
 
 Interested in discussing a technical writing project? Reach out to me:
+
 - LinkedIn: [linkedin.com/in/coreyrollins](https://www.linkedin.com/in/coreyrollins/)
-- Email: corey.p.rollins@gmail.com
+- Email: [corey.p.rollins@gmail.com](mailto:corey.p.rollins@gmail.com)
