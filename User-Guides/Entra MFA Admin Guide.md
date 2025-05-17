@@ -197,7 +197,7 @@ If you have Microsoft Entra ID Premium P2, you can create risk-based policies:
 2. Name it "Require MFA for High-Risk Sign-ins"
 3. Under **Assignments**:
    - Select **All users**
-   
+
 4. Under **Conditions**:
    - Select **Sign-in risk**
    - Set risk level to **High**
