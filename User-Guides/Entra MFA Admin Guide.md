@@ -55,7 +55,7 @@ Before configuring MFA, ensure you have:
 2. Sign in with your administrator account credentials
 3. If prompted for MFA, complete the authentication process
 
-![Entra Login Prompt](./Images/Entra%20Login%20Prompt%201.png)
+![Entra Login Prompt](.\Images\Entra-Login-Prompt-1.png)
 
 ### Step 2: Navigate to MFA settings
 
