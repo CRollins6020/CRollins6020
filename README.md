@@ -35,5 +35,5 @@ The documents in this portfolio demonstrate my ability to:
 
 Interested in discussing a technical writing project? Reach out to me:
 
-- LinkedIn: [linkedin.com/in/coreyrollins](https://www.linkedin.com/in/coreyrollins/)
+- LinkedIn: [linkedin.com/in/coreyrollins](https://www.linkedin.com/in/corey-p-rollins/)
 - Email: [corey.p.rollins@gmail.com](mailto:corey.p.rollins@gmail.com)
