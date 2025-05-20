@@ -14,24 +14,25 @@ graph TD
     C --> G[Response]
     D --> G
     E --> G
-    G -->|Return| A```
-
-Table of Contents
-
-1. Introduction to LangChain Agent Architecture
-2. Infrastructure Requirements
-3. Installation & Setup
-4. LLM Integration
-5. Tool Configuration
-6. Security Considerations
-7. Scaling & Performance
-8. Observability & Monitoring
-9. User Management
-10. Troubleshooting & Maintenance
-11. Compliance & Governance
-12. Advanced Configurations
-Appendices
-## 1. Introduction to LangChain Agent Architecture
+    G -->|Return| A
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#1-introduction-to-langchain-agent-architecture">Introduction to LangChain Agent Architecture</a></li>
+  <li><a href="#2-infrastructure-requirements">Infrastructure Requirements</a></li>
+  <li><a href="#3-installation--setup">Installation & Setup</a></li>
+  <li><a href="#4-llm-integration">LLM Integration</a></li>
+  <li><a href="#5-tool-configuration">Tool Configuration</a></li>
+  <li><a href="#6-security-considerations">Security Considerations</a></li>
+  <li><a href="#7-scaling--performance">Scaling & Performance</a></li>
+  <li><a href="#8-observability--monitoring">Observability & Monitoring</a></li>
+  <li><a href="#9-user-management">User Management</a></li>
+  <li><a href="#10-troubleshooting--maintenance">Troubleshooting & Maintenance</a></li>
+  <li><a href="#11-compliance--governance">Compliance & Governance</a></li>
+  <li><a href="#12-advanced-configurations">Advanced Configurations</a></li>
+  <li><a href="#appendices">Appendices</a></li>
+</ol>
+<h2 id="1-introduction-to-langchain-agent-architecture">1. Introduction to LangChain Agent Architecture</h2>
+```
 
 ### 1.1 What is LangChain?
 
