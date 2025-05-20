@@ -43,8 +43,8 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 
 ## Prerequisites
 
-| Requirement              | Details                                                |
-|--------------------------|--------------------------------------------------------|
+| 📋 Requirement           | Details                                                |
+|:------------------------|:-------------------------------------------------------|
 | **Licensing**            | Microsoft Entra ID (Free, P1, or P2)                   |
 | **Role Access**          | Global or Security Administrator                       |
 | **User Setup**           | Users must exist in the tenant                         |
@@ -55,15 +55,15 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 **Required Permissions Matrix:**
 
 | Feature | Free | P1 | P2 |
-|---------|------|----|----|
-| Security Defaults | ✓ | ✓ | ✓ |
-| Per-user MFA | ✓ | ✓ | ✓ |
-| Conditional Access Policies | ❌ | ✓ | ✓ |
-| Risk-based MFA | ❌ | ❌ | ✓ |
-| Authentication Methods Policy | ✓ | ✓ | ✓ |
-| MFA Registration Campaign | ❌ | ✓ | ✓ |
-| SSPR integration | ❌ | ✓ | ✓ |
-| Detailed Reports | ❌ | ✓ | ✓ |
+|:-------|:------:|:----:|:----:|
+| **Security Defaults** | ✅ | ✅ | ✅ |
+| **Per-user MFA** | ✅ | ✅ | ✅ |
+| **Conditional Access Policies** | ❌ | ✅ | ✅ |
+| **Risk-based MFA** | ❌ | ❌ | ✅ |
+| **Authentication Methods Policy** | ✅ | ✅ | ✅ |
+| **MFA Registration Campaign** | ❌ | ✅ | ✅ |
+| **SSPR integration** | ❌ | ✅ | ✅ |
+| **Detailed Reports** | ❌ | ✅ | ✅ |
 
 **Administrator roles that can manage MFA:**
 * Global Administrator
@@ -127,14 +127,14 @@ Provides flexibility for targeting users, apps, and conditions. Setup details co
 
 ## Setting Up Authentication Methods
 
-| Method                    | Security Level | Use Case                                 |
-|---------------------------|----------------|-------------------------------------------|
-| Microsoft Authenticator   | High            | Default recommended method                |
-| FIDO2 Security Keys       | High            | Phishing-resistant MFA for secure sites   |
-| OATH Hardware Tokens      | Medium-High     | Offline/air-gapped scenarios              |
-| SMS                       | Medium          | Legacy fallback option                    |
-| Voice Calls               | Medium          | Secondary option                          |
-| Email OTP                 | Low             | Only as a backup                          |
+| 🔐 Method               | 🛡️ Security Level | 🔄 Use Case                             |
+|:------------------------|:-----------------:|:----------------------------------------|
+| **Microsoft Authenticator** | `High`          | Default recommended method              |
+| **FIDO2 Security Keys**     | `High`          | Phishing-resistant MFA for secure sites |
+| **OATH Hardware Tokens**    | `Medium-High`   | Offline/air-gapped scenarios            |
+| **SMS**                     | `Medium`        | Legacy fallback option                  |
+| **Voice Calls**             | `Medium`        | Secondary option                        |
+| **Email OTP**               | `Low`           | Only as a backup                        |
 
 ### Configuration Steps
 
@@ -358,14 +358,14 @@ Repeat for other methods as needed.
 
 #### Sample Communication Timeline:
 
-| Timeframe | Communication Type | Content Focus |
-|-----------|-------------------|---------------|
-| 4 weeks before | Executive announcement | Business justification and timeline |
-| 3 weeks before | Department meetings | Process overview and benefits |
-| 2 weeks before | Email with guides | Registration instructions and support options |
-| 1 week before | Reminder email | Deadline and consequences of non-compliance |
-| Day of enforcement | Final notification | Support channels and emergency procedures |
-| 1 week after | Follow-up | Success metrics and outstanding issues |
+| ⏱️ Timeframe | 📣 Communication Type | 📋 Content Focus |
+|:------------|:---------------------|:----------------|
+| **4 weeks before** | Executive announcement | Business justification and timeline |
+| **3 weeks before** | Department meetings | Process overview and benefits |
+| **2 weeks before** | Email with guides | Registration instructions and support options |
+| **1 week before** | Reminder email | Deadline and consequences of non-compliance |
+| **Day of enforcement** | Final notification | Support channels and emergency procedures |
+| **1 week after** | Follow-up | Success metrics and outstanding issues |
 
 ---
 
@@ -515,13 +515,16 @@ Connect-MgGraph -Scopes "UserAuthenticationMethod.Read.All", "Policy.Read.All"
 
 ## Document Information
 
-**Version:** 2.1  
-**Maintained by:** Enterprise Security Team  
-**Applicable Entra ID Version:** May 2025 Release  
+| 📄 Metadata | Details |
+|:------------|:--------|
+| **Version** | 2.1 |
+| **Maintained by** | Enterprise Security Team |
+| **Applicable Entra ID Version** | May 2025 Release |
+
 **Related Documents:**
-- Conditional Access Implementation Guide
-- Passwordless Authentication Roadmap
-- Security Incident Response Procedures
+- 📋 Conditional Access Implementation Guide
+- 🔑 Passwordless Authentication Roadmap
+- 🚨 Security Incident Response Procedures
 
 ---
 
