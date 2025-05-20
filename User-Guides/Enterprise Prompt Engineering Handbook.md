@@ -145,25 +145,33 @@ Use multi-step prompts to build complex tasks with memory.
 
 ## 8. Use Case Templates
 
-### 🛠️ Troubleshooting Summary
+### 🛠️ Technical Troubleshooting
 
-> *"You are a Tier 2 support engineer. Review the error log below and summarize the root cause and recommended fix. Return as a 2-bullet list."*
+> *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*
+> *"Given the error trace below, explain what failed and suggest one remediation step."*
+> *"Analyze this API response and highlight any unexpected values. Return in table format."*
+> *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*
 
-### 🔐 Security Risk Review
+### 🔐 Security and Risk Assessment
 
-> *"You are a cybersecurity analyst. Analyze the attached firewall configuration and list 3 risks. Assign a severity level to each and explain why."*
+> *"Examine the following IAM policy and list 3 misconfigurations or risks."*
+> *"You are a security engineer. Review this SSO implementation and identify 2 weaknesses."*
+> *"Based on the penetration test results, write a short risk summary for leadership."*
+> *"Evaluate this incident report and propose 2 prevention strategies."*
 
-### 📈 Reporting Summary
+### 📊 Reporting and Documentation
 
-> *"You are a Technical Writer. Summarize the quarterly product metrics into a stakeholder-friendly format. Highlight usage trends and churn indicators."*
+> *"Create a summary table from the following uptime logs. Include date, downtime, and root cause."*
+> *"You are a Technical Writer. Reformat this product changelog into 3 customer-facing release notes."*
+> *"Review the quarterly KPIs and summarize 3 insights for the executive team."*
+> *"From the attached usage report, identify top 3 features by adoption rate. Present as bullet points."*
 
-### 📬 Outbound Enablement Copy
+### 🧠 Internal Enablement and Comms
 
-> *"Write a short, punchy paragraph introducing this new feature to sales reps. Include one benefit and a call to action."*
-
-### 📚 Internal FAQ Generator
-
-> *"Based on the product spec below, generate an internal FAQ for Customer Success. Focus on integration, known issues, and licensing."*
+> *"Write a Slack announcement explaining this new workflow to internal teams. Keep it under 100 words."*
+> *"Draft a 3-bullet onboarding tip list for new hires on using the dev environment."*
+> *"Turn this internal wiki page into a customer-facing summary."*
+> *"Create a short script for a 2-minute training video on account provisioning."*
 
 ---
 
