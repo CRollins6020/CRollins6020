@@ -20,11 +20,10 @@ Practical instructions for writing effective AI prompts that generate consistent
 
 ## Documentation Approach
 
-My technical guides follow these principles:
+My technical guides are built on three core principles:
 
-- **Progressive disclosure** - Critical information first, details available when needed
-- **Real-world context** - Practical examples based on common enterprise scenarios
-- **Complete workflows** - End-to-end guidance from setup through maintenance
-- **Troubleshooting focus** - Anticipating common issues before they arise
+- **All-Encompassing** - Complete coverage that leaves no questions unanswered, addressing both common and edge cases
+- **Easily Understood** - Clear language and thoughtful organization that makes complex topics accessible without oversimplification
+- **Easily Remembered** - Structured information and meaningful examples that help knowledge stick beyond the reading experience
 
-Each guide is crafted to be accessible to newcomers while providing the depth that experienced practitioners need, striking a balance between comprehensive coverage and practical usability.
+I believe technical documentation should respect both the complexity of the subject matter and the reader's need for clarity. My guides provide both the big picture context and the detailed steps, ensuring readers can confidently implement solutions while truly understanding the underlying concepts.
