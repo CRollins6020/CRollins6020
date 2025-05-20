@@ -2,18 +2,18 @@
 
 Clear, practical documentation to help users navigate complex AI systems with confidence. These guides address the most pressing challenges businesses face when implementing AI technologies, focusing on practical implementation, security, and effective usage.
 
-## 📂 Samples  
+## 📂 Samples
 
-- **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)**     
+- **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)**  
   A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private.
 
-- **RAG Implementation Guide**(https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/Enterprise%20Prompt%20Engineering%20Handbook.md)     
-  How to connect AI chatbots to your company's own documents and databases so they can provide answers based on your business information rather than generic responses.
+- **[COMING SOON] RAG Implementation Guide**  
+  Learn how to connect AI chatbots to your organization's internal documents and data sources, enabling them to deliver context-aware answers based on your business content—not generic web data.
 
-- **[Coming Soon] Enterprise Prompt Engineering Handbook**     
-  Practical instructions for writing effective AI instructions that get consistent, accurate results and avoid common pitfalls that waste time and resources.
+- **[Enterprise Prompt Engineering Handbook](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/Enterprise%20Prompt%20Engineering%20Handbook.md)**  
+  Practical instructions for writing effective AI prompts that generate consistent, accurate results—while avoiding common pitfalls that waste time and resources.
 
----  
+--- 
 
 ### Documentation Approach
 
