@@ -4,7 +4,7 @@ I'm a Senior Instructional Designer with extensive experience in SaaS enablement
 
 ## What You'll Find Here
 
-My GitHub houses my **Technical Writing Portfolio**, where I practice and showcase documentation skills through various sample projects. This portfolio reflects my approach to creating clear, user-focused documentation.
+This GitHub showcases my **Technical Writing Portfolio** — documentation that's **clear without oversimplification, comprehensive without overwhelming, and memorable without gimmicks**. I craft technical content that respects both the complexity of the subject and the reader's need for accessibility.
 
 ### Portfolio Highlights
 
