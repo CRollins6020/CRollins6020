@@ -1,4 +1,4 @@
-# Technical Writing & Instructional Design Portfolio
+# Technical Writing Portfolio
 
 **Hi there — and welcome.**
 
@@ -6,8 +6,7 @@ This is my technical documentation portfolio, a space I use to practice technica
 writing as I continue to self-teach and grow in the field. I’ve included sample
 docs that reflect how I approach making complex topics more clear and
 approachable. My background is in SaaS enablement, where I worked as a Senior
-Instructional Designer, and I’m now shifting into Technical Writing with a focus
-on clarity, usability, and real-world impact.
+Instructional Designer, with a strong passion to explore Technical Writing.
 
 ## 📂 Portfolio Contents
 
