@@ -44,23 +44,23 @@ Great prompts are:
 
 ### Prompt Components
 
-| Component       | Description                      | Example                                              |
-| --------------- | -------------------------------- | ---------------------------------------------------- |
-| **Instruction** | What the model should do         | “Summarize this changelog in 3 bullet points.”       |
-| **Input**       | The source content               | “Product release notes, JSON error log, user email”  |
-| **Constraints** | Limits or boundaries             | “Keep it under 75 words. Don’t include pricing.”     |
-| **Format**      | Expected structure of the output | “Return a markdown table with columns: Error, Fix”   |
-| **Tone/Role**   | The model’s persona or expertise | “You are a cybersecurity SME writing to executives.” |
+| Component       | Description                      | Example                                                |
+| --------------- | -------------------------------- | ------------------------------------------------------ |
+| **Instruction** | What the model should do         | *"Summarize this changelog in 3 bullet points."*       |
+| **Input**       | The source content               | *"Product release notes, JSON error log, user email"*  |
+| **Constraints** | Limits or boundaries             | *"Keep it under 75 words. Don’t include pricing."*     |
+| **Format**      | Expected structure of the output | *"Return a markdown table with columns: Error, Fix"*   |
+| **Tone/Role**   | The model’s persona or expertise | *"You are a cybersecurity SME writing to executives."* |
 
 > **Tip:** Start with simple single-task prompts. Gradually increase complexity as you evaluate performance.
 
 ### Stylized Example
 
 > **✅ Good Prompt**
-> You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list using plain language.
+> *"You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list using plain language."*
 >
 > **🚫 Bad Prompt**
-> Summarize the changelog.
+> *"Summarize the changelog."*
 
 ---
 
@@ -82,9 +82,9 @@ System prompts influence the model’s behavior across a session.
 
 ### Example Strategies
 
-> You are a professional Technical Writer working for a cybersecurity company. Be clear, concise, and use markdown formatting when appropriate.
+> *"You are a professional Technical Writer working for a cybersecurity company. Be clear, concise, and use markdown formatting when appropriate."*
 
-> Act as a support engineer. Be direct but friendly, avoid speculation, and cite specific logs or config settings when making recommendations.
+> *"Act as a support engineer. Be direct but friendly, avoid speculation, and cite specific logs or config settings when making recommendations."*
 
 ### Best Practices
 
@@ -96,13 +96,13 @@ System prompts influence the model’s behavior across a session.
 
 ## 5. Role-Based Prompting Patterns
 
-| Role                      | Prompt Pattern                                                                                |
-| ------------------------- | --------------------------------------------------------------------------------------------- |
-| **Technical Writer**      | “Convert this Slack thread into a formal internal SOP. Use headers and bullets.”              |
-| **Support Engineer**      | “Review this error trace and suggest 3 likely causes. Include one diagnostic step per cause.” |
-| **Sales Enablement**      | “Write a 1-paragraph pitch for this new feature targeting IT security leaders.”               |
-| **Product Manager**       | “Summarize this customer feedback into 3 prioritized feature requests.”                       |
-| **Cybersecurity Analyst** | “Assess this firewall rule for potential vulnerabilities. Return risk level and reasoning.”   |
+| Role                      | Prompt Pattern                                                                                  |
+| ------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Technical Writer**      | *"Convert this Slack thread into a formal internal SOP. Use headers and bullets."*              |
+| **Support Engineer**      | *"Review this error trace and suggest 3 likely causes. Include one diagnostic step per cause."* |
+| **Sales Enablement**      | *"Write a 1-paragraph pitch for this new feature targeting IT security leaders."*               |
+| **Product Manager**       | *"Summarize this customer feedback into 3 prioritized feature requests."*                       |
+| **Cybersecurity Analyst** | *"Assess this firewall rule for potential vulnerabilities. Return risk level and reasoning."*   |
 
 ---
 
@@ -112,9 +112,9 @@ Use multi-step prompts to build complex tasks with memory.
 
 ### Example Workflow
 
-> **Step 1:** Summarize this SOC2 policy document in 5 bullet points.
-> **Step 2:** Based on your summary, draft an FAQ for new employees about data handling.
-> **Step 3:** Reformat the FAQ as a Slack message.
+> **Step 1:** *"Summarize this SOC2 policy document in 5 bullet points."*
+> **Step 2:** *"Based on your summary, draft an FAQ for new employees about data handling."*
+> **Step 3:** *"Reformat the FAQ as a Slack message."*
 
 ### Tips
 
@@ -138,8 +138,8 @@ Use multi-step prompts to build complex tasks with memory.
 
 ### Refinement Tips
 
-> **Original Prompt:** Write a summary of this user guide.
-> **Refined Prompt:** Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words.
+> **Original Prompt:** *"Write a summary of this user guide."*
+> **Refined Prompt:** *"Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words."*
 
 ---
 
@@ -147,23 +147,23 @@ Use multi-step prompts to build complex tasks with memory.
 
 ### 🛠️ Troubleshooting Summary
 
-> You are a Tier 2 support engineer. Review the error log below and summarize the root cause and recommended fix. Return as a 2-bullet list.
+> *"You are a Tier 2 support engineer. Review the error log below and summarize the root cause and recommended fix. Return as a 2-bullet list."*
 
 ### 🔐 Security Risk Review
 
-> You are a cybersecurity analyst. Analyze the attached firewall configuration and list 3 risks. Assign a severity level to each and explain why.
+> *"You are a cybersecurity analyst. Analyze the attached firewall configuration and list 3 risks. Assign a severity level to each and explain why."*
 
 ### 📈 Reporting Summary
 
-> You are a Technical Writer. Summarize the quarterly product metrics into a stakeholder-friendly format. Highlight usage trends and churn indicators.
+> *"You are a Technical Writer. Summarize the quarterly product metrics into a stakeholder-friendly format. Highlight usage trends and churn indicators."*
 
 ### 📬 Outbound Enablement Copy
 
-> Write a short, punchy paragraph introducing this new feature to sales reps. Include one benefit and a call to action.
+> *"Write a short, punchy paragraph introducing this new feature to sales reps. Include one benefit and a call to action."*
 
 ### 📚 Internal FAQ Generator
 
-> Based on the product spec below, generate an internal FAQ for Customer Success. Focus on integration, known issues, and licensing.
+> *"Based on the product spec below, generate an internal FAQ for Customer Success. Focus on integration, known issues, and licensing."*
 
 ---
 
