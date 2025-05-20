@@ -64,6 +64,7 @@ graph TD
     class LLM,TOOLS,VDB external;
     class MON,LOG,SEC,CAC admin;
     class U,LB user;
+    ```
 
 ## Table of Contents
 
