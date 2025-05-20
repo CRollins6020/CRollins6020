@@ -55,32 +55,24 @@ This section introduces the building blocks of well-structured prompts. The goal
 ## Prompt Examples
 
 ### Example 1
-✅ **Clear Prompt**
-> "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list."
+❌ **Vague Prompt:** "Summarize the changelog."
 
-❌ **Vague Prompt**
-> "Summarize the changelog."
+✅ **Clear Prompt:** "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list."
 
 ### Example 2
-✅ **Clear Prompt**
-> "Translate the product update into a one-paragraph internal email for Customer Success. Be informal and highlight changes to billing."
+❌ **Vague Prompt:** "Make this into a short note."
 
-❌ **Vague Prompt**
-> "Make this into a short note."
+✅ **Clear Prompt:** "Translate the product update into a one-paragraph internal email for Customer Success. Be informal and highlight changes to billing."
 
 ### Example 3
-✅ **Clear Prompt**
-> "You are a documentation specialist. Review the following API payload and describe its structure using plain language in 3 bullet points."
+❌ **Vague Prompt:** "Tell me what this is."
 
-❌ **Vague Prompt**
-> "Tell me what this is."
+✅ **Clear Prompt:** "You are a documentation specialist. Review the following API payload and describe its structure using plain language in 3 bullet points."
 
 ### Example 4
-✅ **Clear Prompt**
-> "You are a SaaS onboarding writer. Create a short intro paragraph followed by a markdown checklist of setup steps from the email below."
+❌ **Vague Prompt:** "Help with this email."
 
-❌ **Vague Prompt**
-> "Help with this email."
+✅ **Clear Prompt:** "You are a SaaS onboarding writer. Create a short intro paragraph followed by a markdown checklist of setup steps from the email below."
 
 ---
 
