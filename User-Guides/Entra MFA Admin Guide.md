@@ -28,12 +28,14 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 > *Use case: This guide is ideal for organizations beginning their MFA rollout, transitioning from legacy authentication, or tightening compliance with security standards.*
 
 **Why MFA is critical:**
+
 * Stolen credentials are involved in over 80% of security breaches
 * MFA can block up to 99.9% of account compromise attacks
 * Regulatory frameworks like GDPR, HIPAA, and PCI-DSS increasingly require MFA
 * Remote work environments have expanded the attack surface for many organizations
 
 **Business benefits:**
+
 * Reduced risk of data breaches and associated costs
 * Enhanced compliance posture
 * Simplified access to cloud resources
@@ -66,6 +68,7 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 | **Detailed Reports** | ❌ | ✅ | ✅ |
 
 **Administrator roles that can manage MFA:**
+
 * Global Administrator
 * Authentication Administrator
 * Privileged Authentication Administrator
@@ -87,8 +90,8 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 
 ### Step 2: Navigate to Authentication Settings
 
-- *Protection → Authentication methods*  
-- *Identity → Protection → Authentication methods*
+* *Protection → Authentication methods*  
+* *Identity → Protection → Authentication methods*
 
 **Screenshot:** Microsoft Entra admin center navigation menu
 
@@ -109,6 +112,7 @@ Multi-Factor Authentication (MFA) strengthens organizational security by requiri
 **Screenshot:** Security defaults toggle
 
 **Key considerations for Security Defaults:**
+
 * All users will be required to register for MFA within 14 days
 * All administrator accounts must complete MFA for every sign-in
 * Legacy authentication protocols (SMTP, POP, IMAP, etc.) are blocked
@@ -153,8 +157,8 @@ Provides flexibility for targeting users, apps, and conditions. Setup details co
 2. Enable the method  
 3. Target *All users* or *Select users*  
 4. Recommended settings:
-   - *Show app name in push notifications*
-   - *Require number matching*  
+   * *Show app name in push notifications*
+   * *Require number matching*  
 5. Click *Save*
 
 **Screenshot:** Microsoft Authenticator configuration panel
@@ -181,21 +185,21 @@ Repeat for other methods as needed.
 
 #### Assignments
 
-- Target: *All users* or pilot group  
-- Apps: *All cloud apps*
+* Target: *All users* or pilot group  
+* Apps: *All cloud apps*
 
 **Screenshot:** Conditional Access assignment screen
 
 #### Conditions (Optional)
 
-- Include/exclude locations  
-- Select client types (browser, mobile, etc.)  
-- Filter by device compliance state
+* Include/exclude locations  
+* Select client types (browser, mobile, etc.)  
+* Filter by device compliance state
 
 #### Access Controls
 
-- Grant *Require multi-factor authentication*  
-- Enable policy
+* Grant *Require multi-factor authentication*  
+* Enable policy
 
 **Screenshot:** Access control grant screen
 
@@ -214,8 +218,8 @@ Repeat for other methods as needed.
 
 ### View or Reset Methods
 
-- Go to *Users > [Username] > Authentication methods*  
-- View or remove existing methods
+* Go to *Users > [Username] > Authentication methods*  
+* View or remove existing methods
 
 **Screenshot:** User authentication method panel
 
@@ -223,9 +227,9 @@ Repeat for other methods as needed.
 
 ### Bulk Management (Legacy MFA Portal)
 
-- Navigate to *Users*, select multiple  
-- Click *Multi-factor authentication*  
-- Enable, disable, or enforce in bulk
+* Navigate to *Users*, select multiple  
+* Click *Multi-factor authentication*  
+* Enable, disable, or enforce in bulk
 
 > ⚠️ *Microsoft is retiring this portal. Use Conditional Access for future-proofing.*
 
@@ -244,8 +248,8 @@ Repeat for other methods as needed.
 
 ### Sign-in Logs
 
-- Navigate to *Sign-in logs*  
-- Filter by *Status*, *Authentication Requirements*, or *Result*
+* Navigate to *Sign-in logs*  
+* Filter by *Status*, *Authentication Requirements*, or *Result*
 
 **Screenshot:** Filtered sign-in logs showing MFA activity
 
@@ -255,13 +259,13 @@ Repeat for other methods as needed.
 
 ### MFA Not Triggering
 
-- Verify the policy is *enabled*  
-- Ensure the *user, app, and condition* match  
-- Confirm the policy is not in *report-only* mode
-- Check for conflicting Conditional Access policies with higher priority
-- Verify the user is not in an excluded group or has an exclusion role
-- Check if the user is connecting from a trusted location
-- Look for cached authentication tokens that may bypass MFA
+* Verify the policy is *enabled*  
+* Ensure the *user, app, and condition* match  
+* Confirm the policy is not in *report-only* mode
+* Check for conflicting Conditional Access policies with higher priority
+* Verify the user is not in an excluded group or has an exclusion role
+* Check if the user is connecting from a trusted location
+* Look for cached authentication tokens that may bypass MFA
 
 > 💡 **Troubleshooting Tip:** Use the "What If" tool in Conditional Access to simulate sign-ins and determine which policies will apply to specific users in different scenarios.
 
@@ -269,38 +273,38 @@ Repeat for other methods as needed.
 
 ### Users Cannot Register
 
-- Ensure a valid *license* is assigned  
-- Confirm *authentication method* is enabled  
-- Clear browser cache or try another device
-- Verify the user is not in a restricted network
-- Check for browser extensions or security software that might block the registration process
-- Verify the user has valid contact information in their profile
-- Test in private/incognito browser mode
+* Ensure a valid *license* is assigned  
+* Confirm *authentication method* is enabled  
+* Clear browser cache or try another device
+* Verify the user is not in a restricted network
+* Check for browser extensions or security software that might block the registration process
+* Verify the user has valid contact information in their profile
+* Test in private/incognito browser mode
 
 ---
 
 ### Authenticator Push Fails
 
-- Verify *device connectivity*  
-- Disable *battery optimization*  
-- Restart or reinstall the app
-- Check time synchronization between device and servers
-- Ensure device has push notifications enabled
-- Verify app permissions for notifications and background activity
-- Check for available storage space on the device
-- Remove and re-add the account in the Authenticator app
+* Verify *device connectivity*  
+* Disable *battery optimization*  
+* Restart or reinstall the app
+* Check time synchronization between device and servers
+* Ensure device has push notifications enabled
+* Verify app permissions for notifications and background activity
+* Check for available storage space on the device
+* Remove and re-add the account in the Authenticator app
 
 ---
 
 ### SMS/Voice Issues
 
-- Check *phone number format* (ensure international format with country code)
-- Test an *alternate method*  
-- Confirm the *carrier isn't blocking automation*
-- Verify the number is not on a VOIP or virtual service
-- Check for rate-limiting if multiple attempts have been made
-- Verify the phone is not in a region where the service is unavailable
-- Check if the user has exceeded the daily quota for SMS messages
+* Check *phone number format* (ensure international format with country code)
+* Test an *alternate method*  
+* Confirm the *carrier isn't blocking automation*
+* Verify the number is not on a VOIP or virtual service
+* Check for rate-limiting if multiple attempts have been made
+* Verify the phone is not in a region where the service is unavailable
+* Check if the user has exceeded the daily quota for SMS messages
 
 ---
 
@@ -320,13 +324,13 @@ Repeat for other methods as needed.
 
 ### MFA Rollout Strategy
 
-- Start with *admins and IT teams*  
-- Expand to *business units* in phases  
-- Monitor *sign-in logs* for early detection
-- Create a detailed rollout timeline with clear milestones
-- Identify departmental champions to support the implementation
-- Establish success metrics (e.g., percentage of users registered)
-- Plan for increased helpdesk volume during initial rollout phases
+* Start with *admins and IT teams*  
+* Expand to *business units* in phases  
+* Monitor *sign-in logs* for early detection
+* Create a detailed rollout timeline with clear milestones
+* Identify departmental champions to support the implementation
+* Establish success metrics (e.g., percentage of users registered)
+* Plan for increased helpdesk volume during initial rollout phases
 
 > 🔑 **Implementation Recommendation:** Use "MFA Registration Campaign" with P1/P2 licensing to gently nudge users to register before enforcement.
 
@@ -334,27 +338,27 @@ Repeat for other methods as needed.
 
 ### Emergency Access ⚠️
 
-- Create at least two *break glass accounts*  
-- Exclude from *MFA and Conditional Access*  
-- Review account access *quarterly*  
-- Store credentials in an *offline secure vault*
-- Document emergency access procedures for the IT team
-- Test emergency procedures during regular DR exercises
-- Implement strong monitoring on emergency account usage
-- Rotate emergency credentials after each use or periodically
+* Create at least two *break glass accounts*  
+* Exclude from *MFA and Conditional Access*  
+* Review account access *quarterly*  
+* Store credentials in an *offline secure vault*
+* Document emergency access procedures for the IT team
+* Test emergency procedures during regular DR exercises
+* Implement strong monitoring on emergency account usage
+* Rotate emergency credentials after each use or periodically
 
 ---
 
 ### User Education
 
-- Create *setup guides* and quick-reference material  
-- Send *rollout announcements* ahead of enforcement  
-- Provide *justification/override instructions*  
-- Create a *support escalation path*
-- Develop training videos for visual learners
-- Maintain an internal FAQ resource for common questions
-- Provide department-specific communication templates for managers
-- Set up MFA registration stations with in-person support
+* Create *setup guides* and quick-reference material  
+* Send *rollout announcements* ahead of enforcement  
+* Provide *justification/override instructions*  
+* Create a *support escalation path*
+* Develop training videos for visual learners
+* Maintain an internal FAQ resource for common questions
+* Provide department-specific communication templates for managers
+* Set up MFA registration stations with in-person support
 
 #### Sample Communication Timeline:
 
@@ -371,22 +375,22 @@ Repeat for other methods as needed.
 
 ### Monitoring Strategy
 
-- Set up alerts for failed MFA attempts exceeding thresholds
-- Create a dashboard for registration adoption rates
-- Implement regular compliance reporting
-- Monitor authentication method distribution (identify overreliance on SMS)
-- Review MFA exclusions regularly for unauthorized additions
-- Track MFA-related support tickets to identify training needs
-- Analyze sign-in patterns to detect potential MFA fatigue attacks
+* Set up alerts for failed MFA attempts exceeding thresholds
+* Create a dashboard for registration adoption rates
+* Implement regular compliance reporting
+* Monitor authentication method distribution (identify overreliance on SMS)
+* Review MFA exclusions regularly for unauthorized additions
+* Track MFA-related support tickets to identify training needs
+* Analyze sign-in patterns to detect potential MFA fatigue attacks
 
 ---
 
 ## Security Considerations 🔒
 
-- Use *number matching* and *app context* to prevent MFA fatigue attacks
-- Avoid *SMS* as a primary method due to SIM-swapping vulnerabilities
-- Use *risk-based policies* (Premium P2) to adapt security to threat level
-- Pair MFA with *device compliance* or *location filters* for defense-in-depth
+* Use *number matching* and *app context* to prevent MFA fatigue attacks
+* Avoid *SMS* as a primary method due to SIM-swapping vulnerabilities
+* Use *risk-based policies* (Premium P2) to adapt security to threat level
+* Pair MFA with *device compliance* or *location filters* for defense-in-depth
 
 **Advanced Security Configurations:**
 
@@ -522,9 +526,10 @@ Connect-MgGraph -Scopes "UserAuthenticationMethod.Read.All", "Policy.Read.All"
 | **Applicable Entra ID Version** | May 2025 Release |
 
 **Related Documents:**
-- 📋 Conditional Access Implementation Guide
-- 🔑 Passwordless Authentication Roadmap
-- 🚨 Security Incident Response Procedures
+
+* 📋 Conditional Access Implementation Guide
+* 🔑 Passwordless Authentication Roadmap
+* 🚨 Security Incident Response Procedures
 
 ---
 
