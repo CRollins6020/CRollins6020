@@ -10,10 +10,10 @@ This repository houses my **Technical Writing Portfolio** — documentation that
 
 This repository is organized into the following sections:
 
-- [**User Guides & Tutorials**](./User-Guides) - Comprehensive documentation for technical products
-- [**API Documentation**](./API-Documentation) - Clear reference materials for developers
-- [**Knowledge Base Articles**](./Knowledge-Base) - Troubleshooting and how-to resources
-- [**Training Materials**](./Training-Materials) - Educational content for product users
+- [**User Guides & Tutorials**](https://github.com/CRollins6020/CRollins6020/tree/main/User-Guides) - Comprehensive documentation for technical products
+- [**API Documentation**](https://github.com/CRollins6020/CRollins6020/tree/main/API-Documentation) - Clear reference materials for developers
+- [**Knowledge Base Articles**](https://github.com/CRollins6020/CRollins6020/tree/main/Knowledge-Base) - Troubleshooting and how-to resources
+- [**Training Materials**](https://github.com/CRollins6020/CRollins6020/tree/main/Training-Materials) - Educational content for product users
 
 Each section contains sample documentation that demonstrates different writing styles, formats, and approaches to technical communication.
 
