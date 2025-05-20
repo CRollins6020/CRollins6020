@@ -4,6 +4,13 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
+# LangChain Agent Platform: Administrator's Guide
+
+*Enterprise Deployment & Management*
+
+**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
+
+```mermaid
 graph TD
     subgraph "Enterprise Infrastructure"
         LB[Load Balancer]
