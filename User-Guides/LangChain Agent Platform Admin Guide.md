@@ -14,7 +14,7 @@ graph TD
     C --> G[Response]
     D --> G
     E --> G
-    G -->|Return| A
+    G -->|Return| A```
 
 <h2>Table of Contents</h2>
 <ol>
@@ -33,7 +33,6 @@ graph TD
   <li><a href="#appendices">Appendices</a></li>
 </ol>
 <h2 id="1-introduction-to-langchain-agent-architecture">1. Introduction to LangChain Agent Architecture</h2>
-```
 
 ### 1.1 What is LangChain?
 
