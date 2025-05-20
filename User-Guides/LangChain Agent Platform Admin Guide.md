@@ -1,7 +1,9 @@
 LangChain Agent Platform: Administrator's Guide
 Enterprise Deployment & Management
 Version: 1.0 | Author: Corey Rollins | Date: May 20, 2025
-mermaidgraph TD
+
+```mermaid
+graph TD
     A[User] -->|Request| B[LangChain Agent Platform]
     B -->|Process| C[Language Models]
     B -->|Access| D[Tools & Integrations]
@@ -11,6 +13,7 @@ mermaidgraph TD
     D --> G
     E --> G
     G -->|Return| A
+
 Table of Contents
 
 1. Introduction to LangChain Agent Architecture
