@@ -1,89 +1,44 @@
-# Technical Writing Portfolio
+# Hello, I'm Corey Rollins 👋
 
-```mermaid
-flowchart TD
-    A[Technical Writing Portfolio] --> B[User Guides & Tutorials]
-    A --> C[API Documentation]
-    A --> D[Knowledge Base Articles]
-    A --> E[Training Materials]
-    
-    style A fill:#f5f5f5,stroke:#333,stroke-width:2px
-    style B fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style C fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style D fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style E fill:#e8f4f8,stroke:#333,stroke-width:1px
-```
+## About Me
 
-**Hi there — and welcome.**
+I'm a Senior Instructional Designer with extensive experience in SaaS enablement, currently focusing on technical writing and documentation. I excel at transforming complex technical concepts into clear, accessible content that helps users navigate technology with confidence.
 
-This is my technical documentation portfolio, a space I use to practice technical writing as I continue to self-teach and grow in the field. I've included sample docs that reflect how I approach making complex topics more clear and approachable. My background is in SaaS enablement, where I worked as a Senior Instructional Designer, with a strong passion to explore Technical Writing.
+## Current Focus
 
-## 📂 Portfolio Contents
+My GitHub currently houses my **Technical Writing Portfolio**, where I practice and showcase documentation skills through various sample projects. This portfolio reflects my approach to creating clear, user-focused documentation.
 
-Here, you'll find examples of my work across several documentation types, including:
+## Portfolio Highlights
 
-```mermaid
-flowchart LR
-    A[Documentation Types] --> B[User Guides & Tutorials]
-    A --> C[API Documentation]
-    A --> D[Knowledge Base Articles]
-    A --> E[Training Materials]
-    
-    B --> B1[Step-by-step instructions]
-    C --> C1[Reference documentation]
-    D --> D1[Troubleshooting solutions]
-    E --> E1[Educational materials]
-    
-    style A fill:#f5f5f5,stroke:#333,stroke-width:2px
-```
+- [**User Guides & Tutorials**](./CRollins6020/User-Guides) - Comprehensive documentation for technical products
+- [**API Documentation**](./CRollins6020/API-Documentation) - Clear reference materials for developers
+- [**Knowledge Base Articles**](./CRollins6020/Knowledge-Base) - Troubleshooting and how-to resources
+- [**Training Materials**](./CRollins6020/Training-Materials) - Educational content for product users
 
-- [**User Guides & Tutorials**](./User-Guides): Step-by-step instructions for technical products  
-- [**API Documentation**](./API-Documentation): Clear reference documentation for developers  
-- [**Knowledge Base Articles**](./Knowledge-Base): Concise solutions to common technical problems  
-- [**Training Materials**](./Training-Materials): Educational content for technical product users
+## Skills
 
-Each folder includes a landing page and sample documentation to demonstrate various writing styles and use cases. These reflect my experience creating technical enablement content that supports product adoption and reduces support needs.
+- **Technical Writing & Documentation**
+- **Instructional Design**
+- **Content Strategy**
+- **User Experience Research**
+- **Project Management**
 
-## 🔍 About These Samples
+## Learning & Growth
 
-```mermaid
-flowchart TD
-    A[Technical Writing Skills] --> B[Information Architecture]
-    A --> C[Clear Instructions]
-    A --> D[Audience Adaptation]
-    A --> E[Consistency]
-    
-    style A fill:#f5f5f5,stroke:#333,stroke-width:2px
-    style B fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style C fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style D fill:#e8f4f8,stroke:#333,stroke-width:1px
-    style E fill:#e8f4f8,stroke:#333,stroke-width:1px
-```
+I'm continuously expanding my skills in:
+- Documentation tooling and automation
+- Developer-focused content
+- API documentation best practices
+- Technical content strategy
 
-The documents in this portfolio demonstrate my ability to:
+## Let's Connect
 
-- Organize complex information in a user-friendly way
-- Create clear, concise technical instructions
-- Design documentation for different audience needs
-- Apply consistent formatting and terminology
+I'm always open to discussing projects, collaboration opportunities, or just connecting with like-minded professionals:
 
-## 📫 Contact
+- 📧 Email: [corey.p.rollins@gmail.com](mailto:corey.p.rollins@gmail.com)
+- 🔗 LinkedIn: [linkedin.com/in/corey-p-rollins](https://www.linkedin.com/in/corey-p-rollins/)
+- 🌐 Website: [crollins6020.github.io](https://crollins6020.github.io)
 
-```mermaid
-flowchart LR
-    A[Contact Me] --> B[Email]
-    A --> C[LinkedIn]
-    A --> D[Website]
-    
-    B --> B1[corey.p.rollins@gmail.com]
-    C --> C1[linkedin.com/in/corey-p-rollins]
-    D --> D1[crollins6020.github.io]
-    
-    style A fill:#f5f5f5,stroke:#333,stroke-width:2px
-```
+---
 
-Interested in discussing a technical writing project? Reach out to me:
-
-- Email: [corey.p.rollins@gmail.com](mailto:corey.p.rollins@gmail.com)
-- LinkedIn: [linkedin.com/in/corey-p-rollins](https://www.linkedin.com/in/corey-p-rollins/)
-- Website: [crollins6020.github.io](https://crollins6020.github.io)
+*Thanks for visiting my GitHub profile. Feel free to explore my projects and reach out if you'd like to connect!*
