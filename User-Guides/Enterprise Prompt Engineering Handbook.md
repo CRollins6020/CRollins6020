@@ -30,17 +30,13 @@ Prompt engineering is the practice of crafting clear, structured instructions to
 
 This guide helps Technical Writers, Enablement teams, and SMEs write better prompts using structured frameworks, real-world examples, and best practices tailored to SaaS, cybersecurity, and high-tech use cases.
 
+This section sets the stage for the rest of the guide, providing a clear definition of prompt engineering and its role in enterprise environments. It explains who the guide is for and why prompt quality matters.
+
 ---
 
 ## 2. Prompt Design Fundamentals
 
-Great prompts are:
-
-* **Purposeful**: Targeting a specific task or outcome
-* **Structured**: Defining clear output formats
-* **Contextual**: Including relevant input and scope
-* **Constrained**: Limiting length, tone, or vocabulary
-* **Role-specific**: Defining the AI's perspective or expertise
+This section introduces the building blocks of well-structured prompts. The goal is to make sure every prompt has a clear purpose, expected format, and enough context to guide the model. Each component of a prompt contributes to performance—like clearly stating what the model should do, how it should respond, and what tone it should use.
 
 ### Prompt Components
 
@@ -54,17 +50,29 @@ Great prompts are:
 
 > **Tip:** Start with simple single-task prompts. Gradually increase complexity as you evaluate performance.
 
-### Stylized Example
+**✅ Good Prompt**
+*"You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list using plain language."*
 
-> **✅ Good Prompt**
-> *"You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list using plain language."*
->
-> **🚫 Bad Prompt**
-> *"Summarize the changelog."*
+**🚫 Bad Prompt**
+*"Summarize the changelog."*
+
+**✅ Good Prompt**
+*"Translate the product update into a one-paragraph internal email for Customer Success. Be informal and highlight changes to billing."*
+
+**🚫 Bad Prompt**
+*"Make this into a short note."*
+
+**✅ Good Prompt**
+*"You are a documentation specialist. Review the following API payload and describe its structure using plain language in 3 bullet points."*
+
+**🚫 Bad Prompt**
+*"Tell me what this is."*
 
 ---
 
 ## 3. Common Pitfalls and How to Avoid Them
+
+This section highlights typical mistakes in prompt construction and how to resolve them. It's especially helpful during prompt reviews and troubleshooting. Addressing these common issues can improve accuracy, reduce hallucinations, and make prompts more reusable across your organization.
 
 | Pitfall                    | Cause                       | Fix                                       |
 | -------------------------- | --------------------------- | ----------------------------------------- |
@@ -74,27 +82,51 @@ Great prompts are:
 | Overloaded Prompts         | Too many requests at once   | Break into smaller, sequential prompts    |
 | Loss of Multi-Turn Context | Insufficient memory cues    | Recap prior steps; restate relevant input |
 
+**🚫 Bad Prompt**
+*"Tell me about this user guide."*
+
+**✅ Improved Prompt**
+*"Summarize the onboarding user guide below into 3 bullet points focused on account creation, permissions, and support access."*
+
+**🚫 Bad Prompt**
+*"What's wrong with this log?"*
+
+**✅ Improved Prompt**
+*"You are a support engineer. Review the error log below and identify one likely root cause. Provide a short explanation and a recommended fix."*
+
+**🚫 Bad Prompt**
+*"Turn this into something better."*
+
+**✅ Improved Prompt**
+*"Convert this internal chat into a formal KB article with a title, short summary, and 3 key steps."*
+
 ---
 
 ## 4. System Prompt Strategies
 
-System prompts influence the model’s behavior across a session.
+System prompts define the model’s behavior, tone, and persona throughout a session. This section shows how to establish reliable defaults that improve consistency across user interactions and ensure the model acts in predictable ways.
 
 ### Example Strategies
 
-> *"You are a professional Technical Writer working for a cybersecurity company. Be clear, concise, and use markdown formatting when appropriate."*
-
-> *"Act as a support engineer. Be direct but friendly, avoid speculation, and cite specific logs or config settings when making recommendations."*
+* *"You are a professional Technical Writer working for a cybersecurity company. Be clear, concise, and use markdown formatting when appropriate."*
+* *"Act as a support engineer. Be direct but friendly, avoid speculation, and cite specific logs or config settings when making recommendations."*
+* *"You are a senior editor. Improve grammar and clarity while preserving meaning and tone. Do not change technical terms."*
+* *"Behave as an AI assistant for developers. Return examples in JSON or code format when relevant."*
+* *"You are an internal compliance specialist. Always cite the relevant policy and add a risk rating to each response."*
 
 ### Best Practices
 
 * Keep system prompts under 1,000 characters
 * Focus on behavior, tone, and constraints
-* Use system prompts for persona alignment, not task logic
+* Align persona with real-world job roles
+* Reinforce model limitations (e.g., avoid legal or medical advice)
+* Reuse standardized system prompts across teams
 
 ---
 
 ## 5. Role-Based Prompting Patterns
+
+Different business roles require different prompt patterns. This section gives reusable templates aligned to job functions. These patterns ensure that prompts reflect actual workplace needs and communication styles.
 
 | Role                      | Prompt Pattern                                                                                  |
 | ------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -108,23 +140,27 @@ System prompts influence the model’s behavior across a session.
 
 ## 6. Multi-Turn Interactions
 
-Use multi-step prompts to build complex tasks with memory.
+This section outlines how to structure conversations where the model and user go back and forth. Multi-turn prompts are powerful for workflows like document generation, technical troubleshooting, or iterative summaries.
 
 ### Example Workflow
 
-> **Step 1:** *"Summarize this SOC2 policy document in 5 bullet points."*
-> **Step 2:** *"Based on your summary, draft an FAQ for new employees about data handling."*
-> **Step 3:** *"Reformat the FAQ as a Slack message."*
+**Step 1**: *"Summarize this SOC2 policy document in 5 bullet points."*
+**Step 2**: *"Based on your summary, draft an FAQ for new employees about data handling."*
+**Step 3**: *"Reformat the FAQ as a Slack message."*
 
 ### Tips
 
 * Recap or reframe prior context
 * Use follow-up instructions to refine tone or format
-* Track changes explicitly (e.g., "update last section")
+* Track changes explicitly (e.g., *"update last section"*)
+* Acknowledge user feedback and rerun with adjustments
+* Name each step for clarity in shared workflows
 
 ---
 
 ## 7. Evaluation and Refinement Techniques
+
+This section provides criteria and examples for reviewing prompt outputs and iteratively improving prompts based on outcomes. Evaluation helps ensure outputs are accurate, clear, and fit for purpose.
 
 ### How to Evaluate Outputs
 
@@ -136,73 +172,78 @@ Use multi-step prompts to build complex tasks with memory.
 | Tone      | Is it appropriate for the audience/role? |
 | Brevity   | Does it meet length constraints?         |
 
-### Refinement Tips
+### Refinement Examples
 
-> **Original Prompt:** *"Write a summary of this user guide."*
-> **Refined Prompt:** *"Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words."*
+**Original Prompt**: *"Write a summary of this user guide."*
+**Refined Prompt**: *"Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words."*
+
+**Original Prompt**: *"Explain this config."*
+**Refined Prompt**: *"You are a DevOps specialist. Describe the function of this YAML configuration file using bullet points. Mention environment settings, ports, and volumes."*
+
+**Original Prompt**: *"What do you think?"*
+**Refined Prompt**: *"Critically evaluate the pros and cons of the password policy described below. Return a markdown table with two columns: Strengths and Weaknesses."*
 
 ---
 
 ## 8. Use Case Templates
 
-### 🛠️ Technical Troubleshooting
+Reusable templates help teams quickly apply good prompting practices across tasks. These examples are grouped by purpose to illustrate prompt reuse at scale.
 
-> - *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*<br>
-> - *"Given the error trace below, explain what failed and suggest one remediation step."*<br>
-> - *"Analyze this API response and highlight any unexpected values. Return in table format."*<br>
-> - *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*<br>
+### 🔧 Technical Documentation
 
-### 🔐 Security and Risk Assessment
+* *"You are a documentation specialist. Turn the notes below into a structured internal knowledge base article with headings."*
+* *"Convert this Jira ticket into a how-to guide for onboarding engineers."*
+* *"Generate a troubleshooting section for this guide using data from resolved support tickets."*
+* *"Write a definition for this API error code. Include cause, impact, and resolution."*
+* *"Turn this Slack thread into a markdown-formatted FAQ."*
 
-> - *"Examine the following IAM policy and list 3 misconfigurations or risks."*<br>
-> - *"You are a security engineer. Review this SSO implementation and identify 2 weaknesses."*<br>
-> - *"Based on the penetration test results, write a short risk summary for leadership."*<br>
-> - *"Evaluate this incident report and propose 2 prevention strategies."*<br>
+### 🔐 Security & Compliance
 
-### 📊 Reporting and Documentation
+* *"You are a compliance analyst. List 3 security gaps in this access control policy."*
+* *"Summarize the relevant SOC2 requirements from this policy excerpt."*
+* *"Evaluate this script for security risks. Rate each one from low to critical."*
+* *"List any PII exposure risks in this dataset and recommend fixes."*
+* *"Convert this policy change into a Slack update for engineering managers."*
 
-> - *"Create a summary table from the following uptime logs. Include date, downtime, and root cause."*<br>
-> - *"You are a Technical Writer. Reformat this product changelog into 3 customer-facing release notes."*<br>
-> - *"Review the quarterly KPIs and summarize 3 insights for the executive team."*<br>
-> - *"From the attached usage report, identify top 3 features by adoption rate. Present as bullet points."*<br>
+### 💬 Support & Enablement
 
-### 🧠 Internal Enablement and Comms
-
-> - *"Write a Slack announcement explaining this new workflow to internal teams. Keep it under 100 words."*<br>
-> - *"Draft a 3-bullet onboarding tip list for new hires on using the dev environment."*<br>
-> - *"Turn this internal wiki page into a customer-facing summary."*<br>
-> - *"Create a short script for a 2-minute training video on account provisioning."*<br>
+* *"You are a support rep. Turn this internal solution into an external-facing help article."*
+* *"Summarize this customer’s problem in 3 bullet points for engineering review."*
+* *"Draft a one-paragraph email response to the customer’s request below. Be empathetic and solution-oriented."*
+* *"Write 3 troubleshooting steps based on this error trace."*
+* *"Generate a 1-paragraph onboarding welcome message for new users."*
 
 ---
 
 ## 9. Governance and Risk Considerations
 
-Prompt engineering in enterprise contexts requires process rigor:
+To scale prompt usage safely across teams, you need structure and oversight. This section defines how to document, review, and audit prompts so that they align with enterprise risk management.
 
 ### Metadata Tracking
 
-| Field            | Description                                 |
-| ---------------- | ------------------------------------------- |
-| Prompt Name      | Unique identifier                           |
-| Author           | Who created or approved it                  |
-| Business Purpose | Use case (e.g., support triage, onboarding) |
-| Format Type      | Bullet, table, JSON, prose                  |
-| Last Reviewed    | Date of last QA/test                        |
-| Sensitivity      | Risk level (Low, Medium, High)              |
+Use metadata to document the who, what, why, and how of each enterprise-level prompt. Metadata enables traceability, risk monitoring, and reuse.
+
+| Prompt Name           | Author     | Business Purpose          | Format      | Last Reviewed | Sensitivity |
+| --------------------- | ---------- | ------------------------- | ----------- | ------------- | ----------- |
+| onboarding\_faq\_v2   | K. Bennett | Internal training guide   | Bullet List | 2024-11-03    | Low         |
+| risk\_eval\_prompt\_1 | J. Owens   | Vulnerability scoring     | JSON        | 2025-01-15    | High        |
+| product\_pitch\_Q2    | M. Chang   | Sales enablement email    | Paragraph   | 2025-03-05    | Medium      |
+| triage\_script\_gen   | R. Ortega  | Ticket routing in support | Table       | 2025-02-12    | Medium      |
+| exec\_summary\_tool   | A. Rollins | Quarterly board summary   | Prose       | 2025-04-01    | Low         |
 
 ### Risks to Monitor
 
-* **Hallucinations** in legal, compliance, or security tasks
-* **Overgeneralized answers** without sufficient constraints
-* **Format drift** over time in shared use prompts
+* Hallucinations in legal, compliance, or security tasks
+* Overgeneralized answers without sufficient constraints
+* Format drift over time in shared use prompts
 
-> **Governance Tip:** Store reusable prompts in a version-controlled knowledge base or Git repo. Add unit tests where possible.
+> **Governance Tip**: Store reusable prompts in a version-controlled knowledge base or Git repo. Add unit tests where possible.
 
 ---
 
 ## Appendix A: Prompt Debugging Checklist
 
-Use this checklist when testing or evaluating a prompt:
+This checklist is for debugging and validating prompts before deployment or reuse. Use it during QA or prompt development sessions to ensure quality.
 
 * [ ] Is the **task instruction** specific and clear?
 * [ ] Is the **input** well-scoped and available?
