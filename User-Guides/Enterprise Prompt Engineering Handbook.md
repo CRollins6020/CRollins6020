@@ -4,7 +4,26 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
-![AI Prompt Engineering Concept](https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    A[Prompt Design] --> B[Clear Instructions]
+    A --> C[Structured Format]
+    A --> D[Input Context]
+    A --> E[Tone/Role Setup]
+    A --> F[Constraints]
+    
+    B & C & D & E & F --> G[Effective Prompt]
+    G --> H[High-Quality AI Output]
+    
+    subgraph "Key Benefits"
+        I[Accuracy]
+        J[Consistency]
+        K[Relevance]
+        L[Appropriate Format]
+    end
+    
+    H --> I & J & K & L
+```
 
 ---
 
@@ -26,7 +45,23 @@
 
 ## 1. Introduction
 
-![Human-AI Collaboration](https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph LR
+    A[User] -->|Creates Prompt| B[LLM]
+    B -->|Processes| C[Response]
+    C -->|Delivered to| A
+    
+    D[Prompt Engineering] -->|Improves| B
+    
+    subgraph "Enterprise Applications"
+        E[Documentation]
+        F[Customer Support]
+        G[Knowledge Management]
+        H[Product Integration]
+    end
+    
+    D --- E & F & G & H
+```
 
 Prompt engineering is the practice of crafting clear, structured instructions to get accurate, repeatable responses from large language models (LLMs). In an enterprise context, effective prompts power documentation, enablement, customer support, and product integration workflows across technical and business domains.
 
@@ -40,7 +75,26 @@ This section sets the stage for the rest of the guide, providing a clear definit
 
 ## 2. Prompt Design Fundamentals
 
-![Prompt Structure Components](https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "Prompt Components"
+        A[Instruction]
+        B[Input]
+        C[Constraints]
+        D[Format]
+        E[Tone/Role]
+    end
+    
+    subgraph "Example Structure"
+        F["You are a {ROLE}.
+           {INSTRUCTION} based on the {INPUT}.
+           {CONSTRAINTS}.
+           Return as {FORMAT}."]
+    end
+    
+    A & B & C & D & E --> F
+    F --> G[Complete Prompt]
+```
 
 This section introduces the building blocks of well-structured prompts. The goal is to make sure every prompt has a clear purpose, expected format, and enough context to guide the model. Each component of a prompt contributes to performance—like clearly stating what the model should do, how it should respond, and what tone it should use.
 
@@ -62,7 +116,30 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ## Prompt Examples
 
-![Before and After Comparison](https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "Vague vs. Clear Example"
+        A["❌ Vague:
+          'Summarize the changelog.'"]
+        
+        B["✅ Clear:
+          'You are a Technical Writer. 
+          Review the product changelog below 
+          and summarize the top 3 user-facing changes. 
+          Return your answer as a bullet list.'"]
+          
+        A -->|Improved to| B
+    end
+    
+    subgraph "Key Improvements"
+        C[Added Role]
+        D[Specific Instruction]
+        E[Clear Constraints]
+        F[Expected Format]
+    end
+    
+    B --- C & D & E & F
+```
 
 ### Example 1
 
@@ -108,7 +185,25 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ## 3. Common Pitfalls and How to Avoid Them
 
-![Error Prevention Concept](https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+flowchart TD
+    A[Common Prompt Pitfalls] --> B[Vague Instructions]
+    A --> C[Inconsistent Output]
+    A --> D[Hallucinations]
+    A --> E[Overloaded Prompts]
+    A --> F[Context Loss]
+    
+    B -->|Fix| G["Use direct, specific verbs
+                  'Analyze' not 'Look at'"]
+    C -->|Fix| H["Specify format
+                  'Return as table with columns X, Y'"]
+    D -->|Fix| I["Include source data
+                  Lower temperature"]
+    E -->|Fix| J["Break into smaller prompts
+                  One task per prompt"]
+    F -->|Fix| K["Recap prior context
+                  Include key information"]
+```
 
 This section highlights typical mistakes in prompt construction and how to resolve them. It's especially helpful during prompt reviews and troubleshooting. Addressing these common issues can improve accuracy, reduce hallucinations, and make prompts more reusable across your organization.
 
@@ -144,7 +239,29 @@ This section highlights typical mistakes in prompt construction and how to resol
 
 ## 4. System Prompt Strategies
 
-![System Configuration](https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    A[System Prompt] --> B[Role Definition]
+    A --> C[Behavior Rules]
+    A --> D[Tone Guidelines]
+    A --> E[Format Preferences]
+    A --> F[Constraints]
+    
+    subgraph "Example Structure"
+        G["You are a {PROFESSIONAL ROLE}.
+        
+        Your task is to {MAIN FUNCTION}.
+        
+        Follow these guidelines:
+        - {BEHAVIOR RULE 1}
+        - {BEHAVIOR RULE 2}
+        - {BEHAVIOR RULE 3}
+        
+        Use {TONE} and {STYLE}."]
+    end
+    
+    B & C & D & E & F --> G
+```
 
 System prompts define the model's behavior, tone, and persona throughout a session. This section shows how to establish reliable defaults that improve consistency across user interactions and ensure the model acts in predictable ways.
 
@@ -170,7 +287,24 @@ System prompts define the model's behavior, tone, and persona throughout a sessi
 
 ## 5. Role-Based Prompting Patterns
 
-![Professional Roles](https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "Enterprise Roles"
+        A[Technical Writer] -->|Documentation| B["Convert this {SOURCE} into {FORMAT}.
+                                                Use {STYLE} with {ELEMENTS}."]
+        
+        C[Support Engineer] -->|Troubleshooting| D["Review this {ERROR_SOURCE} and
+                                                    identify {NUMBER} likely causes.
+                                                    Include {SOLUTION_TYPE} per cause."]
+        
+        E[Product Manager] -->|Requirements| F["Summarize this {FEEDBACK} into
+                                                {NUMBER} prioritized items.
+                                                Focus on {CRITERIA}."]
+        
+        G[Security Analyst] -->|Risk Assessment| H["Evaluate this {ASSET} for vulnerabilities.
+                                                   Return {FORMAT} with {ELEMENTS}."]
+    end
+```
 
 Different business roles require different prompt patterns. This section gives reusable templates aligned to job functions. These patterns ensure that prompts reflect actual workplace needs and communication styles.
 
@@ -188,7 +322,26 @@ Different business roles require different prompt patterns. This section gives r
 
 ## 6. Multi-Turn Interactions
 
-![Conversation Flow](https://images.unsplash.com/photo-1453738773917-9c3eff1db985?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+sequenceDiagram
+    participant User
+    participant LLM
+    
+    User->>LLM: Initial prompt with task
+    LLM->>User: First response
+    
+    User->>LLM: Refinement request
+    Note over User,LLM: "Make it more concise"
+    LLM->>User: Refined response
+    
+    User->>LLM: Format modification
+    Note over User,LLM: "Put this in a table"
+    LLM->>User: Reformatted response
+    
+    User->>LLM: Additional request
+    Note over User,LLM: "Add section about X"
+    LLM->>User: Complete response
+```
 
 This section outlines how to structure conversations where the model and user go back and forth. Multi-turn prompts are powerful for workflows like document generation, technical troubleshooting, or iterative summaries.
 
@@ -217,7 +370,30 @@ This section outlines how to structure conversations where the model and user go
 
 ## 7. Evaluation and Refinement Techniques
 
-![Quality Assessment](https://images.pexels.com/photos/4974920/pexels-photo-4974920.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    A[Prompt Assessment] --> B[Define Evaluation Criteria]
+    B --> C[Execute Prompt]
+    C --> D[Assess Output Quality]
+    D --> E{Meets Criteria?}
+    
+    E -->|No| F[Identify Issues]
+    F --> G[Refine Prompt]
+    G --> C
+    
+    E -->|Yes| H[Document Success]
+    H --> I[Standardize Pattern]
+    
+    subgraph "Evaluation Criteria"
+        J[Accuracy]
+        K[Clarity]
+        L[Structure]
+        M[Tone]
+        N[Brevity]
+    end
+    
+    D --- J & K & L & M & N
+```
 
 This section provides criteria and examples for reviewing prompt outputs and iteratively improving prompts based on outcomes. Evaluation helps ensure outputs are accurate, clear, and fit for purpose.
 
@@ -257,7 +433,39 @@ This section provides criteria and examples for reviewing prompt outputs and ite
 
 ## 8. Use Case Templates
 
-![Industry Applications](https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "Enterprise Use Cases"
+        A[Technical Documentation]
+        B[Security & Compliance]
+        C[Support & Enablement]
+        D[Content Creation]
+    end
+    
+    A --> A1["Knowledge Base Creation 
+              FAQ Generation
+              How-To Guides
+              API Documentation
+              Release Notes"]
+              
+    B --> B1["Vulnerability Assessment
+              Policy Compliance
+              Risk Evaluation
+              Security Advisories
+              Audit Reports"]
+              
+    C --> C1["Support Responses
+              Troubleshooting Guides
+              Onboarding Materials
+              Training Content
+              User Communications"]
+              
+    D --> D1["Marketing Copy
+              Product Descriptions
+              Email Templates
+              Social Media Posts
+              Blog Articles"]
+```
 
 Reusable templates help teams quickly apply good prompting practices across tasks. These examples are grouped by purpose to illustrate prompt reuse at scale.
 
@@ -291,7 +499,35 @@ Reusable templates help teams quickly apply good prompting practices across task
 
 ## 9. Governance and Risk Considerations
 
-![Risk Management Framework](https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    A[Prompt Governance] --> B[Documentation]
+    A --> C[Risk Assessment]
+    A --> D[Approval Process]
+    A --> E[Monitoring]
+    A --> F[Maintenance]
+    
+    subgraph "Metadata Tracking"
+        G[Prompt ID & Version]
+        H[Author & Owner]
+        I[Purpose & Use Case]
+        J[Approval Status]
+        K[Review History]
+        L[Risk Classification]
+    end
+    
+    B --- G & H & I & J & K & L
+    
+    subgraph "Risk Management"
+        M[Potential Hallucinations]
+        N[Content Sensitivity]
+        O[Accuracy Requirements]
+        P[Regulatory Concerns]
+        Q[Data Privacy Issues]
+    end
+    
+    C --- M & N & O & P & Q
+```
 
 To scale prompt usage safely across teams, you need structure and oversight. This section defines how to document, review, and audit prompts so that they align with enterprise risk management.
 
@@ -321,7 +557,33 @@ Use metadata to document the who, what, why, and how of each enterprise-level pr
 
 ## Appendix A: Prompt Debugging Checklist
 
-![Quality Checklist](https://images.pexels.com/photos/9786/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    A[Prompt Debugging Checklist] --> B{Task Instruction}
+    A --> C{Input Definition}
+    A --> D{Constraints}
+    A --> E{Output Format}
+    A --> F{System Prompt}
+    A --> G{Testing}
+    A --> H{Consistency}
+    A --> I{Edge Cases}
+    A --> J{Style Rules}
+    A --> K{Hallucination Check}
+    
+    B -->|Issue| B1["Task is vague
+                     Missing action verb
+                     Ambiguous goal"]
+    B -->|Fix| B2["Add specific verb
+                   Clear objective
+                   Single focus"]
+                   
+    C -->|Issue| C1["Input missing
+                     Poorly structured
+                     Incomplete"]
+    C -->|Fix| C2["Define input clearly
+                   Provide context
+                   Include examples"]
+```
 
 This checklist is for debugging and validating prompts before deployment or reuse. Use it during QA or prompt development sessions to ensure quality.
 
@@ -344,7 +606,34 @@ This checklist is for debugging and validating prompts before deployment or reus
 
 ## Appendix B: Reference Links
 
-![Resource Library](https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph LR
+    A[Prompt Engineering Resources] --> B[OpenAI Guide]
+    A --> C[Anthropic Claude Docs]
+    A --> D[Community Guides]
+    A --> E[Enterprise Tools]
+    A --> F[Advanced Techniques]
+    
+    B --> B1["prompt-engineering
+               best-practices
+               system-prompts"]
+               
+    C --> C1["prompting-claude
+               multi-turn-conversations
+               tool-usage"]
+               
+    D --> D1["dair-ai/Prompt-Engineering-Guide
+               hwchase17/langchain-cookbook"]
+               
+    E --> E1["version-control
+               prompt-management-platforms
+               testing-frameworks"]
+               
+    F --> F1["RAG-techniques
+               few-shot-learning
+               chain-of-thought
+               quality-metrics"]
+```
 
 * [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) - Official documentation for crafting effective prompts with OpenAI models
 * [Anthropic Claude Prompt Design](https://www.anthropic.com/index/prompting-claude) - Best practices for prompting Claude models

@@ -3,7 +3,18 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
-![AI Agents Concept](https://images.unsplash.com/photo-1677442135013-3975e8db6789?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    A[User] -->|Request| B[LangChain Agent Platform]
+    B -->|Process| C[Language Models]
+    B -->|Access| D[Tools & Integrations]
+    B -->|Store| E[Vector Database]
+    B -->|Log| F[Monitoring System]
+    C --> G[Response]
+    D --> G
+    E --> G
+    G -->|Return| A
+```
 
 ---
 
@@ -380,7 +391,38 @@ Robust backup and recovery procedures protect against data loss and enable syste
 
 Ethical AI use requires clear policies and enforcement mechanisms.
 
-![Regulatory Compliance Framework](https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "AI Governance Framework"
+        A[Policy Definition]
+        B[Implementation]
+        C[Monitoring]
+        D[Audit & Review]
+        
+        A --> B
+        B --> C
+        C --> D
+        D -->|Feedback Loop| A
+    end
+    
+    subgraph "Policy Components"
+        E[Acceptable Use]
+        F[Prohibited Uses]
+        G[User Rights]
+        H[Oversight Procedures]
+        I[Risk Assessments]
+    end
+    
+    subgraph "Enforcement Mechanisms"
+        J[Automated Filters]
+        K[Human Review]
+        L[Audit Trails]
+        M[Incident Response]
+    end
+    
+    A --- E & F & G & H & I
+    B --- J & K & L & M
+```
 
 * **Ethical use guidelines**
   * Acceptable use definition
@@ -807,7 +849,36 @@ Regular auditing ensures ongoing compliance and identifies improvement opportuni
 
 Coordinating multiple agents enables complex workflows and specialized functionality.
 
-![AI Network Collaboration](https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    A[User Query] --> B[Orchestrator Agent]
+    
+    B --> C{Task Classification}
+    
+    C --> D[Research Agent]
+    C --> E[Calculation Agent]
+    C --> F[Creativity Agent]
+    C --> G[Planning Agent]
+    
+    D -->|Results| H[Integration Layer]
+    E -->|Results| H
+    F -->|Results| H
+    G -->|Results| H
+    
+    H --> I[Response Formulation]
+    I --> J[Response to User]
+    
+    subgraph "Shared Resources"
+        K[Knowledge Base]
+        L[Tool Repository]
+        M[Memory System]
+    end
+    
+    D & E & F & G --- K
+    D & E & F & G --- L
+    D & E & F & G --- M
+    B --- M
+```
 
 * **Agent collaboration patterns**
   * Hierarchical structures
@@ -1483,7 +1554,23 @@ LangChain agents can be deployed in various enterprise contexts to automate and 
 
 Deploying a self-hosted LangChain platform requires careful consideration of hardware resources to ensure optimal performance.
 
-![Data Center Infrastructure](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    subgraph "Infrastructure Components"
+        A[Agent Orchestration Tier] --> B[16+ CPU Cores]
+        A --> C[64GB+ RAM]
+        A --> D[100GB+ SSD]
+        
+        E[Model Inference Tier] --> F[32+ CPU Cores]
+        E --> G[128GB+ RAM]
+        E --> H[2TB+ SSD]
+        E --> I[GPU Resources]
+        
+        J[Database Tier] --> K[8+ CPU Cores]
+        J --> L[32GB+ RAM]
+        J --> M[High IOPS Storage]
+    end
+```
 
 * **Minimum requirements**
   * **CPU recommendations**
@@ -1926,7 +2013,36 @@ Thorough testing after installation ensures a properly functioning system and id
 
 LangChain supports integration with a wide range of language model providers, each with unique characteristics.
 
-![AI Capabilities Visualization](https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+graph TD
+    subgraph "LLM Providers"
+        A[OpenAI] --> A1[GPT-4]
+        A --> A2[GPT-3.5]
+        A --> A3[Embeddings]
+        
+        B[Anthropic] --> B1[Claude 3 Opus]
+        B --> B2[Claude 3 Sonnet]
+        B --> B3[Claude 3 Haiku]
+        
+        C[Hugging Face] --> C1[Open Models]
+        C --> C2[Inference API]
+        
+        D[Self-hosted] --> D1[Llama 3]
+        D --> D2[Mistral]
+        D --> D3[Falcon]
+    end
+    
+    subgraph "Integration Layer"
+        E[LangChain Provider Interface]
+    end
+    
+    A --> E
+    B --> E
+    C --> E
+    D --> E
+    
+    E --> F[Agent System]
+```
 
 * **OpenAI models**
   * GPT-4, GPT-4 Turbo, GPT-3.5 Turbo
@@ -2575,7 +2691,38 @@ flowchart TD
 
 Robust authentication ensures only authorized users and systems can access agent functionality.
 
-![Digital Security Concept](https://images.pexels.com/photos/60504/security-protection-privacy-policy-60504.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+```mermaid
+flowchart TD
+    A[Client Request] --> B{API Key Valid?}
+    B -->|No| C[Return 401 Unauthorized]
+    B -->|Yes| D{JWT Valid?}
+    
+    D -->|No| E[Return 401 Unauthorized]
+    D -->|Yes| F{Permissions?}
+    
+    F -->|Insufficient| G[Return 403 Forbidden]
+    F -->|Sufficient| H[Process Request]
+    
+    subgraph "Authentication Flow"
+    B
+    D
+    end
+    
+    subgraph "Authorization Flow"
+    F
+    end
+    
+    subgraph "Security Layer"
+    I[Rate Limiting]
+    J[Input Validation]
+    K[Audit Logging]
+    end
+    
+    H --> I
+    I --> J
+    J --> K
+    K --> L[Execute Agent]
+```
 
 * **Authentication methods**
   * **API keys**
@@ -2925,7 +3072,41 @@ Comprehensive logging enables security monitoring, compliance, and troubleshooti
 
 Effective load distribution ensures optimal resource utilization and system reliability.
 
-![Server Performance Monitoring](https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    A[User Requests] --> B[Load Balancer]
+    
+    B --> C[API Gateway]
+    
+    C --> D[Rate Limiter]
+    
+    D --> E{Request Type}
+    
+    E -->|Interactive| F[Agent Service Pool]
+    E -->|Async/Background| G[Task Queue]
+    
+    F --> F1[Agent Instance 1]
+    F --> F2[Agent Instance 2]
+    F --> F3[Agent Instance N]
+    
+    G --> H[Worker Pool]
+    
+    H --> H1[Worker 1]
+    H --> H2[Worker 2]
+    H --> H3[Worker N]
+    
+    F1 & F2 & F3 --> I[Response to User]
+    H1 & H2 & H3 --> J[Results Store]
+    
+    subgraph "Autoscaling"
+        K[Metrics]
+        L[Scaling Controller]
+    end
+    
+    K --> L
+    L --> F
+    L --> H
+```
 
 * **Horizontal scaling patterns**
   * Stateless service design
@@ -3248,7 +3429,36 @@ graph LR
 
 Effective logging provides visibility into system behavior and aids in troubleshooting.
 
-![Analytics Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop)
+```mermaid
+graph TD
+    subgraph "Logging Components"
+        A[Application Logs] --> B[JSON Structured Logging]
+        C[System Logs] --> B
+        D[Database Logs] --> B
+        E[LLM API Logs] --> B
+    end
+    
+    subgraph "Log Pipeline"
+        B --> F[Log Aggregator]
+        F --> G[Log Storage]
+        G --> H[Retention Policy]
+    end
+    
+    subgraph "Analysis Tools"
+        G --> I[Search & Query]
+        G --> J[Dashboards]
+        G --> K[Alerts]
+        G --> L[Anomaly Detection]
+    end
+    
+    subgraph "Log Levels"
+        M[ERROR - Critical issues]
+        N[WARN - Potential problems]
+        O[INFO - Key events]
+        P[DEBUG - Troubleshooting]
+        Q[TRACE - Detailed flows]
+    end
+```
 
 * **Log levels**
   * Level definition and usage
