@@ -1,19 +1,7 @@
-# LangChain Agent Platform: Administrator's Guide
-
-*Enterprise Deployment & Management*
-
-**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
-
----
-
-# LangChain Agent Platform: Administrator's Guide
-
-*Enterprise Deployment & Management*
-
-**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
-
-```mermaid
-graph TD
+LangChain Agent Platform: Administrator's Guide
+Enterprise Deployment & Management
+Version: 1.0 | Author: Corey Rollins | Date: May 20, 2025
+mermaidgraph TD
     A[User] -->|Request| B[LangChain Agent Platform]
     B -->|Process| C[Language Models]
     B -->|Access| D[Tools & Integrations]
@@ -23,23 +11,21 @@ graph TD
     D --> G
     E --> G
     G -->|Return| A
+Table of Contents
 
-## Table of Contents
-
-- [1. Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-- [2. Infrastructure Requirements](#2-infrastructure-requirements)
-- [3. Installation & Setup](#3-installation--setup)
-- [4. LLM Integration](#4-llm-integration)
-- [5. Tool Configuration](#5-tool-configuration)
-- [6. Security Considerations](#6-security-considerations)
-- [7. Scaling & Performance](#7-scaling--performance)
-- [8. Observability & Monitoring](#8-observability--monitoring)
-- [9. User Management](#9-user-management)
-- [10. Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
-- [11. Compliance & Governance](#11-compliance--governance)
-- [12. Advanced Configurations](#12-advanced-configurations)
-- [Appendices](#appendices)
-
+1. Introduction to LangChain Agent Architecture
+2. Infrastructure Requirements
+3. Installation & Setup
+4. LLM Integration
+5. Tool Configuration
+6. Security Considerations
+7. Scaling & Performance
+8. Observability & Monitoring
+9. User Management
+10. Troubleshooting & Maintenance
+11. Compliance & Governance
+12. Advanced Configurations
+Appendices
 ## 1. Introduction to LangChain Agent Architecture
 
 ### 1.1 What is LangChain?
