@@ -1,15 +1,24 @@
 # 🧭 User Guides & Tutorials
 
-Clear, practical documentation to help users navigate complex systems with confidence. These guides are written to support onboarding, troubleshooting, and everyday usage of technical tools.
+Clear, practical documentation to help users navigate complex AI systems with confidence. These guides address the most pressing challenges businesses face when implementing AI technologies, focusing on practical implementation, security, and effective usage.
 
-## 📂 Samples
+## 📂 Samples  
 
-- **[Entra MFA Administration Guide](./Entra%20MFA%20Admin%20Guide.md)**  
-  Step-by-step instructions for configuring and managing Microsoft Entra Multi-Factor Authentication in enterprise environments.
+- **[LangChain Agent Platform: Administrator's Guide](./LangChain-Admin-Guide.md)**     
+  A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private.
 
-- **[Setting Up DLP in Microsoft 365: A Step-by-Step Tutorial](./MS%20DLP%20365%20Tutorial.md)**  
-  A practical walkthrough for setting up Data Loss Prevention policies in Microsoft 365, including tips for testing and policy tuning.
+- **[Coming Soon] RAG Implementation Guide**     
+  How to connect AI chatbots to your company's own documents and databases so they can provide answers based on your business information rather than generic responses.
 
----
+- **[Coming Soon] Enterprise Prompt Engineering Handbook**     
+  Practical instructions for writing effective AI instructions that get consistent, accurate results and avoid common pitfalls that waste time and resources.
 
-📌 _More samples will be added soon. Stay tuned!_
+---  
+
+### Documentation Approach
+
+My technical guides follow these principles:
+- **Progressive disclosure** - Critical information first, details available when needed
+- **Real-world context** - Practical examples based on common enterprise scenarios
+- **Complete workflows** - End-to-end guidance from setup through maintenance
+- **Troubleshooting focus** - Anticipating common issues before they arise
