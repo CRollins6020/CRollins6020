@@ -4,6 +4,8 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
+![AI Prompt Engineering Concept](https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop)
+
 ---
 
 ## Table of Contents
@@ -24,6 +26,8 @@
 
 ## 1. Introduction
 
+![Human-AI Collaboration](https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 Prompt engineering is the practice of crafting clear, structured instructions to get accurate, repeatable responses from large language models (LLMs). In an enterprise context, effective prompts power documentation, enablement, customer support, and product integration workflows across technical and business domains.
 
 This guide helps Technical Writers, Enablement teams, and SMEs write better prompts using structured frameworks, real-world examples, and best practices tailored to SaaS, cybersecurity, and high-tech use cases.
@@ -35,6 +39,8 @@ This section sets the stage for the rest of the guide, providing a clear definit
 ---
 
 ## 2. Prompt Design Fundamentals
+
+![Prompt Structure Components](https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
 
 This section introduces the building blocks of well-structured prompts. The goal is to make sure every prompt has a clear purpose, expected format, and enough context to guide the model. Each component of a prompt contributes to performance—like clearly stating what the model should do, how it should respond, and what tone it should use.
 
@@ -55,6 +61,8 @@ This section introduces the building blocks of well-structured prompts. The goal
 ---
 
 ## Prompt Examples
+
+![Before and After Comparison](https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
 
 ### Example 1
 
@@ -100,6 +108,8 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ## 3. Common Pitfalls and How to Avoid Them
 
+![Error Prevention Concept](https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 This section highlights typical mistakes in prompt construction and how to resolve them. It's especially helpful during prompt reviews and troubleshooting. Addressing these common issues can improve accuracy, reduce hallucinations, and make prompts more reusable across your organization.
 
 | Pitfall                    | Cause                       | Fix                                       |
@@ -134,6 +144,8 @@ This section highlights typical mistakes in prompt construction and how to resol
 
 ## 4. System Prompt Strategies
 
+![System Configuration](https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=1000&auto=format&fit=crop)
+
 System prompts define the model's behavior, tone, and persona throughout a session. This section shows how to establish reliable defaults that improve consistency across user interactions and ensure the model acts in predictable ways.
 
 ### Example Strategies
@@ -158,6 +170,8 @@ System prompts define the model's behavior, tone, and persona throughout a sessi
 
 ## 5. Role-Based Prompting Patterns
 
+![Professional Roles](https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 Different business roles require different prompt patterns. This section gives reusable templates aligned to job functions. These patterns ensure that prompts reflect actual workplace needs and communication styles.
 
 | Role                      | Prompt Pattern                                                                                  |
@@ -173,6 +187,8 @@ Different business roles require different prompt patterns. This section gives r
 ---
 
 ## 6. Multi-Turn Interactions
+
+![Conversation Flow](https://images.unsplash.com/photo-1453738773917-9c3eff1db985?q=80&w=1000&auto=format&fit=crop)
 
 This section outlines how to structure conversations where the model and user go back and forth. Multi-turn prompts are powerful for workflows like document generation, technical troubleshooting, or iterative summaries.
 
@@ -200,6 +216,8 @@ This section outlines how to structure conversations where the model and user go
 ---
 
 ## 7. Evaluation and Refinement Techniques
+
+![Quality Assessment](https://images.pexels.com/photos/4974920/pexels-photo-4974920.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
 
 This section provides criteria and examples for reviewing prompt outputs and iteratively improving prompts based on outcomes. Evaluation helps ensure outputs are accurate, clear, and fit for purpose.
 
@@ -239,6 +257,8 @@ This section provides criteria and examples for reviewing prompt outputs and ite
 
 ## 8. Use Case Templates
 
+![Industry Applications](https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 Reusable templates help teams quickly apply good prompting practices across tasks. These examples are grouped by purpose to illustrate prompt reuse at scale.
 
 ### 🔧 Technical Documentation
@@ -271,6 +291,8 @@ Reusable templates help teams quickly apply good prompting practices across task
 
 ## 9. Governance and Risk Considerations
 
+![Risk Management Framework](https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 To scale prompt usage safely across teams, you need structure and oversight. This section defines how to document, review, and audit prompts so that they align with enterprise risk management.
 
 ### Metadata Tracking
@@ -299,6 +321,8 @@ Use metadata to document the who, what, why, and how of each enterprise-level pr
 
 ## Appendix A: Prompt Debugging Checklist
 
+![Quality Checklist](https://images.pexels.com/photos/9786/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1000&dpr=1)
+
 This checklist is for debugging and validating prompts before deployment or reuse. Use it during QA or prompt development sessions to ensure quality.
 
 * [ ] Is the **task instruction** specific and clear?
@@ -319,6 +343,8 @@ This checklist is for debugging and validating prompts before deployment or reus
 ---
 
 ## Appendix B: Reference Links
+
+![Resource Library](https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1000&auto=format&fit=crop)
 
 * [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) - Official documentation for crafting effective prompts with OpenAI models
 * [Anthropic Claude Prompt Design](https://www.anthropic.com/index/prompting-claude) - Best practices for prompting Claude models
