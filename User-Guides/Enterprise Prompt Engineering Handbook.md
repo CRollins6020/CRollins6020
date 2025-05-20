@@ -147,31 +147,31 @@ Use multi-step prompts to build complex tasks with memory.
 
 ### 🛠️ Technical Troubleshooting
 
-> *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*<br>
-> *"Given the error trace below, explain what failed and suggest one remediation step."*<br>
-> *"Analyze this API response and highlight any unexpected values. Return in table format."*<br>
-> *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*<br>
+> - *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*<br>
+> - *"Given the error trace below, explain what failed and suggest one remediation step."*<br>
+> - *"Analyze this API response and highlight any unexpected values. Return in table format."*<br>
+> - *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*<br>
 
 ### 🔐 Security and Risk Assessment
 
-> *"Examine the following IAM policy and list 3 misconfigurations or risks."*
-> *"You are a security engineer. Review this SSO implementation and identify 2 weaknesses."*
-> *"Based on the penetration test results, write a short risk summary for leadership."*
-> *"Evaluate this incident report and propose 2 prevention strategies."*
+> - *"Examine the following IAM policy and list 3 misconfigurations or risks."*<br>
+> - *"You are a security engineer. Review this SSO implementation and identify 2 weaknesses."*<br>
+> - *"Based on the penetration test results, write a short risk summary for leadership."*<br>
+> - *"Evaluate this incident report and propose 2 prevention strategies."*<br>
 
 ### 📊 Reporting and Documentation
 
-> *"Create a summary table from the following uptime logs. Include date, downtime, and root cause."*
-> *"You are a Technical Writer. Reformat this product changelog into 3 customer-facing release notes."*
-> *"Review the quarterly KPIs and summarize 3 insights for the executive team."*
-> *"From the attached usage report, identify top 3 features by adoption rate. Present as bullet points."*
+> - *"Create a summary table from the following uptime logs. Include date, downtime, and root cause."*<br>
+> - *"You are a Technical Writer. Reformat this product changelog into 3 customer-facing release notes."*<br>
+> - *"Review the quarterly KPIs and summarize 3 insights for the executive team."*<br>
+> - *"From the attached usage report, identify top 3 features by adoption rate. Present as bullet points."*<br>
 
 ### 🧠 Internal Enablement and Comms
 
-> *"Write a Slack announcement explaining this new workflow to internal teams. Keep it under 100 words."*
-> *"Draft a 3-bullet onboarding tip list for new hires on using the dev environment."*
-> *"Turn this internal wiki page into a customer-facing summary."*
-> *"Create a short script for a 2-minute training video on account provisioning."*
+> - *"Write a Slack announcement explaining this new workflow to internal teams. Keep it under 100 words."*<br>
+> - *"Draft a 3-bullet onboarding tip list for new hires on using the dev environment."*<br>
+> - *"Turn this internal wiki page into a customer-facing summary."*<br>
+> - *"Create a short script for a 2-minute training video on account provisioning."*<br>
 
 ---
 
