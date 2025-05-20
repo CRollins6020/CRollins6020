@@ -147,10 +147,10 @@ Use multi-step prompts to build complex tasks with memory.
 
 ### 🛠️ Technical Troubleshooting
 
-> *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*
-> *"Given the error trace below, explain what failed and suggest one remediation step."*
-> *"Analyze this API response and highlight any unexpected values. Return in table format."*
-> *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*
+> *"Review this debug log and identify the top two issues causing the outage. Use bullet points."*<br>
+> *"Given the error trace below, explain what failed and suggest one remediation step."*<br>
+> *"Analyze this API response and highlight any unexpected values. Return in table format."*<br>
+> *"Interpret this stack trace for a junior developer. Write a clear explanation in plain English."*<br>
 
 ### 🔐 Security and Risk Assessment
 
