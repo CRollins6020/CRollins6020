@@ -285,6 +285,7 @@ Repeat for other methods as needed.
 ### List Users Without MFA
 
 ```powershell
+# Returns all users who have no registered multi-factor authentication methods
 Get-MsolUser -All | Where-Object { $_.StrongAuthenticationMethods.Count -eq 0 }
 ```
 
@@ -293,18 +294,22 @@ Get-MsolUser -All | Where-Object { $_.StrongAuthenticationMethods.Count -eq 0 }
 ### Enforce MFA for a User
 
 ```powershell
-Set-MsolUser -UserPrincipalName "user@example.com" -StrongAuthenticationRequirements @(@{RelyingParty="*"; State="Enabled"})
+# Enables MFA for a specified user account
+Set-MsolUser -UserPrincipalName "user@example.com" `
+  -StrongAuthenticationRequirements @(@{RelyingParty="*"; State="Enabled"})
 ```
 
 ---
 
-### Connect to MSOL Service
+### Connect to Microsoft Online Services
 
 ```powershell
+# Connects your PowerShell session to Microsoft Online Services
 Connect-MsolService
 ```
 
-> *These commands require the MSOnline or AzureAD module and admin credentials to run.*
+> These commands require the **AzureAD** or **MSOnline** PowerShell module.  
+> Be sure to run `Connect-MsolService` before executing configuration commands.
 
 ---
 
