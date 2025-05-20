@@ -4,18 +4,65 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
-```mermaid
 graph TD
-    A[User] -->|Request| B[LangChain Agent Platform]
-    B -->|Process| C[Language Models]
-    B -->|Access| D[Tools & Integrations]
-    B -->|Store| E[Vector Database]
-    B -->|Log| F[Monitoring System]
-    C --> G[Response]
-    D --> G
-    E --> G
-    G -->|Return| A
-```
+    subgraph "Enterprise Infrastructure"
+        LB[Load Balancer]
+        
+        subgraph "LangChain Platform"
+            subgraph "Agent Orchestration Layer"
+                AE[Agent Executor]
+                P[Prompt Templates]
+                MEM[Memory System]
+            end
+            
+            subgraph "Integration Layer"
+                TM[Tool Manager]
+                MM[Model Manager]
+                VM[Vector Store Manager]
+            end
+            
+            AE <--> P
+            AE <--> MEM
+            AE <--> TM
+            AE <--> MM
+            AE <--> VM
+        end
+        
+        subgraph "External Components"
+            LLM[LLM Providers]
+            TOOLS[External Tools]
+            VDB[Vector Databases]
+        end
+        
+        subgraph "Admin Components"
+            MON[Monitoring]
+            LOG[Logging]
+            SEC[Security Controls]
+            CAC[Cache]
+        end
+        
+        U[User] --> LB
+        LB --> AE
+        
+        MM <--> LLM
+        TM <--> TOOLS
+        VM <--> VDB
+        
+        AE --> MON
+        AE --> LOG
+        SEC -.-> AE
+        CAC -.-> MM
+    end
+    
+    classDef core fill:#6495ED,stroke:#333,stroke-width:2px;
+    classDef external fill:#90EE90,stroke:#333,stroke-width:1px;
+    classDef admin fill:#FFB6C1,stroke:#333,stroke-width:1px;
+    classDef user fill:#FFFACD,stroke:#333,stroke-width:1px;
+    
+    class AE,P,MEM,TM,MM,VM core;
+    class LLM,TOOLS,VDB external;
+    class MON,LOG,SEC,CAC admin;
+    class U,LB user;
 
 ## Table of Contents
 
