@@ -1,10 +1,7 @@
-# Enterprise Prompt Engineering Handbook
+### Enterprise Prompt Engineering Handbook
+*Practical instructions for writing effective AI instructions that get consistent, accurate results and avoid common pitfalls.*
 
-## Practical instructions for writing effective AI instructions that get consistent, accurate results and avoid common pitfalls.
-
-**Version**: 1.0
-**Author**: Corey Rollins
-**Date**: May 20, 2025
+**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
 ---
 
