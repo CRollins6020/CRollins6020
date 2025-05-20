@@ -8,10 +8,10 @@ This GitHub showcases my **Technical Writing Portfolio** — documentation that'
 
 ### Portfolio Highlights
 
-- [**User Guides & Tutorials**](./CRollins6020/User-Guides) - Comprehensive documentation for technical products
-- [**API Documentation**](./CRollins6020/API-Documentation) - Clear reference materials for developers
-- [**Knowledge Base Articles**](./CRollins6020/Knowledge-Base) - Troubleshooting and how-to resources
-- [**Training Materials**](./CRollins6020/Training-Materials) - Educational content for product users
+- [**User Guides & Tutorials**](./CRollins6020/tree/main/API-Documentation) - Comprehensive documentation for technical products
+- [**API Documentation**](./CRollins6020/tree/main/API-Documentation) - Clear reference materials for developers
+- [**Knowledge Base Articles**](./CRollins6020/tree/main/Knowledge-Base) - Troubleshooting and how-to resources
+- [**Training Materials**](./CRollins6020/tree/main/Training-Materials) - Educational content for product users
 
 I'm particularly interested in documentation-as-code practices and creating developer-friendly content.
 
