@@ -4,18 +4,7 @@
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
-```mermaid
-graph TD
-    A[User] -->|Request| B[LangChain Agent Platform]
-    B -->|Process| C[Language Models]
-    B -->|Access| D[Tools & Integrations]
-    B -->|Store| E[Vector Database]
-    B -->|Log| F[Monitoring System]
-    C --> G[Response]
-    D --> G
-    E --> G
-    G -->|Return| A
-```
+---
 
 ## Table of Contents
 
@@ -32,6 +21,23 @@ graph TD
 - [11. Compliance & Governance](#11-compliance--governance)
 - [12. Advanced Configurations](#12-advanced-configurations)
 - [Appendices](#appendices)
+
+---
+
+```mermaid
+graph TD
+    A[User] -->|Request| B[LangChain Agent Platform]
+    B -->|Process| C[Language Models]
+    B -->|Access| D[Tools & Integrations]
+    B -->|Store| E[Vector Database]
+    B -->|Log| F[Monitoring System]
+    C --> G[Response]
+    D --> G
+    E --> G
+    G -->|Return| A
+```
+
+---
 
 ## 1. Introduction to LangChain Agent Architecture
 
