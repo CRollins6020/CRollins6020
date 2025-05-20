@@ -76,11 +76,15 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ## Prompt Examples
 
+## Prompt Examples
+
 | ❌ **Vague Prompt:** "Summarize the changelog."<br><br>✅ **Clear Prompt:** "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list." |
-|---|
+|:---|
+
+## Prompt Examples
 
 | ❌ **Vague Prompt:** "Summarize the changelog."<br>✅ **Clear Prompt:** "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list." |
-|---|
+|:---|
 
 ---
 
