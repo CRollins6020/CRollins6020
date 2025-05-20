@@ -15,6 +15,7 @@ graph TD
     D --> G
     E --> G
     G -->|Return| A
+
 <h2>Table of Contents</h2>
 <ol>
   <li><a href="#1-introduction-to-langchain-agent-architecture">Introduction to LangChain Agent Architecture</a></li>
