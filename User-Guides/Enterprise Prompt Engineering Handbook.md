@@ -74,6 +74,12 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ✅ **Clear Prompt:** "You are a SaaS onboarding writer. Create a short intro paragraph followed by a markdown checklist of setup steps from the email below."
 
+## Prompt Examples
+
+| Example 1 |
+|-----------|
+| ❌ **Vague Prompt:** "Summarize the changelog."<br><br>✅ **Clear Prompt:** "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list." |
+
 ---
 
 ## 3. Common Pitfalls and How to Avoid Them
