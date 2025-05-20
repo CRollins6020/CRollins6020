@@ -1,10 +1,7 @@
 # LangChain Agent Platform: Administrator's Guide
 ## Enterprise Deployment & Management
 
-**Version**: 1.0  
-**Author**: Corey Rollins  
-**Date**: May 20, 2025
-
+##Version: 1.0 ##Author: Corey Rollins ##Date: May 20, 2025
 ---
 
 ## Table of Contents
