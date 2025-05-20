@@ -2,8 +2,8 @@
 
 **Hi there — and welcome.**
 
-This is my technical documentation portfolio, a space I use to practice Technical
-Writing as I continue to self-teach and grow in the field. I’ve included sample
+This is my technical documentation portfolio, a space I use to practice technical
+writing as I continue to self-teach and grow in the field. I’ve included sample
 docs that reflect how I approach making complex topics more clear and
 approachable. My background is in SaaS enablement, where I worked as a Senior
 Instructional Designer, and I’m now shifting into Technical Writing with a focus
