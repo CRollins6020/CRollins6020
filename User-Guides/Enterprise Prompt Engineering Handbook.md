@@ -48,8 +48,12 @@ A well-engineered prompt includes:
 > **Tip:** Start simple. Test incrementally with clear constraints before adding complexity.
 
 ### Example
+<details>
+<summary>🎯 Click to expand</summary>
 
-    You are a senior data analyst. Summarize the customer churn report below in three key findings. Respond with a numbered list and no more than 75 words.
+You are a senior data analyst. Summarize the customer churn report below in three key findings. Respond with a numbered list and no more than 75 words.
+
+</details>
 
 [Back to Top](#enterprise-prompt-engineering-handbook)
 
@@ -66,12 +70,20 @@ A well-engineered prompt includes:
 | Loss of Context (Multi-Turn) | Untracked prior messages   | Add summaries or memory tokens; restate prior inputs        |
 
 ### Bad Prompt
+<details>
+<summary>⚠️ Bad Example</summary>
 
-    Tell me about this data.
+Tell me about this data.
+
+</details>
 
 ### Improved Prompt
+<details>
+<summary>✅ Better Example</summary>
 
-    You are a financial analyst. Review the sales data below and list 3 insights related to regional performance. Output as a markdown bullet list.
+You are a financial analyst. Review the sales data below and list 3 insights related to regional performance. Output as a markdown bullet list.
+
+</details>
 
 [Back to Top](#enterprise-prompt-engineering-handbook)
 
@@ -82,10 +94,13 @@ A well-engineered prompt includes:
 System prompts define the AI's overall persona and behavior across a session.
 
 ### Examples
+<details>
+<summary>🧠 Persona Examples</summary>
 
-    You are a helpful, neutral technical support representative. Speak clearly and use concise formatting.
+- You are a helpful, neutral technical support representative. Speak clearly and use concise formatting.  
+- Act as a financial analyst. Provide structured reasoning, cite data sources, and avoid speculation.
 
-    Act as a financial analyst. Provide structured reasoning, cite data sources, and avoid speculation.
+</details>
 
 ### Best Practices
 
@@ -110,8 +125,12 @@ Tailor prompts to different business roles and objectives:
 | **Engineering**| “Explain this code block in plain English with inline comments.”              |
 
 ### Example
+<details>
+<summary>💼 Engineering Prompt</summary>
 
-    You are a solutions engineer. Explain the following YAML configuration to a non-technical customer success manager.
+You are a solutions engineer. Explain the following YAML configuration to a non-technical customer success manager.
+
+</details>
 
 [Back to Top](#enterprise-prompt-engineering-handbook)
 
@@ -122,12 +141,16 @@ Tailor prompts to different business roles and objectives:
 When prompts span multiple steps or messages, manage context explicitly.
 
 ### Conversation Flow Example
+<details>
+<summary>🗣️ Multi-Turn Sequence</summary>
 
-    [User] Summarize the meeting transcript below.  
-    [AI] (Provides summary)  
-    [User] Now convert that summary into an executive report.  
-    [AI] (Converts summary)  
-    [User] Add a section listing follow-up action items.
+1. [User] Summarize the meeting transcript below.  
+2. [AI] (Provides summary)  
+3. [User] Now convert that summary into an executive report.  
+4. [AI] (Converts summary)  
+5. [User] Add a section listing follow-up action items.
+
+</details>
 
 ### Tips
 
@@ -152,14 +175,16 @@ When prompts span multiple steps or messages, manage context explicitly.
 | Brevity    | Is it concise and to the point?                    |
 
 ### Refinement Example
+<details>
+<summary>🔧 Fix This Prompt</summary>
 
-**Instead of:**
+**Instead of:**  
+Write an overview of the attached document.
 
-    Write an overview of the attached document.
+**Try:**  
+Summarize the attached document in 4 bullet points. Focus on risks, deadlines, and stakeholders. Limit output to 75 words.
 
-**Try:**
-
-    Summarize the attached document in 4 bullet points. Focus on risks, deadlines, and stakeholders. Limit output to 75 words.
+</details>
 
 [Back to Top](#enterprise-prompt-engineering-handbook)
 
@@ -168,20 +193,36 @@ When prompts span multiple steps or messages, manage context explicitly.
 ## 8. Use Case Templates
 
 ### 🧩 Summarize
+<details>
+<summary>Prompt Template</summary>
 
-    You are a training specialist. Summarize the following transcript in under 100 words. Use 3 bullet points grouped by topic.
+You are a training specialist. Summarize the following transcript in under 100 words. Use 3 bullet points grouped by topic.
+
+</details>
 
 ### 💬 Support Ticket Triage
+<details>
+<summary>Prompt Template</summary>
 
-    You are a support agent. Classify this ticket as billing, technical, or usability. Then write a two-sentence reply to the user.
+You are a support agent. Classify this ticket as billing, technical, or usability. Then write a two-sentence reply to the user.
+
+</details>
 
 ### 📊 Weekly Report Generator
+<details>
+<summary>Prompt Template</summary>
 
-    Generate a weekly report using the data below. Include Completed Tasks, Blockers, and Next Steps. Return in markdown.
+Generate a weekly report using the data below. Include Completed Tasks, Blockers, and Next Steps. Return in markdown.
+
+</details>
 
 ### 🛡️ Risk Assessment
+<details>
+<summary>Prompt Template</summary>
 
-    You are a cybersecurity analyst. Review the firewall configuration and list 3 security risks. Include a severity rating and suggested fix.
+You are a cybersecurity analyst. Review the firewall configuration and list 3 security risks. Include a severity rating and suggested fix.
+
+</details>
 
 [Back to Top](#enterprise-prompt-engineering-handbook)
 
@@ -193,14 +234,14 @@ Prompt engineering at scale requires accountability, versioning, and compliance 
 
 ### Metadata Schema
 
-| Field                  | Description                            |
-|------------------------|----------------------------------------|
-| `name`                | Unique prompt identifier               |
-| `author`              | Person or team who created the prompt  |
-| `use_case`            | What business problem this solves      |
-| `last_updated`        | Date of last revision                  |
-| `expected_output_format` | JSON, list, paragraph, table         |
-| `risk_level`          | Low, Medium, High                      |
+| Field                   | Description                            |
+|-------------------------|----------------------------------------|
+| `name`                  | Unique prompt identifier               |
+| `author`                | Person or team who created the prompt  |
+| `use_case`              | What business problem this solves      |
+| `last_updated`          | Date of last revision                  |
+| `expected_output_format`| JSON, list, paragraph, table           |
+| `risk_level`            | Low, Medium, High                      |
 
 ### Risks to Monitor
 
