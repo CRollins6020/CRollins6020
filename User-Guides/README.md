@@ -4,7 +4,7 @@ Clear, practical documentation to help users navigate complex AI systems with co
 
 ## 📂 Samples  
 
-- **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide)**     
+- **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)**     
   A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private.
 
 - **[Coming Soon] RAG Implementation Guide**     
