@@ -29,6 +29,8 @@ This guide helps Technical Writers, Enablement teams, and SMEs write better prom
 
 This section sets the stage for the rest of the guide, providing a clear definition of prompt engineering and its role in enterprise environments. It explains who the guide is for and why prompt quality matters.
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## 2. Prompt Design Fundamentals
@@ -41,11 +43,13 @@ This section introduces the building blocks of well-structured prompts. The goal
 | --------------- | -------------------------------- | ------------------------------------------------------ |
 | **Instruction** | What the model should do         | *"Summarize this changelog in 3 bullet points."*       |
 | **Input**       | The source content               | *"Product release notes, JSON error log, user email"*  |
-| **Constraints** | Limits or boundaries             | *"Keep it under 75 words. Don’t include pricing."*     |
+| **Constraints** | Limits or boundaries             | *"Keep it under 75 words. Don't include pricing."*     |
 | **Format**      | Expected structure of the output | *"Return a markdown table with columns: Error, Fix"*   |
-| **Tone/Role**   | The model’s persona or expertise | *"You are a cybersecurity SME writing to executives."* |
+| **Tone/Role**   | The model's persona or expertise | *"You are a cybersecurity SME writing to executives."* |
 
 > **Tip:** Start with simple single-task prompts. Gradually increase complexity as you evaluate performance.
+
+[Back to Top](#table-of-contents)
 
 ---
 
@@ -89,6 +93,8 @@ This section introduces the building blocks of well-structured prompts. The goal
 #### ✅ Clear Prompt
 > "You are a SaaS onboarding writer. Create a short intro paragraph followed by a markdown checklist of setup steps from the email below."
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## 3. Common Pitfalls and How to Avoid Them
@@ -121,11 +127,13 @@ This section highlights typical mistakes in prompt construction and how to resol
 **✅ Improved Prompt**
 *"Convert this internal chat into a formal KB article with a title, short summary, and 3 key steps."*
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## 4. System Prompt Strategies
 
-System prompts define the model’s behavior, tone, and persona throughout a session. This section shows how to establish reliable defaults that improve consistency across user interactions and ensure the model acts in predictable ways.
+System prompts define the model's behavior, tone, and persona throughout a session. This section shows how to establish reliable defaults that improve consistency across user interactions and ensure the model acts in predictable ways.
 
 ### Example Strategies
 
@@ -143,6 +151,8 @@ System prompts define the model’s behavior, tone, and persona throughout a ses
 * Reinforce model limitations (e.g., avoid legal or medical advice)
 * Reuse standardized system prompts across teams
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## 5. Role-Based Prompting Patterns
@@ -156,6 +166,8 @@ Different business roles require different prompt patterns. This section gives r
 | **Sales Enablement**      | *"Write a 1-paragraph pitch for this new feature targeting IT security leaders."*               |
 | **Product Manager**       | *"Summarize this customer feedback into 3 prioritized feature requests."*                       |
 | **Cybersecurity Analyst** | *"Assess this firewall rule for potential vulnerabilities. Return risk level and reasoning."*   |
+
+[Back to Top](#table-of-contents)
 
 ---
 
@@ -176,6 +188,8 @@ This section outlines how to structure conversations where the model and user go
 * Track changes explicitly (e.g., *"update last section"*)
 * Acknowledge user feedback and rerun with adjustments
 * Name each step for clarity in shared workflows
+
+[Back to Top](#table-of-contents)
 
 ---
 
@@ -204,6 +218,8 @@ This section provides criteria and examples for reviewing prompt outputs and ite
 **Original Prompt**: *"What do you think?"*
 **Refined Prompt**: *"Critically evaluate the pros and cons of the password policy described below. Return a markdown table with two columns: Strengths and Weaknesses."*
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## 8. Use Case Templates
@@ -229,10 +245,12 @@ Reusable templates help teams quickly apply good prompting practices across task
 ### 💬 Support & Enablement
 
 * *"You are a support rep. Turn this internal solution into an external-facing help article."*
-* *"Summarize this customer’s problem in 3 bullet points for engineering review."*
-* *"Draft a one-paragraph email response to the customer’s request below. Be empathetic and solution-oriented."*
+* *"Summarize this customer's problem in 3 bullet points for engineering review."*
+* *"Draft a one-paragraph email response to the customer's request below. Be empathetic and solution-oriented."*
 * *"Write 3 troubleshooting steps based on this error trace."*
 * *"Generate a 1-paragraph onboarding welcome message for new users."*
+
+[Back to Top](#table-of-contents)
 
 ---
 
@@ -260,6 +278,8 @@ Use metadata to document the who, what, why, and how of each enterprise-level pr
 
 > **Governance Tip**: Store reusable prompts in a version-controlled knowledge base or Git repo. Add unit tests where possible.
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## Appendix A: Prompt Debugging Checklist
@@ -279,6 +299,8 @@ This checklist is for debugging and validating prompts before deployment or reus
 
 > ✅ Aim for consistency, clarity, and repeatability. Prompts should perform reliably across runs and users.
 
+[Back to Top](#table-of-contents)
+
 ---
 
 ## Appendix B: Reference Links
@@ -288,3 +310,5 @@ This checklist is for debugging and validating prompts before deployment or reus
 * [Prompt Engineering Patterns](https://github.com/dair-ai/Prompt-Engineering-Guide)
 * [LangChain Cookbook](https://github.com/hwchase17/langchain-cookbook)
 * [RAG and LLMOps Best Practices](https://github.com/openai/openai-cookbook/tree/main/examples/RAG)
+
+[Back to Top](#table-of-contents)
