@@ -1,4 +1,5 @@
-### Enterprise Prompt Engineering Handbook
+# Enterprise Prompt Engineering Handbook
+
 *Practical instructions for writing effective AI instructions that get consistent, accurate results and avoid common pitfalls.*
 
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
@@ -29,7 +30,7 @@ This guide helps Technical Writers, Enablement teams, and SMEs write better prom
 
 This section sets the stage for the rest of the guide, providing a clear definition of prompt engineering and its role in enterprise environments. It explains who the guide is for and why prompt quality matters.
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -49,7 +50,7 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 > **Tip:** Start with simple single-task prompts. Gradually increase complexity as you evaluate performance.
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -57,43 +58,43 @@ This section introduces the building blocks of well-structured prompts. The goal
 
 ### Example 1
 
-#### ❌ Vague Prompt
+> #### ❌ Vague Prompt
 > "Summarize the changelog."
 
-#### ✅ Clear Prompt
+> #### ✅ Clear Prompt
 > "You are a Technical Writer. Review the product changelog below and summarize the top 3 user-facing changes. Return your answer as a bullet list."
 
 ---
 
 ### Example 2
 
-#### ❌ Vague Prompt
+> #### ❌ Vague Prompt
 > "Make this into a short note."
 
-#### ✅ Clear Prompt
+> #### ✅ Clear Prompt
 > "Translate the product update into a one-paragraph internal email for Customer Success. Be informal and highlight changes to billing."
 
 ---
 
 ### Example 3
 
-#### ❌ Vague Prompt
+> #### ❌ Vague Prompt
 > "Tell me what this is."
 
-#### ✅ Clear Prompt
+> #### ✅ Clear Prompt
 > "You are a documentation specialist. Review the following API payload and describe its structure using plain language in 3 bullet points."
 
 ---
 
 ### Example 4
 
-#### ❌ Vague Prompt
+> #### ❌ Vague Prompt
 > "Help with this email."
 
-#### ✅ Clear Prompt
+> #### ✅ Clear Prompt
 > "You are a SaaS onboarding writer. Create a short intro paragraph followed by a markdown checklist of setup steps from the email below."
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -109,25 +110,25 @@ This section highlights typical mistakes in prompt construction and how to resol
 | Overloaded Prompts         | Too many requests at once   | Break into smaller, sequential prompts    |
 | Loss of Multi-Turn Context | Insufficient memory cues    | Recap prior steps; restate relevant input |
 
-**🚫 Bad Prompt**
-*"Tell me about this user guide."*
+> **🚫 Bad Prompt**  
+> *"Tell me about this user guide."*
 
-**✅ Improved Prompt**
-*"Summarize the onboarding user guide below into 3 bullet points focused on account creation, permissions, and support access."*
+> **✅ Improved Prompt**  
+> *"Summarize the onboarding user guide below into 3 bullet points focused on account creation, permissions, and support access."*
 
-**🚫 Bad Prompt**
-*"What's wrong with this log?"*
+> **🚫 Bad Prompt**  
+> *"What's wrong with this log?"*
 
-**✅ Improved Prompt**
-*"You are a support engineer. Review the error log below and identify one likely root cause. Provide a short explanation and a recommended fix."*
+> **✅ Improved Prompt**  
+> *"You are a support engineer. Review the error log below and identify one likely root cause. Provide a short explanation and a recommended fix."*
 
-**🚫 Bad Prompt**
-*"Turn this into something better."*
+> **🚫 Bad Prompt**  
+> *"Turn this into something better."*
 
-**✅ Improved Prompt**
-*"Convert this internal chat into a formal KB article with a title, short summary, and 3 key steps."*
+> **✅ Improved Prompt**  
+> *"Convert this internal chat into a formal KB article with a title, short summary, and 3 key steps."*
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -151,7 +152,7 @@ System prompts define the model's behavior, tone, and persona throughout a sessi
 * Reinforce model limitations (e.g., avoid legal or medical advice)
 * Reuse standardized system prompts across teams
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -167,7 +168,7 @@ Different business roles require different prompt patterns. This section gives r
 | **Product Manager**       | *"Summarize this customer feedback into 3 prioritized feature requests."*                       |
 | **Cybersecurity Analyst** | *"Assess this firewall rule for potential vulnerabilities. Return risk level and reasoning."*   |
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -177,9 +178,14 @@ This section outlines how to structure conversations where the model and user go
 
 ### Example Workflow
 
-**Step 1**: *"Summarize this SOC2 policy document in 5 bullet points."*
-**Step 2**: *"Based on your summary, draft an FAQ for new employees about data handling."*
-**Step 3**: *"Reformat the FAQ as a Slack message."*
+**Step 1**:  
+*"Summarize this SOC2 policy document in 5 bullet points."*
+
+**Step 2**:  
+*"Based on your summary, draft an FAQ for new employees about data handling."*
+
+**Step 3**:  
+*"Reformat the FAQ as a Slack message."*
 
 ### Tips
 
@@ -189,7 +195,7 @@ This section outlines how to structure conversations where the model and user go
 * Acknowledge user feedback and rerun with adjustments
 * Name each step for clarity in shared workflows
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -209,16 +215,25 @@ This section provides criteria and examples for reviewing prompt outputs and ite
 
 ### Refinement Examples
 
-**Original Prompt**: *"Write a summary of this user guide."*
-**Refined Prompt**: *"Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words."*
+**Original Prompt**:  
+*"Write a summary of this user guide."*
 
-**Original Prompt**: *"Explain this config."*
-**Refined Prompt**: *"You are a DevOps specialist. Describe the function of this YAML configuration file using bullet points. Mention environment settings, ports, and volumes."*
+**Refined Prompt**:  
+*"Summarize the following onboarding guide into 3 plain-language bullet points focused on setup steps. Keep it under 100 words."*
 
-**Original Prompt**: *"What do you think?"*
-**Refined Prompt**: *"Critically evaluate the pros and cons of the password policy described below. Return a markdown table with two columns: Strengths and Weaknesses."*
+**Original Prompt**:  
+*"Explain this config."*
 
-[Back to Top](#table-of-contents)
+**Refined Prompt**:  
+*"You are a DevOps specialist. Describe the function of this YAML configuration file using bullet points. Mention environment settings, ports, and volumes."*
+
+**Original Prompt**:  
+*"What do you think?"*
+
+**Refined Prompt**:  
+*"Critically evaluate the pros and cons of the password policy described below. Return a markdown table with two columns: Strengths and Weaknesses."*
+
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -250,7 +265,7 @@ Reusable templates help teams quickly apply good prompting practices across task
 * *"Write 3 troubleshooting steps based on this error trace."*
 * *"Generate a 1-paragraph onboarding welcome message for new users."*
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -278,7 +293,7 @@ Use metadata to document the who, what, why, and how of each enterprise-level pr
 
 > **Governance Tip**: Store reusable prompts in a version-controlled knowledge base or Git repo. Add unit tests where possible.
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
@@ -299,16 +314,16 @@ This checklist is for debugging and validating prompts before deployment or reus
 
 > ✅ Aim for consistency, clarity, and repeatability. Prompts should perform reliably across runs and users.
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ---
 
 ## Appendix B: Reference Links
 
-* [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
-* [Anthropic Claude Prompt Design](https://www.anthropic.com/index/prompting-claude)
-* [Prompt Engineering Patterns](https://github.com/dair-ai/Prompt-Engineering-Guide)
-* [LangChain Cookbook](https://github.com/hwchase17/langchain-cookbook)
-* [RAG and LLMOps Best Practices](https://github.com/openai/openai-cookbook/tree/main/examples/RAG)
+* [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) - Official documentation for crafting effective prompts with OpenAI models
+* [Anthropic Claude Prompt Design](https://www.anthropic.com/index/prompting-claude) - Best practices for prompting Claude models
+* [Prompt Engineering Patterns](https://github.com/dair-ai/Prompt-Engineering-Guide) - Community-maintained collection of prompt engineering techniques
+* [LangChain Cookbook](https://github.com/hwchase17/langchain-cookbook) - Examples and patterns for building LLM applications with LangChain
+* [RAG and LLMOps Best Practices](https://github.com/openai/openai-cookbook/tree/main/examples/RAG) - Advanced techniques for retrieval augmented generation
 
-[Back to Top](#table-of-contents)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
