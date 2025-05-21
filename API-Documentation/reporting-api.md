@@ -1,3 +1,4 @@
+
 # 📊 Reporting & Analytics API
 
 *Access detailed usage metrics and system logs. This reference supports filtering, pagination, and report exports—ideal for building dashboards and automating internal reporting.*
@@ -45,9 +46,9 @@ Tokens are issued by the internal Identity Provider (IdP) or OAuth2-compliant au
 
 ### 2.3 Example Header
 
-\`\`\`http
+```http
 Authorization: Bearer <access_token>
-\`\`\`
+```
 
 ---
 
@@ -68,20 +69,20 @@ Returns usage statistics over a defined date range, optionally filtered by user 
 
 **Example Request:**
 
-\`\`\`bash
+```bash
 curl -H "Authorization: Bearer <access_token>" \
   "https://api.example.com/reports/usage-summary?start_date=2025-01-01&end_date=2025-01-31"
-\`\`\`
+```
 
 **Example Response:**
 
-\`\`\`json
+```json
 {
   "total_users": 148,         // Total registered users during the time range
   "active_users": 97,         // Users with at least one session/activity
   "total_sessions": 642       // All user sessions during the date range
 }
-\`\`\`
+```
 
 ___
 
@@ -99,7 +100,7 @@ Retrieves system logs in a paginated format. Useful for audits and troubleshooti
 
 **Example Response:**
 
-\`\`\`json
+```json
 {
   "events": [
     {
@@ -111,7 +112,7 @@ Retrieves system logs in a paginated format. Useful for audits and troubleshooti
   "page": 1,             // Current results page
   "total_pages": 12      // Total pages available
 }
-\`\`\`
+```
 
 ___
 
@@ -121,23 +122,23 @@ Initiates an asynchronous report export job.
 
 **Request Body:**
 
-\`\`\`json
+```json
 {
   "report_type": "usage-summary",
   "format": "csv",
   "start_date": "2025-01-01",
   "end_date": "2025-01-31"
 }
-\`\`\`
+```
 
 **Example Response:**
 
-\`\`\`json
+```json
 {
   "job_id": "abc123",    // Unique export job identifier
   "status": "queued"     // Initial status: queued, processing, completed, or failed
 }
-\`\`\`
+```
 
 ⚠️ **Warning**: Only users with `report_admin` privileges may run export jobs.
 
@@ -149,13 +150,13 @@ Checks the status of an export job.
 
 **Example Response:**
 
-\`\`\`json
+```json
 {
   "job_id": "abc123",    // Identifier used to query export status
   "status": "completed", // Final job status
   "download_url": "https://api.example.com/downloads/export-abc123.csv" // File URL
 }
-\`\`\`
+```
 
 Statuses: `queued`, `processing`, `completed`, `failed`
 
@@ -173,12 +174,12 @@ Statuses: `queued`, `processing`, `completed`, `failed`
 
 **Example 403 Response:**
 
-\`\`\`json
+```json
 {
   "error": "Forbidden",     // Standardized error name
   "message": "You do not have access to this resource." // User-facing message
 }
-\`\`\`
+```
 
 💡 **Tip**: Handle 429 errors using exponential backoff and retry headers.
 
