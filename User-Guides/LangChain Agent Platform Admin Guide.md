@@ -15,6 +15,11 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 The diagram below illustrates the core system architecture of the LangChain Agent Platform. It shows how user inputs are processed through various system components—such as the language model, tools, and vector database—before returning a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data sources in real time.
 
 
+<div style="background-color:#f0f8ff; padding: 10px; border-left: 4px solid #375D8A;">
+🎯 <strong>System Architecture Overview</strong><br>
+The diagram below illustrates the core architecture of the LangChain Agent Platform. It shows how user input flows through major components—such as the LLMs, tools, vector databases, and monitoring systems—before producing a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data in real time.
+</div>
+
 ```mermaid
 graph LR
 A[User]-->|Request|B[Platform]
