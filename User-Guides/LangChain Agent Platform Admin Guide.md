@@ -13,16 +13,16 @@ The platform acts as an orchestration layer, connecting user requests to various
 This architecture is designed for scalability and flexibility, allowing administrators to configure each component according to enterprise requirements while maintaining a consistent workflow.
 
 ```mermaid
-graph TD
-A[User] -->|Request| B[LangChain Agent Platform]
-B -->|Process| C[Language Models]
-B -->|Access| D[Tools & Integrations]
-B -->|Store| E[Vector Database]
-B -->|Log| F[Monitoring System]
-C --> G[Response]
-D --> G
-E --> G
-G -->|Return| A
+graph LR
+A[User]-->|Request|B[Platform]
+B-->|Process|C[LLMs]
+B-->|Access|D[Tools]
+B-->|Store|E[VectorDB]
+B-->|Log|F[Monitor]
+C-->G[Response]
+D-->G
+E-->G
+G-->|Return|A
     
   ```
 
