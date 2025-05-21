@@ -45,7 +45,8 @@
 ### 4.3 Common Prompt Errors
 ### 4.4 Use Case Variants
 
-```
+```mermaid
+
 graph TD
     A[Prompt Design] --> B[Clear Instructions]
     A --> C[Structured Format]
@@ -64,6 +65,7 @@ graph TD
     end
 
     H --> I & J & K & L
+
 ```
 
 ## Scalable Implementation
@@ -80,12 +82,14 @@ graph TD
 
 ## Prompt Governance
 
-```
+```mermaid
+
 graph TD
     A[Prompt Proposal] --> B[Pull Request & Review]
     B --> C[Approval by QA/Legal/Product]
     C --> D[Merge & Deploy]
     D --> E[Log Change in Audit System]
+
 ```
 
 Establishing governance ensures prompt updates are accountable, secure, and aligned with business objectives.
@@ -106,7 +110,8 @@ Use role-based access control. Only approved engineers and designers should modi
 
 ## Prompt Testing Strategies
 
-```
+```mermaid
+
 graph TD
     Start[Trigger: New Prompt Version] --> Unit[Run Unit Tests]
     Unit --> Regression[Run Regression Checks]
@@ -114,6 +119,7 @@ graph TD
     Review --> Pass{All Clear?}
     Pass -- Yes --> Deploy[Deploy to Prod]
     Pass -- No --> Revise[Send Back for Fixes]
+
 ```
 
 ### Unit Tests
@@ -143,11 +149,13 @@ Use OpenAI evals, LangChain evals, or internal scripts to batch test prompts nig
 Organize by domain and purpose:
 
 ```
+
 /prompts
   /customer-support
     summarize-ticket.md
   /marketing
     generate-headlines.md
+
 ```
 
 ### Naming Conventions
@@ -167,7 +175,8 @@ output_format: bullet_points
 
 ## Scaling Across Teams
 
-```
+```mermaid
+
 graph TD
     A[Central Prompt Repo] --> B[Team A Subfolder]
     A --> C[Team B Subfolder]
@@ -175,6 +184,7 @@ graph TD
     C --> E[Team B Maintainers]
     D --> F[Approve Prompt Changes]
     E --> G[Approve Prompt Changes]
+
 ```
 
 ### Central Repository
@@ -213,7 +223,8 @@ Example: A support chatbot suddenly gives inconsistent responses. Logs show a re
 
 ## Appendix A: Prompt Debugging Checklist
 
-```
+```mermaid
+
 graph TD
     A[Prompt Debugging Checklist] --> B{Task Instruction}
     A --> C{Input Definition}
@@ -239,6 +250,7 @@ graph TD
     C -->|Fix| C2["Define input clearly
     Provide context
     Include examples"]
+    
 ```
 
 Use this checklist during prompt development and QA reviews:
@@ -247,7 +259,8 @@ Use this checklist during prompt development and QA reviews:
 
 ## Appendix B: Reference Links
 
-```
+```mermaid
+
 graph LR
     A[Prompt Engineering Resources] --> B[OpenAI Guide]
     A --> C[Anthropic Claude Docs]
@@ -270,6 +283,7 @@ graph LR
     few-shot-learning
     chain-of-thought
     quality-metrics"]
+
 ```
 
 - [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
