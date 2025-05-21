@@ -4,25 +4,13 @@
 
 **Version**: 1.1 | **Author**: Corey Rollins | **Last Updated**: May 20, 2025
 
-
 ---
 
 ## Executive Summary
 
-This Administrator's Guide is designed for technical teams deploying and managing the LangChain Agent Platform in enterprise environments. It covers architecture, setup, integration with language models, tool configuration, security, and scaling best practices. Whether you're deploying on-premises or in the cloud, this guide provides actionable steps and configuration samples to ensure a secure, reliable, and scalable deployment.
+This Administrator’s Guide is for technical teams responsible for deploying and managing the LangChain Agent Platform in enterprise environments. It covers system architecture, installation, LLM integration, tool configuration, security hardening, scaling strategies, and observability. Whether deploying on-premises or in the cloud, this guide provides actionable steps and configuration examples to ensure a secure, scalable, and reliable implementation.
 
 ---
-
-
-**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
-
-## System Architecture Overview
-
-The diagram below illustrates the core architecture of the LangChain Agent Platform. As an administrator, understanding this flow is essential for effective deployment, monitoring, and troubleshooting.
-
-The platform acts as an orchestration layer, connecting user requests to various components: language models provide the reasoning capabilities, tools and integrations extend functionality, the vector database enables knowledge retrieval, and the monitoring system tracks performance and usage. All these components work together to generate and return responses to users.
-
-This architecture is designed for scalability and flexibility, allowing administrators to configure each component according to enterprise requirements while maintaining a consistent workflow.
 
 ```mermaid
 graph LR
