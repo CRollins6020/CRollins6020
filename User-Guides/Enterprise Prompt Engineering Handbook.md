@@ -1,8 +1,13 @@
 # Enterprise Prompt Engineering Handbook: Building Scalable AI Systems
 
-*A practical guide for implementing and managing prompt engineering at scale*
+| Metadata | Value |
+|----------|-------|
+| Version | 1.1 |
+| Author | Enterprise AI Team |
+| Last Updated | May 21, 2025 |
+| Status | Production |
 
-**Version 1.1 | Last Updated: May 21, 2025**
+*A practical guide for implementing and managing prompt engineering at scale*
 
 ## Table of Contents
 
