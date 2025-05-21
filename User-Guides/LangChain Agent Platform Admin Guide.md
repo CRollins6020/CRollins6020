@@ -17,7 +17,7 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-  - [🧭 System Architecture Overview](#-system-architecture-overview)
+  1. [🧭 System Architecture Overview](#-system-architecture-overview)
   1. [Infrastructure Requirements](#2-infrastructure-requirements)
   1. [Installation & Setup](#3-installation--setup)
   1. [LLM Integration](#4-llm-integration)
