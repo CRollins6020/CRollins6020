@@ -50,14 +50,14 @@ ___
 
 ### 2.3 Example `.env` Configuration
 
-\`\`\`env
+```env
 # .env (example for internal AI integration)
 API_BASE_URL=https://ai.internal/api/v1
 OAUTH_CLIENT_ID=xxxxx
 OAUTH_CLIENT_SECRET=xxxxx
 AI_MODEL=agent-v3.5-secure
 ENVIRONMENT=staging
-\`\`\`
+```
 
 ⚠️ **Warning**: Never hardcode or expose secrets in source code repositories.
 
@@ -88,7 +88,7 @@ ___
 
 ### 4.1 High-Level Architecture
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     A[Client System] -->|Trigger or Webhook| B[Integration Layer]
     B --> C[Pre-Processing]
@@ -96,7 +96,7 @@ flowchart TD
     D --> E[Post-Processing]
     E --> F[Target System Update]
     F --> G[Logs & Observability]
-\`\`\`
+```
 
 - **Client System**: e.g., CRM, helpdesk, app
 - **Integration Layer**: Service or lambda function
@@ -113,12 +113,12 @@ flowchart TD
 
 ### 4.3 API Integration Example
 
-\`\`\`python
+```python
 def call_ai_service(payload, token):
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.post("https://ai.internal/api/v1/infer", json=payload, headers=headers)
     return response.json()
-\`\`\`
+```
 
 ---
 
@@ -129,7 +129,7 @@ ___
 ### 5.1 Timeout & Retry Logic
 
 - Set a timeout of 5–10s for prompt execution APIs.
-- Retry on \`503\` or \`429\` errors with exponential backoff.
+- Retry on `503` or `429` errors with exponential backoff.
 
 ### 5.2 Fallback Behavior
 
@@ -164,12 +164,14 @@ ___
 1. Configure a webhook to trigger on new ticket creation.
 2. Sanitize ticket data (remove attachments and sensitive metadata).
 3. Format content into a prompt template:
-   \`\`\`text
-   Summarize the following support ticket in 2–3 sentences for internal triage.
-   ---
-   {{ticket_description}}
-   \`\`\`
-4. Send payload to \`/prompt-execute\` endpoint using internal API key.
+
+    ```text
+    Summarize the following support ticket in 2–3 sentences for internal triage.
+    ---
+    {{ticket_description}}
+    ```
+
+4. Send payload to `/prompt-execute` endpoint using internal API key.
 5. Display summary in ticket UI under a custom field for Support Leads.
 
 💡 **Tip**: Use this pilot to evaluate latency, token cost, and user feedback before expanding to additional queues.
