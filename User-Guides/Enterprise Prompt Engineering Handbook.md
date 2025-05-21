@@ -6,37 +6,38 @@
 
 ## Table of Contents
 
-Executive Summary  
-Introduction  
-Environment Setup  
-    3.1 Tools  
-    3.2 Team Structure  
-Prompt Design  
-    4.1 Format Template  
-    4.2 Prompt Components  
-    4.3 Common Prompt Errors  
-    4.4 Use Case Variants  
-Scalable Implementation  
-    5.1 Templates with Jinja2  
-    5.2 Version Control  
-Performance Evaluation  
-    6.1 Metrics  
-    6.2 Quality Reviews  
-Prompt Refinement  
-    7.1 Feedback Loop  
-    7.2 A/B Testing  
-Prompt Governance  
-Prompt Testing Strategies  
-Prompt Library Management  
-Scaling Across Teams  
-Troubleshooting Prompt Failures  
-Appendices  
+1. [Executive Summary](#1-executive-summary)  
+2. [Introduction](#2-introduction)  
+3. [Environment Setup](#3-environment-setup)  
+   3.1 [Tools](#31-tools)  
+   3.2 [Team Structure](#32-team-structure)  
+4. [Prompt Design](#4-prompt-design)  
+   4.1 [Format Template](#41-format-template)  
+   4.2 [Prompt Components](#42-prompt-components)  
+   4.3 [Common Prompt Errors](#43-common-prompt-errors)  
+   4.4 [Use Case Variants](#44-use-case-variants)  
+5. [Scalable Implementation](#5-scalable-implementation)  
+   5.1 [Templates with Jinja2](#51-templates-with-jinja2)  
+   5.2 [Version Control](#52-version-control)  
+6. [Performance Evaluation](#6-performance-evaluation)  
+   6.1 [Metrics](#61-metrics)  
+   6.2 [Quality Reviews](#62-quality-reviews)  
+7. [Prompt Refinement](#7-prompt-refinement)  
+   7.1 [Feedback Loop](#71-feedback-loop)  
+   7.2 [A/B Testing](#72-ab-testing)  
+8. [Prompt Governance](#8-prompt-governance)  
+9. [Prompt Testing Strategies](#9-prompt-testing-strategies)  
+10. [Prompt Library Management](#10-prompt-library-management)  
+11. [Scaling Across Teams](#11-scaling-across-teams)  
+12. [Troubleshooting Prompt Failures](#12-troubleshooting-prompt-failures)  
+13. [Appendices](#13-appendices)  
+14. [Conclusion](#14-conclusion)
 
 ---
 
-## Executive Summary
+## 1. Executive Summary
 
-This handbook provides a comprehensive guide for implementing prompt engineering at an enterprise scale. As organizations increasingly adopt language models, establishing standardized approaches to prompt design becomes essential for quality, security, and scalability.
+> This handbook provides a comprehensive guide for implementing prompt engineering at an enterprise scale. As organizations increasingly adopt language models, establishing standardized approaches to prompt design becomes essential for quality, security, and scalability.
 
 Organizations implementing structured prompt engineering typically experience:
 
@@ -49,9 +50,11 @@ This handbook offers practical guidance for organizations seeking to move beyond
 
 ---
 
-## Introduction
+## 2. Introduction
 
 The widespread adoption of large language models has created a new operational challenge: how to systematically design, deploy, and manage prompts at scale. Unlike traditional software development, prompt engineering combines elements of user experience design, psychology, natural language processing, and software engineering.
+
+> **Pro Tip:** The most successful organizations treat prompt engineering as a discipline that combines technical knowledge with communication skills. It's not just about writing instructions—it's about designing effective conversations between humans and AI.
 
 ### Why Enterprise Prompt Engineering Matters
 
@@ -67,13 +70,11 @@ Enterprise prompt engineering addresses these challenges by treating prompts as 
 
 ### Real-World Impact Example
 
-<div style="background-color: #f8f9fa; padding: 12px; border-left: 4px solid #5bc0de; margin-bottom: 20px;">
-<strong>Case Study:</strong> A financial services company initially allowed individual teams to create customer-facing AI assistants. After several compliance incidents and customer complaints about inconsistent experiences, they implemented prompt governance with centralized standards and testing. This reduced compliance issues and improved customer satisfaction, despite requiring initial investment in processes and tools.
-</div>
+> **Case Study:** A financial services company initially allowed individual teams to create customer-facing AI assistants. After several compliance incidents and customer complaints about inconsistent experiences, they implemented prompt governance with centralized standards and testing. This reduced compliance issues and improved customer satisfaction, despite requiring initial investment in processes and tools.
 
 ---
 
-## Environment Setup
+## 3. Environment Setup
 
 Establishing a robust prompt engineering environment is the foundation for successful enterprise implementation. This section covers essential tools and team structures.
 
@@ -135,7 +136,7 @@ This balanced approach helps maintain standards without creating bottlenecks.
 
 ---
 
-## Prompt Design
+## 4. Prompt Design
 
 Effective prompt design is the cornerstone of successful AI applications. This section covers practical approaches to creating high-performance prompts.
 
@@ -172,8 +173,8 @@ Each component serves a specific purpose in creating effective prompts:
 Defines the AI's persona and establishes appropriate tone and expertise.
 
 **Examples**:
-- ✓ "You are an expert tax accountant specializing in small business deductions."
-- ✗ "Act like you know tax stuff."
+- ✅ "You are an expert tax accountant specializing in small business deductions."
+- ❌ "Act like you know tax stuff."
 
 **Why it matters**: Vague roles lead to inconsistent responses. Precisely defined roles create consistent outputs.
 
@@ -182,8 +183,8 @@ Defines the AI's persona and establishes appropriate tone and expertise.
 Provides background information essential for appropriate responses.
 
 **Examples**:
-- ✓ "This conversation is with a new employee who is unfamiliar with our technical terminology."
-- ✗ "Help the user."
+- ✅ "This conversation is with a new employee who is unfamiliar with our technical terminology."
+- ❌ "Help the user."
 
 **Why it matters**: Without context, the AI makes assumptions that often don't match your specific needs.
 
@@ -192,8 +193,8 @@ Provides background information essential for appropriate responses.
 Clearly defines the specific action required.
 
 **Examples**:
-- ✓ "Analyze the following customer feedback and categorize the sentiment as positive, negative, or neutral."
-- ✗ "Look at this feedback."
+- ✅ "Analyze the following customer feedback and categorize the sentiment as positive, negative, or neutral."
+- ❌ "Look at this feedback."
 
 **Why it matters**: Specific tasks produce specific results. Vague instructions lead to misaligned outputs.
 
@@ -202,8 +203,8 @@ Clearly defines the specific action required.
 Structures the response for consistency and usability.
 
 **Examples**:
-- ✓ "Format your response as a JSON object with 'summary', 'risk_score', and 'next_steps' keys."
-- ✗ "Give me your thoughts."
+- ✅ "Format your response as a JSON object with 'summary', 'risk_score', and 'next_steps' keys."
+- ❌ "Give me your thoughts."
 
 **Why it matters**: Structured outputs can be directly parsed by other systems or consistently presented to users.
 
@@ -212,8 +213,8 @@ Structures the response for consistency and usability.
 Sets boundaries to prevent unwanted responses.
 
 **Examples**:
-- ✓ "Limit your response to 3 recommendations, each no more than 25 words."
-- ✗ "Don't write too much."
+- ✅ "Limit your response to 3 recommendations, each no more than 25 words."
+- ❌ "Don't write too much."
 
 **Why it matters**: Constraints prevent verbosity, off-topic responses, and inappropriate content.
 
@@ -221,38 +222,12 @@ Sets boundaries to prevent unwanted responses.
 
 Avoiding these common mistakes significantly improves prompt effectiveness:
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Error Type</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Example</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Correction</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Why It Matters</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Ambiguous Instructions</td>
-    <td style="padding: 8px;">"Make this better"</td>
-    <td style="padding: 8px;">"Improve the clarity of this paragraph by simplifying sentences and removing jargon"</td>
-    <td style="padding: 8px;">Ambiguity leads to misaligned expectations</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Conflicting Directives</td>
-    <td style="padding: 8px;">"Be comprehensive but very brief"</td>
-    <td style="padding: 8px;">"Provide a 100-word summary covering the three main points"</td>
-    <td style="padding: 8px;">Conflicting instructions confuse the model</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Missing Context</td>
-    <td style="padding: 8px;">"What should we do next?"</td>
-    <td style="padding: 8px;">"Based on our Q1 marketing results provided above, what should our team focus on for Q2?"</td>
-    <td style="padding: 8px;">Without context, responses become generic</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Inadequate Examples</td>
-    <td style="padding: 8px;">"Format like this: Name - Date"</td>
-    <td style="padding: 8px;">"Format each entry as follows: John Smith - 2025-01-15"</td>
-    <td style="padding: 8px;">Specific examples improve format adherence</td>
-  </tr>
-</table>
+| Error Type | Example | Correction | Why It Matters |
+|------------|---------|------------|----------------|
+| **Ambiguous Instructions** | "Make this better" | "Improve the clarity of this paragraph by simplifying sentences and removing jargon" | Ambiguity leads to misaligned expectations |
+| **Conflicting Directives** | "Be comprehensive but very brief" | "Provide a 100-word summary covering the three main points" | Conflicting instructions confuse the model |
+| **Missing Context** | "What should we do next?" | "Based on our Q1 marketing results provided above, what should our team focus on for Q2?" | Without context, responses become generic |
+| **Inadequate Examples** | "Format like this: Name - Date" | "Format each entry as follows: John Smith - 2025-01-15" | Specific examples improve format adherence |
 
 In practice, most prompt failures can be traced back to these common errors. Fixing them often resolves the majority of issues without complex solutions.
 
@@ -312,7 +287,7 @@ Constraints: Use simple, non-technical language.
 
 ---
 
-## Scalable Implementation
+## 5. Scalable Implementation
 
 Moving beyond individual prompts to an enterprise-scale system requires standardization and automation. The difference between ad-hoc prompting and scalable implementation is often the difference between an AI experiment and a production system.
 
@@ -428,7 +403,7 @@ This straightforward approach provides essential tracking without unnecessary co
 
 ---
 
-## Performance Evaluation
+## 6. Performance Evaluation
 
 Systematic evaluation ensures prompts meet quality standards and business objectives.
 
@@ -438,38 +413,12 @@ Implement basic measurements to assess prompt performance:
 
 #### Response Quality Metrics
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Metric</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Description</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Measurement Method</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Why It Matters</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Accuracy</td>
-    <td style="padding: 8px;">Factual correctness</td>
-    <td style="padding: 8px;">Expert review, fact-checking</td>
-    <td style="padding: 8px;">Incorrect information damages trust</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Relevance</td>
-    <td style="padding: 8px;">Addressing the user's intent</td>
-    <td style="padding: 8px;">User feedback, task completion</td>
-    <td style="padding: 8px;">Irrelevant responses waste user time</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Consistency</td>
-    <td style="padding: 8px;">Stable outputs for similar inputs</td>
-    <td style="padding: 8px;">Variance testing</td>
-    <td style="padding: 8px;">Inconsistent responses confuse users</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Conciseness</td>
-    <td style="padding: 8px;">Optimal response length</td>
-    <td style="padding: 8px;">Token count</td>
-    <td style="padding: 8px;">Verbose responses increase costs</td>
-  </tr>
-</table>
+| Metric | Description | Measurement Method | Why It Matters |
+|--------|-------------|-------------------|----------------|
+| **Accuracy** | Factual correctness | Expert review, fact-checking | Incorrect information damages trust |
+| **Relevance** | Addressing the user's intent | User feedback, task completion | Irrelevant responses waste user time |
+| **Consistency** | Stable outputs for similar inputs | Variance testing | Inconsistent responses confuse users |
+| **Conciseness** | Optimal response length | Token count | Verbose responses increase costs |
 
 #### User Experience Metrics
 
@@ -500,44 +449,18 @@ Complement basic metrics with human assessment:
 
 Example review criteria:
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Dimension</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">1</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">3</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">5</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Accuracy</strong></td>
-    <td style="padding: 8px;">Contains obvious errors</td>
-    <td style="padding: 8px;">Mostly accurate with minor issues</td>
-    <td style="padding: 8px;">Completely accurate</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Tone</strong></td>
-    <td style="padding: 8px;">Inappropriate tone</td>
-    <td style="padding: 8px;">Generally appropriate</td>
-    <td style="padding: 8px;">Perfect tone</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Task Completion</strong></td>
-    <td style="padding: 8px;">Fails to address request</td>
-    <td style="padding: 8px;">Addresses main points but incomplete</td>
-    <td style="padding: 8px;">Completely fulfills request</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Format</strong></td>
-    <td style="padding: 8px;">Ignores format requirements</td>
-    <td style="padding: 8px;">Follows most format requirements</td>
-    <td style="padding: 8px;">Perfect format adherence</td>
-  </tr>
-</table>
+| Dimension | 1 | 3 | 5 |
+|-----------|---|---|---|
+| **Accuracy** | Contains obvious errors | Mostly accurate with minor issues | Completely accurate |
+| **Tone** | Inappropriate tone | Generally appropriate | Perfect tone |
+| **Task Completion** | Fails to address request | Addresses main points but incomplete | Completely fulfills request |
+| **Format** | Ignores format requirements | Follows most format requirements | Perfect format adherence |
 
 Many organizations find that even simple human reviews catch issues that automated metrics miss.
 
 ---
 
-## Prompt Refinement
+## 7. Prompt Refinement
 
 Continuous improvement processes ensure prompts evolve with changing needs.
 
@@ -592,7 +515,7 @@ Even simple A/B tests can provide valuable insights for prompt improvement.
 
 ---
 
-## Prompt Governance
+## 8. Prompt Governance
 
 Establishing basic governance ensures prompt updates are accountable and aligned with business objectives.
 
@@ -619,28 +542,11 @@ For many organizations, this can be as simple as a pull request process with des
 
 Adjust review requirements based on risk level:
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Prompt Type</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Required Reviewers</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Examples</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">High Sensitivity</td>
-    <td style="padding: 8px;">Legal, Compliance, Product</td>
-    <td style="padding: 8px;">Financial advice, Health guidance, Legal content</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Medium Sensitivity</td>
-    <td style="padding: 8px;">Product, QA, Domain Expert</td>
-    <td style="padding: 8px;">Customer support, Technical documentation</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Low Sensitivity</td>
-    <td style="padding: 8px;">Team Lead, QA</td>
-    <td style="padding: 8px;">Internal tools, Content formatting</td>
-  </tr>
-</table>
+| Prompt Type | Required Reviewers | Examples |
+|-------------|-------------------|----------|
+| **High Sensitivity** | Legal, Compliance, Product | Financial advice, Health guidance, Legal content |
+| **Medium Sensitivity** | Product, QA, Domain Expert | Customer support, Technical documentation |
+| **Low Sensitivity** | Team Lead, QA | Internal tools, Content formatting |
 
 ### Basic Change Tracking
 
@@ -662,7 +568,7 @@ This basic tracking provides accountability without unnecessary complexity.
 
 ---
 
-## Prompt Testing Strategies
+## 9. Prompt Testing Strategies
 
 Basic testing is essential for reliable AI systems. Unlike traditional software where bugs are often immediately visible, prompt failures can be subtle.
 
@@ -749,7 +655,7 @@ Even these basic tests catch many issues before they reach production.
 
 ---
 
-## Prompt Library Management
+## 10. Prompt Library Management
 
 Effective library management helps teams find and reuse existing prompts.
 
@@ -766,6 +672,8 @@ Organize prompts by department and purpose:
 ```
 
 This basic structure makes it easier to find relevant prompts.
+
+> **Remember:** Simpler is often better. The most effective prompts are clear, concise, and focused on specific outcomes.
 
 ### Naming Conventions
 
@@ -792,7 +700,7 @@ This basic information makes prompts easier to manage without adding unnecessary
 
 ---
 
-## Scaling Across Teams
+## 11. Scaling Across Teams
 
 As AI adoption grows, organizations face the challenge of scaling prompt engineering practices across multiple teams.
 
@@ -838,7 +746,7 @@ These shared components help maintain consistency while reducing duplicate work.
 
 ---
 
-## Troubleshooting Prompt Failures
+## 12. Troubleshooting Prompt Failures
 
 Even well-designed prompts can fail in production. Understanding common issues helps teams resolve problems quickly.
 
@@ -870,96 +778,54 @@ In many cases, simple targeted changes resolve the majority of issues.
 
 ---
 
-## Appendix A: Prompt Debugging Checklist
+## 13. Appendices
+
+### A. Prompt Debugging Checklist
 
 Use this checklist during prompt development and review:
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Component</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Common Issues</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Solutions</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Task Instruction</strong></td>
-    <td style="padding: 8px;">Vague or ambiguous</td>
-    <td style="padding: 8px;">Use specific action verbs and clear objectives</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Input Definition</strong></td>
-    <td style="padding: 8px;">Poorly structured</td>
-    <td style="padding: 8px;">Define input format clearly, provide context</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Constraints</strong></td>
-    <td style="padding: 8px;">Missing boundaries</td>
-    <td style="padding: 8px;">Set clear limitations</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Output Format</strong></td>
-    <td style="padding: 8px;">Unclear structure</td>
-    <td style="padding: 8px;">Define exact format with examples</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Role Definition</strong></td>
-    <td style="padding: 8px;">Role confusion</td>
-    <td style="padding: 8px;">Define AI's role clearly</td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;"><strong>Testing</strong></td>
-    <td style="padding: 8px;">Limited scenarios</td>
-    <td style="padding: 8px;">Test with diverse inputs</td>
-  </tr>
-</table>
+| Component | Common Issues | Solutions |
+|-----------|--------------|-----------|
+| **Task Instruction** | Vague or ambiguous | Use specific action verbs and clear objectives |
+| **Input Definition** | Poorly structured | Define input format clearly, provide context |
+| **Constraints** | Missing boundaries | Set clear limitations |
+| **Output Format** | Unclear structure | Define exact format with examples |
+| **Role Definition** | Role confusion | Define AI's role clearly |
+| **Testing** | Limited scenarios | Test with diverse inputs |
 
----
+✅ Aim for clarity, consistency, and repeatability in all production prompts.
 
-## Appendix B: Reference Links
+### B. Reference Links
 
-### Documentation Resources
+**Documentation Resources:**
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
-  <tr>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Source</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">Key Resources</th>
-    <th style="padding: 8px; text-align: left; background-color: #f2f2f2;">URL</th>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">OpenAI</td>
-    <td style="padding: 8px;">System Message Guide, Function Calling</td>
-    <td style="padding: 8px;"><a href="https://platform.openai.com/docs">OpenAI API Docs</a></td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Anthropic</td>
-    <td style="padding: 8px;">Claude Prompting</td>
-    <td style="padding: 8px;"><a href="https://docs.anthropic.com">Anthropic Docs</a></td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">Cohere</td>
-    <td style="padding: 8px;">Command Models, RAG Implementation</td>
-    <td style="padding: 8px;"><a href="https://docs.cohere.com">Cohere Docs</a></td>
-  </tr>
-  <tr>
-    <td style="padding: 8px;">LlamaIndex</td>
-    <td style="padding: 8px;">Structured Data, Query Engines</td>
-    <td style="padding: 8px;"><a href="https://docs.llamaindex.ai">LlamaIndex Docs</a></td>
-  </tr>
-</table>
+| Source | Key Resources | URL |
+|--------|--------------|-----|
+| OpenAI | System Message Guide, Function Calling | [OpenAI API Docs](https://platform.openai.com/docs) |
+| Anthropic | Claude Prompting | [Anthropic Docs](https://docs.anthropic.com) |
+| Cohere | Command Models, RAG Implementation | [Cohere Docs](https://docs.cohere.com) |
+| LlamaIndex | Structured Data, Query Engines | [LlamaIndex Docs](https://docs.llamaindex.ai) |
 
-### Books and Resources
+**Books and Resources:**
 
 - "Prompt Engineering Guide" - DeepLearning.AI
 - "Designing AI Conversations" - O'Reilly Media
-- "LangChain Documentation" - https://python.langchain.com/docs/get_started
-- "OpenAI Cookbook" - https://github.com/openai/openai-cookbook
+- "LangChain Documentation" - [https://python.langchain.com/docs/get_started](https://python.langchain.com/docs/get_started)
+- "OpenAI Cookbook" - [https://github.com/openai/openai-cookbook](https://github.com/openai/openai-cookbook)
 
 ---
 
-## Conclusion
+## Ready to implement better prompt engineering?
+
+Start small, focus on high-impact areas, and build momentum through measurable improvements.
+
+---
+
+## 14. Conclusion
 
 Prompt engineering at the enterprise level requires systems, standards, and iteration. This handbook outlined a practical approach to designing effective prompts, deploying them responsibly, evaluating results, and refining based on feedback.
 
-### Key Takeaways
+### 🔑 Key Takeaways
 
 - Use templates and modular components for consistency
 - Implement basic testing to catch issues early
