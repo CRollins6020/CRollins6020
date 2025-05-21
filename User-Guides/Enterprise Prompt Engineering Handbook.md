@@ -2,7 +2,7 @@
 
 *Enterprise Deployment & Management*
 
-**Version:** 1.0 | **Author**:** Corey Rollins | **Last Updated:** May 20, 2025*
+**Version:** 1.0 | **Author:** Corey Rollins | **Last Updated:** May 20, 2025*
 
 ---
 
