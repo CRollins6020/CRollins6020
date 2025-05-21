@@ -4,7 +4,7 @@ Concise, implementation-ready documentation for developers integrating with inte
 
 ## 📂 Available References
 
-### **[User Management API](https://github.com/CRollins6020/CRollins6020/blob/main/API-References/user-management-api.md)**
+### **[User Management API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/User%20Management.md)**
 
 Manage users, roles, and access across internal platforms. This reference includes authentication flows, CRUD operations, and examples for integrating secure identity management into your systems.
 
