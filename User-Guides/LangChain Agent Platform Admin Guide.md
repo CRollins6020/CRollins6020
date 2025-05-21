@@ -1,21 +1,29 @@
-# LangChain Agent Platform: Administrator's Guide
+LangChain Agent Platform: Administrator's Guide
+Enterprise Deployment & Management
+Version: 1.0 | Author: Corey Rollins | Date: May 20, 2025
 
-*Enterprise Deployment & Management*
+System Architecture Overview
 
-**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
+The diagram below illustrates the core architecture of the LangChain Agent Platform. As an administrator, understanding this flow is essential for effective deployment, monitoring, and troubleshooting.
 
-```mermaid
+The platform acts as an orchestration layer, connecting user requests to various components: language models provide the reasoning capabilities, tools and integrations extend functionality, the vector database enables knowledge retrieval, and the monitoring system tracks performance and usage. All these components work together to generate and return responses to users.
 
-graph TD
-    A[User] -->|Request| B[Platform]
-    B -->|Process| C[LLMs]
-    B -->|Access| D[Tools]
-    B -->|Store| E[Vector DB]
-    B -->|Log| F[Monitoring]
-    C & D & E --> G[Response]
+This architecture is designed for scalability and flexibility, allowing administrators to configure each component according to enterprise requirements while maintaining a consistent workflow.
+
+```mermaidgraph 
+
+TD
+    A[User] -->|Request| B[LangChain Agent Platform]
+    B -->|Process| C[Language Models]
+    B -->|Access| D[Tools & Integrations]
+    B -->|Store| E[Vector Database]
+    B -->|Log| F[Monitoring System]
+    C --> G[Response]
+    D --> G
+    E --> G
     G -->|Return| A
 
-```
+    ```
 
 <h2>Table of Contents</h2>
 <ol>
