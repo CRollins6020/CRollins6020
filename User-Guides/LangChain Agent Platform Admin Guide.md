@@ -39,7 +39,9 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ### System Architecture Overview
 > 📌 This diagram provides a high-level view of how LangChain Agents interact with tools, models, and databases to deliver results.
+
 ```mermaid
+
 graph LR
 <!-- 📘 Diagram 1: This diagram shows the end-to-end request/response lifecycle. A user request enters the platform, is processed by LLMs, accesses tools and vector databases, logs activity, and returns a structured response. -->
 A[User]-->|Request|B[Platform]
@@ -49,6 +51,7 @@ B-->|Store|E[VectorDB]
 B-->|Log|F[Monitor]
 C & D & E-->G[Response]
 G-->|Return|A
+
 ```
 
 LangChain is an open-source framework designed to simplify the development of applications using large language models (LLMs). It provides the necessary components to create, connect, and deploy AI agents that can interact with various data sources and tools.
