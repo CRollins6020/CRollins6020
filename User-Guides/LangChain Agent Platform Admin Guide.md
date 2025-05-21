@@ -4830,3 +4830,5 @@ Additional resources support ongoing learning and troubleshooting.
 **Vector Store** – A specialized database for similarity search over embeddings.
 
 **Retrieval-Augmented Generation (RAG)** – An architecture that combines LLMs with external knowledge sources for better factual grounding.
+
+[⬆️ Back to Top](#langchain-agent-platform-administrators-guide)
