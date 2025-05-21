@@ -70,66 +70,41 @@ Organizations across industries are implementing RAG to solve specific business 
 
 RAG combines search capabilities with AI text generation. Unlike standard AI models that rely solely on training data, RAG systems can access, retrieve, and utilize your organization's documents when answering questions.
 
-```
-                  ┌───────────────────┐
-                  │                   │
-                  │  User Question    │
-                  │                   │
-                  └─────────┬─────────┘
-                            │
-                            ▼
-             ┌──────────────────────────┐
-             │                          │
-             │  Query Processing        │
-             │                          │
-             └──────────────┬───────────┘
-                            │
-                            ▼
-┌───────────────────────────────────────────────┐
-│                                               │
-│            Retrieval System                   │
-│                                               │
-│  ┌─────────────────┐      ┌───────────────┐  │
-│  │ Query Embedding │─────▶│ Vector Search │  │
-│  └─────────────────┘      └───────┬───────┘  │
-│                                   │           │
-└───────────────────────────────────┼───────────┘
-                                    │
-                  ┌─────────────────▼─────────────────┐
-                  │                                   │
-                  │      Retrieved Context            │
-                  │                                   │
-                  └─────────────────┬─────────────────┘
-                                    │
-                                    ▼
-              ┌─────────────────────────────────────┐
-              │                                     │
-              │     Prompt Construction             │
-              │                                     │
-              │  ┌─────────────┐  ┌─────────────┐  │
-              │  │ System      │  │ Retrieved   │  │
-              │  │ Instructions│  │ Context     │  │
-              │  └─────────────┘  └─────────────┘  │
-              │         │              │           │
-              │         └──────┬───────┘           │
-              │                │                   │
-              └────────────────┼───────────────────┘
-                               │
-                               ▼
-                     ┌──────────────────┐
-                     │                  │
-                     │   Large Language │
-                     │   Model (LLM)    │
-                     │                  │
-                     └────────┬─────────┘
-                              │
-                              ▼
-                     ┌──────────────────┐
-                     │                  │
-                     │   Response to    │
-                     │   User Question  │
-                     │                  │
-                     └──────────────────┘
+```mermaid
+flowchart TD
+    A[User Question] --> B[Query Processing]
+    B --> C[Query Embedding]
+    
+    subgraph Retrieval System
+        C --> D[Vector Search]
+        D --> E[Document Store]
+    end
+    
+    E --> F[Retrieved Context]
+    
+    subgraph Prompt Construction
+        G[System Instructions] --> I[Final Prompt]
+        F --> I
+    end
+    
+    I --> J[Large Language Model]
+    J --> K[Response to User]
+    
+    subgraph Document Processing Pipeline
+        L[Source Documents] --> M[Document Chunking]
+        M --> N[Embedding Generation]
+        N --> O[Vector Database Indexing]
+        O --> E
+    end
+    
+    classDef primary fill:#d1eaff,stroke:#0066cc,stroke-width:2px
+    classDef secondary fill:#e6f5e6,stroke:#339933,stroke-width:2px
+    classDef tertiary fill:#fff2cc,stroke:#ffcc00,stroke-width:2px
+    
+    class A,K primary
+    class B,C,D,E,F secondary
+    class G,I,J tertiary
+    class L,M,N,O secondary
 ```
 
 The core components of a RAG system include:
