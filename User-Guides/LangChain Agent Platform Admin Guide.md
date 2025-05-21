@@ -27,8 +27,6 @@ G-->|Return|A
 ```
 
 ## Table of Contents
-1. [System Architecture Overview](#system-architecture-overview)
-## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
   1. [Infrastructure Requirements](#2-infrastructure-requirements)
   1. [Installation & Setup](#3-installation--setup)
@@ -42,16 +40,16 @@ G-->|Return|A
   1. [Compliance & Governance](#11-compliance--governance)
   1. [Advanced Configurations](#12-advanced-configurations)
   1. [Appendices](#appendices)
+## 1. Introduction to LangChain Agent Architecture
+
+
+---
 
 ## System Architecture Overview
 
 
 ---
 
-## 1. Introduction to LangChain Agent Architecture
-
-
----
 
 ### 1.1 What is LangChain?
 
