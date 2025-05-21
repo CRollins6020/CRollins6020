@@ -33,6 +33,7 @@ Retrieval-Augmented Generation (RAG) enhances language model outputs with organi
 💡 **Tip**: Start small with one high-impact use case, then iterate.
 
 ```mermaid
+
 graph TD
     A[User Query] --> B[Query Embedding]
     B --> C[Vector Search (Top-K)]
@@ -40,6 +41,7 @@ graph TD
     D --> E[Prompt Construction]
     E --> F[LLM Generation]
     F --> G[Answer with Sources]
+    
 ```
 
 ---
