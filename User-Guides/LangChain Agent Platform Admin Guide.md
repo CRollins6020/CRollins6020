@@ -21,8 +21,7 @@ B-->|Store|E[VectorDB]
 B-->|Log|F[Monitor]
 C & D & E-->G[Response]
 G-->|Return|A
-    
-  ```
+```
 
 <h2>Table of Contents</h2>
 <ol>
@@ -119,7 +118,6 @@ LangChain agents are autonomous entities that use language models to determine w
 
 ```mermaid
 graph TD
-graph LR
 A[Input]-->B[Agent]
 B-->C[LLM]
 C-->D{Tools}
@@ -266,11 +264,9 @@ Deploying a self-hosted LangChain platform requires careful consideration of har
 
 ```mermaid
 graph LR
-    graph LR
         A[Agent Tier]-->B[16+CPU,64GB+]
         C[Model Tier]-->D[32+CPU,128GB+,GPU]
         E[DB Tier]-->F[8+CPU,32GB+]
-    
 ```
 
 * **Minimum requirements**
@@ -357,7 +353,7 @@ Proper network design ensures secure, reliable agent interactions with external 
   * Inspection of API traffic for malicious content
 
 ```mermaid
-  graph LR
+graph LR
     A[Internet]-->B[LB]-->C[API]
     C-->D[Agents]-->E[Models]
     C-->F[Docs]-->G[VectorDB]
@@ -793,7 +789,6 @@ LangChain supports integration with a wide range of language model providers, ea
 
 ```mermaid
 graph TD
-    graph LR
       A[OpenAI]-->A1[GPT-4/3.5]
       B[Anthropic]-->B1[Claude]
       C[Open]-->C1[Llama/Mistral]
@@ -2503,12 +2498,11 @@ graph LR
 Effective logging provides visibility into system behavior and aids in troubleshooting.
 
 ```mermaid
-  graph TD
+graph TD
     A[App Logs]-->B[Structured]-->C[Aggregator]
     D[System Logs]-->B
     E[DB Logs]-->B
     C-->F[Storage]-->G[Analysis] & H[Alerts]
-
 ```
 
 <table>
@@ -4180,7 +4174,7 @@ Human oversight ensures agent quality, reliability, and safety.
   * Learning loop implementation
 
 ```mermaid
-    graph LR
+graph LR
       A[Request]-->B[Agent]-->C{Confidence}
       C-->|Low|D[Human Review]
       C-->|High|E[Response]
