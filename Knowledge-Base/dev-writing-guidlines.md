@@ -51,18 +51,18 @@ ___
 Use a modular, numbered format for ease of reuse and readability.
 
 | Element             | Format                                    |
-|---------------------|--------------------------------------------|
+|:--------------------|:-------------------------------------------|
 | **Headings**        | Numbered H1–H4, consistent nesting         |
 | **Metadata Table**  | Top of doc or page 2                      |
 | **Tables**          | Header rows only; avoid merged cells      |
 | **Code blocks**     | Fenced, labeled, copyable, with context   |
 
 Example code block:
-\`\`\`python
+```python
 # Validate user input
 if not user_data:
     raise ValueError("Missing input")
-\`\`\`
+```
 
 ___
 
@@ -70,12 +70,12 @@ ___
 
 Use these content patterns to improve consistency:
 
-| Pattern        | Purpose                                 |
-|----------------|------------------------------------------|
-| **Overview**   | High-level intro with context            |
-| **Steps**      | Use numbered lists for clear guidance    |
-| **Tips/Notes** | Use callouts for emphasis or reminders   |
-| **Expected Result** | Close each procedure when applicable  |
+| Pattern            | Purpose                                 |
+|:-------------------|:------------------------------------------|
+| **Overview**       | High-level intro with context            |
+| **Steps**          | Use numbered lists for clear guidance    |
+| **Tips/Notes**     | Use callouts for emphasis or reminders   |
+| **Expected Result**| Close each procedure when applicable     |
 
 💡 **Tip:** Keep procedural steps short and scannable—1–2 lines max per step.
 
@@ -84,9 +84,10 @@ ___
 ## 5. Sample Templates
 
 **🧰 KB Article**
-\`\`\`markdown
-# 🔧 <Title of KB>
-*<Short summary of task or problem>*
+<pre>
+```markdown
+# 🔧 &lt;Title of KB&gt;
+*&lt;Short summary of task or problem&gt;*
 
 | Field | Value |
 |-------|-------|
@@ -102,39 +103,42 @@ Brief explanation of task or problem.
 
 ## 2. Steps
 
-1. Step one
-2. Step two
-3. Step three
+1. Step one  
+2. Step two  
+3. Step three  
 
 💡 Tip: Restart service after changes.
 
 ## 3. Troubleshooting
 
 Describe common errors and fixes.
-\`\`\`
+```
+</pre>
 
 **📄 API Method Block**
-\`\`\`markdown
+<pre>
+```markdown
 ### `POST /users/create`
 
 Create a new user in the system.
 
 **Request Body**
-\`\`\`json
+```json
 {
   "email": "user@example.com",
   "role": "admin"
 }
-\`\`\`
+```
 
 **Response**
-\`\`\`json
+```json
 {
   "status": "success",
   "id": "12345"
 }
-\`\`\`
-\`\`\`
+```
+```
+</pre>
 
 ___
 
