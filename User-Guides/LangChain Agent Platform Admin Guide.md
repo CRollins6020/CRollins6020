@@ -7,14 +7,12 @@
 ```mermaid
 
 graph TD
-    A[User] -->|Request| B[LangChain Agent Platform]
-    B -->|Process| C[Language Models]
-    B -->|Access| D[Tools & Integrations]
-    B -->|Store| E[Vector Database]
-    B -->|Log| F[Monitoring System]
-    C --> G[Response]
-    D --> G
-    E --> G
+    A[User] -->|Request| B[Platform]
+    B -->|Process| C[LLMs]
+    B -->|Access| D[Tools]
+    B -->|Store| E[Vector DB]
+    B -->|Log| F[Monitoring]
+    C & D & E --> G[Response]
     G -->|Return| A
 
 ```
