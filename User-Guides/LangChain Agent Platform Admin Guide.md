@@ -26,23 +26,25 @@ C & D & E-->G[Response]
 G-->|Return|A
 ```
 
+
 ## Table of Contents
-1. [System Architecture Overview](#system-architecture-overview)
-2. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-  1. [Infrastructure Requirements](#2-infrastructure-requirements)
-  1. [Installation & Setup](#3-installation--setup)
-  1. [LLM Integration](#4-llm-integration)
-  1. [Tool Configuration](#5-tool-configuration)
-  1. [Security Considerations](#6-security-considerations)
-  1. [Scaling & Performance](#7-scaling--performance)
-  1. [Observability & Monitoring](#8-observability--monitoring)
-  1. [User Management](#9-user-management)
-  1. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
-  1. [Compliance & Governance](#11-compliance--governance)
-  1. [Advanced Configurations](#12-advanced-configurations)
-  1. [Appendices](#appendices)
+**1. [System Architecture Overview](#system-architecture-overview)**
+**2. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)**
+**  1. [Infrastructure Requirements](#2-infrastructure-requirements)**
+**  1. [Installation & Setup](#3-installation--setup)**
+**  1. [LLM Integration](#4-llm-integration)**
+**  1. [Tool Configuration](#5-tool-configuration)**
+**  1. [Security Considerations](#6-security-considerations)**
+**  1. [Scaling & Performance](#7-scaling--performance)**
+**  1. [Observability & Monitoring](#8-observability--monitoring)**
+**  1. [User Management](#9-user-management)**
+**  1. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)**
+**  1. [Compliance & Governance](#11-compliance--governance)**
+**  1. [Advanced Configurations](#12-advanced-configurations)**
+**  1. [Appendices](#appendices)**
 
 ## System Architecture Overview
+### 🗺️ System Architecture Diagram
 
 
 
@@ -974,16 +976,16 @@ Secure handling of API credentials is critical for both security and operational
 
 **Best Practice API Key Management Security**
 
-1. **Never hardcode API keys** in source code or configuration files
-2. a dedicated **secrets management solution** (HashiCorp Vault, AWS Secrets Manager, etc.)
-3. **least privilege** for each key
-4. **separate API keys** for different environments (dev/test/prod)
-5. Establish a **regular rotation schedule** (30-90 days)
-6. **auditability** of key usage
-7. Set up **usage alerts** for abnormal patterns
-8. **emergency revocation procedures**
-9. Maintain a **key inventory** with owner information
-10. **access controls** for key retrieval
+**1. **Never hardcode API keys** in source code or configuration files**
+**2. a dedicated **secrets management solution** (HashiCorp Vault, AWS Secrets Manager, etc.)**
+**3. **least privilege** for each key**
+**4. **separate API keys** for different environments (dev/test/prod)**
+**5. Establish a **regular rotation schedule** (30-90 days)**
+**6. **auditability** of key usage**
+**7. Set up **usage alerts** for abnormal patterns**
+**8. **emergency revocation procedures****
+**9. Maintain a **key inventory** with owner information**
+**10. **access controls** for key retrieval**
 
 [⬆️ Back to Top](#langchain-agent-platform-administrators-guide)
 
@@ -2065,16 +2067,16 @@ Protecting sensitive data requires comprehensive privacy controls throughout the
 
 **Best Practice: Data Privacy Implementation**
 
-1. **data classification** system with clear handling requirements
-2. **Establish data flow mapping** to track where sensitive data moves
-3. **PII detection mechanisms** using pattern matching and ML techniques
-4. **automatic redaction** for high-risk data elements
-5. **purpose-specific retention** policies with automated enforcement
-6. **end-to-end encryption** for all sensitive data flows
-7. **encryption at rest** for databases and file storage
-8. **Establish secure key management** with proper rotation
-9. **access logging** for all sensitive data access
-10. **regular privacy impact assessments**
+**1. **data classification** system with clear handling requirements**
+**2. **Establish data flow mapping** to track where sensitive data moves**
+**3. **PII detection mechanisms** using pattern matching and ML techniques**
+**4. **automatic redaction** for high-risk data elements**
+**5. **purpose-specific retention** policies with automated enforcement**
+**6. **end-to-end encryption** for all sensitive data flows**
+**7. **encryption at rest** for databases and file storage**
+**8. **Establish secure key management** with proper rotation**
+**9. **access logging** for all sensitive data access**
+**10. **regular privacy impact assessments****
 
 [⬆️ Back to Top](#langchain-agent-platform-administrators-guide)
 
@@ -3099,25 +3101,25 @@ Proper administrator account management ensures secure system control.
 
 **Administrator Account Initialization Procedure:**
 
-1. **initial administrator account**
+**1. **initial administrator account****
    - a dedicated secure workstation
    - Generate strong random password (16+ characters, high complexity)
    - Document account creation with approval records
    - Store credentials in secure password manager
 
-2. **Configure multi-factor authentication**
+**2. **Configure multi-factor authentication****
    - Register hardware security key as primary method
    - Set up mobile authenticator app as backup
    - Configure recovery codes and store securely
    - Test both primary and backup methods
 
-3. **Set account security parameters**
+**3. **Set account security parameters****
    - Configure account lockout protection
    - Set password expiration policy
    - Enable enhanced logging for admin actions
    - IP access restrictions if applicable
 
-4. **Document and secure administrative access**
+**4. **Document and secure administrative access****
    - Record account details in system documentation
    - Store recovery information in secure location
    - Brief backup administrators on access procedures
@@ -3457,7 +3459,7 @@ Secure API access management enables programmatic integration while maintaining 
 
 **API Key Lifecycle Management Best Practices:**
 
-1. **Generation and Issuance**
+**1. **Generation and Issuance****
    - Generate cryptographically strong keys (minimum 256 bits)
    - a purpose-specific prefix system
    - Store only hashed versions of keys in databases
@@ -3465,35 +3467,35 @@ Secure API access management enables programmatic integration while maintaining 
    - Require business justification for key issuance
    - multi-party approval for high-privilege keys
 
-2. **Distribution and Storage**
+**2. **Distribution and Storage****
    - Display key only once during creation
    - Transmit via secure channels
    - Require secure storage in approved vaults
    - Never log full API keys in any system
    - secure key retrieval APIs
 
-3. **Usage and Monitoring**
+**3. **Usage and Monitoring****
    - Track usage patterns per key
    - anomaly detection
    - Set up alerts for unusual patterns
    - Provide usage dashboards for key owners
    - Track cost attribution per key
 
-4. **Rotation and Expiration**
+**4. **Rotation and Expiration****
    - Enforce maximum lifetime (90 days recommended)
    - automated expiration notification
    - Provide overlap period during rotation
    - Support temporary keys for time-bound needs
    - Maintain history of previous keys (hashed)
 
-5. **Revocation**
+**5. **Revocation****
    - Support immediate revocation capability
    - fast propagation of revocation
    - Provide emergency revocation process
    - Document impact of revocation
    - Track revocation in audit logs
 
-6. **Governance**
+**6. **Governance****
    - Regular review of active keys
    - Automated detection of unused keys
    - Compliance documentation of key management
@@ -4022,55 +4024,55 @@ Regular auditing ensures ongoing compliance and identifies improvement opportuni
 
 **Annual Compliance Audit Procedure**
 
-1. **Audit Planning (6-8 weeks before)**
+**1. **Audit Planning (6-8 weeks before)****
    - Define audit scope and objectives
    - Select audit team or external auditor
    - Establish audit timeline and milestones
    - Identify key stakeholders and points of contact
    - Review previous audit findings and remediation status
 
-2. **Pre-Audit Preparation (3-4 weeks before)**
+**2. **Pre-Audit Preparation (3-4 weeks before)****
    - self-assessment based on audit scope
    - Gather and organize required documentation
    - Review system architecture and changes since last audit
    - Prepare system access for auditors if required
    - Brief team members on audit process and expectations
 
-3. **Documentation Collection (2 weeks before)**
+**3. **Documentation Collection (2 weeks before)****
    - Compile policy and procedure documentation
    - Gather evidence of control implementation
    - Prepare sample data for control testing
    - Document system configurations
    - Compile metrics and monitoring evidence
 
-4. **Audit Execution (Audit period)**
+**4. **Audit Execution (Audit period)****
    - Host opening meeting with auditors
    - Facilitate interviews with key personnel
    - Provide requested evidence and documentation
    - Respond to auditor questions and requests
    - Document potential findings in real-time
 
-5. **Finding Review (During audit)**
+**5. **Finding Review (During audit)****
    - Review preliminary findings for accuracy
    - Provide additional context or evidence as needed
    - Clarify misunderstandings or misconceptions
    - Begin planning for remediation of confirmed findings
 
-6. **Remediation Planning (Post-audit)**
+**6. **Remediation Planning (Post-audit)****
    - Document all findings with clear descriptions
    - Assign owners for each remediation item
    - Establish completion timelines based on risk
    - Define acceptance criteria for each item
    - Allocate necessary resources for remediation
 
-7. **Remediation Implementation (According to plan)**
+**7. **Remediation Implementation (According to plan)****
    - corrective actions for each finding
    - Document changes made to address findings
    - Collect evidence of implementation
    - testing to verify effectiveness
    - Update policies and procedures as needed
 
-8. **Verification and Closure (Per timeline)**
+**8. **Verification and Closure (Per timeline)****
    - Submit evidence of remediation to auditors
    - Facilitate follow-up meetings or interviews
    - Obtain verification of finding closure
