@@ -62,6 +62,8 @@ RAG (Retrieval-Augmented Generation) offers significant advantages over using AI
 
 This guide provides practical steps to build, test, and scale these systems for business use.
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 2. Understanding RAG
@@ -92,6 +94,8 @@ RAG works best for these situations:
 - **Compliance & Legal**: Regulations, contracts, legal opinions
 
 RAG may not be necessary for general knowledge questions (like basic facts or concepts) that the AI already knows well.
+
+[Back to Top](#rag-implementation-guide)
 
 ---
 
@@ -358,6 +362,8 @@ def update_document(doc_id, new_content, vector_db):
     return False  # No update needed
 ```
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 5. Query Pipeline Development
@@ -488,6 +494,8 @@ Process retrieval results before sending to the LLM:
 - **Content Truncation**: Trim less relevant portions to fit context limits
 - **Recency Prioritization**: Favor newer information when appropriate
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 6. LLM Integration
@@ -611,6 +619,8 @@ Confidence: [High/Medium/Low] - [Brief explanation why]
 [Optional: Related questions you might be interested in]
 ```
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 7. Evaluation Framework
@@ -721,6 +731,8 @@ Example feedback integration workflow:
 6. Successful changes are deployed to production
 ```
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 8. Deployment & Scaling
@@ -785,6 +797,8 @@ Example cost optimization approaches:
 | Query Processing | Cache frequent queries | Lower latency, reduced API calls |
 | Document Processing | Filter irrelevant content before embedding | Reduced storage and processing costs |
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 ## 9. Troubleshooting & Optimization
@@ -812,6 +826,8 @@ Optimize system performance through targeted improvements:
 - **Caching Strategy**: Implement multi-level caching for queries and responses
 
 > **Remember:** Make incremental changes and measure their impact. RAG systems have many interacting components, and changes to one area can affect overall performance in unexpected ways.
+
+[Back to Top](#rag-implementation-guide)
 
 ---
 
@@ -846,6 +862,8 @@ A hospital network developed a RAG system to assist with clinical documentation:
   - 47% less time spent searching records
   - 23% increase in documentation completeness
   - 91% doctor satisfaction rating
+
+[Back to Top](#rag-implementation-guide)
 
 ---
 
@@ -906,6 +924,8 @@ Find complete code examples for RAG implementation in various frameworks:
 - [GitHub Repository: Enterprise RAG Examples](https://github.com/example/enterprise-rag-examples)
 - [Documentation: RAG Implementation Best Practices](https://docs.example.com/rag-best-practices)
 
+[Back to Top](#rag-implementation-guide)
+
 ---
 
 Ready to implement your own RAG system?
@@ -935,3 +955,5 @@ Implementing RAG effectively can transform how your organization leverages AI by
 5. Continuously refine based on usage patterns and feedback
 
 For questions and contributions to this guide, please contact your AI implementation team or submit an issue to the documentation repository.
+
+[Back to Top](#rag-implementation-guide)
