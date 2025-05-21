@@ -28,20 +28,20 @@ G-->|Return|A
 
 
 ## Table of Contents
-**1. [System Architecture Overview](#system-architecture-overview)**
-**2. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)**
-**  1. [Infrastructure Requirements](#2-infrastructure-requirements)**
-**  1. [Installation & Setup](#3-installation--setup)**
-**  1. [LLM Integration](#4-llm-integration)**
-**  1. [Tool Configuration](#5-tool-configuration)**
-**  1. [Security Considerations](#6-security-considerations)**
-**  1. [Scaling & Performance](#7-scaling--performance)**
-**  1. [Observability & Monitoring](#8-observability--monitoring)**
-**  1. [User Management](#9-user-management)**
-**  1. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)**
-**  1. [Compliance & Governance](#11-compliance--governance)**
-**  1. [Advanced Configurations](#12-advanced-configurations)**
-**  1. [Appendices](#appendices)**
+1. [System Architecture Overview](#system-architecture-overview)
+2. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
+3. [Infrastructure Requirements](#2-infrastructure-requirements)
+4. [Installation & Setup](#3-installation--setup)
+5. [LLM Integration](#4-llm-integration)
+6. [Tool Configuration](#5-tool-configuration)
+7. [Security Considerations](#6-security-considerations)
+8. [Scaling & Performance](#7-scaling--performance)
+9. [Observability & Monitoring](#8-observability--monitoring)
+10. [User Management](#9-user-management)
+11. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
+12. [Compliance & Governance](#11-compliance--governance)
+13. [Advanced Configurations](#12-advanced-configurations)
+14. [Appendices](#appendices)
 
 ## System Architecture Overview
 ### 🗺️ System Architecture Diagram
