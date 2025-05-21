@@ -12,10 +12,8 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ---
 
-<div style="background-color:#f0f8ff; padding: 10px; border-left: 4px solid #375D8A;">
-🎯 <strong>System Architecture Overview</strong><br>
-The diagram below illustrates the core architecture of the LangChain Agent Platform. It shows how user input flows through major components—such as the LLMs, tools, vector databases, and monitoring systems—before producing a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data in real time.
-</div>
+The diagram below illustrates the core system architecture of the LangChain Agent Platform. It shows how user inputs are processed through various system components—such as the language model, tools, and vector database—before returning a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data sources in real time.
+
 
 ```mermaid
 graph LR
@@ -28,6 +26,8 @@ C & D & E-->G[Response]
 G-->|Return|A
 ```
 
+## Table of Contents
+1. [System Architecture Overview](#system-architecture-overview)
 ## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
   1. [Infrastructure Requirements](#2-infrastructure-requirements)
@@ -42,6 +42,12 @@ G-->|Return|A
   1. [Compliance & Governance](#11-compliance--governance)
   1. [Advanced Configurations](#12-advanced-configurations)
   1. [Appendices](#appendices)
+
+## System Architecture Overview
+
+
+---
+
 ## 1. Introduction to LangChain Agent Architecture
 
 
