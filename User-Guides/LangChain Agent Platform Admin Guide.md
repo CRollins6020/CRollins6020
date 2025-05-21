@@ -17,7 +17,7 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-  1. [System Architecture Overview](#-system-architecture-overview)
+  - [🧭 System Architecture Overview](#-system-architecture-overview)
   1. [Infrastructure Requirements](#2-infrastructure-requirements)
   1. [Installation & Setup](#3-installation--setup)
   1. [LLM Integration](#4-llm-integration)
@@ -38,7 +38,7 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 ### 1.1 What is LangChain?
 
 
-### System Architecture Overview
+### 🧭 System Architecture Overview
 > 📌 This diagram provides a high-level view of how LangChain Agents interact with tools, models, and databases to deliver results.
 ```mermaid
 graph LR
@@ -4746,3 +4746,24 @@ Additional resources support ongoing learning and troubleshooting.
 **Retrieval-Augmented Generation (RAG)**: Combines LLMs with external document search.
 
 **Vector Store**: A database designed for similarity search over vector embeddings.
+
+---
+
+## Document Version History
+- **v1.1 (May 20, 2025)** – Finalized architecture section placement, added accessibility notes, versioning history, and glossary.
+- **v1.0** – Initial draft with core content, TOC, and diagrams.
+
+---
+
+## Appendix A: Glossary
+**Agent** – An autonomous process using an LLM to perform tasks and call tools.
+
+**Chain** – A sequence of operations within LangChain that transforms inputs to outputs.
+
+**Quantization** – A model compression technique that reduces computational load.
+
+**KV Cache** – Key-Value cache used to store transformer attention data for faster inference.
+
+**Vector Store** – A specialized database for similarity search over embeddings.
+
+**Retrieval-Augmented Generation (RAG)** – An architecture that combines LLMs with external knowledge sources for better factual grounding.
