@@ -12,7 +12,7 @@ Manage users, roles, and access across internal platforms. This reference includ
 
 Access detailed usage metrics and system logs. This reference supports filtering, pagination, and report exports—ideal for building dashboards and automating internal reporting.
 
-### **[Prompt Execution API](https://github.com/CRollins6020/CRollins6020/blob/main/API-References/prompt-execution-api.md)**
+### **[Prompt Execution API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/prompt-execution.md)**
 
 Submit and manage AI prompt requests. Designed for interacting with LLM-based agents, this API reference covers prompt submission, batch processing, validation, and session history retrieval.
 
