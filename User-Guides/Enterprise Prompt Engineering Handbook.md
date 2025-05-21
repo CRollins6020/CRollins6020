@@ -1,12 +1,14 @@
 # Enterprise Prompt Engineering Handbook
 
-*Practical instructions for writing effective AI prompts that generate consistent, accurate results—while avoiding common pitfalls that waste time and resources.*
+_Practical instructions for writing effective AI prompts that generate consistent, accurate results—while avoiding common pitfalls that waste time and resources._
 
-**Version:** 1.0
-**Author:** Corey Rollins
-**Last Updated:** May 21, 2025
-**Status:** Draft
-**Source:** [GitHub Repository](#)
+| **Metadata**     | **Value**             |
+|------------------|-----------------------|
+| **Version**      | 1.0                   |
+| **Author**       | Corey Rollins         |
+| **Last Updated** | May 21, 2025          |
+| **Status**       | Draft                 |
+| **Source**       | GitHub Repository     |
 
 ---
 
