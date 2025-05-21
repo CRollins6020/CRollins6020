@@ -30,18 +30,18 @@
 
 Retrieval-Augmented Generation (RAG) enhances language model outputs with organization-specific knowledge by connecting chatbots to private data sources. This guide outlines the essential components and steps to implement a secure, scalable, and maintainable RAG architecture in your environment.
 
-💡 **Tip**: Start small with one high-impact use case, then iterate.
+💡 **Tip**: Start small with one high-impact use case, then iterate. 
 
 ```mermaid
 
 graph TD
     A[User Query] --> B[Query Embedding]
-    B --> C[Vector Search (Top-K)]
+    B --> C[Vector Search – Top-K]
     C --> D[Document Chunks with Metadata]
     D --> E[Prompt Construction]
     E --> F[LLM Generation]
     F --> G[Answer with Sources]
-    
+
 ```
 
 ---
