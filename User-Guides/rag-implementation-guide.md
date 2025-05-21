@@ -2598,3 +2598,7 @@ def optimize_rag_performance(current_performance, target_performance):
                 },
                 {
                     "text":
+
+                    ```
+
+[Back to Top](#retrieval-augmented-generation-rag-implementation-guide)
