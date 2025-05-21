@@ -17,18 +17,24 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-  1. [Infrastructure Requirements](#2-infrastructure-requirements)
-  1. [Installation & Setup](#3-installation--setup)
-  1. [LLM Integration](#4-llm-integration)
-  1. [Tool Configuration](#5-tool-configuration)
-  1. [Security Considerations](#6-security-considerations)
-  1. [Scaling & Performance](#7-scaling--performance)
-  1. [Observability & Monitoring](#8-observability--monitoring)
-  1. [User Management](#9-user-management)
-  1. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
-  1. [Compliance & Governance](#11-compliance--governance)
-  1. [Advanced Configurations](#12-advanced-configurations)
-  1. [Appendices](#appendices)
+   - [What is LangChain?](#11-what-is-langchain)
+   - [System Architecture Overview](#system-architecture-overview)
+   - [Agent Framework Overview](#12-agent-framework-overview)
+   - [Enterprise Cases](#13-enterprise-cases)
+   - [Benefits and Limitations](#14-benefits-and-limitations)
+2. [Infrastructure Requirements](#2-infrastructure-requirements)
+3. [Installation & Setup](#3-installation--setup)
+4. [LLM Integration](#4-llm-integration)
+5. [Tool Configuration](#5-tool-configuration)
+6. [Security Considerations](#6-security-considerations)
+7. [Scaling & Performance](#7-scaling--performance)
+8. [Observability & Monitoring](#8-observability--monitoring)
+9. [User Management](#9-user-management)
+10. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
+11. [Compliance & Governance](#11-compliance--governance)
+12. [Advanced Configurations](#12-advanced-configurations)
+13. [Appendices](#appendices)
+---
 ## 1. Introduction to LangChain Agent Architecture
 
 
@@ -39,11 +45,8 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ### System Architecture Overview
 > 📌 This diagram provides a high-level view of how LangChain Agents interact with tools, models, and databases to deliver results.
-
 ```mermaid
-
 graph LR
-<!-- 📘 Diagram 1: This diagram shows the end-to-end request/response lifecycle. A user request enters the platform, is processed by LLMs, accesses tools and vector databases, logs activity, and returns a structured response. -->
 A[User]-->|Request|B[Platform]
 B-->|Process|C[LLMs]
 B-->|Access|D[Tools]
@@ -51,7 +54,6 @@ B-->|Store|E[VectorDB]
 B-->|Log|F[Monitor]
 C & D & E-->G[Response]
 G-->|Return|A
-
 ```
 
 LangChain is an open-source framework designed to simplify the development of applications using large language models (LLMs). It provides the necessary components to create, connect, and deploy AI agents that can interact with various data sources and tools.
@@ -132,7 +134,6 @@ LangChain agents are autonomous entities that use language models to determine w
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 2: This diagram outlines the internal loop of an agent's reasoning. It shows how input is routed through LLM decision-making, selects tools, stores memory, and loops through until a final response is produced. -->
 A[Input]-->B[Agent]
 B-->C[LLM]
 C-->D{Tools}
@@ -288,7 +289,6 @@ Deploying a self-hosted LangChain platform requires careful consideration of har
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 3: Description not specified. -->
         A[Agent Tier]-->B[16+CPU,64GB+]
         C[Model Tier]-->D[32+CPU,128GB+,GPU]
         E[DB Tier]-->F[8+CPU,32GB+]
@@ -382,7 +382,6 @@ Proper network design ensures secure, reliable agent interactions with external 
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 4: Description not specified. -->
     A[Internet]-->B[LB]-->C[API]
     C-->D[Agents]-->E[Models]
     C-->F[Docs]-->G[VectorDB]
@@ -853,7 +852,6 @@ LangChain supports integration with a wide range of language model providers, ea
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 5: Description not specified. -->
       A[OpenAI]-->A1[GPT-4/3.5]
       B[Anthropic]-->B1[Claude]
       C[Open]-->C1[Llama/Mistral]
@@ -1036,7 +1034,6 @@ Deploying open-source models provides control and cost benefits with added compl
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 6: Description not specified. -->
     A[Model Selection] --> B[Download Weights]
     B --> C[Quantization]
     C --> D[Inference Server]
@@ -2203,7 +2200,6 @@ Effective load distribution ensures optimal resource utilization and system reli
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 11: Description not specified. -->
     A[User Requests] --> B[Load Balancer]
     
     B --> C[API Gateway]
@@ -2602,7 +2598,6 @@ Systematic benchmarking establishes baselines and identifies optimization opport
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 13: Description not specified. -->
     A[Performance Testing Plan] --> B[Define KPIs]
     B --> C[Establish Baseline]
     C --> D[Regular Benchmarking]
@@ -2642,7 +2637,6 @@ Effective logging provides visibility into system behavior and aids in troublesh
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 14: Description not specified. -->
     A[App Logs]-->B[Structured]-->C[Aggregator]
     D[System Logs]-->B
     E[DB Logs]-->B
@@ -2890,7 +2884,6 @@ Proactive alerting enables rapid response to issues before they impact users.
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 15: Description not specified. -->
 A[Monitor]-->B{Alert?}-->|Yes|C[Notify]
 C-->D{Ack?}-->|No|E[Escalate]
 D-->|Yes|F[Resolve]
@@ -2954,7 +2947,6 @@ Effective visualization enables quick understanding of system state and performa
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 16: Description not specified. -->
     A[Metrics Collection] --> B[Time-Series Database]
     B --> C[Visualization Layer]
     C --> D[Role-Based Dashboards]
@@ -3189,7 +3181,6 @@ Efficient user provisioning enables secure, scalable user management.
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 17: Description not specified. -->
 A[Request]-->B[Registration]-->C[Approval]
 C-->D[Account]-->E[Role]-->F[Login]
 G[Identity]-->D
@@ -3523,7 +3514,6 @@ Ethical AI use requires clear policies and enforcement mechanisms.
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 18: Description not specified. -->
 A[Policy]-->B[Implement]-->C[Monitor]-->D[Audit]-->A
 E[Filter]-->F[Review]-->G[Approve]-->H[Use]
 ```
@@ -4101,7 +4091,6 @@ Coordinating multiple agents enables complex workflows and specialized functiona
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 19: Description not specified. -->
 A[Query]-->B[Orchestrator]
 B-->C{Tasks}
 C-->D[Research] & E[Calculate] & F[Create] & G[Plan]
@@ -4350,7 +4339,6 @@ Persistent memory enables agents to maintain context across interactions and ses
 
 ```mermaid
 graph TD
-<!-- 📘 Diagram 20: Description not specified. -->
   A[Docs]-->B[Process]-->C[Embed]-->D[Store]
   D-->E[Query]-->F[Results]-->G[Context]-->H[LLM]
 ```
@@ -4412,7 +4400,6 @@ Human oversight ensures agent quality, reliability, and safety.
 
 ```mermaid
 graph LR
-<!-- 📘 Diagram 21: Description not specified. -->
       A[Request]-->B[Agent]-->C{Confidence}
       C-->|Low|D[Human Review]
       C-->|High|E[Response]
