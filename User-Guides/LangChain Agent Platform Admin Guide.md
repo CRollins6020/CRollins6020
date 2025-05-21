@@ -1,8 +1,10 @@
-LangChain Agent Platform: Administrator's Guide
-Enterprise Deployment & Management
-Version: 1.0 | Author: Corey Rollins | Date: May 20, 2025
+# LangChain Agent Platform: Administrator's Guide
 
-System Architecture Overview
+*Enterprise Deployment & Management*
+
+**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
+
+## System Architecture Overview
 
 The diagram below illustrates the core architecture of the LangChain Agent Platform. As an administrator, understanding this flow is essential for effective deployment, monitoring, and troubleshooting.
 
@@ -10,9 +12,9 @@ The platform acts as an orchestration layer, connecting user requests to various
 
 This architecture is designed for scalability and flexibility, allowing administrators to configure each component according to enterprise requirements while maintaining a consistent workflow.
 
-```mermaidgraph 
+```mermaid
 
-TD
+graph TD
     A[User] -->|Request| B[LangChain Agent Platform]
     B -->|Process| C[Language Models]
     B -->|Access| D[Tools & Integrations]
