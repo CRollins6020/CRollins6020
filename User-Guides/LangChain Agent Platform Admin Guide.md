@@ -27,7 +27,8 @@ G-->|Return|A
 ```
 
 ## Table of Contents
-1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
+1. [System Architecture Overview](#system-architecture-overview)
+2. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
   1. [Infrastructure Requirements](#2-infrastructure-requirements)
   1. [Installation & Setup](#3-installation--setup)
   1. [LLM Integration](#4-llm-integration)
@@ -40,16 +41,17 @@ G-->|Return|A
   1. [Compliance & Governance](#11-compliance--governance)
   1. [Advanced Configurations](#12-advanced-configurations)
   1. [Appendices](#appendices)
-## 1. Introduction to LangChain Agent Architecture
-
-
----
 
 ## System Architecture Overview
 
 
+
 ---
 
+## 1. Introduction to LangChain Agent Architecture
+
+
+---
 
 ### 1.1 What is LangChain?
 
@@ -4747,4 +4749,4 @@ Additional resources support ongoing learning and troubleshooting.
 
 **Retrieval-Augmented Generation (RAG)**: Combines LLMs with external document search.
 
-**Vector Store**: A database designed for similarity search over vector embeddings. 
+**Vector Store**: A database designed for similarity search over vector embeddings.
