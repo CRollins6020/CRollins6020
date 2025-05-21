@@ -8,7 +8,7 @@ Clear, practical documentation to help users navigate complex AI systems with co
 
 A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private. This comprehensive resource covers setup, configuration, security, and maintenance for enterprise deployments.
 
-### **[COMING SOON] RAG Implementation Guide**
+### **[RAG Implementation Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/rag-implementation-guide.md)**
 
 Learn how to connect AI chatbots to your organization's internal documents and data sources, enabling them to deliver context-aware answers based on your business content—not generic web data. This guide will walk through document processing, vector database setup, query handling, and LLM integration.
 
