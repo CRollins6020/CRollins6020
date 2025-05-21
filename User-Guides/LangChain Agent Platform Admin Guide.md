@@ -4795,7 +4795,6 @@ Additional resources support ongoing learning and troubleshooting.
 
 * Alphabetical listing of key topics with page references
 
-[⬆️ Back to Top](#langchain-agent-platform-administrators-guide)
 ---
 ## Glossary
 **Agent**: An autonomous process using an LLM to perform tasks and call tools.
