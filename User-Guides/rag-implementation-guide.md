@@ -70,7 +70,67 @@ Organizations across industries are implementing RAG to solve specific business 
 
 RAG combines search capabilities with AI text generation. Unlike standard AI models that rely solely on training data, RAG systems can access, retrieve, and utilize your organization's documents when answering questions.
 
-![RAG Architecture](https://raw.githubusercontent.com/example/enterprise-rag-examples/main/images/rag_architecture.png)
+```
+                  ┌───────────────────┐
+                  │                   │
+                  │  User Question    │
+                  │                   │
+                  └─────────┬─────────┘
+                            │
+                            ▼
+             ┌──────────────────────────┐
+             │                          │
+             │  Query Processing        │
+             │                          │
+             └──────────────┬───────────┘
+                            │
+                            ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│            Retrieval System                   │
+│                                               │
+│  ┌─────────────────┐      ┌───────────────┐  │
+│  │ Query Embedding │─────▶│ Vector Search │  │
+│  └─────────────────┘      └───────┬───────┘  │
+│                                   │           │
+└───────────────────────────────────┼───────────┘
+                                    │
+                  ┌─────────────────▼─────────────────┐
+                  │                                   │
+                  │      Retrieved Context            │
+                  │                                   │
+                  └─────────────────┬─────────────────┘
+                                    │
+                                    ▼
+              ┌─────────────────────────────────────┐
+              │                                     │
+              │     Prompt Construction             │
+              │                                     │
+              │  ┌─────────────┐  ┌─────────────┐  │
+              │  │ System      │  │ Retrieved   │  │
+              │  │ Instructions│  │ Context     │  │
+              │  └─────────────┘  └─────────────┘  │
+              │         │              │           │
+              │         └──────┬───────┘           │
+              │                │                   │
+              └────────────────┼───────────────────┘
+                               │
+                               ▼
+                     ┌──────────────────┐
+                     │                  │
+                     │   Large Language │
+                     │   Model (LLM)    │
+                     │                  │
+                     └────────┬─────────┘
+                              │
+                              ▼
+                     ┌──────────────────┐
+                     │                  │
+                     │   Response to    │
+                     │   User Question  │
+                     │                  │
+                     └──────────────────┘
+```
 
 The core components of a RAG system include:
 
