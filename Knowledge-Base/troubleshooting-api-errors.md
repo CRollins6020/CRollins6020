@@ -4,7 +4,7 @@
 
 | **Field**       | **Value**                    |
 |------------------|------------------------------|
-| **Version**      | 1.1                          |
+| **Version**      | 1.2                          |
 | **Author**       | Corey Rollins               |
 | **Last Updated** | May 21, 2025                |
 | **Status**       | Draft                        |
@@ -19,6 +19,7 @@
 3. [Common Errors and Fixes](#3-common-errors-and-fixes)  
 4. [Advanced Errors and Edge Cases](#4-advanced-errors-and-edge-cases)  
 5. [Investigating Failed Requests](#5-investigating-failed-requests)  
+6. [Reusable Code & Templates](#6-reusable-code--templates)  
 
 ---
 
@@ -119,6 +120,73 @@ curl -X POST https://api.example.com/v1/users \
 ```
 
 Use the results to validate your assumptions and compare against expected responses. This helps isolate client-side vs. server-side issues. Share the full trace and request ID with engineering if escalation is needed.
+
+---
+
+### 5.3 Additional Example: GET Request with Invalid Token
+
+```bash
+curl -X GET https://api.example.com/v1/profile   -H "Authorization: Bearer INVALID_OR_EXPIRED_TOKEN"
+```
+
+Expected output:
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "Unauthorized: Invalid or expired token.",
+    "request_id": "abc123"
+  }
+}
+```
+
+---
+
+## 6. Reusable Code & Templates
+
+> 🧩 Copy-paste ready snippets for documentation reuse
+
+### 6.1 Standard Retry Logic (Python)
+
+```python
+import time
+import requests
+
+for attempt in range(3):
+    response = requests.get(url)
+    if response.status_code == 200:
+        break
+    elif response.status_code in [429, 503, 408]:
+        time.sleep(2 ** attempt)
+    else:
+        raise Exception(response.text)
+```
+
+---
+
+### 6.2 Authorization Header Example
+
+```http
+Authorization: Bearer <access_token>
+```
+
+Ensure your token is active, correctly scoped, and not expired.
+
+---
+
+### 6.3 Error Response Template
+
+```json
+{
+  "error": {
+    "code": 403,
+    "message": "Access denied: insufficient permissions.",
+    "request_id": "xyz789",
+    "timestamp": "2025-05-21T12:00:00Z"
+  }
+}
+```
 
 ---
 
