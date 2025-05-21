@@ -18,7 +18,10 @@
 4. [Common Pitfalls and How to Avoid Them](#4-common-pitfalls-and-how-to-avoid-them)
 5. [Evaluation and Iteration](#5-evaluation-and-iteration)
 6. [Best Practices and Templates](#6-best-practices-and-templates)
-7. [Resources and Next Steps](#7-resources-and-next-steps)
+7. [Troubleshooting Prompt Issues](#7-troubleshooting-prompt-issues)
+8. [Visual Workflow Overview](#8-visual-workflow-overview)
+9. [Next Steps and Resources](#9-next-steps-and-resources)
+10. [Back to Top](#enterprise-prompt-engineering-handbook)
 
 ---
 
@@ -98,6 +101,15 @@ Use a consistent rubric when comparing outputs:
 
 Use version control to track prompt revisions. Document changes and test results.
 
+### Example Evaluation Rubric
+
+| Criteria    | Rating (1–5) | Notes |
+| ----------- | ------------ | ----- |
+| Accuracy    |              |       |
+| Consistency |              |       |
+| Clarity     |              |       |
+| Security    |              |       |
+
 ---
 
 ## 6. Best Practices and Templates
@@ -126,7 +138,43 @@ You're a {{persona}}. Based on the following {{input}}, {{task}}. Format as {{ou
 
 ---
 
-## 7. Resources and Next Steps
+## 7. Troubleshooting Prompt Issues
+
+| Issue                | Cause                                          | Solution                                   |
+| -------------------- | ---------------------------------------------- | ------------------------------------------ |
+| Hallucinated facts   | Prompt is too vague or lacks grounding context | Add constraints or provide example outputs |
+| Inconsistent tone    | No tone guidance provided                      | Add role/persona and tone instructions     |
+| Incomplete responses | Output length constraint too tight             | Adjust token or character limits           |
+| Format errors        | Model misunderstood structure                  | Use formatting examples (JSON, Markdown)   |
+
+💡 *Tip: Keep a troubleshooting log for recurring issues across prompt versions.*
+
+---
+
+## 8. Visual Workflow Overview
+
+```mermaid
+flowchart TD
+    A[Define the Goal] --> B[Add Context]
+    B --> C[Write Clear Instructions]
+    C --> D[Apply Constraints]
+    D --> E[Test and Revise]
+    E --> F[Use Template Repository]
+    F --> G[Evaluate for Consistency & Clarity]
+```
+
+---
+
+## 9. Next Steps and Resources
+
+### Actionable Next Steps
+
+* Review existing prompts using the rubric in Section 5.
+* Create modular templates using the format in Section 6.
+* Maintain a shared repository for prompt evaluation and reuse.
+* Document issues encountered using the troubleshooting table.
+
+### Resources
 
 * [Prompt Engineering Templates (GitHub)](#)
 * [LLM Behavior Evaluation Guide](#)
@@ -136,4 +184,4 @@ For questions or suggestions, contact the documentation lead.
 
 ---
 
-**Back to top**
+[Back to top](#enterprise-prompt-engineering-handbook)
