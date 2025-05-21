@@ -2,9 +2,7 @@
 
 *Enterprise Deployment & Management*
 
-**Version**: 1.1  
-**Author**: Corey Rollins  
-**Last Updated**: May 20, 2025
+**Version**: 1.1 | **Author**: Corey Rollins | **Last Updated**: May 20, 2025
 
 ---
 
@@ -13,9 +11,6 @@
 This Administrator's Guide is designed for technical teams deploying and managing the LangChain Agent Platform in enterprise environments. It covers architecture, setup, integration with language models, tool configuration, security, and scaling best practices. Whether you're deploying on-premises or in the cloud, this guide provides actionable steps and configuration samples to ensure a secure, reliable, and scalable deployment.
 
 ---
-
-
-**Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
 ## System Architecture Overview
 
