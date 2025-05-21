@@ -12,27 +12,34 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 
 ---
 
-## Table of Contents
 
+
+
+## Table of Contents
 1. [Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)
-2. [Infrastructure Requirements](#2-infrastructure-requirements)
-3. [Installation & Setup](#3-installation--setup)
-4. [LLM Integration](#4-llm-integration)
-5. [Tool Configuration](#5-tool-configuration)
-6. [Security Considerations](#6-security-considerations)
-7. [Scaling & Performance](#7-scaling--performance)
-8. [Observability & Monitoring](#8-observability--monitoring)
-9. [User Management](#9-user-management)
-10. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
-11. [Compliance & Governance](#11-compliance--governance)
-12. [Advanced Configurations](#12-advanced-configurations)
-13. [Appendices](#appendices)
+  - [🧭 System Architecture Overview](#-system-architecture-overview)
+  1. [Infrastructure Requirements](#2-infrastructure-requirements)
+  1. [Installation & Setup](#3-installation--setup)
+  1. [LLM Integration](#4-llm-integration)
+  1. [Tool Configuration](#5-tool-configuration)
+  1. [Security Considerations](#6-security-considerations)
+  1. [Scaling & Performance](#7-scaling--performance)
+  1. [Observability & Monitoring](#8-observability--monitoring)
+  1. [User Management](#9-user-management)
+  1. [Troubleshooting & Maintenance](#10-troubleshooting--maintenance)
+  1. [Compliance & Governance](#11-compliance--governance)
+  1. [Advanced Configurations](#12-advanced-configurations)
+  1. [Appendices](#appendices)
+## 1. Introduction to LangChain Agent Architecture
+
 
 ---
 
+### 1.1 What is LangChain?
+
+
 ### 🧭 System Architecture Overview
 > 📌 This diagram provides a high-level view of how LangChain Agents interact with tools, models, and databases to deliver results.
-
 ```mermaid
 graph LR
 A[User]-->|Request|B[Platform]
@@ -42,15 +49,7 @@ B-->|Store|E[VectorDB]
 B-->|Log|F[Monitor]
 C & D & E-->G[Response]
 G-->|Return|A
-
 ```
-
-## 1. Introduction to LangChain Agent Architecture
-
-
----
-
-### 1.1 What is LangChain?
 
 LangChain is an open-source framework designed to simplify the development of applications using large language models (LLMs). It provides the necessary components to create, connect, and deploy AI agents that can interact with various data sources and tools.
 
