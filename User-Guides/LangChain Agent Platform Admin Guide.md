@@ -10,11 +10,6 @@
 
 This Administrator’s Guide is for technical teams responsible for deploying and managing the LangChain Agent Platform in enterprise environments. It covers system architecture, installation, LLM integration, tool configuration, security hardening, scaling strategies, and observability. Whether deploying on-premises or in the cloud, this guide provides actionable steps and configuration examples to ensure a secure, scalable, and reliable implementation.
 
----
-
-The diagram below illustrates the core system architecture of the LangChain Agent Platform. It shows how user inputs are processed through various system components—such as the language model, tools, and vector database—before returning a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data sources in real time.
-
-
 <div style="background-color:#f0f8ff; padding: 10px; border-left: 4px solid #375D8A;">
 🎯 <strong>System Architecture Overview</strong><br>
 The diagram below illustrates the core architecture of the LangChain Agent Platform. It shows how user input flows through major components—such as the LLMs, tools, vector databases, and monitoring systems—before producing a response. This orchestration enables agents to reason, access knowledge, and act on enterprise data in real time.
