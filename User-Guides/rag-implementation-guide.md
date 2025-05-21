@@ -1,4 +1,4 @@
-**RAG Implementation Guide**
+# RAG Implementation Guide
 
 *Connecting AI Chatbots to Your Organization's Knowledge*
 
