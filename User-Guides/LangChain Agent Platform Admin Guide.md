@@ -4747,4 +4747,4 @@ Additional resources support ongoing learning and troubleshooting.
 
 **Retrieval-Augmented Generation (RAG)**: Combines LLMs with external document search.
 
-**Vector Store**: A database designed for similarity search over vector embeddings.
+**Vector Store**: A database designed for similarity search over vector embeddings. 
