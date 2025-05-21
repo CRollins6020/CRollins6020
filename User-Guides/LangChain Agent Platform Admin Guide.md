@@ -19,9 +19,7 @@ B-->|Process|C[LLMs]
 B-->|Access|D[Tools]
 B-->|Store|E[VectorDB]
 B-->|Log|F[Monitor]
-C-->G[Response]
-D-->G
-E-->G
+C & D & E-->G[Response]
 G-->|Return|A
     
   ```
@@ -121,21 +119,17 @@ LangChain agents are autonomous entities that use language models to determine w
 
 ```mermaid
 graph TD
-    A[User Input] --> B[Agent Controller]
-    B --> C[Language Model]
-    C --> D{Tool Selection}
-    D --> E[Search Tool]
-    D --> F[Calculator Tool]
-    D --> G[Database Tool]
-    D --> H[API Tool]
-    E --> I[Tool Results]
-    F --> I
-    G --> I
-    H --> I
-    I --> B
-    B --> J[Response Generator]
-    J --> K[User Response]
-    L[Memory System] <--> B
+graph LR
+A[Input]-->B[Agent]
+B-->C[LLM]
+C-->D{Tools}
+D-->E[Search]
+D-->F[Calc]
+D-->G[DB]
+E & F & G-->H[Results]
+H-->B
+B-->I[Response]
+J[Memory]<-->B
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
@@ -271,21 +265,12 @@ LangChain agents can be deployed in various enterprise contexts to automate and 
 Deploying a self-hosted LangChain platform requires careful consideration of hardware resources to ensure optimal performance.
 
 ```mermaid
-graph TD
-    subgraph "Infrastructure Components"
-        A[Agent Orchestration Tier] --> B[16+ CPU Cores]
-        A --> C[64GB+ RAM]
-        A --> D[100GB+ SSD]
-        
-        E[Model Inference Tier] --> F[32+ CPU Cores]
-        E --> G[128GB+ RAM]
-        E --> H[2TB+ SSD]
-        E --> I[GPU Resources]
-        
-        J[Database Tier] --> K[8+ CPU Cores]
-        J --> L[32GB+ RAM]
-        J --> M[High IOPS Storage]
-    end
+graph LR
+    graph LR
+        A[Agent Tier]-->B[16+CPU,64GB+]
+        C[Model Tier]-->D[32+CPU,128GB+,GPU]
+        E[DB Tier]-->F[8+CPU,32GB+]
+    
 ```
 
 * **Minimum requirements**
@@ -372,20 +357,12 @@ Proper network design ensures secure, reliable agent interactions with external 
   * Inspection of API traffic for malicious content
 
 ```mermaid
-graph TD
-    A[Internet] -- HTTPS --> B[Load Balancer]
-    B -- HTTP/S --> C[API Gateway]
-    C -- Internal Network --> D[Agent Cluster]
-    C -- Internal Network --> E[Document Processing]
-    D -- Internal Network --> F[Vector Database]
-    D -- Internal Network --> G[Model Inference]
-    D -- HTTPS --> H[External APIs]
-    E -- Internal Network --> F
-    I[Admin Access] -- SSH/HTTPS --> J[Management Plane]
-    J -- Internal Network --> D
-    J -- Internal Network --> E
-    J -- Internal Network --> F
-    J -- Internal Network --> G
+  graph LR
+    A[Internet]-->B[LB]-->C[API]
+    C-->D[Agents]-->E[Models]
+    C-->F[Docs]-->G[VectorDB]
+    D-->G
+    H[Admin]-->I[Mgmt]-->D & F & G & E
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
@@ -816,21 +793,11 @@ LangChain supports integration with a wide range of language model providers, ea
 
 ```mermaid
 graph TD
-    subgraph "LLM Providers"
-        A[OpenAI] --> A1[GPT-4]
-        A --> A2[GPT-3.5]
-        A --> A3[Embeddings]
-        
-        B[Anthropic] --> B1[Claude 3 Opus]
-        B --> B2[Claude 3 Sonnet]
-        B --> B3[Claude 3 Haiku]
-        
-        C[Hugging Face] --> C1[Open Models]
-        C --> C2[Inference API]
-        
-        D[Self-hosted] --> D1[Llama 3]
-        D --> D2[Mistral]
-        D --> D3[Falcon]
+    graph LR
+      A[OpenAI]-->A1[GPT-4/3.5]
+      B[Anthropic]-->B1[Claude]
+      C[Open]-->C1[Llama/Mistral]
+      A & B & C-->D[LangChain]-->E[Agent]
     end
     
     subgraph "Integration Layer"
@@ -2536,34 +2503,12 @@ graph LR
 Effective logging provides visibility into system behavior and aids in troubleshooting.
 
 ```mermaid
-graph TD
-    subgraph "Logging Components"
-        A[Application Logs] --> B[JSON Structured Logging]
-        C[System Logs] --> B
-        D[Database Logs] --> B
-        E[LLM API Logs] --> B
-    end
-    
-    subgraph "Log Pipeline"
-        B --> F[Log Aggregator]
-        F --> G[Log Storage]
-        G --> H[Retention Policy]
-    end
-    
-    subgraph "Analysis Tools"
-        G --> I[Search & Query]
-        G --> J[Dashboards]
-        G --> K[Alerts]
-        G --> L[Anomaly Detection]
-    end
-    
-    subgraph "Log Levels"
-        M[ERROR - Critical issues]
-        N[WARN - Potential problems]
-        O[INFO - Key events]
-        P[DEBUG - Troubleshooting]
-        Q[TRACE - Detailed flows]
-    end
+  graph TD
+    A[App Logs]-->B[Structured]-->C[Aggregator]
+    D[System Logs]-->B
+    E[DB Logs]-->B
+    C-->F[Storage]-->G[Analysis] & H[Alerts]
+
 ```
 
 <table>
@@ -2800,26 +2745,10 @@ Proactive alerting enables rapid response to issues before they impact users.
   * Resolution tracking
 
 ```mermaid
-flowchart TD
-    A[Monitoring System] --> B{Threshold Exceeded?}
-    B -- No --> A
-    B -- Yes --> C[Generate Alert]
-    C --> D[Notify Primary On-call]
-    D --> E{Acknowledged?}
-    E -- Yes --> F[Investigation]
-    E -- No --> G[Wait SLA Time]
-    G --> H{Still Unacknowledged?}
-    H -- No --> F
-    H -- Yes --> I[Escalate to Secondary]
-    I --> J{Acknowledged?}
-    J -- Yes --> F
-    J -- No --> K[Wait SLA Time]
-    K --> L[Escalate to Manager]
-    L --> F
-    F --> M{Resolved?}
-    M -- Yes --> N[Close Alert]
-    M -- No --> O[Update Status]
-    O --> F
+graph TD
+A[Monitor]-->B{Alert?}-->|Yes|C[Notify]
+C-->D{Ack?}-->|No|E[Escalate]
+D-->|Yes|F[Resolve]
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
@@ -3101,28 +3030,10 @@ Efficient user provisioning enables secure, scalable user management.
 </table>
 
 ```mermaid
-flowchart TD
-    A[User Request] --> B{Self-registration Enabled?}
-    B -- Yes --> C[User Completes Registration Form]
-    B -- No --> D[Admin Creates Account]
-    
-    C --> E{Approval Required?}
-    E -- Yes --> F[Manager Approval]
-    E -- No --> G[Automatic Approval]
-    
-    F --> H[Account Provisioning]
-    G --> H
-    D --> H
-    
-    H --> I[Role Assignment]
-    I --> J[Welcome Email]
-    J --> K[First Login]
-    K --> L[MFA Setup]
-    L --> M[Initial Training]
-    
-    N[Identity Provider] -- SSO Integration --> H
-    O[User Directory] -- Sync --> H
-    P[HR System] -- Automation --> D
+graph LR
+A[Request]-->B[Registration]-->C[Approval]
+C-->D[Account]-->E[Role]-->F[Login]
+G[Identity]-->D
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
@@ -3440,36 +3351,9 @@ Secure API access management enables programmatic integration while maintaining 
 Ethical AI use requires clear policies and enforcement mechanisms.
 
 ```mermaid
-graph TD
-    subgraph "AI Governance Framework"
-        A[Policy Definition]
-        B[Implementation]
-        C[Monitoring]
-        D[Audit & Review]
-        
-        A --> B
-        B --> C
-        C --> D
-        D -->|Feedback Loop| A
-    end
-    
-    subgraph "Policy Components"
-        E[Acceptable Use]
-        F[Prohibited Uses]
-        G[User Rights]
-        H[Oversight Procedures]
-        I[Risk Assessments]
-    end
-    
-    subgraph "Enforcement Mechanisms"
-        J[Automated Filters]
-        K[Human Review]
-        L[Audit Trails]
-        M[Incident Response]
-    end
-    
-    A --- E & F & G & H & I
-    B --- J & K & L & M
+graph LR
+A[Policy]-->B[Implement]-->C[Monitor]-->D[Audit]-->A
+E[Filter]-->F[Review]-->G[Approve]-->H[Use]
 ```
 
 <table>
@@ -3997,33 +3881,11 @@ Coordinating multiple agents enables complex workflows and specialized functiona
 
 ```mermaid
 graph TD
-    A[User Query] --> B[Orchestrator Agent]
-    
-    B --> C{Task Classification}
-    
-    C --> D[Research Agent]
-    C --> E[Calculation Agent]
-    C --> F[Creativity Agent]
-    C --> G[Planning Agent]
-    
-    D -->|Results| H[Integration Layer]
-    E -->|Results| H
-    F -->|Results| H
-    G -->|Results| H
-    
-    H --> I[Response Formulation]
-    I --> J[Response to User]
-    
-    subgraph "Shared Resources"
-        K[Knowledge Base]
-        L[Tool Repository]
-        M[Memory System]
-    end
-    
-    D & E & F & G --- K
-    D & E & F & G --- L
-    D & E & F & G --- M
-    B --- M
+A[Query]-->B[Orchestrator]
+B-->C{Tasks}
+C-->D[Research] & E[Calculate] & F[Create] & G[Plan]
+D & E & F & G-->H[Integration]-->I[Response]
+J[Resources]---D & E & F & G
 ```
 
 <table>
@@ -4261,38 +4123,8 @@ Persistent memory enables agents to maintain context across interactions and ses
 
 ```mermaid
 graph TD
-    A[User Interaction] --> B[Memory Manager]
-    
-    B --> C[Short-term Memory]
-    B --> D[Long-term Memory]
-    
-    C --> E[Conversation Buffer]
-    C --> F[Working Memory]
-    
-    D --> G[Entity Store]
-    D --> H[Knowledge Base]
-    D --> I[Interaction History]
-    
-    J[Retrieval System] --> K{Query Type}
-    
-    K -- Recent Context --> E
-    K -- Active Entities --> F
-    K -- Entity Information --> G
-    K -- Domain Knowledge --> H
-    K -- Historical Context --> I
-    
-    L[Memory Optimizer] --> M[Token Management]
-    L --> N[Relevance Scoring]
-    L --> O[Privacy Rules]
-    L --> P[Retention Policy]
-    
-    M --> B
-    N --> B
-    O --> B
-    P --> B
-    
-    Q[Agent] --> J
-    J --> Q
+  A[Docs]-->B[Process]-->C[Embed]-->D[Store]
+  D-->E[Query]-->F[Results]-->G[Context]-->H[LLM]
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
@@ -4348,46 +4180,12 @@ Human oversight ensures agent quality, reliability, and safety.
   * Learning loop implementation
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant Agent
-    participant Supervisor
-    participant Reviewer
-    
-    User->>Agent: Submit Request
-    Agent->>Agent: Process Request
-    
-    alt Confidence Below Threshold
-        Agent->>Supervisor: Request Review
-        Supervisor->>Supervisor: Evaluate Response
-        
-        alt Approve
-            Supervisor->>Agent: Approve Response
-            Agent->>User: Deliver Response
-        else Modify
-            Supervisor->>Agent: Provide Corrections
-            Agent->>Agent: Update Response
-            Agent->>User: Deliver Updated Response
-        else Reject
-            Supervisor->>Agent: Reject Response
-            Agent->>User: Request Clarification
-        end
-    else High Risk Category
-        Agent->>Supervisor: Mandatory Review
-        Supervisor->>Agent: Review and Approve/Modify
-        Agent->>User: Deliver Response
-    else Standard Processing
-        Agent->>User: Deliver Response
-        
-        opt Random Sampling
-            Agent->>Reviewer: Sample for Quality Review
-            Reviewer->>Agent: Provide Feedback
-        end
-    end
-    
-    User->>Agent: Provide Feedback
-    Agent->>Reviewer: Record User Feedback
-    Reviewer->>Agent: Update Quality Metrics
+    graph LR
+      A[Request]-->B[Agent]-->C{Confidence}
+      C-->|Low|D[Human Review]
+      C-->|High|E[Response]
+      D-->|Approve/Edit|E
+      F[Feedback]-->B
 ```
 
 <div align="right"><a href="#langchain-agent-platform-administrators-guide">Back to Top</a></div>
