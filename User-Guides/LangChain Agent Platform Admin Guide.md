@@ -20,7 +20,6 @@ This Administrator’s Guide is for technical teams responsible for deploying an
 [Table of Contents](#table-of-contents)  
 [1. Introduction to LangChain Agent Architecture](#1-introduction-to-langchain-agent-architecture)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.1 What is LangChain?](#11-what-is-langchain)  
-&nbsp;&nbsp;&nbsp;&nbsp;[1.2 System Architecture Overview](#12-system-architecture-overview)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.2 Agent Framework Overview](#12-agent-framework-overview)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.3 Enterprise Cases](#13-enterprise-cases)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.4 Benefits and Limitations](#14-benefits-and-limitations)  
