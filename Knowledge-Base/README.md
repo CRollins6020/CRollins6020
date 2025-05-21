@@ -10,7 +10,7 @@ Identify, interpret, and resolve common API error responses. This article walks 
 ### **[Integration Playbook](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/integration-playbook.md)**  
 A tactical guide for integrating AI services with existing internal platforms. Covers key considerations like environment setup, authentication, and handling edge cases across deployment stages.
 
-### **[Dev Writing Guidelines](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/dev-writing-guidelines.md)**  
+### **[Dev Writing Guidelines](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/dev-writing-guidlines.md)**  
 Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.
 
 ---
