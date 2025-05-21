@@ -5,6 +5,7 @@
 **Version**: 1.0 | **Author**: Corey Rollins | **Date**: May 20, 2025
 
 ```mermaid
+
 graph TD
     A[User] -->|Request| B[LangChain Agent Platform]
     B -->|Process| C[Language Models]
@@ -14,7 +15,9 @@ graph TD
     C --> G[Response]
     D --> G
     E --> G
-    G -->|Return| A```
+    G -->|Return| A
+
+```
 
 <h2>Table of Contents</h2>
 <ol>
