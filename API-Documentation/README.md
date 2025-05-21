@@ -8,7 +8,7 @@ Concise, implementation-ready documentation for developers integrating with inte
 
 Manage users, roles, and access across internal platforms. This reference includes authentication flows, CRUD operations, and examples for integrating secure identity management into your systems.
 
-### **[Reporting & Analytics API](https://github.com/CRollins6020/CRollins6020/blob/main/API-References/reporting-api.md)**
+### **[Reporting & Analytics API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/reporting-api.md)**
 
 Access detailed usage metrics and system logs. This reference supports filtering, pagination, and report exports—ideal for building dashboards and automating internal reporting.
 
