@@ -3,13 +3,13 @@
 
 *Connect AI chatbots to your internal documents and data sources for context-aware responses tailored to your business needs.*
 
-| **Metadata**       | **Value**                          |
-|--------------------|------------------------------------|
-| **Version**        | 1.2                                |
-| **Author**         | Corey Rollins                      |
-| **Last Updated**   | May 21, 2025                       |
-| **Status**         | Draft                              |
-| **Source**         | _To be added when published_       |
+| **Metadata**     | **Value**                          |
+|------------------|------------------------------------|
+| **Version**      | 1.2                                |
+| **Author**       | Corey Rollins                      |
+| **Last Updated** | May 21, 2025                       |
+| **Status**       | Draft                              |
+| **Source**       | _To be added when published_       |
 
 ---
 
