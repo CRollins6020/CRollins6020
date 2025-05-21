@@ -2,6 +2,10 @@
 
 *Enterprise Deployment & Management*
 
+**Version**: 1.1  
+**Author**: Corey Rollins  
+**Last Updated**: May 20, 2025
+
 ---
 
 ## Executive Summary
