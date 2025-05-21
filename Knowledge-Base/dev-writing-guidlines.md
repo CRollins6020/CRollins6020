@@ -8,7 +8,7 @@
 | **Version**      | 1.0                           |
 | **Author**       | Corey Rollins                |
 | **Last Updated** | May 21, 2025                 |
-| **Status**       | Draft                         |
+| **Status**       | Production                    |
 | **Source**       | GitHub Repository (TBD)       |
 
 ---
@@ -28,6 +28,8 @@
 
 This guide ensures consistent, high-quality internal documentation across engineering and technical writing teams. It outlines clear standards for structure, tone, and formatting—supporting reusability and cross-team clarity.
 
+[🔝 Back to top](#table-of-contents)
+
 ___
 
 ## 2. Voice and Tone
@@ -43,6 +45,8 @@ Guidelines:
 - Use plain, domain-relevant language  
 - Explain the **why** as well as the **how**  
 - Clarify complexity without oversimplifying  
+
+[🔝 Back to top](#table-of-contents)
 
 ___
 
@@ -64,6 +68,8 @@ if not user_data:
     raise ValueError("Missing input")
 ```
 
+[🔝 Back to top](#table-of-contents)
+
 ___
 
 ## 4. Content Patterns
@@ -79,15 +85,18 @@ Use these content patterns to improve consistency:
 
 💡 **Tip:** Keep procedural steps short and scannable—1–2 lines max per step.
 
+[🔝 Back to top](#table-of-contents)
+
 ___
 
 ## 5. Sample Templates
 
 **🧰 KB Article**
-<pre>
+
+<!--
 ```markdown
-# 🔧 &lt;Title of KB&gt;
-*&lt;Short summary of task or problem&gt;*
+# 🔧 <Title of KB>
+*<Short summary of task or problem>*
 
 | Field | Value |
 |-------|-------|
@@ -113,10 +122,11 @@ Brief explanation of task or problem.
 
 Describe common errors and fixes.
 ```
-</pre>
+-->
 
 **📄 API Method Block**
-<pre>
+
+<!--
 ```markdown
 ### `POST /users/create`
 
@@ -138,7 +148,9 @@ Create a new user in the system.
 }
 ```
 ```
-</pre>
+-->
+
+[🔝 Back to top](#table-of-contents)
 
 ___
 
@@ -150,7 +162,9 @@ Label snippets and reuse consistently:
 - ✅ `auth-error-code-table.md`
 - ✅ `deployment-checklist.md`
 
-Store in a central `/components` folder in your documentation repo.
+Store in a central `/docs/components` folder in your documentation repo.
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
