@@ -16,6 +16,10 @@ Documentation standards for engineers and technical writers contributing to inte
 ### **[Automating PDF Generation with Documint](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/automating-pdf-generation-with-documint.md)**
 Generate clean, professional PDFs using open-source HTML templates and JSON data. This article provides setup instructions, usage examples, and best practices for building scalable document workflows with Documint’s CLI-based automation tool.
 
+### **[Using the Documint GUI](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/using-documint-gui.md)**
+ Generate personalized PDFs without writing code using Documint’s web interface. This article walks through uploading templates, importing JSON data, binding dynamic fields, and exporting fully rendered PDFs—all through a visual, no-code workflow.
+
+
 ---
 
 ## Documentation Approach
