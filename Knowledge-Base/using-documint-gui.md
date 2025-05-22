@@ -3,7 +3,7 @@
 
 | **Field**        | **Value**                                                                 |
 |------------------|--------------------------------------------------------------------------|
-| **Version**      | 1.0                                                                      |
+| **Version**      | 1.1                                                                      |
 | **Author**       | Corey Rollins                                                            |
 | **Last Updated** | May 21, 2025                                                             |
 | **Status**       | Draft                                                                    |
@@ -25,6 +25,27 @@
 ---
 
 ## 1. Overview
+
+The Documint GUI is a web-based tool for creating branded PDFs from templates and JSON data. It allows you to upload HTML templates, visually bind them to data fields, and generate professional PDFs in seconds.
+
+<details>
+<summary>📊 Click to view the process diagram</summary>
+
+```mermaid
+graph TD
+    A[Start in Documint GUI] --> B[Create New Project]
+    B --> C[Upload HTML Template]
+    C --> D[Import JSON Data File]
+    D --> E[Bind Fields via GUI Editor]
+    E --> F[Preview PDF with Sample Data]
+    F --> G[Generate Final PDF]
+    G --> H{Download or Share?}
+    H --> I[Download PDF Locally]
+    H --> J[Generate Share Link]
+```
+
+</details>
+
 
 The Documint GUI is a web-based tool for creating branded PDFs from templates and JSON data. It allows you to upload HTML templates, visually bind them to data fields, and generate professional PDFs in seconds.
 
@@ -51,6 +72,8 @@ The Documint GUI is a web-based tool for creating branded PDFs from templates an
 3. Use the WYSIWYG editor or HTML editor to customize layout and styling
 
 ⚠️ **Note:** Use `{{handlebars}}` syntax in templates to bind dynamic fields.
+
+![Template Editor Interface](assets/img/documint-template-ui.png "Documint Template Editor UI")
 
 [🔝 Back to top](#table-of-contents)
 
@@ -82,7 +105,7 @@ Example:
 2. Choose the matching field from the sidebar
 3. Use the `{ }` tag to insert fields like `{{name}}`, `{{invoice_id}}`, etc.
 
-💡 **Tip:** Conditional fields and loops are also supported via GUI options.
+💡 **Tip:** Conditional fields and loops are also supported via GUI options. If a field does not appear or renders as `{{field}}`, double-check your JSON keys and that they match the template exactly.
 
 [🔝 Back to top](#table-of-contents)
 
@@ -94,6 +117,8 @@ Example:
 2. If everything looks correct, click **"Generate PDF"**
 
 This creates a downloadable, styled PDF using the template and selected JSON input.
+
+![PDF Preview Screen](assets/img/documint-preview-ui.png "Documint PDF Preview")
 
 [🔝 Back to top](#table-of-contents)
 
@@ -113,6 +138,7 @@ This creates a downloadable, styled PDF using the template and selected JSON inp
 
 - [Documint CLI Usage](./automating-pdf-generation-documint.md)
 - [Handlebars Documentation](https://handlebarsjs.com/)
+- [Documint Template Syntax Reference](https://docs.documint.me/docs/templates/syntax)
 - [Documint Support](https://documint.me/support)
 
 ---
