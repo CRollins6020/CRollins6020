@@ -2,13 +2,13 @@
 *Learn how to create a functional data dashboard using the open-source Apache Superset platform.*
 
 | **Field**         | **Value**                                |
-|-------------------|--------------------------------------------|
-| **Version**       | 1.0                                       |
+|-------------------|------------------------------------------|
+| **Version**       | 1.0                                      |
 | **Author**        | Corey Rollins                            |
 | **Last Updated**  | May 21, 2025                             |
-| **Status**        | Draft                                     |
-| **Audience**      | New Users, Data Analysts                  |
-| **Estimated Time**| ~20–30 min                                |
+| **Status**        | Draft                                    |
+| **Audience**      | New Users, Data Analysts                 |
+| **Estimated Time**| ~20–30 min                               |
 
 ---
 
@@ -80,7 +80,7 @@ You’re a business analyst who needs to monitor product performance by country.
    - Set `Dimension` to `product_category`  
    - Set `Metric` to `SUM(revenue)`  
 4. Click `Run`, then `Save` this chart as:  
-   📄 _“Revenue by Product Category”_  
+   📄 _“Revenue by Product Category”_
 
 ---
 
@@ -147,6 +147,6 @@ You’ve created two charts and combined them into an interactive dashboard usin
 
 - [Official Superset Docs](https://superset.apache.org/docs/intro)  
 - [Explore Chart Types](https://superset.apache.org/docs/creating-charts-dashboards/explore)  
-- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)   
+- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)  
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
