@@ -46,9 +46,6 @@ graph TD
 
 </details>
 
-
-The Documint GUI is a web-based tool for creating branded PDFs from templates and JSON data. It allows you to upload HTML templates, visually bind them to data fields, and generate professional PDFs in seconds.
-
 [🔝 Back to top](#table-of-contents)
 
 ---
@@ -73,7 +70,7 @@ The Documint GUI is a web-based tool for creating branded PDFs from templates an
 
 ⚠️ **Note:** Use `{{handlebars}}` syntax in templates to bind dynamic fields.
 
-![Template Editor Interface](assets/img/documint-template-ui.png "Documint Template Editor UI")
+![Template Editor UI Placeholder](assets/img/documint-template-ui.png "Documint Template Editor Interface")
 
 [🔝 Back to top](#table-of-contents)
 
@@ -105,7 +102,8 @@ Example:
 2. Choose the matching field from the sidebar
 3. Use the `{ }` tag to insert fields like `{{name}}`, `{{invoice_id}}`, etc.
 
-💡 **Tip:** Conditional fields and loops are also supported via GUI options. If a field does not appear or renders as `{{field}}`, double-check your JSON keys and that they match the template exactly.
+💡 **Tip:** Conditional fields and loops are also supported via GUI options.  
+⚠️ **Note:** If a field renders as `{{field}}`, check your JSON file for typos or mismatches in key names.
 
 [🔝 Back to top](#table-of-contents)
 
@@ -118,7 +116,7 @@ Example:
 
 This creates a downloadable, styled PDF using the template and selected JSON input.
 
-![PDF Preview Screen](assets/img/documint-preview-ui.png "Documint PDF Preview")
+![PDF Preview Screen Placeholder](assets/img/documint-preview-ui.png "Documint PDF Preview")
 
 [🔝 Back to top](#table-of-contents)
 
