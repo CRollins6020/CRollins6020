@@ -147,6 +147,6 @@ You’ve created two charts and combined them into an interactive dashboard usin
 
 - [Official Superset Docs](https://superset.apache.org/docs/intro)  
 - [Explore Chart Types](https://superset.apache.org/docs/creating-charts-dashboards/explore)  
-- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)  
+- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)   
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
