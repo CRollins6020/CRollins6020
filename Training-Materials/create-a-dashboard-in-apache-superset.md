@@ -80,7 +80,7 @@ You’re a business analyst who needs to monitor product performance by country.
    - Set `Dimension` to `product_category`  
    - Set `Metric` to `SUM(revenue)`  
 4. Click `Run`, then `Save` this chart as:  
-   📄 _“Revenue by Product Category”_
+   📄 _“Revenue by Product Category”_  
 
 ---
 
