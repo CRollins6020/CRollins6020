@@ -64,7 +64,7 @@ You’re a business analyst who needs to monitor product performance by country.
     - Set `X-axis` to `country`
     - Set `Y-axis` to `SUM(revenue)`
 3. Click `Run` to preview the chart
-4. Click `Save` and name your chart:  
+4. Use the `Save` button to name your chart:  
    📄 _“Revenue by Country”_
 
 📸 *[Insert screenshot: Bar Chart in Explore View]*
@@ -73,13 +73,13 @@ You’re a business analyst who needs to monitor product performance by country.
 
 ### Step 3 – Create a Second Chart
 
-1. Click the Superset logo, then go back to `Data → Datasets`
+1. Click the Superset logo, then return to `Data → Datasets`
 2. Click `Explore` on `product_sales` again
 3. This time:
     - Select `Pie Chart`
     - Set `Dimension` to `product_category`
     - Set `Metric` to `SUM(revenue)`
-4. Click `Run` and then `Save` this chart as:  
+4. Click `Run`, then `Save` this chart as:  
    📄 _“Revenue by Product Category”_
 
 ---
@@ -90,8 +90,8 @@ You’re a business analyst who needs to monitor product performance by country.
 2. Give it a title:  
    🧾 _“Product Performance Dashboard”_
 3. Add your two charts to the dashboard canvas:
-    - Drag from `Your Charts` into the layout area
-4. Arrange the charts side-by-side or in a column
+    - Drag from `Your Charts` into the layout
+4. Arrange charts side-by-side or in a column
 
 ⚠️ *Warning:* Unsaved dashboards will be lost on refresh. Click `Save` frequently to avoid losing your progress.
 
@@ -102,6 +102,8 @@ You’re a business analyst who needs to monitor product performance by country.
 1. Click `+ Filter Box`
 2. Configure a filter for `country` or `date`
 3. Save and test filter functionality on your dashboard
+
+[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
 
 ---
 
