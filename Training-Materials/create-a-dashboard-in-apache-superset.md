@@ -16,9 +16,9 @@
 
 By the end of this module, you will be able to:
 
-- ✅ Log in to Apache Superset and navigate the interface
-- ✅ Create and customize charts in the Explore view
-- ✅ Combine multiple charts into a single interactive dashboard
+- ✅ Log in to Apache Superset and navigate the interface  
+- ✅ Create and customize charts in the `Explore` view  
+- ✅ Combine multiple charts into a single interactive dashboard  
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
 
@@ -47,10 +47,10 @@ You’re a business analyst who needs to monitor product performance by country.
 
 ### Step 1 – Log In and Access Datasets
 
-1. Visit your Superset URL (e.g., `https://superset.company.com`)
-2. Log in using SSO or your assigned credentials
-3. From the left menu, go to `Data → Datasets`
-4. Locate and select `product_sales`
+1. Visit your Superset URL (e.g., `https://superset.company.com`)  
+2. Log in using SSO or your assigned credentials  
+3. From the left menu, go to `Data → Datasets`  
+4. Locate and select `product_sales`  
 
 💡 *Tip:* Use the search bar if your dataset list is long.
 
@@ -58,14 +58,14 @@ You’re a business analyst who needs to monitor product performance by country.
 
 ### Step 2 – Create Your First Chart
 
-1. Click `Explore` next to the `product_sales` dataset
-2. In the Explore view:
-    - Select `Bar Chart` as the visualization type
-    - Set `X-axis` to `country`
-    - Set `Y-axis` to `SUM(revenue)`
-3. Click `Run` to preview the chart
+1. Click `Explore` next to the `product_sales` dataset  
+2. In the `Explore` view:  
+   - Select `Bar Chart` as the visualization type  
+   - Set `X-axis` to `country`  
+   - Set `Y-axis` to `SUM(revenue)`  
+3. Click `Run` to preview the chart  
 4. Use the `Save` button to name your chart:  
-   📄 _“Revenue by Country”_
+   📄 _“Revenue by Country”_  
 
 📸 *[Insert screenshot: Bar Chart in Explore View]*
 
@@ -73,35 +73,35 @@ You’re a business analyst who needs to monitor product performance by country.
 
 ### Step 3 – Create a Second Chart
 
-1. Click the Superset logo, then return to `Data → Datasets`
-2. Click `Explore` on `product_sales` again
-3. This time:
-    - Select `Pie Chart`
-    - Set `Dimension` to `product_category`
-    - Set `Metric` to `SUM(revenue)`
+1. Click the Superset logo, then return to `Data → Datasets`  
+2. Click `Explore` on `product_sales` again  
+3. This time:  
+   - Select `Pie Chart`  
+   - Set `Dimension` to `product_category`  
+   - Set `Metric` to `SUM(revenue)`  
 4. Click `Run`, then `Save` this chart as:  
-   📄 _“Revenue by Product Category”_
+   📄 _“Revenue by Product Category”_  
 
 ---
 
 ### Step 4 – Build a Dashboard
 
-1. Go to `Dashboards` → click `+ Dashboard`
+1. Go to `Dashboards` → click `+ Dashboard`  
 2. Give it a title:  
-   🧾 _“Product Performance Dashboard”_
-3. Add your two charts to the dashboard canvas:
-    - Drag from `Your Charts` into the layout
-4. Arrange charts side-by-side or in a column
+   🧾 _“Product Performance Dashboard”_  
+3. Add your two charts to the dashboard canvas:  
+   - Drag from `Your Charts` into the layout  
+4. Arrange charts side-by-side or in a column  
 
-⚠️ *Warning:* Unsaved dashboards will be lost on refresh. Click `Save` frequently to avoid losing your progress.
+⚠️ *Warning:* Unsaved dashboards will be lost on refresh. Click `Save` frequently.
 
 ---
 
 ### Step 5 – Add Filters *(Optional – for intermediate users)*
 
-1. Click `+ Filter Box`
-2. Configure a filter for `country` or `date`
-3. Save and test filter functionality on your dashboard
+1. Click `+ Filter Box`  
+2. Configure a filter for `country` or `date`  
+3. Save and test filter functionality on your dashboard  
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
 
@@ -126,9 +126,9 @@ You’re a business analyst who needs to monitor product performance by country.
 You’ve created two charts and combined them into an interactive dashboard using Apache Superset. This is a key foundational skill for data exploration and reporting in any organization.
 
 ✅ Next Steps:
-- Try adding more visualizations (e.g., line charts or tables)
-- Experiment with dashboard filters and layout options
-- Share your dashboard with teammates or stakeholders
+- Try adding more visualizations (e.g., line charts or tables)  
+- Experiment with dashboard filters and layout options  
+- Share your dashboard with teammates or stakeholders  
 
 ---
 
@@ -137,7 +137,7 @@ You’ve created two charts and combined them into an interactive dashboard usin
 - [x] Logged into Superset and accessed the dataset  
 - [x] Created and saved two different charts  
 - [x] Built a dashboard and arranged components  
-- [x] (Optional) Added dashboard filters
+- [x] (Optional) Added dashboard filters  
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
 
@@ -145,8 +145,8 @@ You’ve created two charts and combined them into an interactive dashboard usin
 
 ## 🔗 Resources
 
-- [Official Superset Docs](https://superset.apache.org/docs/intro)
-- [Explore Chart Types](https://superset.apache.org/docs/creating-charts-dashboards/explore)
-- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)
+- [Official Superset Docs](https://superset.apache.org/docs/intro)  
+- [Explore Chart Types](https://superset.apache.org/docs/creating-charts-dashboards/explore)  
+- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)  
 
 [🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
