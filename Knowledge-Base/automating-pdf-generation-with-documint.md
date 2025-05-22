@@ -21,25 +21,26 @@
 5. [Template Configuration](#5-template-configuration)  
 6. [Example Output](#6-example-output)  
 7. [Troubleshooting](#7-troubleshooting)  
+8. [See Also](#8-see-also)  
 
 ---
 
 ## 1. Overview
 
-**Documint** is an open-source PDF automation tool that transforms structured data (like JSON) into formatted, branded documents using customizable templates. It's ideal for invoices, reports, onboarding packets, and more.
+**Documint** is an open-source PDF generation tool that converts structured JSON data into professional, branded documents using HTML templates. Ideal for automated workflows like invoicing, reporting, and HR onboarding.
 
-💡 **Tip:** Think of Documint as a developer-friendly alternative to traditional document tools like Adobe Acrobat or MS Word Mail Merge.
+💡 **Tip:** Use Documint to replace manual document formatting with repeatable, scriptable processes.
 
 ---
 
 ## 2. Use Cases
 
-| **Scenario**                     | **Benefit**                                     |
-|----------------------------------|-------------------------------------------------|
-| Invoice generation               | Automate billing for eCommerce or SaaS         |
-| Internal reporting               | Standardize recurring metrics reports           |
-| HR onboarding                    | Generate personalized offer letters at scale    |
-| Form submissions                 | Format and archive intake data from web apps    |
+| **Scenario**           | **Benefit**                                |
+|------------------------|---------------------------------------------|
+| Invoice generation     | Automate recurring billing at scale         |
+| Internal reporting     | Standardize report formatting for execs     |
+| HR onboarding          | Generate personalized offer letters         |
+| Form submissions       | Store and format structured form responses  |
 
 ---
 
@@ -51,7 +52,7 @@ Ensure [Node.js](https://nodejs.org/) is installed.
 npm install -g documint
 ```
 
-Clone the repo to access templates and scripts:
+Clone the repository to access sample templates and scripts:
 
 ```bash
 git clone https://github.com/DocumintAI/documint.git
@@ -62,7 +63,7 @@ cd documint
 
 ## 4. Basic Usage
 
-Run the CLI with your data and template:
+Generate a PDF by combining a data file with a template:
 
 ```bash
 documint generate \
@@ -75,7 +76,7 @@ documint generate \
 
 ## 5. Template Configuration
 
-Documint templates use standard HTML with `{{handlebars}}` syntax to inject values.
+Documint uses HTML templates with `{{handlebars}}` syntax for variable injection.
 
 **Example Snippet**:
 
@@ -85,7 +86,7 @@ Documint templates use standard HTML with `{{handlebars}}` syntax to inject valu
 <p>Amount Due: ${{amount}}</p>
 ```
 
-📁 Recommended structure:
+📁 Suggested project structure:
 
 ```
 /templates/
@@ -96,7 +97,7 @@ Documint templates use standard HTML with `{{handlebars}}` syntax to inject valu
   output.pdf
 ```
 
-💡 **Tip:** Style templates with CSS for branded output.
+💡 **Tip:** Add embedded CSS to ensure consistent branding across all output.
 
 ---
 
@@ -112,20 +113,31 @@ Documint templates use standard HTML with `{{handlebars}}` syntax to inject valu
 }
 ```
 
-**Resulting PDF:**
+**Rendered Output:**  
+> A clean PDF invoice labeled "Invoice #001" with Acme Corp’s name and amount due.
 
-> A clean, styled invoice labeled "Invoice #001" with Acme Corp's name and due amount.
+![Sample Invoice Output](assets/img/sample-invoice-preview.png "Sample Invoice Preview")
 
 ---
 
 ## 7. Troubleshooting
 
-| **Issue**                         | **Solution**                                                  |
-|----------------------------------|---------------------------------------------------------------|
-| Output file is blank             | Check for missing or misspelled Handlebars variables          |
-| Styles not applied               | Ensure CSS is inline or embedded in the HTML template         |
-| CLI not found                    | Verify installation and check `$PATH` for global access       |
+| **Issue**             | **Solution**                                                  |
+|------------------------|---------------------------------------------------------------|
+| Blank output file      | Check for missing or incorrect Handlebars variables           |
+| CSS not applied        | Ensure styles are inline or embedded in the HTML template     |
+| CLI command not found  | Confirm global install and check `$PATH`                      |
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
-✅ Documint is a practical, scriptable tool for automating document generation—perfect for modern, API-connected workflows.
+## 8. See Also
+
+- [Handlebars Templating Documentation](https://handlebarsjs.com/)
+- [Documint Issues & Feature Requests](https://github.com/DocumintAI/documint/issues)
+- [Markdown PDF Templates (Advanced)](https://github.com/seladb/pickley)
+
+---
+
+✅ This article demonstrates how to install, configure, and use Documint to automate PDF generation workflows using JSON and HTML. Suitable for developers building lightweight, scalable document systems.
