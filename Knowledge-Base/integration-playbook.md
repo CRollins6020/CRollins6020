@@ -1,3 +1,4 @@
+
 # 🔌 Integration Playbook
 
 *A tactical guide for integrating AI services with internal platforms. Covers environment setup, authentication, error handling, and deployment phase considerations.*
@@ -30,6 +31,8 @@
 
 Integrating AI services into internal systems requires a structured, secure, and repeatable approach. This playbook outlines technical best practices across all stages of integration—from local testing to enterprise deployment. It’s intended for internal engineering, DevOps, and enablement teams.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 2. Environment Setup
@@ -61,6 +64,8 @@ ENVIRONMENT=staging
 
 ⚠️ **Warning**: Never hardcode or expose secrets in source code repositories.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 3. Authentication & Security
@@ -79,6 +84,8 @@ ___
 - Use short-lived tokens with auto-renewal for sensitive workflows.
 
 ⚠️ **Warning**: Never store credentials in client-side code or local files.
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
@@ -103,8 +110,6 @@ flowchart TD
 - **AI Prompt API**: Internal LLM execution endpoint
 - **Target System Update**: UI update, new field, or alert
 
----
-
 ### 4.2 Request Pipeline
 
 - **Input Collection**: Validate and sanitize data before transmission.
@@ -119,6 +124,8 @@ def call_ai_service(payload, token):
     response = requests.post("https://ai.internal/api/v1/infer", json=payload, headers=headers)
     return response.json()
 ```
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
@@ -136,6 +143,8 @@ ___
 - Define safe fallback responses for AI timeouts or failures.
 - Example: “Sorry, I'm having trouble accessing that data. Please try again shortly.”
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 6. Deployment Considerations
@@ -151,6 +160,8 @@ ___
 
 - Enable structured logging for all service interactions.
 - Integrate alerts for high latency, error spikes, or abnormal outputs.
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
@@ -176,6 +187,8 @@ ___
 
 💡 **Tip**: Use this pilot to evaluate latency, token cost, and user feedback before expanding to additional queues.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 8. Troubleshooting Tips
@@ -190,6 +203,8 @@ ___
 
 💡 **Tip**: Keep a runbook of known errors, resolution steps, and support escalation paths.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 9. Related Documents
@@ -198,3 +213,5 @@ ___
 - [Prompt Execution API Reference](https://github.com/CRollins6020/CRollins6020/blob/main/API-References/prompt-execution-api.md)  
 - [LangChain Admin Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)  
 - [RAG Implementation Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/rag-implementation-guide.md)  
+
+[🔝 Back to top](#table-of-contents)
