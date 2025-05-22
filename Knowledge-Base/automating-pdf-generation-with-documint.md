@@ -1,14 +1,15 @@
-# 🧾 Automating PDF Generation with Documint
-
+# 🧾 Automating PDF Generation with Documint  
 *Generate dynamic, professional PDFs using open-source templates and JSON data.*
 
-| **Field**       | **Value**                         |
-|----------------|-----------------------------------|
-| **Version**     | 1.0                               |
-| **Author**      | Corey Rollins                    |
-| **Last Updated**| May 21, 2025                     |
-| **Status**      | Draft                             |
-| **Source**      | [GitHub Repository](https://github.com/DocumintAI/documint) |
+**A developer guide to JSON-driven PDF automation.**
+
+| **Field**        | **Value**                                                                 |
+|------------------|--------------------------------------------------------------------------|
+| **Version**      | 1.0                                                                      |
+| **Author**       | Corey Rollins                                                            |
+| **Last Updated** | May 21, 2025                                                             |
+| **Status**       | Draft                                                                    |
+| **Source**       | [GitHub Repository](https://github.com/DocumintAI/documint)              |
 
 ---
 
@@ -31,6 +32,8 @@
 
 💡 **Tip:** Use Documint to replace manual document formatting with repeatable, scriptable processes.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 2. Use Cases
@@ -41,6 +44,8 @@
 | Internal reporting     | Standardize report formatting for execs     |
 | HR onboarding          | Generate personalized offer letters         |
 | Form submissions       | Store and format structured form responses  |
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
@@ -59,6 +64,8 @@ git clone https://github.com/DocumintAI/documint.git
 cd documint
 ```
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 4. Basic Usage
@@ -71,6 +78,8 @@ documint generate \
   --data ./data/customer.json \
   --output ./pdf/invoice-001.pdf
 ```
+
+[🔝 Back to top](#table-of-contents)
 
 ---
 
@@ -99,6 +108,8 @@ Documint uses HTML templates with `{{handlebars}}` syntax for variable injection
 
 💡 **Tip:** Add embedded CSS to ensure consistent branding across all output.
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 6. Example Output
@@ -118,15 +129,19 @@ Documint uses HTML templates with `{{handlebars}}` syntax for variable injection
 
 ![Sample Invoice Output](assets/img/sample-invoice-preview.png "Sample Invoice Preview")
 
+[🔝 Back to top](#table-of-contents)
+
 ---
 
 ## 7. Troubleshooting
 
-| **Issue**             | **Solution**                                                  |
-|------------------------|---------------------------------------------------------------|
-| Blank output file      | Check for missing or incorrect Handlebars variables           |
-| CSS not applied        | Ensure styles are inline or embedded in the HTML template     |
-| CLI command not found  | Confirm global install and check `$PATH`                      |
+| **Issue**                   | **Solution**                                                  |
+|----------------------------|---------------------------------------------------------------|
+| Blank output file           | Check for missing or incorrect Handlebars variables           |
+| CSS not applied             | Ensure styles are inline or embedded in the HTML template     |
+| CLI command not found       | Confirm global install and check `$PATH`                      |
+| Unsupported characters      | Verify UTF-8 encoding and escape special HTML characters      |
+| Template rendering failure  | Ensure Handlebars syntax is correct and all variables exist   |
 
 [🔝 Back to top](#table-of-contents)
 
@@ -137,6 +152,7 @@ Documint uses HTML templates with `{{handlebars}}` syntax for variable injection
 - [Handlebars Templating Documentation](https://handlebarsjs.com/)
 - [Documint Issues & Feature Requests](https://github.com/DocumintAI/documint/issues)
 - [Markdown PDF Templates (Advanced)](https://github.com/seladb/pickley)
+- [Example Documint Use Case Repo](https://github.com/example-org/documint-pdf-workflows) <!-- Replace with a real one if available -->
 
 ---
 
