@@ -70,7 +70,7 @@ graph TD
 
 ⚠️ **Note:** Use `{{handlebars}}` syntax in templates to bind dynamic fields.
 
-![Template Editor UI Placeholder](assets/img/documint-template-ui.png "Documint Template Editor Interface")
+![Documint template editor showing a WYSIWYG layout with dynamic field placeholders](assets/img/documint-template-ui.png "Documint Template Editor Interface")
 
 [🔝 Back to top](#table-of-contents)
 
@@ -116,7 +116,7 @@ Example:
 
 This creates a downloadable, styled PDF using the template and selected JSON input.
 
-![PDF Preview Screen Placeholder](assets/img/documint-preview-ui.png "Documint PDF Preview")
+![Documint PDF preview screen showing rendered output from a data-bound HTML template](assets/img/documint-preview-ui.png "Documint PDF Preview")
 
 [🔝 Back to top](#table-of-contents)
 
@@ -126,7 +126,7 @@ This creates a downloadable, styled PDF using the template and selected JSON inp
 
 - Download directly from the preview window
 - Or return to the **Documents** tab to access past exports
-- PDFs can also be shared via secure link or embedded in other systems
+- PDFs can also be shared via secure link or embedded in other systems, with optional expiration dates and access permissions (if enabled)
 
 [🔝 Back to top](#table-of-contents)
 
