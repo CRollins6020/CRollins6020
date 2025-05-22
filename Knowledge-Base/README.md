@@ -4,21 +4,27 @@ Actionable, focused articles that help users troubleshoot issues, understand spe
 
 ## 📚 Available Articles
 
-### **[Troubleshooting API Errors](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/troubleshooting-api-errors.md)**  
-Identify, interpret, and resolve common API error responses. This article walks through structured error handling, decoding status codes, and investigating failed requests using real-world examples.
+### 🧱 Foundational Standards
+- **[Dev Writing Guidelines](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/dev-writing-guidlines.md)**  
+  Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.
 
-### **[Integration Playbook](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/integration-playbook.md)**  
-A tactical guide for integrating AI services with existing internal platforms. Covers key considerations like environment setup, authentication, and handling edge cases across deployment stages.
+### 🔗 System & Service Integration
+- **[Integration Playbook](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/integration-playbook.md)**  
+  A tactical guide for integrating AI services with existing internal platforms. Covers key considerations like environment setup, authentication, and handling edge cases across deployment stages.
 
-### **[Dev Writing Guidelines](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/dev-writing-guidlines.md)**  
-Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.
+### 🧾 Product Usage – Documint
+- **[Automating PDF Generation with Documint](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/automating-pdf-generation-with-documint.md)**  
+  Generate clean, professional PDFs using open-source HTML templates and JSON data. This article provides setup instructions, usage examples, and best practices for building scalable document workflows with Documint’s CLI-based automation tool.
 
-### **[Automating PDF Generation with Documint](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/automating-pdf-generation-with-documint.md)**
-Generate clean, professional PDFs using open-source HTML templates and JSON data. This article provides setup instructions, usage examples, and best practices for building scalable document workflows with Documint’s CLI-based automation tool.
+- **[Using the Documint GUI](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/using-documint-gui.md)**  
+  Generate personalized PDFs without writing code using Documint’s web interface. This article walks through uploading templates, importing JSON data, binding dynamic fields, and exporting fully rendered PDFs—all through a visual, no-code workflow.
 
-### **[Using the Documint GUI](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/using-documint-gui.md)**
- Generate personalized PDFs without writing code using Documint’s web interface. This article walks through uploading templates, importing JSON data, binding dynamic fields, and exporting fully rendered PDFs—all through a visual, no-code workflow.
+### 🧰 Troubleshooting & Support
+- **[Troubleshooting API Errors](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/troubleshooting-api-errors.md)**  
+  Identify, interpret, and resolve common API error responses. This article walks through structured error handling, decoding status codes, and investigating failed requests using real-world examples.
 
+- **[Troubleshooting Playwright Install Failures](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/troubleshooting-playwright-install-failures.md)**  
+  Resolve common errors encountered when running `npx playwright install`, including permission issues, corrupted downloads, proxy misconfigurations, and Windows-specific problems. This article includes real error examples, diagnostic tips, and a visual troubleshooting flow to help developers fix installation failures quickly.
 
 ---
 

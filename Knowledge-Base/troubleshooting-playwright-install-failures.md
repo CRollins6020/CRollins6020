@@ -3,7 +3,7 @@
 
 | **Field**        | **Value**                                         |
 |------------------|--------------------------------------------------|
-| **Version**      | 1.0                                              |
+| **Version**      | 1.1                                              |
 | **Author**       | Corey Rollins                                    |
 | **Last Updated** | May 21, 2025                                     |
 | **Status**       | Draft                                            |
@@ -25,6 +25,32 @@
 
 When running `npx playwright install`, users may encounter issues such as timeouts, corrupted downloads, or permission errors. This guide outlines steps to identify and resolve common problems across various platforms.
 
+<details>
+<summary>📊 Click to view the Playwright install troubleshooting flow</summary>
+
+```mermaid
+graph TD
+    A[Run `npx playwright install`] --> B{Installation Fails?}
+    B -- No --> C[Done 🎉]
+    B -- Yes --> D[Check Error Message]
+    D --> E1[Permission Denied]
+    D --> E2[Download Failed]
+    D --> E3[Corrupt Zip or Cache]
+    D --> E4[Unknown/Windows Errors]
+
+    E1 --> F1[Fix Permissions]
+    E2 --> F2[Configure Proxy or Network]
+    E3 --> F3[Clear Cache and Retry]
+    E4 --> F4[Run as Admin / Check PATH]
+
+    F1 --> C
+    F2 --> C
+    F3 --> C
+    F4 --> C
+```
+
+</details>
+
 [🔝 Back to top](#table-of-contents)
 
 ---
@@ -38,6 +64,11 @@ When running `npx playwright install`, users may encounter issues such as timeou
 | `Corrupt zip file`                             | Incomplete or interrupted download     |
 | `spawn UNKNOWN` or `spawn ENOENT`              | Missing system dependencies or path    |
 
+**Example:**
+```bash
+Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/playwright/.local-browsers'
+```
+
 💡 **Tip:** Always confirm you're running the latest version of Node.js and Playwright.
 
 [🔝 Back to top](#table-of-contents)
@@ -49,6 +80,7 @@ When running `npx playwright install`, users may encounter issues such as timeou
 ### 3.1 Fixing Permissions (Linux/macOS)
 
 ```bash
+# Reset permissions on the Playwright browser cache
 sudo chown -R $USER:$GROUP ~/.cache/ms-playwright
 ```
 
@@ -71,7 +103,10 @@ https-proxy=http://proxy.example.com:8080
 Clear the Playwright cache and reinstall:
 
 ```bash
+# Clear any incomplete binary downloads
 rm -rf ~/.cache/ms-playwright
+
+# Reinstall with fresh download
 npx playwright install
 ```
 
@@ -86,6 +121,7 @@ If encountering `spawn UNKNOWN`:
 - Reinstall dependencies:
 
 ```powershell
+# Clean and reinstall Playwright dependencies
 npm ci
 npx playwright install
 ```
@@ -96,19 +132,19 @@ npx playwright install
 
 ## 4. Advanced Debugging
 
-Enable verbose logging:
+Enable verbose logging to reveal internal installation steps:
 
 ```bash
 DEBUG=pw:install npx playwright install
 ```
 
-Check connectivity:
+Check network access:
 
 ```bash
 curl https://playwright.azureedge.net
 ```
 
-Verify environment:
+Verify your environment:
 
 ```bash
 npx envinfo --binaries --system --npmPackages playwright
@@ -123,9 +159,9 @@ npx envinfo --binaries --system --npmPackages playwright
 ## 5. See Also
 
 - [Playwright Installation Docs](https://playwright.dev/docs/intro)
-- [GitHub Issues - Playwright](https://github.com/microsoft/playwright/issues)
+- [GitHub Issues – Playwright](https://github.com/microsoft/playwright/issues)
 - [Playwright Docker Guide](https://playwright.dev/docs/docker)
-- [Common Errors Thread](https://github.com/microsoft/playwright/issues?q=label%3Ainstall)
+- [GitHub: Known Install Errors](https://github.com/microsoft/playwright/issues?q=label%3Ainstall)
 
 ---
 
