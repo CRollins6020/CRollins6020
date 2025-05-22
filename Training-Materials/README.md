@@ -3,7 +3,7 @@ Educational content for product users, designed to build foundational skills and
 
 ## 📚 Available Modules
 
-### **[Create a Dashboard in Apache Superset](https://github.com/CRollins6020/CRollins6020/blob/main/Training-Materials/create-a-dashboard-in-apache-superset.md}**) 
+### **[Create a Dashboard in Apache Superset](https://github.com/CRollins6020/CRollins6020/blob/main/Training-Materials/create-a-dashboard-in-apache-superset.md})** 
 A guided walkthrough for first-time users learning how to navigate datasets, create charts, and build interactive dashboards. Includes a realistic business scenario and knowledge check to reinforce learning.
 
 ### **LangChain Agent Platform: Administrator's Guide**  
