@@ -13,6 +13,9 @@ A tactical guide for integrating AI services with existing internal platforms. C
 ### **[Dev Writing Guidelines](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/dev-writing-guidlines.md)**  
 Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.
 
+### **[Automating PDF Generation with Documint](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/automating-pdf-generation-with-documint.md)**
+Generate clean, professional PDFs using open-source HTML templates and JSON data. This article provides setup instructions, usage examples, and best practices for building scalable document workflows with Documint’s CLI-based automation tool.
+
 ---
 
 ## Documentation Approach
