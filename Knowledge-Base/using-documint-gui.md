@@ -99,11 +99,11 @@ Example:
 ## 5. Binding Data to Fields
 
 1. In the template editor, click on any placeholder text
-2. Choose the matching field from the sidebar
+2. Choose the matching field from the left-hand sidebar
 3. Use the `{ }` tag to insert fields like `{{name}}`, `{{invoice_id}}`, etc.
 
 💡 **Tip:** Conditional fields and loops are also supported via GUI options.  
-⚠️ **Note:** If a field renders as `{{field}}`, check your JSON file for typos or mismatches in key names.
+⚠️ **Note:** If a field renders as `{{field}}`, check that your JSON key matches exactly and the field is not nested unless explicitly referenced.
 
 [🔝 Back to top](#table-of-contents)
 
