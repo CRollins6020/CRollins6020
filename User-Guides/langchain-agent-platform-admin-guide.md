@@ -21,31 +21,27 @@
    1.3 [Core Capabilities](#core-capabilities)  
    1.4 [Deployment Models](#deployment-models)  
    1.5 [Pre-deployment Planning](#pre-deployment-planning)  
-
 2. [Installation and Initial Setup](#2-installation-and-initial-setup)  
    2.1 [Installation Prerequisites](#installation-prerequisites)  
    2.2 [Installation Process](#installation-process)  
    2.3 [Initial Administrator Setup](#initial-administrator-setup)  
    2.4 [Validation and Testing](#validation-and-testing)  
-
 3. [User Management and Access Control](#3-user-management-and-access-control)  
    3.1 [User Lifecycle Management](#user-lifecycle-management)  
    3.2 [Role-Based Access Control](#role-based-access-control)  
    3.3 [Identity Provider Integration](#identity-provider-integration)  
    3.4 [Access Control Policies](#access-control-policies)  
-
 4. [Agent Configuration and Deployment](#4-agent-configuration-and-deployment)  
    4.1 [Agent Architecture Overview](#agent-architecture-overview)  
    4.2 [Enterprise Tool Integrations](#enterprise-tool-integrations)  
    4.3 [Advanced Agent Configurations](#advanced-agent-configurations)  
    4.4 [Agent Deployment Process](#agent-deployment-process)  
    4.5 [Performance Optimization](#performance-optimization)  
-
 5. [Security and Compliance](#5-security-and-compliance)  
 6. [Monitoring and Performance Management](#6-monitoring-and-performance-management)  
 7. [Troubleshooting Common Issues](#7-troubleshooting-common-issues)  
 8. [Best Practices and Templates](#8-best-practices-and-templates)  
-9. [Next Steps and Resources](#9-next-steps-and-resources) 
+9. [Next Steps and Resources](#9-next-steps-and-resources)  
 
 ---
 
