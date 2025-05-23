@@ -2,7 +2,7 @@
 
 | **Metadata** | **Details** |
 |--------------|-------------|
-| **Author** | [Your Name] |
+| **Author** | Corey Rollins |
 | **Version** | 1.0.0 |
 | **Last Updated** | May 23, 2025 |
 
