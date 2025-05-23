@@ -98,344 +98,6 @@ ___
 
 ---
 
-## 9. Performance and Scaling
-
-Implementing the User Management API at scale requires careful consideration of performance optimization, caching strategies, and architectural patterns to ensure responsive user experiences and efficient resource utilization.
-
-### API Performance Optimization
-
-#### Request Optimization Strategies
-
-**Use Field Selection to Reduce Payload Size**:
-```bash
-# Instead of fetching all user data
-curl -X GET "https://api.yourcompany.com/v2/users/usr_123"
-
-# Request only needed fields
-curl -X GET "https://api.yourcompany.com/v2/users/usr_123?fields=id,email,first_name,status"
-```
-
-**Leverage Include Parameters for Related Data**:
-```bash
-# Avoid multiple API calls by including related data
-curl -X GET "https://api.yourcompany.com/v2/users?include=roles,permissions&limit=50"
-```
-
-**Implement Efficient Pagination**:
-```javascript
-// Use cursor-based pagination for large datasets
-async function fetchAllUsers() {
-  let users = [];
-  let cursor = null;
-  
-  do {
-    const params = new URLSearchParams({
-      limit: '100',
-      ...(cursor && { cursor })
-    });
-    
-    const response = await fetch(`/v2/users?${params}`);
-    const data = await response.json();
-    
-    users.push(...data.data);
-    cursor = data.pagination.next_cursor;
-  } while (cursor);
-  
-  return users;
-}
-```
-
-___
-
-### Caching Strategies
-
-#### Client-Side Caching
-
-**HTTP Cache Headers**: The API returns appropriate cache headers for different resource types:
-
-| Resource Type | Cache-Control | Typical TTL |
-|---------------|---------------|-------------|
-| User profiles | `private, max-age=300` | 5 minutes |
-| Role definitions | `public, max-age=3600` | 1 hour |
-| Permission lists | `public, max-age=7200` | 2 hours |
-| User sessions | `private, no-cache` | No caching |
-
-**ETag Support**: Use ETags for conditional requests to minimize bandwidth:
-
-```javascript
-// Store ETag from initial request
-let userETag = null;
-let cachedUser = null;
-
-async function fetchUserWithCache(userId) {
-  const headers = {
-    'Authorization': 'Bearer ' + token
-  };
-  
-  // Add If-None-Match header if we have a cached ETag
-  if (userETag) {
-    headers['If-None-Match'] = userETag;
-  }
-  
-  const response = await fetch(`/v2/users/${userId}`, { headers });
-  
-  if (response.status === 304) {
-    // Not modified, use cached data
-    return cachedUser;
-  }
-  
-  // Update cache with new data
-  userETag = response.headers.get('ETag');
-  cachedUser = await response.json();
-  return cachedUser;
-}
-```
-
-#### Application-Level Caching
-
-**Redis Integration for Session Management**:
-```javascript
-// Cache user permissions for faster authorization checks
-async function getUserPermissions(userId) {
-  const cacheKey = `user:${userId}:permissions`;
-  
-  // Try cache first
-  let permissions = await redis.get(cacheKey);
-  if (permissions) {
-    return JSON.parse(permissions);
-  }
-  
-  // Fetch from API if not cached
-  const response = await fetch(`/v2/users/${userId}?include=permissions`);
-  const userData = await response.json();
-  
-  // Cache for 10 minutes
-  await redis.setex(cacheKey, 600, JSON.stringify(userData.permissions));
-  
-  return userData.permissions;
-}
-```
-
-___
-
-### High-Volume Operations
-
-#### Bulk Processing Patterns
-
-**Batch User Creation with Error Handling**:
-```javascript
-async function createUsersInBatches(users, batchSize = 50) {
-  const results = [];
-  const errors = [];
-  
-  for (let i = 0; i < users.length; i += batchSize) {
-    const batch = users.slice(i, i + batchSize);
-    
-    try {
-      const response = await fetch('/v2/users/bulk', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + token,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ users: batch })
-      });
-      
-      const result = await response.json();
-      results.push(...result.successful);
-      errors.push(...result.failed);
-      
-      // Rate limiting: wait between batches
-      if (i + batchSize < users.length) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-      
-    } catch (error) {
-      console.error(`Batch ${i / batchSize + 1} failed:`, error);
-      errors.push({ batch: i / batchSize + 1, error: error.message });
-    }
-  }
-  
-  return { successful: results, failed: errors };
-}
-```
-
-#### Asynchronous Processing
-
-**Background Job Integration**:
-```javascript
-// Queue large operations for background processing
-async function queueBulkUserUpdate(userUpdates) {
-  const jobId = await fetch('/v2/jobs', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + token },
-    body: JSON.stringify({
-      type: 'bulk_user_update',
-      data: userUpdates,
-      callback_url: 'https://your-app.com/webhooks/job-complete'
-    })
-  });
-  
-  return jobId;
-}
-
-// Monitor job progress
-async function checkJobStatus(jobId) {
-  const response = await fetch(`/v2/jobs/${jobId}`, {
-    headers: { 'Authorization': 'Bearer ' + token }
-  });
-  
-  return response.json(); // { status: 'processing', progress: 45, eta: '2 minutes' }
-}
-```
-
-___
-
-### Database Scaling Considerations
-
-#### Connection Pool Management
-
-**Optimize Database Connections**:
-```javascript
-// Configure connection pooling for high-volume applications
-const pool = new Pool({
-  host: 'db.yourcompany.com',
-  port: 5432,
-  database: 'user_management',
-  user: 'api_user',
-  password: process.env.DB_PASSWORD,
-  min: 10,        // Minimum connections
-  max: 100,       // Maximum connections
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
-```
-
-#### Read Replica Strategy
-
-**Route Read-Heavy Operations to Replicas**:
-```javascript
-// Use read replicas for user lookups and reporting
-const readOnlyOperations = [
-  'GET /v2/users',
-  'GET /v2/users/:id',
-  'GET /v2/roles',
-  'GET /v2/users/:id/permissions'
-];
-
-function getDbConnection(operation) {
-  if (readOnlyOperations.includes(operation)) {
-    return readReplicaPool;
-  }
-  return primaryDbPool;
-}
-```
-
-___
-
-### Monitoring and Alerting
-
-#### Performance Metrics to Track
-
-| Metric | Threshold | Alert Level |
-|--------|-----------|-------------|
-| API Response Time (P95) | > 500ms | Warning |
-| API Response Time (P99) | > 1000ms | Critical |
-| Error Rate | > 1% | Warning |
-| Error Rate | > 5% | Critical |
-| Database Connection Pool Usage | > 80% | Warning |
-| Rate Limit Hit Rate | > 10% | Warning |
-
-**Application Performance Monitoring**:
-```javascript
-// Instrument API calls for monitoring
-async function instrumentedApiCall(url, options = {}) {
-  const startTime = Date.now();
-  const operation = `${options.method || 'GET'} ${url}`;
-  
-  try {
-    const response = await fetch(url, options);
-    
-    // Log performance metrics
-    const duration = Date.now() - startTime;
-    metrics.histogram('api.response_time', duration, {
-      operation,
-      status: response.status
-    });
-    
-    // Log error rates
-    if (response.status >= 400) {
-      metrics.increment('api.errors', {
-        operation,
-        status: response.status
-      });
-    }
-    
-    return response;
-  } catch (error) {
-    // Log client-side errors
-    metrics.increment('api.client_errors', { operation });
-    throw error;
-  }
-}
-```
-
-#### Health Check Implementation
-
-**Comprehensive Health Monitoring**:
-```javascript
-app.get('/health', async (req, res) => {
-  const health = {
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    checks: {}
-  };
-  
-  // Database connectivity
-  try {
-    await db.query('SELECT 1');
-    health.checks.database = { status: 'healthy' };
-  } catch (error) {
-    health.checks.database = { status: 'unhealthy', error: error.message };
-    health.status = 'degraded';
-  }
-  
-  // API dependency checks
-  try {
-    const apiResponse = await fetch('/v2/users/health', {
-      timeout: 5000,
-      headers: { 'Authorization': 'Bearer ' + healthCheckToken }
-    });
-    health.checks.user_api = { 
-      status: apiResponse.ok ? 'healthy' : 'unhealthy',
-      response_time: apiResponse.headers.get('x-response-time')
-    };
-  } catch (error) {
-    health.checks.user_api = { status: 'unhealthy', error: error.message };
-    health.status = 'degraded';
-  }
-  
-  // Memory usage
-  const memUsage = process.memoryUsage();
-  health.checks.memory = {
-    status: memUsage.heapUsed / memUsage.heapTotal < 0.9 ? 'healthy' : 'warning',
-    heap_used_mb: Math.round(memUsage.heapUsed / 1024 / 1024),
-    heap_total_mb: Math.round(memUsage.heapTotal / 1024 / 1024)
-  };
-  
-  const statusCode = health.status === 'healthy' ? 200 : 503;
-  res.status(statusCode).json(health);
-});
-```
-
-💡 **Tip**: Implement circuit breakers for external API calls to prevent cascading failures during high load periods.
-
-⚠️ **Warning**: Always test performance optimizations under realistic load conditions. What works for 100 users may not scale to 100,000 users.
-
-[Back to top](#user-management-api-reference)
-
----
-
 ## 2. Authentication
 
 All API requests require authentication using OAuth 2.0 with JWT Bearer tokens. The API supports both user-specific tokens for individual operations and service-to-service tokens for administrative functions.
@@ -1777,4 +1439,348 @@ curl -X POST "https://your-app.com/webhook" \
 - Set up monitoring alerts for failed webhook deliveries
 - Use the webhook event status API to debug delivery issues
 
+[Back to top](#user-management-api-reference
+
+---
+
+## 9. Performance and Scaling
+
+Implementing the User Management API at scale requires careful consideration of performance optimization, caching strategies, and architectural patterns to ensure responsive user experiences and efficient resource utilization.
+
+### API Performance Optimization
+
+#### Request Optimization Strategies
+
+**Use Field Selection to Reduce Payload Size**:
+```bash
+# Instead of fetching all user data
+curl -X GET "https://api.yourcompany.com/v2/users/usr_123"
+
+# Request only needed fields
+curl -X GET "https://api.yourcompany.com/v2/users/usr_123?fields=id,email,first_name,status"
+```
+
+**Leverage Include Parameters for Related Data**:
+```bash
+# Avoid multiple API calls by including related data
+curl -X GET "https://api.yourcompany.com/v2/users?include=roles,permissions&limit=50"
+```
+
+**Implement Efficient Pagination**:
+```javascript
+// Use cursor-based pagination for large datasets
+async function fetchAllUsers() {
+  let users = [];
+  let cursor = null;
+  
+  do {
+    const params = new URLSearchParams({
+      limit: '100',
+      ...(cursor && { cursor })
+    });
+    
+    const response = await fetch(`/v2/users?${params}`);
+    const data = await response.json();
+    
+    users.push(...data.data);
+    cursor = data.pagination.next_cursor;
+  } while (cursor);
+  
+  return users;
+}
+```
+
+___
+
+### Caching Strategies
+
+#### Client-Side Caching
+
+**HTTP Cache Headers**: The API returns appropriate cache headers for different resource types:
+
+| Resource Type | Cache-Control | Typical TTL |
+|---------------|---------------|-------------|
+| User profiles | `private, max-age=300` | 5 minutes |
+| Role definitions | `public, max-age=3600` | 1 hour |
+| Permission lists | `public, max-age=7200` | 2 hours |
+| User sessions | `private, no-cache` | No caching |
+
+**ETag Support**: Use ETags for conditional requests to minimize bandwidth:
+
+```javascript
+// Store ETag from initial request
+let userETag = null;
+let cachedUser = null;
+
+async function fetchUserWithCache(userId) {
+  const headers = {
+    'Authorization': 'Bearer ' + token
+  };
+  
+  // Add If-None-Match header if we have a cached ETag
+  if (userETag) {
+    headers['If-None-Match'] = userETag;
+  }
+  
+  const response = await fetch(`/v2/users/${userId}`, { headers });
+  
+  if (response.status === 304) {
+    // Not modified, use cached data
+    return cachedUser;
+  }
+  
+  // Update cache with new data
+  userETag = response.headers.get('ETag');
+  cachedUser = await response.json();
+  return cachedUser;
+}
+```
+
+#### Application-Level Caching
+
+**Redis Integration for Session Management**:
+```javascript
+// Cache user permissions for faster authorization checks
+async function getUserPermissions(userId) {
+  const cacheKey = `user:${userId}:permissions`;
+  
+  // Try cache first
+  let permissions = await redis.get(cacheKey);
+  if (permissions) {
+    return JSON.parse(permissions);
+  }
+  
+  // Fetch from API if not cached
+  const response = await fetch(`/v2/users/${userId}?include=permissions`);
+  const userData = await response.json();
+  
+  // Cache for 10 minutes
+  await redis.setex(cacheKey, 600, JSON.stringify(userData.permissions));
+  
+  return userData.permissions;
+}
+```
+
+___
+
+### High-Volume Operations
+
+#### Bulk Processing Patterns
+
+**Batch User Creation with Error Handling**:
+```javascript
+async function createUsersInBatches(users, batchSize = 50) {
+  const results = [];
+  const errors = [];
+  
+  for (let i = 0; i < users.length; i += batchSize) {
+    const batch = users.slice(i, i + batchSize);
+    
+    try {
+      const response = await fetch('/v2/users/bulk', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ users: batch })
+      });
+      
+      const result = await response.json();
+      results.push(...result.successful);
+      errors.push(...result.failed);
+      
+      // Rate limiting: wait between batches
+      if (i + batchSize < users.length) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+      
+    } catch (error) {
+      console.error(`Batch ${i / batchSize + 1} failed:`, error);
+      errors.push({ batch: i / batchSize + 1, error: error.message });
+    }
+  }
+  
+  return { successful: results, failed: errors };
+}
+```
+
+#### Asynchronous Processing
+
+**Background Job Integration**:
+```javascript
+// Queue large operations for background processing
+async function queueBulkUserUpdate(userUpdates) {
+  const jobId = await fetch('/v2/jobs', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({
+      type: 'bulk_user_update',
+      data: userUpdates,
+      callback_url: 'https://your-app.com/webhooks/job-complete'
+    })
+  });
+  
+  return jobId;
+}
+
+// Monitor job progress
+async function checkJobStatus(jobId) {
+  const response = await fetch(`/v2/jobs/${jobId}`, {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  
+  return response.json(); // { status: 'processing', progress: 45, eta: '2 minutes' }
+}
+```
+
+___
+
+### Database Scaling Considerations
+
+#### Connection Pool Management
+
+**Optimize Database Connections**:
+```javascript
+// Configure connection pooling for high-volume applications
+const pool = new Pool({
+  host: 'db.yourcompany.com',
+  port: 5432,
+  database: 'user_management',
+  user: 'api_user',
+  password: process.env.DB_PASSWORD,
+  min: 10,        // Minimum connections
+  max: 100,       // Maximum connections
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+});
+```
+
+#### Read Replica Strategy
+
+**Route Read-Heavy Operations to Replicas**:
+```javascript
+// Use read replicas for user lookups and reporting
+const readOnlyOperations = [
+  'GET /v2/users',
+  'GET /v2/users/:id',
+  'GET /v2/roles',
+  'GET /v2/users/:id/permissions'
+];
+
+function getDbConnection(operation) {
+  if (readOnlyOperations.includes(operation)) {
+    return readReplicaPool;
+  }
+  return primaryDbPool;
+}
+```
+
+___
+
+### Monitoring and Alerting
+
+#### Performance Metrics to Track
+
+| Metric | Threshold | Alert Level |
+|--------|-----------|-------------|
+| API Response Time (P95) | > 500ms | Warning |
+| API Response Time (P99) | > 1000ms | Critical |
+| Error Rate | > 1% | Warning |
+| Error Rate | > 5% | Critical |
+| Database Connection Pool Usage | > 80% | Warning |
+| Rate Limit Hit Rate | > 10% | Warning |
+
+**Application Performance Monitoring**:
+```javascript
+// Instrument API calls for monitoring
+async function instrumentedApiCall(url, options = {}) {
+  const startTime = Date.now();
+  const operation = `${options.method || 'GET'} ${url}`;
+  
+  try {
+    const response = await fetch(url, options);
+    
+    // Log performance metrics
+    const duration = Date.now() - startTime;
+    metrics.histogram('api.response_time', duration, {
+      operation,
+      status: response.status
+    });
+    
+    // Log error rates
+    if (response.status >= 400) {
+      metrics.increment('api.errors', {
+        operation,
+        status: response.status
+      });
+    }
+    
+    return response;
+  } catch (error) {
+    // Log client-side errors
+    metrics.increment('api.client_errors', { operation });
+    throw error;
+  }
+}
+```
+
+#### Health Check Implementation
+
+**Comprehensive Health Monitoring**:
+```javascript
+app.get('/health', async (req, res) => {
+  const health = {
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    checks: {}
+  };
+  
+  // Database connectivity
+  try {
+    await db.query('SELECT 1');
+    health.checks.database = { status: 'healthy' };
+  } catch (error) {
+    health.checks.database = { status: 'unhealthy', error: error.message };
+    health.status = 'degraded';
+  }
+  
+  // API dependency checks
+  try {
+    const apiResponse = await fetch('/v2/users/health', {
+      timeout: 5000,
+      headers: { 'Authorization': 'Bearer ' + healthCheckToken }
+    });
+    health.checks.user_api = { 
+      status: apiResponse.ok ? 'healthy' : 'unhealthy',
+      response_time: apiResponse.headers.get('x-response-time')
+    };
+  } catch (error) {
+    health.checks.user_api = { status: 'unhealthy', error: error.message };
+    health.status = 'degraded';
+  }
+  
+  // Memory usage
+  const memUsage = process.memoryUsage();
+  health.checks.memory = {
+    status: memUsage.heapUsed / memUsage.heapTotal < 0.9 ? 'healthy' : 'warning',
+    heap_used_mb: Math.round(memUsage.heapUsed / 1024 / 1024),
+    heap_total_mb: Math.round(memUsage.heapTotal / 1024 / 1024)
+  };
+  
+  const statusCode = health.status === 'healthy' ? 200 : 503;
+  res.status(statusCode).json(health);
+});
+```
+
+💡 **Tip**: Implement circuit breakers for external API calls to prevent cascading failures during high load periods.
+
+⚠️ **Warning**: Always test performance optimizations under realistic load conditions. What works for 100 users may not scale to 100,000 users.
+
 [Back to top](#user-management-api-reference)
+
+---
+
+---
+
+)
