@@ -10,12 +10,24 @@
 | **Source** | Portfolio Documentation |
 
 ## Table of Contents
-
-1. [Overview and Objectives](#1-overview-and-objectives)
-2. [Architecture Foundation](#2-architecture-foundation)
-3. [Implementation Steps](#3-implementation-steps)
-4. [Validation and Testing](#4-validation-and-testing)
-5. [Troubleshooting](#5-troubleshooting)
+1. [Overview and Objectives](#1-overview-and-objectives)  
+   1.1 [What You'll Accomplish](#what-youll-accomplish)  
+   1.2 [Understanding RAG Systems](#understanding-rag-systems)  
+   1.3 [Prerequisites](#prerequisites)  
+   1.4 [Implementation Timeline](#implementation-timeline)  
+2. [Architecture Foundation](#2-architecture-foundation)  
+   2.1 [System Components](#21-system-components)  
+   2.2 [Data Flow Architecture](#22-data-flow-architecture)  
+   2.3 [Technology Stack Decision Matrix](#23-technology-stack-decision-matrix)  
+   2.4 [Security Considerations](#24-security-considerations)  
+3. [Implementation Steps](#3-implementation-steps)  
+   3.1 [Environment Setup](#31-environment-setup)  
+   3.2 [Document Processing Pipeline](#32-document-processing-pipeline)  
+   3.3 [Retrieval System Implementation](#33-retrieval-system-implementation)  
+   3.4 [Production Integration with Monitoring and Scalability](#34-production-integration-with-monitoring-and-scalability)  
+4. [Validation and Testing](#4-validation-and-testing)  
+   4.1 [Comprehensive Testing Framework](#41-comprehensive-testing-framework)  
+5. [Troubleshooting](#5-troubleshooting)  
 6. [Next Steps and Resources](#6-next-steps-and-resources)
 
 ---
