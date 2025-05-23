@@ -1778,5 +1778,3 @@ app.get('/health', async (req, res) => {
 ⚠️ **Warning**: Always test performance optimizations under realistic load conditions. What works for 100 users may not scale to 100,000 users.
 
 [Back to top](#user-management-api-reference)
-
----
