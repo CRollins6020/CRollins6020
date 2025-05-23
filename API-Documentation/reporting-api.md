@@ -8,17 +8,62 @@
 
 ## Table of Contents
 
-1. [Overview](#1-overview)
-2. [Authentication](#2-authentication)
-3. [Rate Limiting](#3-rate-limiting)
-4. [Reports Endpoints](#4-reports-endpoints)
-5. [Analytics Endpoints](#5-analytics-endpoints)
-6. [Dashboards Endpoints](#6-dashboards-endpoints)
-7. [Data Export Endpoints](#7-data-export-endpoints)
-8. [Error Handling](#8-error-handling)
-9. [Troubleshooting](#9-troubleshooting)
-10. [Advanced Integration Patterns](#10-advanced-integration-patterns)
-11. [SDK and Examples](#11-sdk-and-examples)
+1. [Overview](#overview)
+   - [Key Capabilities](#key-capabilities)
+   - [API Versioning](#api-versioning)
+
+2. [Authentication](#authentication)
+   - [API Key Authentication](#api-key-authentication)
+   - [Authentication Errors](#authentication-errors)
+
+3. [Rate Limiting](#rate-limiting)
+   - [Rate Limit Headers](#rate-limit-headers)
+   - [Rate Limit Tiers](#rate-limit-tiers)
+   - [Handling Rate Limits](#handling-rate-limits)
+
+4. [Reports Endpoints](#reports-endpoints)
+   - [Create Report](#create-report)
+   - [Retrieve Report](#retrieve-report)
+   - [List Reports](#list-reports)
+
+5. [Analytics Endpoints](#analytics-endpoints)
+   - [Get Metrics](#get-metrics)
+   - [Get Real-time Metrics](#get-real-time-metrics)
+   - [Get Custom Analytics](#get-custom-analytics)
+
+6. [Dashboards Endpoints](#dashboards-endpoints)
+   - [Create Dashboard](#create-dashboard)
+   - [Update Dashboard](#update-dashboard)
+   - [Get Dashboard Data](#get-dashboard-data)
+
+7. [Data Export Endpoints](#data-export-endpoints)
+   - [Request Data Export](#request-data-export)
+   - [Get Export Status](#get-export-status)
+   - [Webhook Handling](#webhook-handling)
+   - [Bulk Export Limitations](#bulk-export-limitations)
+
+8. [Error Handling](#error-handling)
+   - [Error Response Format](#error-response-format)
+   - [Common Error Codes](#common-error-codes)
+   - [Error Handling Best Practices](#error-handling-best-practices)
+
+9. [Troubleshooting](#troubleshooting)
+   - [Report Generation Issues](#report-generation-issues)
+   - [Analytics Query Problems](#analytics-query-problems)
+   - [Dashboard and Export Failures](#dashboard-and-export-failures)
+   - [Performance Optimization](#performance-optimization)
+
+10. [Advanced Integration Patterns](#advanced-integration-patterns)
+    - [Available SDKs](#available-sdks)
+    - [Code Examples](#code-examples)
+    - [Common Integration Patterns](#common-integration-patterns)
+
+11. [SDK and Examples](#sdk-and-examples)
+    - [cURL Examples](#curl-examples)
+    - [Python Examples](#python-examples)
+    - [JavaScript Examples](#javascript-examples)
+    - [PHP Examples](#php-examples)
+    - [Ruby Examples](#ruby-examples)
 
 ---
 

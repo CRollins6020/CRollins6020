@@ -11,15 +11,59 @@
 
 ## Table of Contents
 
-1. [Overview](#1-overview)
-2. [Authentication](#2-authentication)
-3. [Common Use Cases](#3-common-use-cases)
-4. [User Endpoints](#4-user-endpoints)
-5. [Role Management Endpoints](#5-role-management-endpoints)
-6. [Error Handling](#6-error-handling)
-7. [Rate Limiting](#7-rate-limiting)
-8. [Webhook Events](#8-webhook-events)
-9. [Performance and Scaling](#9-performance-and-scaling)
+1. [Overview](#overview)
+   - [Key Features](#key-features)
+   - [API Conventions](#api-conventions)
+
+2. [Authentication](#authentication)
+   - [Getting API Credentials](#getting-api-credentials)
+   - [OAuth 2.0 Flow](#oauth-20-flow)
+   - [Making Authenticated Requests](#making-authenticated-requests)
+   - [Token Refresh](#token-refresh)
+
+3. [Common Use Cases](#common-use-cases)
+   - [User Registration and Onboarding](#user-registration-and-onboarding)
+   - [Administrative User Management](#administrative-user-management)
+   - [Access Control Implementation](#access-control-implementation)
+
+4. [User Endpoints](#user-endpoints)
+   - [Create User](#create-user)
+   - [Get User](#get-user)
+   - [List Users](#list-users)
+   - [Update User](#update-user)
+   - [Deactivate User](#deactivate-user)
+   - [Delete User](#delete-user)
+
+5. [Role Management Endpoints](#role-management-endpoints)
+   - [Assign Role to User](#assign-role-to-user)
+   - [Remove Role from User](#remove-role-from-user)
+   - [List User Roles](#list-user-roles)
+   - [Bulk Role Assignment](#bulk-role-assignment)
+
+6. [Error Handling](#error-handling)
+   - [Standard HTTP Status Codes](#standard-http-status-codes)
+   - [Error Response Format](#error-response-format)
+   - [Common Error Scenarios](#common-error-scenarios)
+   - [Advanced Error Scenarios](#advanced-error-scenarios)
+
+7. [Rate Limiting](#rate-limiting)
+   - [Rate Limit Headers](#rate-limit-headers)
+   - [Rate Limit Tiers](#rate-limit-tiers)
+   - [Best Practices for Rate Limiting](#best-practices-for-rate-limiting)
+
+8. [Webhook Events](#webhook-events)
+   - [Supported Events](#supported-events)
+   - [Webhook Payload Format](#webhook-payload-format)
+   - [Webhook Security](#webhook-security)
+   - [Example Event Handlers](#example-event-handlers)
+   - [Webhook Delivery Guarantees](#webhook-delivery-guarantees)
+
+9. [Performance and Scaling](#performance-and-scaling)
+   - [API Performance Optimization](#api-performance-optimization)
+   - [Caching Strategies](#caching-strategies)
+   - [High-Volume Operations](#high-volume-operations)
+   - [Database Scaling Considerations](#database-scaling-considerations)
+   - [Monitoring and Alerting](#monitoring-and-alerting)
 
 ---
 

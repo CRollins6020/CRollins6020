@@ -14,14 +14,50 @@
 
 ## Table of Contents
 
-1. [Overview](#1-overview)
-2. [Authentication](#2-authentication)
-3. [Common Use Cases](#3-common-use-cases)
-4. [Prompt Endpoints](#4-prompt-endpoints)
-5. [Error Handling](#5-error-handling)
-6. [Rate Limiting](#6-rate-limiting)
-7. [Advanced Features](#7-advanced-features)
-8. [Performance and Scaling](#8-performance-and-scaling)
+1. [Overview](#overview)
+   - [Key Features](#key-features)
+   - [Getting Started](#getting-started)
+
+2. [Authentication](#authentication)
+   - [API Key Authentication](#api-key-authentication)
+   - [OAuth 2.0 Flow](#oauth-20-flow)
+   - [Token Management](#token-management)
+
+3. [Common Use Cases](#common-use-cases)
+   - [Single Prompt Execution](#single-prompt-execution)
+   - [Conversation Management](#conversation-management)
+   - [Streaming Responses](#streaming-responses)
+
+4. [Prompt Endpoints](#prompt-endpoints)
+   - [Execute Prompt](#execute-prompt)
+   - [Stream Prompt Response](#stream-prompt-response)
+   - [Create Conversation](#create-conversation)
+   - [Send Message to Conversation](#send-message-to-conversation)
+
+5. [Error Handling](#error-handling)
+   - [Standard HTTP Response Codes](#standard-http-response-codes)
+   - [Error Response Format](#error-response-format)
+   - [Common Error Scenarios](#common-error-scenarios)
+
+6. [Rate Limiting](#rate-limiting)
+   - [Rate Limit Policies](#rate-limit-policies)
+   - [Best Practices](#best-practices)
+   - [Monitoring Usage](#monitoring-usage)
+
+7. [Advanced Features](#advanced-features)
+   - [Prompt Templates](#prompt-templates)
+   - [Batch Processing](#batch-processing)
+   - [Model Selection and Routing](#model-selection-and-routing)
+   - [Content Safety and Moderation](#content-safety-and-moderation)
+   - [Response Caching](#response-caching)
+   - [Webhooks and Callbacks](#webhooks-and-callbacks)
+
+8. [Performance and Scaling](#performance-and-scaling)
+   - [API Optimization Strategies](#api-optimization-strategies)
+   - [Caching Strategies](#caching-strategies)
+   - [High-Volume Operations](#high-volume-operations)
+   - [Infrastructure Considerations](#infrastructure-considerations)
+   - [Monitoring and Metrics](#monitoring-and-metrics)
 
 ---
 
