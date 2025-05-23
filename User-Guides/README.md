@@ -4,7 +4,7 @@ Clear, practical documentation to help users navigate complex AI systems with co
 
 ## 📂 Available Guides
 
-### **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)**
+### **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/langchain-agent-platform-admin-guide.md)**
 
 A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private. This comprehensive resource covers setup, configuration, security, and maintenance for enterprise deployments.
 
