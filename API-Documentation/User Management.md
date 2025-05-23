@@ -1780,7 +1780,3 @@ app.get('/health', async (req, res) => {
 [Back to top](#user-management-api-reference)
 
 ---
-
----
-
-)
