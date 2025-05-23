@@ -12,7 +12,7 @@ A complete guide for IT teams to set up and manage custom AI assistants that can
 
 Learn how to connect AI chatbots to your organization's internal documents and data sources, enabling them to deliver context-aware answers based on your business content—not generic web data. This guide will walk through document processing, vector database setup, query handling, and LLM integration.
 
-### **[Enterprise Prompt Engineering Handbook](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/Enterprise%20Prompt%20Engineering%20Handbook.md)**
+### **[Enterprise Prompt Engineering Handbook](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/enterprise-prompt-engineering-handbook.md)**
 
 Practical instructions for writing effective AI prompts that generate consistent, accurate results—while avoiding common pitfalls that waste time and resources. Follow a complete workflow from design and implementation to evaluation and refinement.
 
