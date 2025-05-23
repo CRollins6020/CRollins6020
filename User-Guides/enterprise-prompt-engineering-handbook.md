@@ -30,11 +30,40 @@ Whether you're a technical leader planning AI adoption, a prompt engineer scalin
 ## Table of Contents
 
 1. [Foundational Principles](#1-foundational-principles)
+   - 1.1 [Enterprise vs. Consumer Prompt Engineering](#11-enterprise-vs-consumer-prompt-engineering)
+   - 1.2 [Core Enterprise Requirements](#12-core-enterprise-requirements)
+   - 1.3 [Business Value Alignment](#13-business-value-alignment)
+
 2. [Enterprise Governance Framework](#2-enterprise-governance-framework)
+   - 2.1 [Governance Structure](#21-governance-structure)
+   - 2.2 [Risk Assessment and Management](#22-risk-assessment-and-management)
+   - 2.3 [Compliance and Regulatory Considerations](#23-compliance-and-regulatory-considerations)
+   - 2.4 [Security Framework](#24-security-framework)
+
 3. [Implementation Framework](#3-implementation-framework)
+   - 3.1 [Use Case Identification and Prioritization](#31-use-case-identification-and-prioritization)
+   - 3.2 [Prompt Design Methodology](#32-prompt-design-methodology)
+   - 3.3 [Integration Strategy](#33-integration-strategy)
+   - 3.4 [Performance and Quality Assurance](#34-performance-and-quality-assurance)
+
 4. [Enterprise Workflow](#4-enterprise-workflow)
+   - 4.1 [Discovery and Planning Phase](#41-discovery-and-planning-phase)
+   - 4.2 [Development and Testing Workflow](#42-development-and-testing-workflow)
+   - 4.3 [Deployment and Operations](#43-deployment-and-operations)
+   - 4.4 [Maintenance and Optimization](#44-maintenance-and-optimization)
+
 5. [Troubleshooting and Optimization](#5-troubleshooting-and-optimization)
+   - 5.1 [Common Enterprise Issues](#51-common-enterprise-issues)
+   - 5.2 [Diagnostic Methodology](#52-diagnostic-methodology)
+   - 5.3 [Performance Optimization Strategies](#53-performance-optimization-strategies)
+   - 5.4 [Quality Assurance Procedures](#54-quality-assurance-procedures)
+
 6. [Templates and Examples](#6-templates-and-examples)
+   - 6.1 [Document Analysis Template](#61-document-analysis-template)
+   - 6.2 [Customer Service Escalation Template](#62-customer-service-escalation-template)
+   - 6.3 [Financial Analysis Template](#63-financial-analysis-template)
+   - 6.4 [Technical Documentation Template](#64-technical-documentation-template)
+   - 6.5 [Prompt Testing and Validation Template](#65-prompt-testing-and-validation-template)
 
 ---
 
