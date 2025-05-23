@@ -15,35 +15,63 @@
 
 ## Table of Contents
 
-1. [Platform Overview](#1-platform-overview)  
-   1.1 [What You'll Accomplish](#what-youll-accomplish)  
-   1.2 [Platform Architecture](#platform-architecture)  
-   1.3 [Core Capabilities](#core-capabilities)  
-   1.4 [Deployment Models](#deployment-models)  
-   1.5 [Pre-deployment Planning](#pre-deployment-planning)  
-2. [Installation and Initial Setup](#2-installation-and-initial-setup)  
-   2.1 [Installation Prerequisites](#installation-prerequisites)  
-   2.2 [Installation Process](#installation-process)  
-   2.3 [Initial Administrator Setup](#initial-administrator-setup)  
-   2.4 [Validation and Testing](#validation-and-testing)  
-3. [User Management and Access Control](#3-user-management-and-access-control)  
-   3.1 [User Lifecycle Management](#user-lifecycle-management)  
-   3.2 [Role-Based Access Control](#role-based-access-control)  
-   3.3 [Identity Provider Integration](#identity-provider-integration)  
-   3.4 [Access Control Policies](#access-control-policies)  
-4. [Agent Configuration and Deployment](#4-agent-configuration-and-deployment)  
-   4.1 [Agent Architecture Overview](#agent-architecture-overview)  
-   4.2 [Enterprise Tool Integrations](#enterprise-tool-integrations)  
-   4.3 [Advanced Agent Configurations](#advanced-agent-configurations)  
-   4.4 [Agent Deployment Process](#agent-deployment-process)  
-   4.5 [Performance Optimization](#performance-optimization)  
-5. [Security and Compliance](#5-security-and-compliance)  
-6. [Monitoring and Performance Management](#6-monitoring-and-performance-management)  
-7. [Troubleshooting Common Issues](#7-troubleshooting-common-issues)  
-8. [Best Practices and Templates](#8-best-practices-and-templates)  
-9. [Next Steps and Resources](#9-next-steps-and-resources)  
+1. [Platform Overview](#1-platform-overview)
+   - 1.1 [What You'll Accomplish](#what-youll-accomplish)
+   - 1.2 [Platform Architecture](#platform-architecture)
+   - 1.3 [Core Capabilities](#core-capabilities)
+   - 1.4 [Deployment Models](#deployment-models)
+   - 1.5 [Pre-deployment Planning](#pre-deployment-planning)
 
----
+2. [Installation and Initial Setup](#2-installation-and-initial-setup)
+   - 2.1 [Installation Prerequisites](#installation-prerequisites)
+   - 2.2 [Installation Process](#installation-process)
+   - 2.3 [Initial Administrator Setup](#initial-administrator-setup)
+   - 2.4 [Validation and Testing](#validation-and-testing)
+
+3. [User Management and Access Control](#3-user-management-and-access-control)
+   - 3.1 [User Lifecycle Management](#user-lifecycle-management)
+   - 3.2 [Role-Based Access Control](#role-based-access-control)
+   - 3.3 [Identity Provider Integration](#identity-provider-integration)
+   - 3.4 [Access Control Policies](#access-control-policies)
+
+4. [Agent Configuration and Deployment](#4-agent-configuration-and-deployment)
+   - 4.1 [Agent Architecture Overview](#agent-architecture-overview)
+   - 4.2 [Enterprise Tool Integrations](#enterprise-tool-integrations)
+   - 4.3 [Advanced Agent Configurations](#advanced-agent-configurations)
+   - 4.4 [Agent Deployment Process](#agent-deployment-process)
+   - 4.5 [Performance Optimization](#performance-optimization)
+
+5. [Security and Compliance](#5-security-and-compliance)
+   - 5.1 [Security Architecture Overview](#51-security-architecture-overview)
+   - 5.2 [Authentication and Identity Management](#52-authentication-and-identity-management)
+   - 5.3 [Data Protection and Privacy Controls](#53-data-protection-and-privacy-controls)
+   - 5.4 [Compliance Framework Implementation](#54-compliance-framework-implementation)
+
+6. [Monitoring and Performance Management](#6-monitoring-and-performance-management)
+   - 6.1 [Comprehensive Monitoring Strategy](#comprehensive-monitoring-strategy)
+   - 6.2 [Performance Dashboards and Alerting](#performance-dashboards-and-alerting)
+   - 6.3 [Performance Optimization Strategies](#performance-optimization-strategies)
+
+7. [Troubleshooting Common Issues](#7-troubleshooting-common-issues)
+   - 7.1 [Troubleshooting Decision Tree](#troubleshooting-decision-tree)
+   - 7.2 [Authentication and Access Issues](#authentication-and-access-issues)
+   - 7.3 [Agent Performance Problems](#agent-performance-problems)
+   - 7.4 [System Performance Issues](#system-performance-issues)
+
+8. [Best Practices and Templates](#8-best-practices-and-templates)
+   - 8.1 [Production Deployment Templates](#production-deployment-templates)
+   - 8.2 [Configuration Management Best Practices](#configuration-management-best-practices)
+   - 8.3 [Security Hardening Templates](#security-hardening-templates)
+   - 8.4 [Implementation Case Studies](#implementation-case-studies)
+   - 8.5 [Operational Excellence Templates](#operational-excellence-templates)
+
+9. [Next Steps and Resources](#9-next-steps-and-resources)
+   - 9.1 [Implementation Roadmap](#implementation-roadmap)
+   - 9.2 [Resource Library](#resource-library)
+   - 9.3 [Success Metrics and KPIs](#success-metrics-and-kpis)
+   - 9.4 [Getting Additional Help](#getting-additional-help)  
+   
+   ---
 
 ## 1. Platform Overview
 

@@ -30,9 +30,9 @@ Whether you're a technical leader planning AI adoption, a prompt engineer scalin
 ## Table of Contents
 
 1. [Foundational Principles](#1-foundational-principles)
-      1.1 [Enterprise vs. Consumer Prompt Engineering](#11-enterprise-vs-consumer-prompt-engineering)
-      1.2 [Core Enterprise Requirements](#12-core-enterprise-requirements)
-      1.3 [Business Value Alignment](#13-business-value-alignment)
+   - 1.1 [Enterprise vs. Consumer Prompt Engineering](#11-enterprise-vs-consumer-prompt-engineering)
+   - 1.2 [Core Enterprise Requirements](#12-core-enterprise-requirements)
+   - 1.3 [Business Value Alignment](#13-business-value-alignment)
 
 2. [Enterprise Governance Framework](#2-enterprise-governance-framework)
    - 2.1 [Governance Structure](#21-governance-structure)
