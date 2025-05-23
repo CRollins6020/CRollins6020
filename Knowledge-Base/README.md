@@ -6,23 +6,23 @@ Actionable, focused articles that help users troubleshoot issues, understand spe
 
 ## 📚 Available Articles
 
-### **[Troubleshooting API Errors](Troubleshooting-API-Errors.md)**  
+### **[Troubleshooting API Errors](./troubleshooting-api-errors.md)**  
 Identify, interpret, and resolve common API error responses. This article walks through structured error handling, decoding status codes, and investigating failed requests using real-world examples.
 
-### **[Integration Playbook](Integration-Playbook.md)**  
+### **[Integration Playbook](./integration-playbook.md)**  
 A tactical guide for integrating AI services with existing internal platforms. Covers key considerations like environment setup, authentication, and handling edge cases across deployment stages.
 
-### **[Dev Writing Guidelines](Dev-Writing-Guidelines.md)**  
+### **[Dev Writing Guidelines](./dev-writing-guidelines.md)**  
 Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.
 
-### **[Automating PDF Generation with Documint](Automating-PDF-Generation.md)**  
+### **[Automating PDF Generation with Documint](./automating-pdf-generation.md)**  
 Generate clean, professional PDFs using open-source HTML templates and JSON data. This article provides setup instructions, usage examples, and best practices for building scalable document workflows with Documint’s CLI-based automation tool.
 
-### **[Using the Documint GUI](Using-the-Documint-GUI.md)**  
+### **[Using the Documint GUI](./using-the-documint-gui.md)**  
 Generate personalized PDFs without writing code using Documint’s web interface. This article walks through uploading templates, importing JSON data, binding dynamic fields, and exporting fully rendered PDFs—all through a visual, no-code workflow.
 
-### **[Troubleshooting Playwright Install Failures](Troubleshooting-Playwright-Install.md)**  
-Resolve common errors encountered when running `npx playwright install`, including permission issues, corrupted downloads, proxy misconfigurations, and Windows-specific problems. This article includes real error examples, diagnostic tips, and a visual troubleshooting flow to help developers fix installation failures quickly.
+### **[Troubleshooting Playwright Install Failures](./troubleshooting-playwright-install.md)**  
+Resolve common errors encountered when running `npx playwright install`, including permission issues, corrupted downloads, proxy misconfigurations, and Windows-specific problems. Includes error examples, diagnostic tips, and a visual troubleshooting flow to help developers fix issues quickly.
 
 ---
 
