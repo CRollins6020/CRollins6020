@@ -4,17 +4,14 @@ Clear, practical documentation to help users navigate complex AI systems with co
 
 ## 📂 Available Guides
 
-### **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/langchain-agent-platform-admin-guide.md)**
+### **[Enterprise Prompt Engineering Handbook](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/enterprise-prompt-engineering-handbook.md)**  
+*Master enterprise-scale AI deployment with governance frameworks that ensure consistent, compliant results.* This strategic handbook goes far beyond basic prompt writing—it provides complete organizational frameworks for implementing AI across business units, including governance structures, compliance controls for regulated industries (healthcare, finance, government), risk management, and measurable ROI tracking. Features industry-specific templates, Center of Excellence establishment, and comprehensive quality assurance processes that transform AI from experimental tool to reliable business infrastructure.
 
-A complete guide for IT teams to set up and manage custom AI assistants that can securely access company information while keeping sensitive data private. This comprehensive resource covers setup, configuration, security, and maintenance for enterprise deployments.
+### **[LangChain Agent Platform: Administrator's Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/langchain-agent-platform-admin-guide.md)**  
+*Deploy and operate production-grade AI agent infrastructure with enterprise security, scalability, and monitoring.* This technical operations manual covers the complete lifecycle of managing intelligent automation platforms—from multi-tenant architecture and role-based access controls to advanced agent orchestration, enterprise tool integrations (Salesforce, ServiceNow, Microsoft 365), and comprehensive performance monitoring. Includes real-world case studies, automated scaling policies, incident response procedures, and production-ready deployment templates for organizations processing thousands of AI interactions daily.
 
-### **[RAG Implementation Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/rag-implementation-guide.md)**
-
-Learn how to connect AI chatbots to your organization's internal documents and data sources, enabling them to deliver context-aware answers based on your business content—not generic web data. This guide will walk through document processing, vector database setup, query handling, and LLM integration.
-
-### **[Enterprise Prompt Engineering Handbook](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/enterprise-prompt-engineering-handbook.md)**
-
-Practical instructions for writing effective AI prompts that generate consistent, accurate results—while avoiding common pitfalls that waste time and resources. Follow a complete workflow from design and implementation to evaluation and refinement.
+### **[RAG Implementation Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/rag-implementation-guide.md)**  
+*Build production-ready knowledge systems that securely connect AI to your proprietary data with enterprise reliability.* This implementation guide delivers a complete technical framework for creating Retrieval-Augmented Generation systems that scale—covering advanced document processing pipelines, embedding optimization strategies, intelligent caching systems, and comprehensive testing suites. Features performance benchmarking data, memory optimization techniques, production monitoring frameworks, and troubleshooting playbooks that ensure sub-second query responses even with massive document repositories.
 
 ---
 
