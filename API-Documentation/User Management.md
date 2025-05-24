@@ -1,1780 +1,1559 @@
-# User Management API Reference
+# User Management API v2.1 Documentation
 
-| **Field** | **Value** |
-|-----------|-----------|
-| **Title** | User Management API Reference |
-| **Version** | v2.1 |
-| **Author** | Technical Writing Team |
-| **Last Updated** | May 23, 2025 |
-| **Status** | Production |
-| **Source** | https://github.com/company/user-management-api |
+**API Metadata Header:**
+- **Version:** v2.1.0
+- **Base URL:** `https://api.userplatform.com/v2`
+- **Authentication:** Bearer Token (JWT)
+- **Last Updated:** January 15, 2025
+- **OpenAPI Spec:** [userapi-v2.1.yaml](https://api.userplatform.com/openapi/v2.1.yaml)
+- **Support Contact:** developers@userplatform.com
+
+---
 
 ## Table of Contents
 
-1. [Overview](#overview)  
-   - 1.1 [Key Features](#key-features)  
-   - 1.2 [API Conventions](#api-conventions)
-
-2. [Authentication](#authentication)  
-   - 2.1 [Getting API Credentials](#getting-api-credentials)  
-   - 2.2 [OAuth 2.0 Flow](#oauth-20-flow)  
-   - 2.3 [Making Authenticated Requests](#making-authenticated-requests)  
-   - 2.4 [Token Refresh](#token-refresh)
-
-3. [Common Use Cases](#common-use-cases)  
-   - 3.1 [User Registration and Onboarding](#user-registration-and-onboarding)  
-   - 3.2 [Administrative User Management](#administrative-user-management)  
-   - 3.3 [Access Control Implementation](#access-control-implementation)
-
-4. [User Endpoints](#user-endpoints)  
-   - 4.1 [Create User](#create-user)  
-   - 4.2 [Get User](#get-user)  
-   - 4.3 [List Users](#list-users)  
-   - 4.4 [Update User](#update-user)  
-   - 4.5 [Deactivate User](#deactivate-user)  
-   - 4.6 [Delete User](#delete-user)
-
-5. [Role Management Endpoints](#role-management-endpoints)  
-   - 5.1 [Assign Role to User](#assign-role-to-user)  
-   - 5.2 [Remove Role from User](#remove-role-from-user)  
-   - 5.3 [List User Roles](#list-user-roles)  
-   - 5.4 [Bulk Role Assignment](#bulk-role-assignment)
-
-6. [Error Handling](#error-handling)  
-   - 6.1 [Standard HTTP Status Codes](#standard-http-status-codes)  
-   - 6.2 [Error Response Format](#error-response-format)  
-   - 6.3 [Common Error Scenarios](#common-error-scenarios)  
-   - 6.4 [Advanced Error Scenarios](#advanced-error-scenarios)
-
-7. [Rate Limiting](#rate-limiting)  
-   - 7.1 [Rate Limit Headers](#rate-limit-headers)  
-   - 7.2 [Rate Limit Tiers](#rate-limit-tiers)  
-   - 7.3 [Best Practices for Rate Limiting](#best-practices-for-rate-limiting)
-
-8. [Webhook Events](#webhook-events)  
-   - 8.1 [Supported Events](#supported-events)  
-   - 8.2 [Webhook Payload Format](#webhook-payload-format)  
-   - 8.3 [Webhook Security](#webhook-security)  
-   - 8.4 [Example Event Handlers](#example-event-handlers)  
-   - 8.5 [Webhook Delivery Guarantees](#webhook-delivery-guarantees)
-
-9. [Performance and Scaling](#performance-and-scaling)  
-   - 9.1 [API Performance Optimization](#api-performance-optimization)  
-   - 9.2 [Caching Strategies](#caching-strategies)  
-   - 9.3 [High-Volume Operations](#high-volume-operations)  
-   - 9.4 [Database Scaling Considerations](#database-scaling-considerations)  
-   - 9.5 [Monitoring and Alerting](#monitoring-and-alerting)
+1. [Overview](#1-overview)
+2. [Authentication](#2-authentication)
+3. [Common use cases](#3-common-use-cases)
+4. [User endpoints](#4-user-endpoints)
+5. [Error handling](#5-error-handling)
+6. [Rate limiting](#6-rate-limiting)
+7. [Advanced features](#7-advanced-features)
+8. [Performance and scaling](#8-performance-and-scaling)
 
 ---
 
 ## 1. Overview
 
-The User Management API provides secure endpoints for managing user accounts, authentication, and role-based access control within your application. This RESTful API supports complete user lifecycle management, from registration through account deletion, with enterprise-grade security features.
+The User Management API provides comprehensive user lifecycle management capabilities for enterprise applications. This RESTful API enables secure user creation, authentication, profile management, and role-based access control across your platform.
 
-**Base URL**: `https://api.yourcompany.com/v2`
+### API Capabilities
 
-**Supported Formats**: JSON only
+| Feature | Description | Endpoint Count |
+|---------|-------------|----------------|
+| User Management | Create, read, update, delete user accounts | 8 endpoints |
+| Authentication | JWT-based authentication and session management | 4 endpoints |
+| Role Management | Assign and manage user roles and permissions | 6 endpoints |
+| Profile Management | Handle user profiles, preferences, and settings | 5 endpoints |
 
-**Protocol**: HTTPS (TLS 1.2 minimum)
+### Base URL and Versioning
 
-The API follows REST conventions with predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes to indicate success or failure.
+All API requests use the base URL: `https://api.userplatform.com/v2`
 
-___
+**Supported Versions:**
+- v2.1 (Current) - Enhanced security features and bulk operations
+- v2.0 (Supported) - Core functionality with basic RBAC
+- v1.x (Deprecated) - Legacy endpoints, sunset planned for June 2025
 
-### Key Features
+### Feature Comparison
 
-| Feature | Description |
-|---------|-------------|
-| **User CRUD Operations** | Complete create, read, update, delete functionality for user accounts |
-| **Role-Based Access Control** | Hierarchical permission system with customizable roles |
-| **OAuth 2.0 Authentication** | Industry-standard authentication with JWT tokens |
-| **Audit Logging** | Comprehensive activity tracking for compliance |
-| **Webhook Integration** | Real-time event notifications for user actions |
-| **Rate Limiting** | Configurable request throttling with automatic backoff |
-
-💡 **Tip**: Start with the authentication section below to understand how to secure your API requests before exploring individual endpoints.
-
-[Back to top](#user-management-api-reference)
+| Feature | Basic Plan | Professional | Enterprise |
+|---------|------------|--------------|------------|
+| Monthly Active Users | 1,000 | 10,000 | Unlimited |
+| API Rate Limit | 1,000/hour | 10,000/hour | Custom |
+| Advanced RBAC | ❌ | ✅ | ✅ |
+| SSO Integration | ❌ | ✅ | ✅ |
+| Audit Logging | ❌ | ❌ | ✅ |
 
 ---
 
 ## 2. Authentication
 
-All API requests require authentication using OAuth 2.0 with JWT Bearer tokens. The API supports both user-specific tokens for individual operations and service-to-service tokens for administrative functions.
+The User Management API uses JWT (JSON Web Tokens) for authentication. All API requests require a valid Bearer token in the Authorization header.
 
-### Getting Your API Credentials
+### Authentication Flow
 
-Before making requests, obtain your API credentials from the Developer Dashboard:
+1. **Obtain API Key:** Generate an API key from your dashboard
+2. **Exchange for JWT:** Use the API key to obtain a JWT token
+3. **Include in Requests:** Add the JWT to all subsequent API calls
+4. **Token Refresh:** Refresh tokens before expiration (24 hours)
 
-1. Navigate to **Settings** > **API Keys** in your account dashboard
-2. Generate a new **Client ID** and **Client Secret** pair
-3. Configure your redirect URIs for OAuth flows
-4. Note your API rate limits and usage quotas
+### Getting Your JWT Token
 
-⚠️ **Warning**: Store your Client Secret securely and never expose it in client-side code or public repositories.
+**Endpoint:** `POST /auth/token`
 
-___
-
-### OAuth 2.0 Flow
-
-#### Step 1: Authorization Code Request
-
-Redirect users to the authorization endpoint to begin the OAuth flow:
-
-```http
-GET /oauth/authorize?
-  response_type=code&
-  client_id=YOUR_CLIENT_ID&
-  redirect_uri=YOUR_REDIRECT_URI&
-  scope=users:read users:write roles:read&
-  state=RANDOM_STATE_STRING
-```
-
-#### Step 2: Exchange Code for Token
-
+**Request:**
 ```bash
-curl -X POST "https://api.yourcompany.com/v2/oauth/token" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=authorization_code" \
-  -d "code=AUTHORIZATION_CODE" \
-  -d "client_id=YOUR_CLIENT_ID" \
-  -d "client_secret=YOUR_CLIENT_SECRET" \
-  -d "redirect_uri=YOUR_REDIRECT_URI"
+curl -X POST https://api.userplatform.com/v2/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "api_key": "sk_live_abc123...",
+    "grant_type": "client_credentials"
+  }'
 ```
 
-**Token Response Example**:
+**Response:**
 ```json
 {
-  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "token_type": "Bearer",
-  "expires_in": 3600,
-  "refresh_token": "def502004b0b0b...",
-  "scope": "users:read users:write roles:read"
+  "expires_in": 86400,
+  "scope": "user:read user:write role:manage"
 }
 ```
 
-___
+### Using Authentication in API Calls
 
-### Making Authenticated Requests
-
-Include the Bearer token in the Authorization header for all API requests:
+Include the JWT token in the Authorization header:
 
 ```bash
-curl -X GET "https://api.yourcompany.com/v2/users/me" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json"
+curl -X GET https://api.userplatform.com/v2/users \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 ```
 
-❓ **Note**: Tokens expire after 1 hour. Use the refresh token to obtain new access tokens without requiring user re-authentication.
+<div class="warning">
+⚠️ <strong>Security Note:</strong> Never include API keys in client-side code or commit them to version control. Store tokens securely and implement proper token refresh logic.
+</div>
 
 ### Token Refresh
 
-```bash
-curl -X POST "https://api.yourcompany.com/v2/oauth/token" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=refresh_token" \
-  -d "refresh_token=YOUR_REFRESH_TOKEN" \
-  -d "client_id=YOUR_CLIENT_ID" \
-  -d "client_secret=YOUR_CLIENT_SECRET"
-```
+Refresh your token before expiration to maintain uninterrupted access:
 
-[Back to top](#user-management-api-reference)
+**Endpoint:** `POST /auth/refresh`
+
+**Request:**
+```bash
+curl -X POST https://api.userplatform.com/v2/auth/refresh \
+  -H "Authorization: Bearer your_current_token"
+```
 
 ---
 
-## 3. Common Use Cases
+## 3. Common use cases
 
-Understanding these common implementation patterns will help you integrate the User Management API effectively into your application workflows.
+### Use Case 1: User Registration and Onboarding
 
-### User Registration and Onboarding
-
-Most applications begin with user registration followed by email verification and profile setup. This pattern demonstrates the typical sequence:
+Create a new user account with profile information and send a welcome email.
 
 ```javascript
-// 1. Register new user
-const registration = await fetch('/v2/users', {
-  method: 'POST',
-  headers: { 'Authorization': 'Bearer ' + token },
-  body: JSON.stringify({
-    email: 'user@example.com',
-    password: 'SecurePass123!',
-    first_name: 'John',
-    last_name: 'Doe'
-  })
-});
+// Step 1: Create user account
+const createUser = async (userData) => {
+  const response = await fetch('https://api.userplatform.com/v2/users', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: userData.email,
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      role: 'user',
+      send_welcome_email: true
+    })
+  });
+  
+  return response.json();
+};
 
-// 2. Send verification email
-await fetch(`/v2/users/${userId}/verification`, {
-  method: 'POST',
-  headers: { 'Authorization': 'Bearer ' + token }
-});
-
-// 3. Assign default role
-await fetch(`/v2/users/${userId}/roles`, {
-  method: 'POST',
-  headers: { 'Authorization': 'Bearer ' + token },
-  body: JSON.stringify({ role_id: 'basic_user' })
-});
+// Step 2: Set initial preferences
+const setUserPreferences = async (userId, preferences) => {
+  const response = await fetch(`https://api.userplatform.com/v2/users/${userId}/preferences`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(preferences)
+  });
+  
+  return response.json();
+};
 ```
 
-___
+### Use Case 2: Bulk User Import
 
-### Administrative User Management
+Import multiple users from a CSV file or external system.
 
-Administrative dashboards typically require bulk operations and detailed user information retrieval:
+```python
+import requests
+import csv
 
-```javascript
-// Fetch paginated user list with filtering
-const users = await fetch('/v2/users?status=active&role=premium&limit=50', {
-  headers: { 'Authorization': 'Bearer ' + adminToken }
-});
-
-// Bulk role assignment
-const bulkUpdate = await fetch('/v2/users/bulk/roles', {
-  method: 'PUT',
-  headers: { 'Authorization': 'Bearer ' + adminToken },
-  body: JSON.stringify({
-    user_ids: ['user1', 'user2', 'user3'],
-    role_id: 'premium_user'
-  })
-});
-```
-
-💡 **Tip**: Use the `include` parameter in GET requests to embed related data and reduce the number of API calls needed for complex operations.
-
-___
-
-### Access Control Implementation
-
-Implementing role-based access control requires checking user permissions before allowing actions:
-
-```javascript
-// Check if user has required permission
-const hasPermission = await fetch(`/v2/users/${userId}/permissions/posts:create`, {
-  headers: { 'Authorization': 'Bearer ' + token }
-});
-
-if (hasPermission.status === 200) {
-  // User can create posts
-  await createPost();
-} else {
-  // Show access denied message
-  showAccessDenied();
-}
-```
-
-[Back to top](#user-management-api-reference)
-
----
-
-## 4. User Endpoints
-
-The user endpoints provide complete lifecycle management for user accounts, from creation through deletion, with support for profile management, status changes, and bulk operations.
-
-### 4.1 Create User
-
-Creates a new user account with the provided information. Email addresses must be unique across the system.
-
-```http
-POST /v2/users
-```
-
-**Request Headers**:
-| Header | Value | Required |
-|--------|-------|----------|
-| `Authorization` | Bearer {token} | Yes |
-| `Content-Type` | application/json | Yes |
-
-**Request Body Parameters**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `email` | string | Yes | Valid email address, must be unique |
-| `password` | string | Yes | Minimum 8 characters with complexity requirements |
-| `first_name` | string | Yes | User's first name (1-50 characters) |
-| `last_name` | string | Yes | User's last name (1-50 characters) |
-| `phone` | string | No | Phone number in E.164 format |
-| `department` | string | No | Department or team assignment |
-| `metadata` | object | No | Custom key-value pairs (max 10 properties) |
-| `send_welcome_email` | boolean | No | Send welcome email (default: true) |
-
-**Password Requirements**:
-- Minimum 8 characters
-- At least one uppercase letter
-- At least one lowercase letter  
-- At least one number
-- At least one special character
-
-**Create User Request Example**:
-```json
-{
-  "email": "jane.smith@company.com",
-  "password": "SecurePass123!",
-  "first_name": "Jane",
-  "last_name": "Smith",
-  "phone": "+1234567890",
-  "department": "Engineering",
-  "metadata": {
-    "employee_id": "EMP001",
-    "start_date": "2025-05-23"
-  },
-  "send_welcome_email": true
-}
-```
-
-___
-
-**Success Response (201 Created)**:
-```json
-{
-  "id": "usr_1234567890abcdef",
-  "email": "jane.smith@company.com",
-  "first_name": "Jane",
-  "last_name": "Smith",
-  "phone": "+1234567890",
-  "department": "Engineering",
-  "status": "pending_verification",
-  "email_verified": false,
-  "created_at": "2025-05-23T10:30:00Z",
-  "updated_at": "2025-05-23T10:30:00Z",
-  "last_login": null,
-  "metadata": {
-    "employee_id": "EMP001",
-    "start_date": "2025-05-23"
-  },
-  "roles": []
-}
-```
-
-___
-
-### 4.2 Get User
-
-Retrieves detailed information about a specific user account. Use `me` as the user ID to get the current authenticated user's information.
-
-```http
-GET /v2/users/{user_id}
-```
-
-**Path Parameters**:
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `user_id` | string | User ID or "me" for current user |
-
-**Query Parameters**:
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `include` | string | none | Comma-separated list: "roles", "permissions", "audit_log" |
-
-**Get User Request Example**:
-```bash
-curl -X GET "https://api.yourcompany.com/v2/users/usr_1234567890abcdef?include=roles,permissions" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-**Success Response (200 OK)**:
-```json
-{
-  "id": "usr_1234567890abcdef",
-  "email": "jane.smith@company.com",
-  "first_name": "Jane",
-  "last_name": "Smith",
-  "phone": "+1234567890",
-  "department": "Engineering",
-  "status": "active",
-  "email_verified": true,
-  "created_at": "2025-05-23T10:30:00Z",
-  "updated_at": "2025-05-23T14:15:30Z",
-  "last_login": "2025-05-23T14:00:00Z",
-  "metadata": {
-    "employee_id": "EMP001",
-    "start_date": "2025-05-23"
-  },
-  "roles": [
-    {
-      "id": "role_developer",
-      "name": "Developer",
-      "assigned_at": "2025-05-23T10:35:00Z"
+def bulk_import_users(csv_file_path, api_token):
+    """Import users from CSV file with error handling"""
+    
+    headers = {
+        'Authorization': f'Bearer {api_token}',
+        'Content-Type': 'application/json'
     }
-  ],
-  "permissions": [
-    "users:read",
-    "projects:read",
-    "projects:write"
-  ]
-}
+    
+    users_data = []
+    
+    # Read CSV and prepare user data
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            users_data.append({
+                'email': row['email'],
+                'first_name': row['first_name'],
+                'last_name': row['last_name'],
+                'role': row.get('role', 'user')
+            })
+    
+    # Bulk create users (max 100 per request)
+    response = requests.post(
+        'https://api.userplatform.com/v2/users/bulk',
+        headers=headers,
+        json={'users': users_data[:100]}
+    )
+    
+    return response.json()
 ```
 
-___
+### Use Case 3: Role-Based Dashboard Access
 
-### 4.3 List Users
+Implement role-based access control for dashboard features.
 
-Retrieves a paginated list of users with optional filtering and sorting capabilities.
+```javascript
+const checkUserAccess = async (userId, requiredRole) => {
+  try {
+    // Get user details including roles
+    const userResponse = await fetch(`https://api.userplatform.com/v2/users/${userId}`, {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    
+    const user = await userResponse.json();
+    
+    // Check if user has required role
+    const hasAccess = user.roles.some(role => 
+      role.name === requiredRole || role.permissions.includes('admin')
+    );
+    
+    return {
+      hasAccess,
+      userRoles: user.roles,
+      redirectUrl: hasAccess ? '/dashboard' : '/unauthorized'
+    };
+    
+  } catch (error) {
+    console.error('Access check failed:', error);
+    return { hasAccess: false, error: error.message };
+  }
+};
 
-```http
-GET /v2/users
+// Usage in route protection
+app.get('/admin-dashboard', async (req, res) => {
+  const accessCheck = await checkUserAccess(req.user.id, 'admin');
+  
+  if (!accessCheck.hasAccess) {
+    return res.redirect(accessCheck.redirectUrl);
+  }
+  
+  res.render('admin-dashboard');
+});
 ```
 
-**Query Parameters**:
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `limit` | integer | 20 | Number of results per page (1-100) |
-| `offset` | integer | 0 | Number of results to skip |
-| `status` | string | all | Filter by status: "active", "inactive", "pending_verification" |
-| `role` | string | none | Filter by role name or ID |
-| `department` | string | none | Filter by department |
-| `search` | string | none | Search in name and email fields |
-| `sort` | string | created_at | Sort field: "created_at", "last_login", "name", "email" |
-| `order` | string | desc | Sort order: "asc" or "desc" |
-| `include` | string | none | Comma-separated list: "roles", "permissions" |
+---
 
-**List Users Request Example**:
+## 4. User endpoints
+
+### 4.1 List Users
+
+Retrieve a paginated list of users with filtering and sorting options.
+
+**Endpoint:** `GET /users`
+
+**Parameters:**
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `limit` | integer | ⚠️ Optional | Results per page (1-100) | `25` |
+| `offset` | integer | ⚠️ Optional | Number of results to skip | `50` |
+| `role` | string | ⚠️ Optional | Filter by user role | `admin` |
+| `status` | string | ⚠️ Optional | Filter by account status | `active` |
+| `sort` | string | ⚠️ Optional | Sort field and direction | `created_at:desc` |
+| `search` | string | ⚠️ Optional | Search in name and email | `john@example.com` |
+
+**Request Example:**
 ```bash
-curl -X GET "https://api.yourcompany.com/v2/users?status=active&department=Engineering&limit=50&include=roles" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+curl -X GET "https://api.userplatform.com/v2/users?limit=25&role=admin&sort=created_at:desc" \
+  -H "Authorization: Bearer your_jwt_token"
 ```
 
-**Success Response (200 OK)**:
+**Response Example:**
 ```json
 {
   "data": [
     {
-      "id": "usr_1234567890abcdef",
-      "email": "jane.smith@company.com",
+      "id": "user_12345",
+      "email": "admin@company.com",
       "first_name": "Jane",
       "last_name": "Smith",
-      "department": "Engineering",
+      "role": "admin",
       "status": "active",
-      "created_at": "2025-05-23T10:30:00Z",
-      "last_login": "2025-05-23T14:00:00Z",
-      "roles": [
-        {
-          "id": "role_developer",
-          "name": "Developer"
-        }
-      ]
+      "created_at": "2025-01-15T10:30:00Z",
+      "last_login": "2025-01-20T14:22:33Z"
     }
   ],
   "pagination": {
-    "limit": 50,
+    "total": 150,
+    "limit": 25,
     "offset": 0,
-    "total": 1,
-    "has_more": false
+    "has_more": true
   }
 }
 ```
 
-___
+**Error Responses:**
+- `400 Bad Request`: Invalid query parameters
+- `401 Unauthorized`: Missing or invalid authentication token
+- `403 Forbidden`: Insufficient permissions to list users
+- `429 Too Many Requests`: Rate limit exceeded
+
+---
+
+### 4.2 Create User
+
+Create a new user account with profile information and role assignment.
+
+**Endpoint:** `POST /users`
+
+**Request Body:**
+
+| Field | Type | Required | Description | Example |
+|-------|------|----------|-------------|---------|
+| `email` | string | ✅ Required | Valid email address | `user@example.com` |
+| `first_name` | string | ✅ Required | User's first name | `John` |
+| `last_name` | string | ✅ Required | User's last name | `Doe` |
+| `role` | string | ⚠️ Optional | Initial user role | `user` |
+| `password` | string | ⚠️ Optional | User password (if not using SSO) | `SecurePass123!` |
+| `send_welcome_email` | boolean | ⚠️ Optional | Send welcome email | `true` |
+| `metadata` | object | ⚠️ Optional | Custom user metadata | `{"department": "engineering"}` |
+
+**Request Example:**
+```bash
+curl -X POST https://api.userplatform.com/v2/users \
+  -H "Authorization: Bearer your_jwt_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "newuser@company.com",
+    "first_name": "Alex",
+    "last_name": "Johnson",
+    "role": "user",
+    "send_welcome_email": true,
+    "metadata": {
+      "department": "marketing",
+      "employee_id": "EMP-001"
+    }
+  }'
+```
+
+**Response Example:**
+```json
+{
+  "id": "user_67890",
+  "email": "newuser@company.com",
+  "first_name": "Alex",
+  "last_name": "Johnson",
+  "role": "user",
+  "status": "active",
+  "created_at": "2025-01-20T15:45:22Z",
+  "email_verified": false,
+  "metadata": {
+    "department": "marketing",
+    "employee_id": "EMP-001"
+  }
+}
+```
+
+**Error Responses:**
+- `400 Bad Request`: Invalid request data or missing required fields
+- `409 Conflict`: User with this email already exists
+- `422 Unprocessable Entity`: Validation errors in request data
+
+<details>
+<summary>Complete Request Example with Validation</summary>
+
+```javascript
+const createUserWithValidation = async (userData) => {
+  // Validate required fields
+  const requiredFields = ['email', 'first_name', 'last_name'];
+  const missingFields = requiredFields.filter(field => !userData[field]);
+  
+  if (missingFields.length > 0) {
+    throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
+  }
+  
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(userData.email)) {
+    throw new Error('Invalid email format');
+  }
+  
+  try {
+    const response = await fetch('https://api.userplatform.com/v2/users', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to create user');
+    }
+    
+    return await response.json();
+    
+  } catch (error) {
+    console.error('User creation failed:', error);
+    throw error;
+  }
+};
+```
+</details>
+
+---
+
+### 4.3 Get User Details
+
+Retrieve detailed information for a specific user including roles and permissions.
+
+**Endpoint:** `GET /users/{user_id}`
+
+**Path Parameters:**
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
+
+**Query Parameters:**
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `include` | string | ⚠️ Optional | Additional data to include | `roles,permissions,preferences` |
+
+**Request Example:**
+```bash
+curl -X GET "https://api.userplatform.com/v2/users/user_12345?include=roles,permissions" \
+  -H "Authorization: Bearer your_jwt_token"
+```
+
+**Response Example:**
+```json
+{
+  "id": "user_12345",
+  "email": "user@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "status": "active",
+  "email_verified": true,
+  "created_at": "2025-01-15T10:30:00Z",
+  "updated_at": "2025-01-20T14:22:33Z",
+  "last_login": "2025-01-20T14:22:33Z",
+  "roles": [
+    {
+      "id": "role_123",
+      "name": "user",
+      "display_name": "Standard User",
+      "permissions": ["read:own_profile", "update:own_profile"]
+    }
+  ],
+  "permissions": [
+    "read:own_profile",
+    "update:own_profile"
+  ],
+  "metadata": {
+    "department": "engineering",
+    "employee_id": "EMP-123"
+  }
+}
+```
+
+**Error Responses:**
+- `404 Not Found`: User does not exist
+- `403 Forbidden`: Insufficient permissions to view user details
+
+---
 
 ### 4.4 Update User
 
-Updates user account information. Only provided fields will be modified; omitted fields remain unchanged.
+Update user profile information and settings.
 
-```http
-PUT /v2/users/{user_id}
-```
+**Endpoint:** `PUT /users/{user_id}`
 
-⚠️ **Warning**: Email changes require re-verification. Password changes will invalidate all existing sessions for the user.
+**Path Parameters:**
 
-**Request Body Parameters**:
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `email` | string | New email address (triggers verification) |
-| `password` | string | New password (must meet complexity requirements) |
-| `first_name` | string | Updated first name |
-| `last_name` | string | Updated last name |
-| `phone` | string | Updated phone number |
-| `department` | string | Updated department assignment |
-| `metadata` | object | Custom metadata (replaces existing) |
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
 
-**Update User Request Example**:
-```json
-{
-  "first_name": "Jane Marie",
-  "phone": "+1987654321",
-  "department": "Senior Engineering",
-  "metadata": {
-    "employee_id": "EMP001",
-    "start_date": "2025-05-23",
-    "promotion_date": "2025-05-23"
-  }
-}
-```
+**Request Body (Partial Updates Supported):**
 
-**Success Response (200 OK)**:
-```json
-{
-  "id": "usr_1234567890abcdef",
-  "email": "jane.smith@company.com",
-  "first_name": "Jane Marie",
-  "last_name": "Smith",
-  "phone": "+1987654321",
-  "department": "Senior Engineering",
-  "status": "active",
-  "email_verified": true,
-  "created_at": "2025-05-23T10:30:00Z",
-  "updated_at": "2025-05-23T15:45:00Z",
-  "metadata": {
-    "employee_id": "EMP001",
-    "start_date": "2025-05-23",
-    "promotion_date": "2025-05-23"
-  }
-}
-```
+| Field | Type | Required | Description | Example |
+|-------|------|----------|-------------|---------|
+| `first_name` | string | ⚠️ Optional | Updated first name | `Jane` |
+| `last_name` | string | ⚠️ Optional | Updated last name | `Smith` |
+| `role` | string | ⚠️ Optional | Updated user role | `admin` |
+| `status` | string | ⚠️ Optional | Account status | `active`, `suspended`, `inactive` |
+| `metadata` | object | ⚠️ Optional | Custom user metadata | `{"title": "Senior Developer"}` |
 
-___
-
-### 4.5 Deactivate User
-
-Deactivates a user account, preventing login while preserving account data. Deactivated users can be reactivated later.
-
-```http
-POST /v2/users/{user_id}/deactivate
-```
-
-**Request Body Parameters**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `reason` | string | No | Reason for deactivation (for audit log) |
-| `revoke_sessions` | boolean | No | Revoke all active sessions (default: true) |
-
-**Deactivate User Request Example**:
-```json
-{
-  "reason": "Employee departure",
-  "revoke_sessions": true
-}
-```
-
-**Success Response (200 OK)**:
-```json
-{
-  "id": "usr_1234567890abcdef",
-  "status": "inactive",
-  "deactivated_at": "2025-05-23T16:00:00Z",
-  "message": "User successfully deactivated"
-}
-```
-
-___
-
-### 4.6 Delete User
-
-Permanently deletes a user account and all associated data. This action cannot be undone.
-
-```http
-DELETE /v2/users/{user_id}
-```
-
-⚠️ **Warning**: This permanently deletes all user data including audit logs, roles, and metadata. Consider deactivation instead for data retention compliance.
-
-**Query Parameters**:
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `force` | boolean | false | Required parameter set to "true" to confirm deletion |
-
-**Delete User Request Example**:
+**Request Example:**
 ```bash
-curl -X DELETE "https://api.yourcompany.com/v2/users/usr_1234567890abcdef?force=true" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+curl -X PUT https://api.userplatform.com/v2/users/user_12345 \
+  -H "Authorization: Bearer your_jwt_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "first_name": "Jane",
+    "role": "admin",
+    "metadata": {
+      "title": "Engineering Manager",
+      "department": "engineering"
+    }
+  }'
 ```
 
-**Success Response (204 No Content)**:
-No response body. The user account has been permanently deleted.
-
-[Back to top](#user-management-api-reference)
+**Response Example:**
+```json
+{
+  "id": "user_12345",
+  "email": "user@example.com",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "role": "admin",
+  "status": "active",
+  "updated_at": "2025-01-20T16:15:44Z",
+  "metadata": {
+    "title": "Engineering Manager",
+    "department": "engineering"
+  }
+}
+```
 
 ---
 
-## 5. Role Management Endpoints
+### 4.5 Delete User
 
-Role management endpoints provide comprehensive control over user permissions through a hierarchical role system. Roles can be assigned to users individually or in bulk, with support for custom role creation and permission management.
+Permanently delete a user account or soft-delete for compliance retention.
 
-### 5.1 Assign Role to User
+**Endpoint:** `DELETE /users/{user_id}`
 
-Assigns a specific role to a user account. Users can have multiple roles, and permissions are cumulative across all assigned roles.
+**Path Parameters:**
 
-```http
-POST /v2/users/{user_id}/roles
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
+
+**Query Parameters:**
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `soft_delete` | boolean | ⚠️ Optional | Soft delete for compliance | `true` |
+
+<div class="warning">
+⚠️ <strong>Caution:</strong> Permanent deletion cannot be undone. Use soft_delete=true for compliance requirements.
+</div>
+
+**Request Example:**
+```bash
+curl -X DELETE "https://api.userplatform.com/v2/users/user_12345?soft_delete=true" \
+  -H "Authorization: Bearer your_jwt_token"
 ```
 
-**Request Body Parameters**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `role_id` | string | Yes | ID of the role to assign |
-| `expires_at` | string | No | ISO 8601 timestamp for temporary role assignment |
-| `assigned_by` | string | No | ID of user making the assignment (for audit) |
-
-**Assign Role Request Example**:
+**Response Example:**
 ```json
 {
-  "role_id": "role_project_manager",
-  "expires_at": "2025-12-31T23:59:59Z",
-  "assigned_by": "usr_admin123"
+  "message": "User successfully deleted",
+  "deleted_at": "2025-01-20T16:30:00Z",
+  "soft_delete": true
 }
 ```
 
-**Success Response (201 Created)**:
-```json
-{
-  "user_id": "usr_1234567890abcdef",
-  "role_id": "role_project_manager",
-  "role_name": "Project Manager",
-  "assigned_at": "2025-05-23T16:30:00Z",
-  "expires_at": "2025-12-31T23:59:59Z",
-  "assigned_by": "usr_admin123"
-}
-```
-
-___
-
-### 5.2 Remove Role from User
-
-Removes a specific role assignment from a user account.
-
-```http
-DELETE /v2/users/{user_id}/roles/{role_id}
-```
-
-**Success Response (204 No Content)**:
-No response body. The role assignment has been removed.
-
-___
-
-### 5.3 List User Roles
-
-Retrieves all roles currently assigned to a user.
-
-```http
-GET /v2/users/{user_id}/roles
-```
-
-**Success Response (200 OK)**:
-```json
-{
-  "data": [
-    {
-      "role_id": "role_developer",
-      "role_name": "Developer",
-      "assigned_at": "2025-05-23T10:35:00Z",
-      "expires_at": null,
-      "permissions": [
-        "projects:read",
-        "projects:write",
-        "users:read"
-      ]
-    },
-    {
-      "role_id": "role_project_manager",
-      "role_name": "Project Manager",
-      "assigned_at": "2025-05-23T16:30:00Z",
-      "expires_at": "2025-12-31T23:59:59Z",
-      "permissions": [
-        "projects:manage",
-        "users:read",
-        "reports:read"
-      ]
-    }
-  ]
-}
-```
-
-___
-
-### 5.4 Bulk Role Assignment
-
-Assigns roles to multiple users simultaneously. Useful for organizational changes or batch operations.
-
-```http
-POST /v2/users/bulk/roles
-```
-
-**Request Body Parameters**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `user_ids` | array | Yes | Array of user IDs to modify |
-| `role_id` | string | Yes | Role ID to assign |
-| `action` | string | Yes | "assign" or "remove" |
-| `expires_at` | string | No | Expiration timestamp for assignments |
-
-**Bulk Role Assignment Request Example**:
-```json
-{
-  "user_ids": [
-    "usr_1234567890abcdef",
-    "usr_abcdef1234567890",
-    "usr_567890abcdef1234"
-  ],
-  "role_id": "role_beta_tester",
-  "action": "assign",
-  "expires_at": "2025-08-31T23:59:59Z"
-}
-```
-
-**Success Response (200 OK)**:
-```json
-{
-  "processed": 3,
-  "successful": 3,
-  "failed": 0,
-  "results": [
-    {
-      "user_id": "usr_1234567890abcdef",
-      "status": "success",
-      "message": "Role assigned successfully"
-    },
-    {
-      "user_id": "usr_abcdef1234567890",
-      "status": "success",
-      "message": "Role assigned successfully"
-    },
-    {
-      "user_id": "usr_567890abcdef1234",
-      "status": "success",
-      "message": "Role assigned successfully"
-    }
-  ]
-}
-```
-
-[Back to top](#user-management-api-reference)
+[Back to top](#user-management-api-v21-documentation)
 
 ---
 
-## 6. Error Handling
+## 5. Error handling
 
-The API uses conventional HTTP status codes to indicate success or failure of requests. Error responses include detailed information to help you diagnose and resolve issues quickly.
+The User Management API uses standard HTTP status codes and provides detailed error information to help you diagnose and resolve issues quickly.
 
-### Standard HTTP Status Codes
+### Standard Error Response Format
 
-| Code | Meaning | Description |
-|------|---------|-------------|
-| `200` | OK | Request succeeded |
-| `201` | Created | Resource created successfully |
-| `204` | No Content | Request succeeded, no response body |
-| `400` | Bad Request | Invalid request parameters or format |
-| `401` | Unauthorized | Authentication required or invalid |
-| `403` | Forbidden | Insufficient permissions |
-| `404` | Not Found | Resource does not exist |
-| `409` | Conflict | Resource conflict (e.g., duplicate email) |
-| `422` | Unprocessable Entity | Valid format but business logic error |
-| `429` | Too Many Requests | Rate limit exceeded |
-| `500` | Internal Server Error | Server error |
-| `503` | Service Unavailable | Temporary service disruption |
-
-___
-
-### Error Response Format
-
-All error responses follow a consistent JSON structure with detailed information for debugging:
+All error responses follow this consistent structure:
 
 ```json
 {
   "error": {
     "code": "VALIDATION_ERROR",
-    "message": "The request contains invalid parameters",
+    "message": "The request contains invalid data",
     "details": [
       {
         "field": "email",
-        "message": "Email address is already in use",
-        "code": "DUPLICATE_EMAIL"
-      },
-      {
-        "field": "password",
-        "message": "Password must contain at least one special character",
-        "code": "INVALID_PASSWORD_FORMAT"
+        "issue": "Invalid email format",
+        "provided": "invalid-email"
       }
     ],
-    "request_id": "req_1234567890abcdef",
-    "timestamp": "2025-05-23T16:45:00Z"
+    "request_id": "req_abc123def456",
+    "timestamp": "2025-01-20T16:45:30Z"
   }
 }
 ```
 
-___
+### HTTP Status Codes
 
-### Common Error Scenarios
+| Status Code | Meaning | Common Causes | Next Steps |
+|-------------|---------|---------------|------------|
+| `400 Bad Request` | Invalid request syntax or parameters | Missing required fields, invalid JSON | Check request format and required parameters |
+| `401 Unauthorized` | Authentication required or failed | Missing/expired JWT token | Obtain fresh authentication token |
+| `403 Forbidden` | Valid authentication but insufficient permissions | User role lacks required permissions | Contact administrator for access |
+| `404 Not Found` | Requested resource does not exist | Invalid user ID, deleted resource | Verify resource ID and existence |
+| `409 Conflict` | Request conflicts with current state | Duplicate email address, concurrent updates | Check for existing resources |
+| `422 Unprocessable Entity` | Valid request but semantic errors | Business rule violations | Review business logic requirements |
+| `429 Too Many Requests` | Rate limit exceeded | Too many API calls in time window | Implement backoff strategy |
+| `500 Internal Server Error` | Server-side error occurred | Temporary service issues | Retry request, contact support if persistent |
 
-#### Authentication Errors
+### Error Code Reference
 
-**Invalid or Expired Token (401)**:
-```json
-{
-  "error": {
-    "code": "INVALID_TOKEN",
-    "message": "The provided authentication token is invalid or expired",
-    "request_id": "req_auth_error_123"
+**Authentication Errors:**
+- `AUTH_TOKEN_MISSING`: No Authorization header provided
+- `AUTH_TOKEN_INVALID`: JWT token is malformed or expired
+- `AUTH_TOKEN_EXPIRED`: JWT token has exceeded its validity period
+- `AUTH_INSUFFICIENT_SCOPE`: Token lacks required permissions
+
+**Validation Errors:**
+- `VALIDATION_ERROR`: Request data fails validation rules
+- `MISSING_REQUIRED_FIELD`: Required parameter not provided
+- `INVALID_EMAIL_FORMAT`: Email address format is invalid
+- `INVALID_ROLE`: Specified role does not exist
+
+**Resource Errors:**
+- `USER_NOT_FOUND`: Requested user does not exist
+- `USER_ALREADY_EXISTS`: User with email already exists
+- `ROLE_NOT_FOUND`: Specified role does not exist
+
+**Rate Limiting Errors:**
+- `RATE_LIMIT_EXCEEDED`: Too many requests in time window
+- `QUOTA_EXCEEDED`: Monthly API quota reached
+
+### Advanced Error Handling
+
+For production applications, implement comprehensive error handling:
+
+```javascript
+const handleApiError = (error, response) => {
+  const errorData = response.data?.error || {};
+  
+  switch (response.status) {
+    case 400:
+      console.error('Bad Request:', errorData.details);
+      // Show user-friendly validation errors
+      return formatValidationErrors(errorData.details);
+      
+    case 401:
+      console.error('Authentication failed');
+      // Redirect to login or refresh token
+      return redirectToLogin();
+      
+    case 403:
+      console.error('Insufficient permissions');
+      // Show access denied message
+      return showAccessDeniedMessage();
+      
+    case 404:
+      console.error('Resource not found');
+      // Handle missing resource gracefully
+      return handleMissingResource();
+      
+    case 429:
+      console.error('Rate limit exceeded');
+      // Implement exponential backoff
+      return implementBackoffStrategy(errorData);
+      
+    case 500:
+      console.error('Server error:', errorData.request_id);
+      // Log error for debugging, show generic error to user
+      return showGenericErrorMessage(errorData.request_id);
+      
+    default:
+      console.error('Unexpected error:', error);
+      return showGenericErrorMessage();
   }
-}
+};
 ```
 
-**Insufficient Permissions (403)**:
-```json
-{
-  "error": {
-    "code": "INSUFFICIENT_PERMISSIONS",
-    "message": "Your account does not have permission to perform this action",
-    "required_permission": "users:delete",
-    "request_id": "req_perm_error_456"
-  }
-}
+### Retry Logic and Best Practices
+
+Implement exponential backoff for transient errors:
+
+```python
+import time
+import random
+
+def api_request_with_retry(url, headers, data, max_retries=3):
+    """Make API request with exponential backoff retry logic"""
+    
+    for attempt in range(max_retries + 1):
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            
+            # Success - return response
+            if response.status_code < 400:
+                return response.json()
+            
+            # Don't retry client errors (4xx except 429)
+            if 400 <= response.status_code < 500 and response.status_code != 429:
+                raise ApiError(response.json())
+            
+            # Retry server errors (5xx) and rate limits (429)
+            if attempt < max_retries:
+                delay = (2 ** attempt) + random.uniform(0, 1)
+                time.sleep(delay)
+                continue
+            
+            # Max retries exceeded
+            raise ApiError(response.json())
+            
+        except requests.exceptions.RequestException as e:
+            if attempt < max_retries:
+                delay = (2 ** attempt) + random.uniform(0, 1)
+                time.sleep(delay)
+                continue
+            raise e
 ```
-
-#### Validation Errors
-
-**Missing Required Fields (400)**:
-```json
-{
-  "error": {
-    "code": "MISSING_REQUIRED_FIELDS",
-    "message": "Required fields are missing from the request",
-    "details": [
-      {
-        "field": "email",
-        "message": "Email is required",
-        "code": "REQUIRED_FIELD"
-      },
-      {
-        "field": "password",
-        "message": "Password is required",
-        "code": "REQUIRED_FIELD"
-      }
-    ]
-  }
-}
-```
-
-#### Resource Conflicts
-
-**Duplicate Email Address (409)**:
-```json
-{
-  "error": {
-    "code": "RESOURCE_CONFLICT",
-    "message": "A user with this email address already exists",
-    "conflicting_field": "email",
-    "conflicting_value": "jane.smith@company.com"
-  }
-}
-```
-
-___
-
-### Rate Limiting Errors
-
-When you exceed rate limits, the API returns a 429 status with retry information:
-
-```json
-{
-  "error": {
-    "code": "RATE_LIMIT_EXCEEDED",
-    "message": "Too many requests. Please retry after the specified time.",
-    "retry_after": 60,
-    "limit": 100,
-    "window": 3600,
-    "reset_at": "2025-05-23T17:00:00Z"
-  }
-}
-```
-
-💡 **Tip**: Check the `Retry-After` header for the recommended wait time before making your next request.
-
-___
-
-### Advanced Error Scenarios
-
-#### Bulk Operation Partial Failures
-
-When performing bulk operations, some items may succeed while others fail. The API returns detailed results for each item:
-
-```json
-{
-  "processed": 5,
-  "successful": 3,
-  "failed": 2,
-  "results": [
-    {
-      "user_id": "usr_1234567890abcdef",
-      "status": "success",
-      "message": "Role assigned successfully"
-    },
-    {
-      "user_id": "usr_invalid123",
-      "status": "error",
-      "error": {
-        "code": "USER_NOT_FOUND",
-        "message": "User does not exist"
-      }
-    },
-    {
-      "user_id": "usr_suspended456",
-      "status": "error",
-      "error": {
-        "code": "USER_SUSPENDED",
-        "message": "Cannot assign roles to suspended users"
-      }
-    }
-  ]
-}
-```
-
-#### Cascading Dependency Failures
-
-When operations depend on external services, the API provides detailed failure context:
-
-```json
-{
-  "error": {
-    "code": "EXTERNAL_SERVICE_FAILURE",
-    "message": "User creation failed due to external service dependency",
-    "service": "email_verification_service",
-    "details": {
-      "service_error": "SMTP server timeout",
-      "retry_possible": true,
-      "fallback_available": false
-    },
-    "user_action": "Please retry the request. If the problem persists, contact support.",
-    "internal_reference": "ERR-EXT-001-20250523164500"
-  }
-}
-```
-
-#### Transaction Rollback Scenarios
-
-For operations that span multiple resources, rollback information is provided when partial failures occur:
-
-```json
-{
-  "error": {
-    "code": "TRANSACTION_ROLLBACK",
-    "message": "User creation was rolled back due to role assignment failure",
-    "rollback_details": {
-      "completed_actions": [
-        "user_record_created",
-        "email_validation_passed"
-      ],
-      "failed_action": "default_role_assignment",
-      "rollback_actions": [
-        "user_record_deleted",
-        "verification_email_cancelled"
-      ]
-    },
-    "recovery_suggestion": "Retry the operation or create the user without role assignment"
-  }
-}
-```
-
-#### Concurrent Modification Conflicts
-
-When multiple clients attempt to modify the same resource simultaneously:
-
-```json
-{
-  "error": {
-    "code": "CONCURRENT_MODIFICATION",
-    "message": "The resource was modified by another request while this operation was in progress",
-    "resource_type": "user",
-    "resource_id": "usr_1234567890abcdef",
-    "conflict_details": {
-      "expected_version": "v15",
-      "current_version": "v16",
-      "conflicting_field": "roles",
-      "last_modified_by": "usr_admin789",
-      "last_modified_at": "2025-05-23T16:45:30Z"
-    },
-    "resolution": "Fetch the latest version and retry your operation"
-  }
-}
-```
-
-#### Data Consistency Validation Errors
-
-When business rules prevent operations due to data consistency requirements:
-
-```json
-{
-  "error": {
-    "code": "DATA_CONSISTENCY_VIOLATION",
-    "message": "Operation would violate data consistency rules",
-    "violations": [
-      {
-        "rule": "MINIMUM_ADMIN_COUNT",
-        "description": "Cannot remove admin role from the last administrator",
-        "current_admin_count": 1,
-        "minimum_required": 1
-      },
-      {
-        "rule": "DEPARTMENT_HIERARCHY",
-        "description": "User's department requires manager role",
-        "user_department": "Engineering",
-        "missing_roles": ["department_manager"]
-      }
-    ],
-    "suggested_actions": [
-      "Assign admin role to another user first",
-      "Add required manager role before proceeding"
-    ]
-  }
-}
-```
-
-[Back to top](#user-management-api-reference)
 
 ---
 
-## 7. Rate Limiting
+## 6. Rate limiting
 
-The API implements rate limiting to ensure fair usage and maintain service quality for all users. Rate limits are applied per API key and vary based on your subscription plan.
+The User Management API implements rate limiting to ensure fair usage and maintain service performance for all users.
+
+### Rate Limit Policies
+
+| Plan | Requests per Hour | Burst Limit | Concurrent Connections |
+|------|-------------------|-------------|----------------------|
+| Basic | 1,000 | 50 | 5 |
+| Professional | 10,000 | 200 | 20 |
+| Enterprise | Custom | Custom | Custom |
 
 ### Rate Limit Headers
 
 Every API response includes rate limiting information in the headers:
 
-| Header | Description |
-|--------|-------------|
-| `X-RateLimit-Limit` | Maximum requests allowed in the current window |
-| `X-RateLimit-Remaining` | Requests remaining in the current window |
-| `X-RateLimit-Reset` | Unix timestamp when the rate limit resets |
-| `X-RateLimit-Window` | Length of the rate limit window in seconds |
-
-**Example Headers**:
-```http
+```
 X-RateLimit-Limit: 1000
-X-RateLimit-Remaining: 999
-X-RateLimit-Reset: 1653484800
+X-RateLimit-Remaining: 756
+X-RateLimit-Reset: 1642694400
 X-RateLimit-Window: 3600
 ```
 
-___
+**Header Descriptions:**
+- `X-RateLimit-Limit`: Maximum requests allowed in the current window
+- `X-RateLimit-Remaining`: Number of requests remaining in current window
+- `X-RateLimit-Reset`: Unix timestamp when the rate limit resets
+- `X-RateLimit-Window`: Rate limit window duration in seconds
 
-### Rate Limit Tiers
+### Rate Limit Exceeded Response
 
-| Plan | Requests per Hour | Burst Limit |
-|------|-------------------|-------------|
-| **Free** | 100 | 10 per minute |
-| **Starter** | 1,000 | 50 per minute |
-| **Professional** | 10,000 | 200 per minute |
-| **Enterprise** | 100,000 | 1,000 per minute |
+When you exceed the rate limit, you'll receive a 429 status code:
 
-❓ **Note**: Burst limits allow short periods of higher activity but are subject to the hourly quota.
-
-___
-
-### Best Practices for Rate Limiting
-
-#### Implement Exponential Backoff
-
-When you receive a 429 response, implement exponential backoff with jitter to avoid thundering herd problems:
-
-```javascript
-async function makeRequestWithBackoff(url, options, maxRetries = 3) {
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    try {
-      const response = await fetch(url, options);
-      
-      if (response.status === 429) {
-        if (attempt === maxRetries) throw new Error('Max retries exceeded');
-        
-        const retryAfter = response.headers.get('Retry-After') || Math.pow(2, attempt);
-        const jitter = Math.random() * 1000; // Add randomness
-        await new Promise(resolve => setTimeout(resolve, (retryAfter * 1000) + jitter));
-        continue;
-      }
-      
-      return response;
-    } catch (error) {
-      if (attempt === maxRetries) throw error;
-    }
+```json
+{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Rate limit exceeded. Please try again later.",
+    "retry_after": 300,
+    "request_id": "req_xyz789"
   }
 }
 ```
 
-#### Monitor Rate Limit Headers
+### Optimization Strategies
 
-Track your usage to avoid hitting limits:
+**1. Implement Request Caching**
+Cache frequently accessed user data to reduce API calls:
 
 ```javascript
-function checkRateLimit(response) {
-  const remaining = parseInt(response.headers.get('X-RateLimit-Remaining'));
-  const reset = parseInt(response.headers.get('X-RateLimit-Reset'));
+const userCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+const getCachedUser = async (userId) => {
+  const cacheKey = `user_${userId}`;
+  const cached = userCache.get(cacheKey);
   
-  if (remaining < 10) {
-    console.warn(`Approaching rate limit. ${remaining} requests remaining until ${new Date(reset * 1000)}`);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.data;
   }
-}
+  
+  const user = await fetchUser(userId);
+  userCache.set(cacheKey, {
+    data: user,
+    timestamp: Date.now()
+  });
+  
+  return user;
+};
 ```
 
-#### Use Bulk Operations
-
-When possible, use bulk endpoints to reduce the number of API calls:
+**2. Use Bulk Operations**
+Batch multiple operations to reduce API call count:
 
 ```javascript
-// Instead of multiple individual role assignments
-// for (const userId of userIds) {
-//   await assignRole(userId, roleId);
-// }
+// Instead of multiple individual requests
+const users = await Promise.all(
+  userIds.map(id => fetchUser(id))
+);
 
-// Use bulk assignment
-await fetch('/v2/users/bulk/roles', {
-  method: 'POST',
-  headers: { 'Authorization': 'Bearer ' + token },
-  body: JSON.stringify({
-    user_ids: userIds,
-    role_id: roleId,
-    action: 'assign'
-  })
-});
+// Use bulk endpoint
+const users = await fetchBulkUsers(userIds);
 ```
 
-[Back to top](#user-management-api-reference)
+**3. Implement Intelligent Polling**
+Use exponential backoff for polling operations:
+
+```javascript
+const pollUserStatus = async (userId, maxAttempts = 5) => {
+  let attempt = 0;
+  
+  while (attempt < maxAttempts) {
+    const user = await fetchUser(userId);
+    
+    if (user.status === 'processed') {
+      return user;
+    }
+    
+    // Exponential backoff: 1s, 2s, 4s, 8s, 16s
+    const delay = Math.pow(2, attempt) * 1000;
+    await sleep(delay);
+    attempt++;
+  }
+  
+  throw new Error('Polling timeout exceeded');
+};
+```
+
+### Monitoring and Alerting
+
+Track your rate limit usage to prevent unexpected limits:
+
+```javascript
+const trackRateLimit = (response) => {
+  const limit = parseInt(response.headers['x-ratelimit-limit']);
+  const remaining = parseInt(response.headers['x-ratelimit-remaining']);
+  const usagePercent = ((limit - remaining) / limit) * 100;
+  
+  // Alert when approaching limit
+  if (usagePercent > 80) {
+    console.warn(`Rate limit usage: ${usagePercent.toFixed(1)}%`);
+    // Send alert to monitoring system
+  }
+  
+  // Log usage metrics
+  metrics.gauge('api.rate_limit.usage_percent', usagePercent);
+  metrics.gauge('api.rate_limit.remaining', remaining);
+};
+```
 
 ---
 
-## 8. Webhook Events
+## 7. Advanced features
 
-The API supports webhook notifications for real-time updates about user account changes. Configure webhook endpoints in your Developer Dashboard to receive HTTP POST requests when specific events occur.
+### 7.1 Bulk Operations
 
-### Supported Events
+Efficiently manage multiple users with bulk endpoints that support batch operations while maintaining data integrity.
 
-| Event Type | Description | Trigger |
-|------------|-------------|---------|
-| `user.created` | New user account created | User registration |
-| `user.updated` | User profile modified | Profile changes |
-| `user.activated` | User account activated | Email verification or admin action |
-| `user.deactivated` | User account deactivated | Admin action or policy violation |
-| `user.deleted` | User account permanently deleted | Admin deletion |
-| `user.login` | User authentication occurred | Successful login |
-| `user.password_changed` | User password updated | Password change |
-| `role.assigned` | Role assigned to user | Role management |
-| `role.removed` | Role removed from user | Role management |
+**Bulk User Creation**
 
-___
+Create multiple users in a single request with transaction-like behavior:
 
-### Webhook Payload Format
+**Endpoint:** `POST /users/bulk`
 
-All webhook events follow a consistent JSON structure:
-
-```json
-{
-  "id": "evt_1234567890abcdef",
-  "type": "user.created",
-  "created_at": "2025-05-23T16:45:00Z",
-  "data": {
-    "user": {
-      "id": "usr_1234567890abcdef",
-      "email": "jane.smith@company.com",
-      "first_name": "Jane",
-      "last_name": "Smith",
-      "status": "pending_verification",
-      "created_at": "2025-05-23T16:45:00Z"
-    }
-  },
-  "metadata": {
-    "ip_address": "192.168.1.100",
-    "user_agent": "Mozilla/5.0...",
-    "api_version": "v2"
-  }
-}
-```
-
-___
-
-### Webhook Security
-
-#### Signature Verification
-
-All webhook requests include a signature in the `X-Webhook-Signature` header. Verify this signature to ensure the request originates from our servers:
-
-```javascript
-const crypto = require('crypto');
-
-function verifyWebhookSignature(payload, signature, secret) {
-  const expectedSignature = crypto
-    .createHmac('sha256', secret)
-    .update(payload, 'utf8')
-    .digest('hex');
-    
-  return crypto.timingSafeEqual(
-    Buffer.from(signature, 'hex'),
-    Buffer.from(expectedSignature, 'hex')
-  );
-}
-
-// Usage in your webhook handler
-app.post('/webhook', (req, res) => {
-  const signature = req.headers['x-webhook-signature'];
-  const payload = JSON.stringify(req.body);
-  
-  if (!verifyWebhookSignature(payload, signature, process.env.WEBHOOK_SECRET)) {
-    return res.status(401).send('Unauthorized');
-  }
-  
-  // Process the webhook event
-  processWebhookEvent(req.body);
-  res.status(200).send('OK');
-});
-```
-
-⚠️ **Warning**: Always verify webhook signatures to prevent spoofed requests. Store your webhook secret securely and rotate it regularly.
-
-#### Idempotency
-
-Webhook events may be delivered multiple times. Use the event `id` field to implement idempotent processing:
-
-```javascript
-const processedEvents = new Set();
-
-function processWebhookEvent(event) {
-  if (processedEvents.has(event.id)) {
-    console.log(`Event ${event.id} already processed, skipping`);
-    return;
-  }
-  
-  // Process the event
-  handleUserEvent(event);
-  
-  // Mark as processed
-  processedEvents.add(event.id);
-}
-```
-
-___
-
-### Example Event Handlers
-
-#### User Creation Handler
-
-```javascript
-function handleUserCreated(event) {
-  const user = event.data.user;
-  
-  // Send welcome email
-  emailService.sendWelcomeEmail(user.email, {
-    firstName: user.first_name,
-    verificationRequired: user.status === 'pending_verification'
-  });
-  
-  // Create user profile in your system
-  userProfileService.createProfile({
-    userId: user.id,
-    email: user.email,
-    name: `${user.first_name} ${user.last_name}`
-  });
-  
-  // Log for analytics
-  analytics.track('user_registered', {
-    userId: user.id,
-    email: user.email,
-    timestamp: event.created_at
-  });
-}
-```
-
-#### Role Assignment Handler
-
-```javascript
-function handleRoleAssigned(event) {
-  const { user, role } = event.data;
-  
-  // Update user permissions in your application
-  permissionService.updateUserPermissions(user.id, role.permissions);
-  
-  // Notify user of new role
-  notificationService.send(user.id, {
-    type: 'role_assigned',
-    message: `You have been assigned the ${role.name} role`,
-    timestamp: event.created_at
-  });
-  
-  // Audit log
-  auditLogger.log('role_assigned', {
-    userId: user.id,
-    roleId: role.id,
-    assignedBy: event.metadata.assigned_by,
-    timestamp: event.created_at
-  });
-}
-```
-
-___
-
-### Webhook Delivery Guarantees and Retry Policies
-
-#### Delivery Retry Logic
-
-Webhook events are delivered with automatic retry logic to ensure reliable delivery:
-
-| Attempt | Retry Delay | Total Time Elapsed |
-|---------|-------------|-------------------|
-| 1 | Immediate | 0 seconds |
-| 2 | 30 seconds | 30 seconds |
-| 3 | 5 minutes | 5.5 minutes |
-| 4 | 30 minutes | 35.5 minutes |
-| 5 | 2 hours | 2h 35.5m |
-| 6 | 8 hours | 10h 35.5m |
-| 7 | 24 hours | 34h 35.5m |
-
-**Success Criteria**: HTTP status codes 200-299 are considered successful deliveries.
-
-**Failure Criteria**: HTTP status codes 400+ or connection timeouts (30 seconds) trigger retries.
-
-**Maximum Attempts**: Events are retried for up to 7 attempts over 3 days before being marked as failed.
-
-#### Webhook Event Status Tracking
-
-Monitor webhook delivery status through the webhook dashboard or API:
-
+**Request Example:**
 ```bash
-curl -X GET "https://api.yourcompany.com/v2/webhooks/events/evt_1234567890abcdef" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-**Event Status Response**:
-```json
-{
-  "id": "evt_1234567890abcdef",
-  "type": "user.created",
-  "status": "delivered",
-  "created_at": "2025-05-23T16:45:00Z",
-  "delivery_attempts": [
-    {
-      "attempt": 1,
-      "timestamp": "2025-05-23T16:45:01Z",
-      "status_code": 500,
-      "response_time_ms": 2500,
-      "error": "Internal Server Error"
-    },
-    {
-      "attempt": 2,
-      "timestamp": "2025-05-23T16:45:31Z",
-      "status_code": 200,
-      "response_time_ms": 150,
-      "success": true
-    }
-  ],
-  "next_retry_at": null,
-  "final_delivery_at": "2025-05-23T16:45:31Z"
-}
-```
-
-#### CORS Configuration for Webhook Endpoints
-
-When implementing webhook endpoints in browser environments or handling preflight requests:
-
-**Server Configuration Example (Node.js/Express)**:
-```javascript
-app.use('/webhook', (req, res, next) => {
-  // Allow webhook requests from our servers
-  res.header('Access-Control-Allow-Origin', 'https://api.yourcompany.com');
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Webhook-Signature');
-  res.header('Access-Control-Max-Age', '86400'); // Cache preflight for 24 hours
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  
-  next();
-});
-```
-
-❓ **Note**: Webhooks are typically server-to-server communications and don't require CORS headers. However, if you're testing webhooks through a browser or proxy, proper CORS configuration ensures smooth delivery.
-
-#### Failed Event Recovery
-
-For events that fail all retry attempts, implement a recovery strategy:
-
-```javascript
-// Fetch failed events for manual processing
-async function processfailedWebhooks() {
-  const failedEvents = await fetch('/v2/webhooks/events?status=failed&limit=100', {
-    headers: { 'Authorization': 'Bearer ' + token }
-  });
-  
-  const events = await failedEvents.json();
-  
-  for (const event of events.data) {
-    try {
-      // Attempt manual processing
-      await processWebhookEvent(event);
-      
-      // Mark as manually processed
-      await fetch(`/v2/webhooks/events/${event.id}/acknowledge`, {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + token }
-      });
-      
-    } catch (error) {
-      console.error(`Failed to process event ${event.id}:`, error);
-    }
-  }
-}
-```
-
-#### Webhook Testing and Debugging
-
-Use webhook testing tools during development:
-
-```bash
-# Test webhook endpoint with sample payload
-curl -X POST "https://your-app.com/webhook" \
+curl -X POST https://api.userplatform.com/v2/users/bulk \
+  -H "Authorization: Bearer your_jwt_token" \
   -H "Content-Type: application/json" \
-  -H "X-Webhook-Signature: sha256=sample_signature" \
   -d '{
-    "id": "evt_test_123",
-    "type": "user.created",
-    "created_at": "2025-05-23T16:45:00Z",
-    "data": {
-      "user": {
-        "id": "usr_test_456",
-        "email": "test@example.com",
-        "status": "active"
+    "users": [
+      {
+        "email": "user1@company.com",
+        "first_name": "Alice",
+        "last_name": "Johnson",
+        "role": "user"
+      },
+      {
+        "email": "user2@company.com",
+        "first_name": "Bob",
+        "last_name": "Smith",
+        "role": "admin"
       }
+    ],
+    "options": {
+      "send_welcome_emails": true,
+      "fail_on_error": false
     }
   }'
 ```
 
-**Development Tips**:
-- Use tools like ngrok to expose local endpoints for testing
-- Implement comprehensive logging for all webhook events
-- Set up monitoring alerts for failed webhook deliveries
-- Use the webhook event status API to debug delivery issues
+**Response Example:**
+```json
+{
+  "results": [
+    {
+      "index": 0,
+      "success": true,
+      "user": {
+        "id": "user_123",
+        "email": "user1@company.com",
+        "status": "active"
+      }
+    },
+    {
+      "index": 1,
+      "success": false,
+      "error": {
+        "code": "DUPLICATE_EMAIL",
+        "message": "User with this email already exists"
+      }
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "successful": 1,
+    "failed": 1
+  }
+}
+```
 
-[Back to top](#user-management-api-reference
+### 7.2 Webhooks and Event Streaming
+
+Subscribe to real-time user events for integration with external systems.
+
+**Available Events:**
+- `user.created` - New user account created
+- `user.updated` - User profile or settings updated
+- `user.deleted` - User account deleted
+- `user.login` - User authenticated successfully
+- `user.role_changed` - User role or permissions modified
+
+**Webhook Configuration:**
+
+```bash
+curl -X POST https://api.userplatform.com/v2/webhooks \
+  -H "Authorization: Bearer your_jwt_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-app.com/webhooks/users",
+    "events": ["user.created", "user.updated"],
+    "secret": "your_webhook_secret",
+    "active": true
+  }'
+```
+
+**Webhook Payload Example:**
+```json
+{
+  "event": "user.created",
+  "timestamp": "2025-01-20T16:45:30Z",
+  "data": {
+    "user": {
+      "id": "user_123",
+      "email": "newuser@company.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "created_at": "2025-01-20T16:45:30Z"
+    }
+  },
+  "webhook_id": "wh_abc123"
+}
+```
+
+### 7.3 Single Sign-On (SSO) Integration
+
+Enterprise SSO support with SAML 2.0 and OpenID Connect for seamless user authentication across your organization.
+
+**Supported SSO Providers:**
+- Active Directory / Azure AD
+- Google Workspace
+- Okta
+- Auth0
+- Custom SAML 2.0 providers
+
+**SSO Configuration Endpoint:** `POST /sso/configure`
+
+**Request Example:**
+```bash
+curl -X POST https://api.userplatform.com/v2/sso/configure \
+  -H "Authorization: Bearer your_jwt_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "azure_ad",
+    "domain": "company.com",
+    "metadata_url": "https://login.microsoftonline.com/tenant-id/federationmetadata/2007-06/federationmetadata.xml",
+    "auto_provision": true,
+    "default_role": "user",
+    "attribute_mapping": {
+      "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+      "first_name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
+      "last_name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"
+    }
+  }'
+```
+
+**SSO Authentication Flow:**
+
+1. **Initiate SSO:** Redirect users to `/sso/login/{provider}`
+2. **Provider Authentication:** User authenticates with SSO provider
+3. **SAML Response:** Provider sends assertion to callback URL
+4. **Token Exchange:** API validates assertion and returns JWT
+5. **User Provisioning:** Auto-create user if `auto_provision` enabled
+
+### 7.4 Advanced Query Filtering
+
+Powerful filtering and search capabilities for complex user management scenarios.
+
+**Advanced User Search:**
+
+**Endpoint:** `GET /users/search`
+
+**Query Parameters:**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `q` | string | Full-text search across name and email | `john engineering` |
+| `filters` | object | Complex filtering conditions | See examples below |
+| `sort` | array | Multiple sort criteria | `["last_login:desc", "created_at:asc"]` |
+| `fields` | array | Specific fields to return | `["id", "email", "roles"]` |
+
+**Complex Filtering Examples:**
+
+```bash
+# Users created in the last 30 days with admin role
+curl -X GET "https://api.userplatform.com/v2/users/search" \
+  -H "Authorization: Bearer your_jwt_token" \
+  -G \
+  --data-urlencode 'filters={"created_at":{"gte":"2024-12-21"},"role":"admin"}' \
+  --data-urlencode 'sort=["created_at:desc"]'
+
+# Users who haven't logged in for 90 days
+curl -X GET "https://api.userplatform.com/v2/users/search" \
+  -H "Authorization: Bearer your_jwt_token" \
+  -G \
+  --data-urlencode 'filters={"last_login":{"lt":"2024-10-22"},"status":"active"}'
+```
+
+**Filter Operators:**
+
+| Operator | Description | Example |
+|----------|-------------|---------|
+| `eq` | Equals | `{"role": {"eq": "admin"}}` |
+| `ne` | Not equals | `{"status": {"ne": "deleted"}}` |
+| `gt` | Greater than | `{"created_at": {"gt": "2024-01-01"}}` |
+| `gte` | Greater than or equal | `{"last_login": {"gte": "2024-12-01"}}` |
+| `lt` | Less than | `{"login_count": {"lt": 5}}` |
+| `lte` | Less than or equal | `{"age": {"lte": 65}}` |
+| `in` | In array | `{"role": {"in": ["admin", "moderator"]}}` |
+| `contains` | String contains | `{"email": {"contains": "@company.com"}}` |
+
+### 7.5 User Activity Analytics
+
+Comprehensive user behavior tracking and analytics for business intelligence.
+
+**Activity Events Endpoint:** `GET /users/{user_id}/activity`
+
+**Response Example:**
+```json
+{
+  "user_id": "user_123",
+  "activity_summary": {
+    "total_logins": 45,
+    "last_login": "2025-01-20T14:30:00Z",
+    "average_session_duration": 3600,
+    "most_active_day": "tuesday",
+    "preferred_login_time": "09:00-10:00"
+  },
+  "recent_activities": [
+    {
+      "event": "login",
+      "timestamp": "2025-01-20T14:30:00Z",
+      "ip_address": "192.168.1.100",
+      "user_agent": "Mozilla/5.0...",
+      "location": "New York, NY"
+    },
+    {
+      "event": "profile_updated",
+      "timestamp": "2025-01-20T11:15:22Z",
+      "changes": ["first_name", "metadata.department"]
+    }
+  ]
+}
+```
+
+**Aggregate Analytics Endpoint:** `GET /analytics/users`
+
+**Query Parameters:**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `metric` | string | Analytics metric to retrieve | `active_users`, `new_registrations`, `login_frequency` |
+| `period` | string | Time period for aggregation | `day`, `week`, `month`, `quarter` |
+| `start_date` | string | Analysis start date | `2025-01-01` |
+| `end_date` | string | Analysis end date | `2025-01-31` |
+| `group_by` | string | Grouping dimension | `role`, `department`, `location` |
+
+**Analytics Response Example:**
+```json
+{
+  "metric": "active_users",
+  "period": "day",
+  "data": [
+    {
+      "date": "2025-01-20",
+      "total_users": 1250,
+      "active_users": 945,
+      "new_users": 23,
+      "returning_users": 922
+    }
+  ],
+  "summary": {
+    "average_daily_active": 932,
+    "growth_rate": 12.5,
+    "retention_rate": 89.2
+  }
+}
+```
 
 ---
 
-## 9. Performance and Scaling
+## 8. Performance and scaling
 
-Implementing the User Management API at scale requires careful consideration of performance optimization, caching strategies, and architectural patterns to ensure responsive user experiences and efficient resource utilization.
+### 8.1 API Performance Optimization
 
-### API Performance Optimization
+Implement these strategies to maximize API performance and minimize latency in your user management workflows.
 
-#### Request Optimization Strategies
+**Connection Pooling and Keep-Alive**
 
-**Use Field Selection to Reduce Payload Size**:
-```bash
-# Instead of fetching all user data
-curl -X GET "https://api.yourcompany.com/v2/users/usr_123"
+Use HTTP connection pooling to reduce connection overhead:
 
-# Request only needed fields
-curl -X GET "https://api.yourcompany.com/v2/users/usr_123?fields=id,email,first_name,status"
-```
-
-**Leverage Include Parameters for Related Data**:
-```bash
-# Avoid multiple API calls by including related data
-curl -X GET "https://api.yourcompany.com/v2/users?include=roles,permissions&limit=50"
-```
-
-**Implement Efficient Pagination**:
 ```javascript
-// Use cursor-based pagination for large datasets
-async function fetchAllUsers() {
-  let users = [];
+// Node.js with axios
+const axios = require('axios');
+const https = require('https');
+
+const apiClient = axios.create({
+  baseURL: 'https://api.userplatform.com/v2',
+  timeout: 10000,
+  headers: {
+    'Authorization': `Bearer ${process.env.API_TOKEN}`,
+    'Connection': 'keep-alive'
+  },
+  httpsAgent: new https.Agent({
+    keepAlive: true,
+    keepAliveMsecs: 30000,
+    maxSockets: 50
+  })
+});
+```
+
+**Response Caching Strategy**
+
+Implement intelligent caching for frequently accessed user data:
+
+```python
+import redis
+import json
+from datetime import timedelta
+
+class UserCache:
+    def __init__(self, redis_client):
+        self.redis = redis_client
+        self.default_ttl = 300  # 5 minutes
+    
+    def get_user(self, user_id):
+        """Get user from cache or API"""
+        cache_key = f"user:{user_id}"
+        cached_data = self.redis.get(cache_key)
+        
+        if cached_data:
+            return json.loads(cached_data)
+        
+        # Fetch from API
+        user_data = self.fetch_user_from_api(user_id)
+        
+        # Cache with TTL
+        self.redis.setex(
+            cache_key,
+            self.default_ttl,
+            json.dumps(user_data)
+        )
+        
+        return user_data
+    
+    def invalidate_user(self, user_id):
+        """Invalidate cache when user is updated"""
+        cache_key = f"user:{user_id}"
+        self.redis.delete(cache_key)
+```
+
+### 8.2 Pagination and Batch Processing
+
+Efficiently handle large datasets with optimized pagination and batch processing techniques.
+
+**Cursor-Based Pagination**
+
+For consistent results with large, frequently updated datasets:
+
+```bash
+# Initial request
+curl -X GET "https://api.userplatform.com/v2/users?limit=100&sort=created_at:asc" \
+  -H "Authorization: Bearer your_jwt_token"
+
+# Subsequent requests using cursor
+curl -X GET "https://api.userplatform.com/v2/users?limit=100&cursor=eyJjcmVhdGVkX2F0IjoiMjAyNS0wMS0yMCJ9" \
+  -H "Authorization: Bearer your_jwt_token"
+```
+
+**Response with Cursor:**
+```json
+{
+  "data": [...],
+  "pagination": {
+    "limit": 100,
+    "has_more": true,
+    "next_cursor": "eyJjcmVhdGVkX2F0IjoiMjAyNS0wMS0yMSJ9",
+    "total_estimate": 15000
+  }
+}
+```
+
+**Efficient Batch Processing Pattern:**
+
+```javascript
+const processBatchUsers = async (batchSize = 100) => {
   let cursor = null;
+  let processedCount = 0;
   
   do {
-    const params = new URLSearchParams({
-      limit: '100',
-      ...(cursor && { cursor })
-    });
-    
-    const response = await fetch(`/v2/users?${params}`);
-    const data = await response.json();
-    
-    users.push(...data.data);
-    cursor = data.pagination.next_cursor;
-  } while (cursor);
-  
-  return users;
-}
-```
-
-___
-
-### Caching Strategies
-
-#### Client-Side Caching
-
-**HTTP Cache Headers**: The API returns appropriate cache headers for different resource types:
-
-| Resource Type | Cache-Control | Typical TTL |
-|---------------|---------------|-------------|
-| User profiles | `private, max-age=300` | 5 minutes |
-| Role definitions | `public, max-age=3600` | 1 hour |
-| Permission lists | `public, max-age=7200` | 2 hours |
-| User sessions | `private, no-cache` | No caching |
-
-**ETag Support**: Use ETags for conditional requests to minimize bandwidth:
-
-```javascript
-// Store ETag from initial request
-let userETag = null;
-let cachedUser = null;
-
-async function fetchUserWithCache(userId) {
-  const headers = {
-    'Authorization': 'Bearer ' + token
-  };
-  
-  // Add If-None-Match header if we have a cached ETag
-  if (userETag) {
-    headers['If-None-Match'] = userETag;
-  }
-  
-  const response = await fetch(`/v2/users/${userId}`, { headers });
-  
-  if (response.status === 304) {
-    // Not modified, use cached data
-    return cachedUser;
-  }
-  
-  // Update cache with new data
-  userETag = response.headers.get('ETag');
-  cachedUser = await response.json();
-  return cachedUser;
-}
-```
-
-#### Application-Level Caching
-
-**Redis Integration for Session Management**:
-```javascript
-// Cache user permissions for faster authorization checks
-async function getUserPermissions(userId) {
-  const cacheKey = `user:${userId}:permissions`;
-  
-  // Try cache first
-  let permissions = await redis.get(cacheKey);
-  if (permissions) {
-    return JSON.parse(permissions);
-  }
-  
-  // Fetch from API if not cached
-  const response = await fetch(`/v2/users/${userId}?include=permissions`);
-  const userData = await response.json();
-  
-  // Cache for 10 minutes
-  await redis.setex(cacheKey, 600, JSON.stringify(userData.permissions));
-  
-  return userData.permissions;
-}
-```
-
-___
-
-### High-Volume Operations
-
-#### Bulk Processing Patterns
-
-**Batch User Creation with Error Handling**:
-```javascript
-async function createUsersInBatches(users, batchSize = 50) {
-  const results = [];
-  const errors = [];
-  
-  for (let i = 0; i < users.length; i += batchSize) {
-    const batch = users.slice(i, i + batchSize);
-    
     try {
-      const response = await fetch('/v2/users/bulk', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + token,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ users: batch })
-      });
+      // Fetch batch
+      const params = {
+        limit: batchSize,
+        ...(cursor && { cursor })
+      };
       
-      const result = await response.json();
-      results.push(...result.successful);
-      errors.push(...result.failed);
+      const response = await apiClient.get('/users', { params });
+      const { data, pagination } = response.data;
       
-      // Rate limiting: wait between batches
-      if (i + batchSize < users.length) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
+      // Process batch
+      await processUserBatch(data);
+      processedCount += data.length;
+      
+      // Update cursor for next iteration
+      cursor = pagination.next_cursor;
+      
+      // Rate limiting - small delay between batches
+      await sleep(100);
+      
+      console.log(`Processed ${processedCount} users...`);
       
     } catch (error) {
-      console.error(`Batch ${i / batchSize + 1} failed:`, error);
-      errors.push({ batch: i / batchSize + 1, error: error.message });
+      console.error('Batch processing error:', error);
+      // Implement retry logic here
+      break;
+    }
+    
+  } while (cursor);
+  
+  console.log(`Batch processing complete. Total processed: ${processedCount}`);
+};
+```
+
+### 8.3 Error Recovery and Resilience
+
+Build robust applications with comprehensive error recovery and resilience patterns.
+
+**Circuit Breaker Pattern**
+
+Prevent cascade failures with circuit breaker implementation:
+
+```javascript
+class CircuitBreaker {
+  constructor(options = {}) {
+    this.failureThreshold = options.failureThreshold || 5;
+    this.resetTimeout = options.resetTimeout || 30000;
+    this.state = 'CLOSED'; // CLOSED, OPEN, HALF_OPEN
+    this.failureCount = 0;
+    this.lastFailureTime = null;
+  }
+  
+  async execute(operation) {
+    if (this.state === 'OPEN') {
+      if (Date.now() - this.lastFailureTime >= this.resetTimeout) {
+        this.state = 'HALF_OPEN';
+      } else {
+        throw new Error('Circuit breaker is OPEN');
+      }
+    }
+    
+    try {
+      const result = await operation();
+      this.onSuccess();
+      return result;
+    } catch (error) {
+      this.onFailure();
+      throw error;
     }
   }
   
-  return { successful: results, failed: errors };
-}
-```
-
-#### Asynchronous Processing
-
-**Background Job Integration**:
-```javascript
-// Queue large operations for background processing
-async function queueBulkUserUpdate(userUpdates) {
-  const jobId = await fetch('/v2/jobs', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + token },
-    body: JSON.stringify({
-      type: 'bulk_user_update',
-      data: userUpdates,
-      callback_url: 'https://your-app.com/webhooks/job-complete'
-    })
-  });
-  
-  return jobId;
-}
-
-// Monitor job progress
-async function checkJobStatus(jobId) {
-  const response = await fetch(`/v2/jobs/${jobId}`, {
-    headers: { 'Authorization': 'Bearer ' + token }
-  });
-  
-  return response.json(); // { status: 'processing', progress: 45, eta: '2 minutes' }
-}
-```
-
-___
-
-### Database Scaling Considerations
-
-#### Connection Pool Management
-
-**Optimize Database Connections**:
-```javascript
-// Configure connection pooling for high-volume applications
-const pool = new Pool({
-  host: 'db.yourcompany.com',
-  port: 5432,
-  database: 'user_management',
-  user: 'api_user',
-  password: process.env.DB_PASSWORD,
-  min: 10,        // Minimum connections
-  max: 100,       // Maximum connections
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
-```
-
-#### Read Replica Strategy
-
-**Route Read-Heavy Operations to Replicas**:
-```javascript
-// Use read replicas for user lookups and reporting
-const readOnlyOperations = [
-  'GET /v2/users',
-  'GET /v2/users/:id',
-  'GET /v2/roles',
-  'GET /v2/users/:id/permissions'
-];
-
-function getDbConnection(operation) {
-  if (readOnlyOperations.includes(operation)) {
-    return readReplicaPool;
+  onSuccess() {
+    this.failureCount = 0;
+    this.state = 'CLOSED';
   }
-  return primaryDbPool;
+  
+  onFailure() {
+    this.failureCount++;
+    this.lastFailureTime = Date.now();
+    
+    if (this.failureCount >= this.failureThreshold) {
+      this.state = 'OPEN';
+    }
+  }
 }
+
+// Usage
+const breaker = new CircuitBreaker({
+  failureThreshold: 3,
+  resetTimeout: 60000
+});
+
+const fetchUserSafely = async (userId) => {
+  return breaker.execute(() => fetchUser(userId));
+};
 ```
 
-___
+**Retry with Exponential Backoff**
 
-### Monitoring and Alerting
+Implement smart retry logic for transient failures:
 
-#### Performance Metrics to Track
+```python
+import asyncio
+import random
+from typing import Callable, Any
 
-| Metric | Threshold | Alert Level |
-|--------|-----------|-------------|
-| API Response Time (P95) | > 500ms | Warning |
-| API Response Time (P99) | > 1000ms | Critical |
-| Error Rate | > 1% | Warning |
-| Error Rate | > 5% | Critical |
-| Database Connection Pool Usage | > 80% | Warning |
-| Rate Limit Hit Rate | > 10% | Warning |
-
-**Application Performance Monitoring**:
-```javascript
-// Instrument API calls for monitoring
-async function instrumentedApiCall(url, options = {}) {
-  const startTime = Date.now();
-  const operation = `${options.method || 'GET'} ${url}`;
-  
-  try {
-    const response = await fetch(url, options);
+async def retry_with_backoff(
+    operation: Callable,
+    max_retries: int = 3,
+    base_delay: float = 1.0,
+    max_delay: float = 60.0,
+    backoff_factor: float = 2.0,
+    jitter: bool = True
+) -> Any:
+    """
+    Retry operation with exponential backoff and jitter
+    """
+    last_exception = None
     
-    // Log performance metrics
-    const duration = Date.now() - startTime;
+    for attempt in range(max_retries + 1):
+        try:
+            return await operation()
+        
+        except Exception as e:
+            last_exception = e
+            
+            if attempt == max_retries:
+                raise e
+            
+            # Calculate delay with exponential backoff
+            delay = min(base_delay * (backoff_factor ** attempt), max_delay)
+            
+            # Add jitter to prevent thundering herd
+            if jitter:
+                delay *= (0.5 + random.random() / 2)
+            
+            await asyncio.sleep(delay)
+    
+    raise last_exception
+
+# Usage example
+async def create_user_with_retry(user_data):
+    return await retry_with_backoff(
+        lambda: api_client.post('/users', user_data),
+        max_retries=3,
+        base_delay=1.0
+    )
+```
+
+### 8.4 Monitoring and Observability
+
+Implement comprehensive monitoring to track API performance and user behavior patterns.
+
+**Performance Metrics to Track:**
+
+```javascript
+const metricsCollector = {
+  // Response time tracking
+  trackResponseTime: (endpoint, duration) => {
     metrics.histogram('api.response_time', duration, {
-      operation,
-      status: response.status
+      endpoint: endpoint,
+      status: 'success'
     });
-    
-    // Log error rates
-    if (response.status >= 400) {
-      metrics.increment('api.errors', {
-        operation,
-        status: response.status
-      });
-    }
-    
-    return response;
-  } catch (error) {
-    // Log client-side errors
-    metrics.increment('api.client_errors', { operation });
-    throw error;
+  },
+  
+  // Error rate monitoring
+  trackError: (endpoint, errorCode) => {
+    metrics.increment('api.errors', 1, {
+      endpoint: endpoint,
+      error_code: errorCode
+    });
+  },
+  
+  // Rate limit usage
+  trackRateLimit: (remaining, limit) => {
+    const usage = ((limit - remaining) / limit) * 100;
+    metrics.gauge('api.rate_limit.usage_percent', usage);
+  },
+  
+  // Business metrics
+  trackUserOperation: (operation, userId) => {
+    metrics.increment('users.operations', 1, {
+      operation: operation,
+      user_id: userId
+    });
   }
-}
+};
+
+// Middleware for automatic tracking
+const trackingMiddleware = (req, res, next) => {
+  const startTime = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - startTime;
+    const endpoint = req.route?.path || req.path;
+    
+    if (res.statusCode >= 400) {
+      metricsCollector.trackError(endpoint, res.statusCode);
+    } else {
+      metricsCollector.trackResponseTime(endpoint, duration);
+    }
+  });
+  
+  next();
+};
 ```
 
-#### Health Check Implementation
+**Health Check Implementation:**
 
-**Comprehensive Health Monitoring**:
 ```javascript
+// Health check endpoint for load balancers
 app.get('/health', async (req, res) => {
-  const health = {
-    status: 'healthy',
+  const healthChecks = await Promise.allSettled([
+    checkDatabaseConnection(),
+    checkApiConnectivity(),
+    checkCacheStatus(),
+    checkDiskSpace()
+  ]);
+  
+  const status = healthChecks.every(check => 
+    check.status === 'fulfilled' && check.value.healthy
+  ) ? 'healthy' : 'unhealthy';
+  
+  const details = healthChecks.reduce((acc, check, index) => {
+    const checkNames = ['database', 'api', 'cache', 'disk'];
+    acc[checkNames[index]] = check.status === 'fulfilled' 
+      ? check.value 
+      : { healthy: false, error: check.reason.message };
+    return acc;
+  }, {});
+  
+  const responseCode = status === 'healthy' ? 200 : 503;
+  
+  res.status(responseCode).json({
+    status,
     timestamp: new Date().toISOString(),
-    checks: {}
-  };
-  
-  // Database connectivity
-  try {
-    await db.query('SELECT 1');
-    health.checks.database = { status: 'healthy' };
-  } catch (error) {
-    health.checks.database = { status: 'unhealthy', error: error.message };
-    health.status = 'degraded';
-  }
-  
-  // API dependency checks
-  try {
-    const apiResponse = await fetch('/v2/users/health', {
-      timeout: 5000,
-      headers: { 'Authorization': 'Bearer ' + healthCheckToken }
-    });
-    health.checks.user_api = { 
-      status: apiResponse.ok ? 'healthy' : 'unhealthy',
-      response_time: apiResponse.headers.get('x-response-time')
-    };
-  } catch (error) {
-    health.checks.user_api = { status: 'unhealthy', error: error.message };
-    health.status = 'degraded';
-  }
-  
-  // Memory usage
-  const memUsage = process.memoryUsage();
-  health.checks.memory = {
-    status: memUsage.heapUsed / memUsage.heapTotal < 0.9 ? 'healthy' : 'warning',
-    heap_used_mb: Math.round(memUsage.heapUsed / 1024 / 1024),
-    heap_total_mb: Math.round(memUsage.heapTotal / 1024 / 1024)
-  };
-  
-  const statusCode = health.status === 'healthy' ? 200 : 503;
-  res.status(statusCode).json(health);
+    checks: details
+  });
 });
 ```
 
-💡 **Tip**: Implement circuit breakers for external API calls to prevent cascading failures during high load periods.
+### 8.5 Scaling Considerations
 
-⚠️ **Warning**: Always test performance optimizations under realistic load conditions. What works for 100 users may not scale to 100,000 users.
+**Horizontal Scaling Patterns:**
 
-[Back to top](#user-management-api-reference)
+- **Stateless Design:** Ensure all user operations are stateless to enable horizontal scaling
+- **Database Sharding:** Partition user data by user ID ranges or geographical regions
+- **Read Replicas:** Use read replicas for user lookup operations to reduce primary database load
+- **CDN Integration:** Cache user profile images and static assets globally
+
+**Performance Benchmarks:**
+
+| Operation | Target Response Time | Throughput (req/sec) |
+|-----------|---------------------|---------------------|
+| Get User Details | < 100ms | 1000+ |
+| Create User | < 200ms | 500+ |
+| Update User | < 150ms | 750+ |
+| Search Users | < 300ms | 200+ |
+| Bulk Operations | < 2s (100 users) | 50+ |
+
+**Optimization Checklist:**
+
+- [ ] Implement connection pooling for database and HTTP clients
+- [ ] Use appropriate caching strategies for frequently accessed data
+- [ ] Implement cursor-based pagination for large result sets
+- [ ] Add circuit breakers for external service dependencies
+- [ ] Monitor key performance metrics and error rates
+- [ ] Use bulk operations when processing multiple users
+- [ ] Implement proper retry logic with exponential backoff
+- [ ] Optimize database queries with proper indexing
+- [ ] Use compression for API responses when appropriate
+- [ ] Implement health checks for service monitoring
+
+---
+
+## Quick Reference Summary
+
+### Essential Endpoints
+
+| Operation | Method | Endpoint | Description |
+|-----------|--------|----------|-------------|
+| List Users | `GET` | `/users` | Paginated user list with filtering |
+| Create User | `POST` | `/users` | Create new user account |
+| Get User | `GET` | `/users/{id}` | Retrieve user details |
+| Update User | `PUT` | `/users/{id}` | Update user information |
+| Delete User | `DELETE` | `/users/{id}` | Delete user account |
+| Bulk Create | `POST` | `/users/bulk` | Create multiple users |
+| Search Users | `GET` | `/users/search` | Advanced user search |
+| User Activity | `GET` | `/users/{id}/activity` | User activity analytics |
+
+### Authentication Header
+
+```bash
+Authorization: Bearer your_jwt_token
+```
+
+### Rate Limits
+
+- **Basic:** 1,000 requests/hour
+- **Professional:** 10,000 requests/hour  
+- **Enterprise:** Custom limits
+
+### Common Error Codes
+
+- `400` - Bad Request (validation errors)
+- `401` - Unauthorized (authentication required)
+- `403` - Forbidden (insufficient permissions)
+- `404` - Not Found (resource doesn't exist)
+- `429` - Too Many Requests (rate limit exceeded)
+- `500` - Internal Server Error (server issues)
+
+### Best Practices
+
+1. **Always use HTTPS** for API requests
+2. **Implement proper error handling** with retry logic
+3. **Cache frequently accessed data** to reduce API calls
+4. **Use bulk operations** for multiple user management
+5. **Monitor rate limit headers** to prevent limits
+6. **Implement circuit breakers** for resilience
+7. **Use cursor-based pagination** for large datasets
+8. **Follow inclusive language guidelines** in user data
+
+---
+
+**Need Help?**
+
+- **Documentation:** [https://docs.userplatform.com](https://docs.userplatform.com)
+- **Support:** developers@userplatform.com
+- **Status Page:** [https://status.userplatform.com](https://status.userplatform.com)
+- **Community:** [https://community.userplatform.com](https://community.userplatform.com)
+
+**Was this documentation helpful?** [Provide feedback](mailto:docs-feedback@userplatform.com)
