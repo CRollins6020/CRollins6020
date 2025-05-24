@@ -1,6 +1,7 @@
 # 🗂️ Knowledge Base Articles
 
 Actionable, focused articles that help users troubleshoot issues, understand specific features, and implement solutions quickly. These entries are written for clarity and precision, enabling fast resolution without sacrificing depth.
+
 ---
 
 ## 📚 Available Articles
