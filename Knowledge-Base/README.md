@@ -1,6 +1,8 @@
 # 🗂️ Knowledge Base Articles
+
 Actionable, focused articles that help users troubleshoot issues, understand specific features, and implement solutions quickly. These entries are written for clarity and precision, enabling fast resolution without sacrificing depth.
 ---
+
 ## 📚 Available Articles
 
 ### **[Troubleshooting API Errors](https://github.com/CRollins6020/CRollins6020/blob/main/Knowledge-Base/troubleshooting-api-errors.md)**  
