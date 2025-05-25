@@ -13,10 +13,10 @@
 
 ## Table of Contents
 
-1. [Overview](#1-overview) (6 endpoints)
+1. [Overview](#1-overview)
 2. [Authentication](#2-authentication)
 3. [Common use cases](#3-common-use-cases)
-4. [Report endpoints](#4-report-endpoints) (8 endpoints)
+4. [Report endpoints](#4-report-endpoints)
 5. [Error handling](#5-error-handling)
 6. [Rate limiting](#6-rate-limiting)
 7. [Real-time analytics](#7-real-time-analytics)
