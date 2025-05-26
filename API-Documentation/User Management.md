@@ -1,4 +1,4 @@
-# User Management API
+# User Management
 
 **API Metadata Header:**
 - **Version:** v2.1.0
