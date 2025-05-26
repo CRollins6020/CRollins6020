@@ -4,13 +4,13 @@ Concise, implementation-ready documentation for developers integrating with inte
 
 ## 📂 Available References
 
-### **[User Management API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/User%20Management.md)**
+### **[User Management](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/User%20Management.md)**
 Enterprise identity management with SSO integration, granular permissions, and comprehensive audit trails. Includes multi-tenant architecture, OAuth flows, and compliance features for secure user lifecycle management. Comprehensive documentation with real-world security scenarios and step-by-step implementation guides.
 
-### **[Reporting & Analytics API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/reporting-api.md)**
+### **[Reporting & Analytics](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/reporting-api.md)**
 Generate custom reports and real-time analytics from multiple data sources. Features advanced filtering, custom query builder, and automated exports—designed for embedded dashboards and enterprise-scale reporting. Complete with production-ready examples, troubleshooting guides, and advanced integration patterns for millions of daily requests.
 
-### **[Prompt Execution API](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/prompt-execution.md)**
+### **[Prompt Execution](https://github.com/CRollins6020/CRollins6020/blob/main/API-Documentation/prompt-execution.md)**
 High-performance LLM integration supporting prompt templates, async processing, and conversation management. Built for AI-powered applications requiring reliable prompt execution, response validation, and usage analytics. Features interactive examples, error handling patterns, and scalable architecture guidance for production AI workflows.
 
 ---

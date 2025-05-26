@@ -1,13 +1,14 @@
-# Reporting & Analytics
+# Reporting & Analytics API Documentation
 
 **API Metadata Header**
-- **Version:** v2.1  
+- **Version:** v2.1.0
 - **Base URL:** `https://api.analyticsplatform.com/v2`
 - **Authentication:** Bearer Token (OAuth 2.0)
 - **Last Updated:** May 26, 2025
 - **OpenAPI Specification:** [Download Schema](https://api.analyticsplatform.com/v2/openapi.json)
 - **Status:** Production Ready
 - **Target Audience:** Developers with intermediate API integration experience
+- **Support Contact:** support@analyticsplatform.com
 
 ---
 
