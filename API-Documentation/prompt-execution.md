@@ -10,6 +10,8 @@
 - **Target Audience:** Developers with intermediate API integration experience
 - **Support Contact:** support@promptexec.ai
 
+---
+
 ## Table of Contents
 
 1. [Overview](#1-overview)
