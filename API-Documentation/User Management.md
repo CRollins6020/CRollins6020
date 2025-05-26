@@ -4,7 +4,7 @@
 - **Version:** v2.1.0
 - **Base URL:** `https://api.userplatform.com/v2`
 - **Authentication:** Bearer Token (JWT)
-- **Last Updated:** January 15, 2025
+- **Last Updated:** May 26, 2025
 - **OpenAPI Spec:** [userapi-v2.1.yaml](https://api.userplatform.com/openapi/v2.1.yaml)
 - **Support Contact:** developers@userplatform.com
 
