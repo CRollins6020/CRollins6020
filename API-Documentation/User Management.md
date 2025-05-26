@@ -1,4 +1,4 @@
-# User Management API Documentation
+# User Management
 
 **API Metadata Header**
 - **Version:** v2.1.0

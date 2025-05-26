@@ -1,4 +1,4 @@
-# Prompt Execution API Documentation
+# Prompt Execution
 
 **API Metadata Header**
 - **Version:** v2.1.0

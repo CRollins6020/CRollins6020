@@ -1,4 +1,4 @@
-# Reporting & Analytics API Documentation
+# Reporting & Analytics
 
 **API Metadata Header**
 - **Version:** v2.1.0
