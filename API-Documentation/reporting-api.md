@@ -4,7 +4,7 @@
 - **Version:** v2.1  
 - **Base URL:** `https://api.analyticsplatform.com/v2`
 - **Authentication:** Bearer Token (OAuth 2.0)
-- **Last Updated:** May 24, 2025
+- **Last Updated:** May 26, 2025
 - **OpenAPI Specification:** [Download Schema](https://api.analyticsplatform.com/v2/openapi.json)
 - **Status:** Production Ready
 - **Target Audience:** Developers with intermediate API integration experience
@@ -52,8 +52,6 @@ https://api.analyticsplatform.com/v2
 
 All API requests must include the version number in the URL path. The current stable version is v2.0, which maintains backward compatibility with v1.x for core endpoints.
 
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
-
 ---
 
 ## 2. Authentication
@@ -96,6 +94,10 @@ curl -X GET https://api.analyticsplatform.com/v2/reports \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 ```
 
+<div class="warning">
+⚠️ <strong>Security Note:</strong> Never include API keys in client-side code or commit them to version control
+</div>
+
 **Security Best Practices:**
 - Store API credentials securely using environment variables or secret management systems
 - Implement token refresh logic for long-running applications  
@@ -111,8 +113,6 @@ curl -X GET https://api.analyticsplatform.com/v2/reports \
 | `analytics:read` | Access real-time analytics | Live metrics, streaming data |
 | `admin:manage` | Administrative operations | User management, configuration |
 
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
-
 ---
 
 ## 3. Common use cases
@@ -122,6 +122,9 @@ These real-world implementation patterns demonstrate practical API integration s
 ### Use Case 1: Automated Weekly Sales Report
 
 Generate and email weekly sales reports to stakeholders automatically.
+
+<details>
+<summary>Complete JavaScript Implementation</summary>
 
 ```javascript
 // Weekly sales report automation
@@ -165,10 +168,14 @@ async function generateWeeklySalesReport() {
   }
 }
 ```
+</details>
 
 ### Use Case 2: Real-time Dashboard Integration
 
 Stream live metrics for executive dashboards using WebSocket connections.
+
+<details>
+<summary>Complete Python WebSocket Implementation</summary>
 
 ```python
 import websocket
@@ -209,10 +216,14 @@ class AnalyticsDashboard:
         for metric in metrics_data['metrics']:
             print(f"{metric['name']}: {metric['value']} ({metric['change']}%)")
 ```
+</details>
 
 ### Use Case 3: Custom Visualization Data Pipeline
 
 Retrieve and transform data for custom charts in React applications.
+
+<details>
+<summary>Complete React Component Implementation</summary>
 
 ```javascript
 // React component for custom analytics charts
@@ -275,8 +286,7 @@ const CustomAnalyticsChart = ({ metricType, timeRange }) => {
 
 export default CustomAnalyticsChart;
 ```
-
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
+</details>
 
 ---
 
@@ -335,8 +345,6 @@ curl -X GET "https://api.analyticsplatform.com/v2/reports?page=1&limit=10&status
 - `401 Unauthorized` - Missing or invalid authentication token
 - `403 Forbidden` - Insufficient permissions for report access
 - `429 Too Many Requests` - Rate limit exceeded
-
----
 
 ### 4.2 Create Report
 
@@ -421,8 +429,6 @@ curl -X POST https://api.analyticsplatform.com/v2/reports/generate \
 **✅ Success Indicator:** Response includes `report_id` and status `processing`
 **🚨 Troubleshooting:** If status shows `failed`, check the error message in the status endpoint
 
----
-
 ### 4.3 Get Report Details
 
 Retrieve comprehensive information about a specific report including metadata and generation status.
@@ -474,8 +480,6 @@ curl -X GET https://api.analyticsplatform.com/v2/reports/rpt_1a2b3c4d5e \
 - `completed` - Report ready for download
 - `failed` - Generation failed (check error_message field)
 - `expired` - Download link expired (regeneration required)
-
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
 
 ---
 
@@ -580,8 +584,6 @@ Comprehensive error response patterns and troubleshooting guidance for robust AP
 **Problem:** 429 Rate limit errors
 **Solution:** Implement exponential backoff retry logic and respect the rate limit headers in responses.
 
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
-
 ---
 
 ## 6. Rate limiting
@@ -614,6 +616,9 @@ X-RateLimit-Retry-After: 3600
 - `X-RateLimit-Retry-After` - Seconds to wait before retry (when rate limited)
 
 **Rate Limit Implementation Best Practices:**
+
+<details>
+<summary>JavaScript Rate Limit Handling with Exponential Backoff</summary>
 
 ```javascript
 // JavaScript rate limit handling with exponential backoff
@@ -672,6 +677,7 @@ class APIClient {
   }
 }
 ```
+</details>
 
 **Optimization Strategies:**
 
@@ -706,8 +712,6 @@ async function getCachedReport(reportId) {
   return report;
 }
 ```
-
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
 
 ---
 
@@ -749,6 +753,9 @@ Include your Bearer token as a query parameter in the WebSocket URL. The connect
 | `api_response_time` | Average API response time | 30 seconds | milliseconds |
 
 **WebSocket Integration Example:**
+
+<details>
+<summary>Complete WebSocket Client Implementation</summary>
 
 ```javascript
 class RealTimeAnalytics {
@@ -849,6 +856,7 @@ class RealTimeAnalytics {
 const analytics = new RealTimeAnalytics(accessToken);
 analytics.connect();
 ```
+</details>
 
 **Event-Driven Analytics:**
 
@@ -877,6 +885,9 @@ Subscribe to business events and threshold alerts for proactive monitoring:
 **Real-time Data Export:**
 
 Stream data directly to external systems for backup or analysis:
+
+<details>
+<summary>Python Streaming Data Export Implementation</summary>
 
 ```python
 import asyncio
@@ -921,6 +932,7 @@ async def insert_metrics_to_db(metrics):
 # Run the streaming data export
 asyncio.run(stream_to_database("wss://api.analyticsplatform.com/v2/stream", access_token))
 ```
+</details>
 
 **Connection Management Best Practices:**
 
@@ -929,7 +941,7 @@ asyncio.run(stream_to_database("wss://api.analyticsplatform.com/v2/stream", acce
 - **Graceful Degradation:** Fall back to polling APIs if WebSocket connection fails
 - **Resource Cleanup:** Properly close connections and unsubscribe when components unmount
 
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
+[↑ Back to top](#reporting--analytics)
 
 ---
 
@@ -941,6 +953,9 @@ Advanced optimization strategies and monitoring guidance for enterprise-level AP
 
 **Connection Pooling and Keep-Alive:**
 Maintain persistent HTTP connections to reduce latency and improve throughput for high-volume applications.
+
+<details>
+<summary>Node.js Connection Pooling Implementation</summary>
 
 ```javascript
 // Node.js connection pooling example
@@ -973,8 +988,12 @@ const apiClient = {
   }
 };
 ```
+</details>
 
 **Parallel Processing and Batch Operations:**
+
+<details>
+<summary>Efficient Batch Report Generation</summary>
 
 ```javascript
 // Efficient batch report generation
@@ -1005,8 +1024,12 @@ async function generateReportsInParallel(reportConfigs) {
   return allResults;
 }
 ```
+</details>
 
 **Caching Strategy Implementation:**
+
+<details>
+<summary>Advanced Caching with Cache Warming</summary>
 
 ```javascript
 class AnalyticsCache {
@@ -1062,10 +1085,14 @@ class AnalyticsCache {
   }
 }
 ```
+</details>
 
 **Monitoring and Performance Metrics:**
 
 Track these key performance indicators to ensure optimal API usage:
+
+<details>
+<summary>Performance Monitoring Implementation</summary>
 
 ```javascript
 class PerformanceMonitor {
@@ -1137,6 +1164,7 @@ async function monitoredRequest(endpoint, options) {
   }
 }
 ```
+</details>
 
 **Scaling Best Practices:**
 
@@ -1167,24 +1195,7 @@ async function monitoredRequest(endpoint, options) {
 
 **Enterprise Integration Architecture:**
 
-```mermaid
-graph TD
-    A[Client Application] --> B[Load Balancer]
-    B --> C[API Gateway]
-    C --> D[Authentication Service]
-    C --> E[Rate Limiter]
-    E --> F[Analytics API]
-    F --> G[Cache Layer]
-    F --> H[Database]
-    
-    I[Monitoring] --> F
-    J[Metrics Collector] --> I
-    K[Alert Manager] --> I
-    
-    style A fill:#e1f5fe
-    style F fill:#f3e5f5
-    style G fill:#e8f5e8
-```
+**Text Description of Integration Architecture:** This diagram shows the enterprise integration architecture with client applications connecting through a load balancer to an API gateway, which handles authentication and rate limiting before reaching the Analytics API. The system includes caching layers for improved performance, monitoring components for system health tracking, and alert management for proactive issue resolution. Data flows from the Analytics API to both cache storage and the primary database, while metrics collection feeds into monitoring dashboards and alert systems.
 
 **Recommended Monitoring Tools:**
 - **Application Performance:** New Relic, DataDog, or custom metrics
@@ -1192,7 +1203,7 @@ graph TD
 - **Error Tracking:** Sentry, Rollbar for error aggregation
 - **Custom Dashboards:** Grafana with Prometheus for detailed metrics
 
-[↑ Back to top](#reporting--analytics-api-v20-documentation)
+[↑ Back to top](#reporting--analytics)
 
 ---
 
@@ -1227,11 +1238,14 @@ graph TD
 
 ---
 
+**Content Generation Notes:**
+- Base content generated with AI assistance using API documentation prompt
+- Technical accuracy validated by Senior Developer Relations team
+- Style compliance reviewed by Technical Writing team  
+- Accessibility compliance verified by UX Accessibility team
+- Last human review: May 26, 2025
+
 **Document Information:**
 - **Version:** 2.0.1
 - **Last Updated:** May 24, 2025
-- **Content Generation:** Base content generated with AI assistance using API documentation prompt
-- **Technical Accuracy:** Validated by Senior Developer Relations team
-- **Style Compliance:** Reviewed by Technical Writing team  
-- **Accessibility Compliance:** Verified by UX Accessibility team
 - **Next Review:** June 24, 2025

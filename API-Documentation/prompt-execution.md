@@ -1,11 +1,11 @@
-# Prompt Execution
+# Prompt Execution API Documentation
 
 | **Field** | **Value** |
 |-----------|-----------|
 | **API Version** | v2.1 |
 | **Base URL** | `https://api.promptexec.ai/v2` |
 | **Authentication** | Bearer Token |
-| **Last Updated** | May 25, 2025 |
+| **Last Updated** | May 26, 2025 |
 | **Author** | Technical Writing Portfolio |
 | **Documentation Type** | API_DOCUMENTATION |
 | **Target Audience** | DEVELOPERS |
@@ -28,7 +28,7 @@
 
 The Prompt Execution API enables developers to execute AI prompts with advanced configuration options, real-time streaming, and comprehensive result analysis. This API supports multiple AI models, custom prompt templates, and enterprise-grade security features.
 
-**Key Capabilities:**
+**Key capabilities:**
 - Execute prompts across multiple AI models (GPT-4, Claude, Gemini)
 - Real-time streaming responses with WebSocket support
 - Template management and version control
@@ -38,7 +38,7 @@ The Prompt Execution API enables developers to execute AI prompts with advanced 
 
 **Base URL:** `https://api.promptexec.ai/v2`
 
-**Supported Models:**
+**Supported models:**
 - OpenAI GPT-4 and GPT-3.5
 - Anthropic Claude Sonnet and Opus
 - Google Gemini Pro and Ultra
@@ -50,35 +50,33 @@ The Prompt Execution API enables developers to execute AI prompts with advanced 
 
 All API requests require authentication using Bearer tokens. Obtain your API key from the developer dashboard.
 
-**Authentication Flow:**
+**Authentication flow:**
 
 1. Register for an account at [developer.promptexec.ai](https://developer.promptexec.ai)
 2. Generate an API key in your dashboard
 3. Include the API key in the Authorization header for all requests
 
-**Request Headers:**
+**Request headers:**
 ```http
 Authorization: Bearer sk_live_abc123def456ghi789
 Content-Type: application/json
 ```
 
-<div class="warning">
-⚠️ **Security Note:** Never include API keys in client-side code or public repositories. Store keys securely in environment variables.
-</div>
+<div class="warning">⚠️ <strong>Security Note:</strong> Never include API keys in client-side code or public repositories. Store keys securely in environment variables.</div>
 
-**API Key Scopes:**
+**API key scopes:**
 - `prompt.execute` - Execute prompts and access results
 - `template.manage` - Create and modify prompt templates
 - `analytics.read` - Access execution analytics and logs
 - `admin.manage` - Full administrative access
 
-**Testing Authentication:**
+**Testing authentication:**
 ```bash
 curl -X GET "https://api.promptexec.ai/v2/auth/verify" \
   -H "Authorization: Bearer your_api_key"
 ```
 
-**Expected Response:**
+**Expected response:**
 ```json
 {
   "authenticated": true,
@@ -95,11 +93,11 @@ curl -X GET "https://api.promptexec.ai/v2/auth/verify" \
 
 ## 3. Common use cases
 
-### Use Case 1: Simple Text Generation
+### Use case 1: Simple text generation
 
 Execute a basic prompt for content generation tasks like writing assistance, summarization, or creative writing.
 
-**Example: Blog Post Generation**
+**Example: Blog post generation**
 ```javascript
 const response = await fetch('https://api.promptexec.ai/v2/execute', {
   method: 'POST',
@@ -119,11 +117,11 @@ const result = await response.json();
 console.log(result.output.text);
 ```
 
-### Use Case 2: Structured Data Extraction
+### Use case 2: Structured data extraction
 
 Extract structured information from unstructured text using prompt engineering techniques.
 
-**Example: Contact Information Extraction**
+**Example: Contact information extraction**
 ```python
 import requests
 
@@ -152,11 +150,11 @@ data = response.json()
 print(data['output']['structured_data'])
 ```
 
-### Use Case 3: Real-time Streaming Responses
+### Use case 3: Real-time streaming responses
 
 Stream responses in real-time for interactive applications like chatbots or live content generation.
 
-**Example: Interactive Chat with Streaming**
+**Example: Interactive chat with streaming**
 ```javascript
 const ws = new WebSocket('wss://api.promptexec.ai/v2/stream');
 
@@ -185,7 +183,7 @@ ws.onmessage = (event) => {
 
 ## 4. Execution endpoints
 
-### 4.1 Execute Prompt
+### 4.1 Execute prompt
 
 Execute a single prompt with specified configuration and receive the AI-generated response.
 
@@ -206,7 +204,7 @@ Execute a single prompt with specified configuration and receive the AI-generate
 | `system_prompt` | string | ⚠️ Optional | System-level instructions | `"You are a helpful assistant"` |
 | `tools` | array | ⚠️ Optional | Available function tools | `[{"name": "search", "description": "..."}]` |
 
-**Request Example:**
+**Request example:**
 ```bash
 curl -X POST "https://api.promptexec.ai/v2/execute" \
   -H "Authorization: Bearer sk_live_abc123def456ghi789" \
@@ -229,7 +227,7 @@ curl -X POST "https://api.promptexec.ai/v2/execute" \
   }'
 ```
 
-**Response Example:**
+**Response example:**
 ```json
 {
   "execution_id": "exec_789xyz123abc",
@@ -254,18 +252,16 @@ curl -X POST "https://api.promptexec.ai/v2/execute" \
 }
 ```
 
-**Error Responses:**
+**Error responses:**
 - **400 Bad Request:** Invalid parameters or malformed request
 - **401 Unauthorized:** Invalid or missing API key
 - **403 Forbidden:** Insufficient permissions for requested model
 - **429 Too Many Requests:** Rate limit exceeded
 - **500 Internal Server Error:** Temporary service issue
 
-**Rate Limiting:** Standard rate limits apply (see section 6)
+**Rate limiting:** Standard rate limits apply (see section 6)
 
----
-
-### 4.2 Execute Template
+### 4.2 Execute template
 
 Execute a predefined prompt template with variable substitution and consistent formatting.
 
@@ -273,13 +269,13 @@ Execute a predefined prompt template with variable substitution and consistent f
 
 **Purpose:** Execute a saved prompt template with dynamic variable substitution for consistent, reusable prompt patterns.
 
-**Path Parameters:**
+**Path parameters:**
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
 | `template_id` | string | ✅ Required | Unique template identifier | `"tpl_blog_writer_v2"` |
 
-**Body Parameters:**
+**Body parameters:**
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
@@ -287,7 +283,7 @@ Execute a predefined prompt template with variable substitution and consistent f
 | `model` | string | ⚠️ Optional | Override default template model | `"claude-opus"` |
 | `temperature` | float | ⚠️ Optional | Override default temperature | `0.6` |
 
-**Request Example:**
+**Request example:**
 ```javascript
 const templateExecution = await fetch('https://api.promptexec.ai/v2/execute/template/tpl_blog_writer_v2', {
   method: 'POST',
@@ -307,7 +303,7 @@ const templateExecution = await fetch('https://api.promptexec.ai/v2/execute/temp
 });
 ```
 
-**Response Example:**
+**Response example:**
 ```json
 {
   "execution_id": "exec_456def789ghi",
@@ -331,9 +327,7 @@ const templateExecution = await fetch('https://api.promptexec.ai/v2/execute/temp
 }
 ```
 
----
-
-### 4.3 Batch Execute
+### 4.3 Batch execute
 
 Execute multiple prompts in a single API call for efficient processing of large datasets.
 
@@ -352,7 +346,7 @@ Execute multiple prompts in a single API call for efficient processing of large 
 | `callback_url` | string | ⚠️ Optional | Webhook for completion notification | `"https://yourapp.com/webhook"` |
 
 <details>
-<summary>Complete Batch Request Example</summary>
+<summary>Complete batch request example</summary>
 
 ```python
 import requests
@@ -387,12 +381,9 @@ response = requests.post(
     headers={'Authorization': 'Bearer sk_live_abc123def456ghi789'}
 )
 ```
-
 </details>
 
----
-
-### 4.4 Stream Execute
+### 4.4 Stream execute
 
 Execute a prompt with real-time streaming response for interactive applications.
 
@@ -400,7 +391,7 @@ Execute a prompt with real-time streaming response for interactive applications.
 
 **Purpose:** Establish a WebSocket connection for real-time prompt execution with incremental response delivery.
 
-**Connection Parameters:**
+**Connection parameters:**
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
@@ -409,14 +400,14 @@ Execute a prompt with real-time streaming response for interactive applications.
 | `model` | string | ✅ Required | AI model identifier | `"claude-sonnet"` |
 | `stream` | boolean | ✅ Required | Enable streaming mode | `true` |
 
-**WebSocket Message Types:**
+**WebSocket message types:**
 
 - `content` - Incremental response content
 - `metadata` - Execution information and statistics  
 - `error` - Error information
 - `complete` - Execution completion signal
 
-**WebSocket Example:**
+**WebSocket example:**
 ```javascript
 const streamingExecution = () => {
   const ws = new WebSocket('wss://api.promptexec.ai/v2/stream');
@@ -461,7 +452,7 @@ const streamingExecution = () => {
 
 The Prompt Execution API uses standard HTTP status codes and provides detailed error information to help developers diagnose and resolve issues quickly.
 
-**Standard Error Response Format:**
+**Standard error response format:**
 ```json
 {
   "error": {
@@ -477,34 +468,34 @@ The Prompt Execution API uses standard HTTP status codes and provides detailed e
 }
 ```
 
-**Common Error Codes:**
+**Common error codes:**
 
-**400 Bad Request Errors:**
+**400 Bad Request errors:**
 - `INVALID_PROMPT` - Prompt is empty, too long, or contains prohibited content
 - `INVALID_MODEL` - Specified model is not available or not supported
 - `INVALID_PARAMETERS` - Request parameters are malformed or out of range
 - `SCHEMA_VALIDATION_FAILED` - Provided JSON schema is invalid or incompatible
 
-**401 Unauthorized Errors:**
+**401 Unauthorized errors:**
 - `INVALID_API_KEY` - API key is malformed, expired, or invalid
 - `MISSING_AUTHORIZATION` - Authorization header is missing from request
 
-**403 Forbidden Errors:**
+**403 Forbidden errors:**
 - `INSUFFICIENT_PERMISSIONS` - API key lacks required scopes for this operation
 - `MODEL_ACCESS_DENIED` - Account does not have access to the requested model
 - `CONTENT_POLICY_VIOLATION` - Prompt violates content usage policies
 
-**429 Rate Limit Errors:**
+**429 Rate limit errors:**
 - `RATE_LIMIT_EXCEEDED` - Too many requests within the rate limit window
 - `QUOTA_EXCEEDED` - Monthly usage quota has been reached
 - `CONCURRENT_LIMIT_EXCEEDED` - Too many simultaneous requests
 
-**500 Internal Server Errors:**
+**500 Internal server errors:**
 - `MODEL_UNAVAILABLE` - AI model is temporarily unavailable
 - `EXECUTION_TIMEOUT` - Prompt execution exceeded maximum time limit
 - `INTERNAL_ERROR` - Unexpected server error occurred
 
-**Error Handling Best Practices:**
+**Error handling best practices:**
 
 ```javascript
 async function executePromptWithErrorHandling(prompt, model) {
@@ -554,7 +545,7 @@ async function executePromptWithErrorHandling(prompt, model) {
 }
 ```
 
-**Retry Logic Implementation:**
+**Retry logic implementation:**
 ```javascript
 async function executeWithRetry(prompt, model, maxRetries = 3) {
   let retries = 0;
@@ -583,7 +574,7 @@ async function executeWithRetry(prompt, model, maxRetries = 3) {
 
 The API implements comprehensive rate limiting to ensure fair usage and optimal performance for all users.
 
-**Rate Limit Tiers:**
+**Rate limit tiers:**
 
 | Plan | Requests/Hour | Concurrent Requests | Monthly Tokens |
 |------|---------------|-------------------|----------------|
@@ -592,7 +583,7 @@ The API implements comprehensive rate limiting to ensure fair usage and optimal 
 | Professional | 10,000 | 20 | 1,000,000 |
 | Enterprise | 100,000 | 100 | 10,000,000 |
 
-**Rate Limit Headers:**
+**Rate limit headers:**
 
 Every API response includes rate limiting information in the headers:
 
@@ -603,7 +594,7 @@ X-RateLimit-Reset: 1684509600
 X-RateLimit-Window: 3600
 ```
 
-**Rate Limit Monitoring:**
+**Rate limit monitoring:**
 ```javascript
 function checkRateLimit(response) {
   const limit = response.headers.get('X-RateLimit-Limit');
@@ -619,9 +610,9 @@ function checkRateLimit(response) {
 }
 ```
 
-**Rate Limit Optimization Strategies:**
+**Rate limit optimization strategies:**
 
-**Batch Processing:**
+**Batch processing:**
 Use the batch execution endpoint to process multiple prompts efficiently:
 ```javascript
 // Instead of multiple individual requests
@@ -634,7 +625,7 @@ for (const prompt of prompts) {
 const batchResult = await executeBatch(prompts); // 1 API call
 ```
 
-**Template Optimization:**
+**Template optimization:**
 Reuse prompt templates to reduce processing overhead:
 ```javascript
 // Create reusable templates for common patterns
@@ -650,7 +641,7 @@ const descriptions = await Promise.all([
 ]);
 ```
 
-**Exponential Backoff for Rate Limit Handling:**
+**Exponential backoff for rate limit handling:**
 ```javascript
 async function executeWithBackoff(apiCall, maxRetries = 5) {
   let retries = 0;
@@ -680,7 +671,7 @@ async function executeWithBackoff(apiCall, maxRetries = 5) {
 
 The API provides sophisticated prompt engineering capabilities for complex AI workflows and enhanced output quality.
 
-### Chain-of-Thought Reasoning
+### Chain-of-thought reasoning
 
 Enable step-by-step reasoning for complex problem-solving tasks:
 
@@ -712,7 +703,7 @@ const chainOfThoughtPrompt = {
 };
 ```
 
-### Function Calling and Tool Integration
+### Function calling and tool integration
 
 Execute prompts with access to external tools and functions:
 
@@ -751,7 +742,7 @@ const functionCallingPrompt = {
 };
 ```
 
-### Multi-Step Prompt Chains
+### Multi-step prompt chains
 
 Create complex workflows with dependent prompt executions:
 
@@ -793,7 +784,7 @@ const chainResult = await fetch('https://api.promptexec.ai/v2/execute/chain', {
 });
 ```
 
-### Prompt Optimization and A/B Testing
+### Prompt optimization and A/B testing
 
 Test different prompt variations to optimize performance:
 
@@ -826,15 +817,15 @@ const promptVariants = {
 
 Optimize API usage for high-performance applications and large-scale deployments.
 
-### Performance Optimization Strategies
+### Performance optimization strategies
 
-**Model Selection Guidelines:**
+**Model selection guidelines:**
 - **GPT-4:** Best for complex reasoning, high-quality output (slower, more expensive)
 - **GPT-3.5-Turbo:** Good balance of speed and quality for most use cases
 - **Claude-Sonnet:** Excellent for analysis and structured outputs
 - **Claude-Haiku:** Fastest for simple tasks and high-throughput scenarios
 
-**Token Optimization:**
+**Token optimization:**
 ```javascript
 // Optimize token usage with precise max_tokens
 const optimizedRequest = {
@@ -852,7 +843,7 @@ const templateRequest = {
 };
 ```
 
-**Caching Strategy:**
+**Caching strategy:**
 ```javascript
 class PromptCache {
   constructor() {
@@ -885,9 +876,9 @@ class PromptCache {
 }
 ```
 
-### Monitoring and Analytics
+### Monitoring and analytics
 
-**Performance Metrics Tracking:**
+**Performance metrics tracking:**
 ```javascript
 class PerformanceMonitor {
   constructor(apiKey) {
@@ -935,7 +926,7 @@ class PerformanceMonitor {
 }
 ```
 
-**Cost Optimization:**
+**Cost optimization:**
 ```javascript
 class CostTracker {
   constructor() {
@@ -983,9 +974,9 @@ class CostTracker {
 }
 ```
 
-### Scaling for High-Volume Applications
+### Scaling for high-volume applications
 
-**Connection Pooling and Request Management:**
+**Connection pooling and request management:**
 ```javascript
 class PromptExecutionClient {
   constructor(apiKey, options = {}) {
@@ -1040,7 +1031,7 @@ class PromptExecutionClient {
 }
 ```
 
-**Load Balancing Across Multiple API Keys:**
+**Load balancing across multiple API keys:**
 ```javascript
 class LoadBalancedClient {
   constructor(apiKeys) {
@@ -1092,9 +1083,9 @@ class LoadBalancedClient {
 }
 ```
 
-### Enterprise Integration Patterns
+### Enterprise integration patterns
 
-**Event-Driven Architecture:**
+**Event-driven architecture:**
 ```javascript
 class EventDrivenPromptProcessor {
   constructor(apiKey, eventBus) {
@@ -1166,7 +1157,7 @@ class EventDrivenPromptProcessor {
 }
 ```
 
-**Database Integration for Audit and Analytics:**
+**Database integration for audit and analytics:**
 ```sql
 -- Example schema for tracking prompt executions
 CREATE TABLE prompt_executions (
@@ -1289,21 +1280,21 @@ class DatabaseIntegratedClient {
 
 ---
 
-[Back to top](#api-reference-prompt-execution-api)
+[Back to top](#prompt-execution-api-documentation)
 
-## Additional Resources
+## Additional resources
 
-**Developer Portal:** [https://developer.promptexec.ai](https://developer.promptexec.ai)
-**SDK Downloads:** Available for Python, JavaScript, Java, and Go
-**Community Forum:** [https://community.promptexec.ai](https://community.promptexec.ai)
-**Status Page:** [https://status.promptexec.ai](https://status.promptexec.ai)
+**Developer Portal:** [developer.promptexec.ai](https://developer.promptexec.ai)  
+**SDK Downloads:** Available for Python, JavaScript, Java, and Go  
+**Community Forum:** [community.promptexec.ai](https://community.promptexec.ai)  
+**Status Page:** [status.promptexec.ai](https://status.promptexec.ai)
 
-**Support Channels:**
+**Support channels:**
 - **Technical Support:** [support@promptexec.ai](mailto:support@promptexec.ai)
 - **API Documentation Issues:** [docs@promptexec.ai](mailto:docs@promptexec.ai)
 - **Enterprise Sales:** [enterprise@promptexec.ai](mailto:enterprise@promptexec.ai)
 
-**Legal and Compliance:**
+**Legal and compliance:**
 - [Terms of Service](https://promptexec.ai/terms)
 - [Privacy Policy](https://promptexec.ai/privacy)
 - [Data Processing Agreement](https://promptexec.ai/dpa)
@@ -1312,7 +1303,7 @@ class DatabaseIntegratedClient {
 
 *This API reference follows WCAG 2.1 AA accessibility standards and is optimized for developers using screen readers and assistive technologies. All code examples have been tested and verified for accuracy.*
 
-**Document Metadata:**
+**Document metadata:**
 - Content generated following Technical Writing Style Guide v2.0
 - Technical accuracy validated by API development team
 - Accessibility compliance verified by UX team
