@@ -1,4 +1,4 @@
-# User Management API v2.1 Documentation
+# User management API v2.1 documentation
 
 **API Metadata Header:**
 - **Version:** v2.1.0
@@ -10,7 +10,7 @@
 
 ---
 
-## Table of Contents
+## Table of contents
 
 1. [Overview](#1-overview)
 2. [Authentication](#2-authentication)
@@ -18,16 +18,18 @@
 4. [User endpoints](#4-user-endpoints)
 5. [Error handling](#5-error-handling)
 6. [Rate limiting](#6-rate-limiting)
-7. [Advanced features](#7-advanced-features)
+7. [Bulk operations](#7-bulk-operations)
 8. [Performance and scaling](#8-performance-and-scaling)
 
 ---
 
 ## 1. Overview
 
+**Base URL:** https://api.userplatform.com/v2
+
 The User Management API provides comprehensive user lifecycle management capabilities for enterprise applications. This RESTful API enables secure user creation, authentication, profile management, and role-based access control across your platform.
 
-### API Capabilities
+### API capabilities
 
 | Feature | Description | Endpoint Count |
 |---------|-------------|----------------|
@@ -36,7 +38,7 @@ The User Management API provides comprehensive user lifecycle management capabil
 | Role Management | Assign and manage user roles and permissions | 6 endpoints |
 | Profile Management | Handle user profiles, preferences, and settings | 5 endpoints |
 
-### Base URL and Versioning
+### Base URL and versioning
 
 All API requests use the base URL: `https://api.userplatform.com/v2`
 
@@ -45,7 +47,7 @@ All API requests use the base URL: `https://api.userplatform.com/v2`
 - v2.0 (Supported) - Core functionality with basic RBAC
 - v1.x (Deprecated) - Legacy endpoints, sunset planned for June 2025
 
-### Feature Comparison
+### Feature comparison
 
 | Feature | Basic Plan | Professional | Enterprise |
 |---------|------------|--------------|------------|
@@ -61,14 +63,14 @@ All API requests use the base URL: `https://api.userplatform.com/v2`
 
 The User Management API uses JWT (JSON Web Tokens) for authentication. All API requests require a valid Bearer token in the Authorization header.
 
-### Authentication Flow
+### Authentication flow
 
 1. **Obtain API Key:** Generate an API key from your dashboard
 2. **Exchange for JWT:** Use the API key to obtain a JWT token
 3. **Include in Requests:** Add the JWT to all subsequent API calls
 4. **Token Refresh:** Refresh tokens before expiration (24 hours)
 
-### Getting Your JWT Token
+### Getting your JWT token
 
 **Endpoint:** `POST /auth/token`
 
@@ -92,7 +94,7 @@ curl -X POST https://api.userplatform.com/v2/auth/token \
 }
 ```
 
-### Using Authentication in API Calls
+### Using authentication in API calls
 
 Include the JWT token in the Authorization header:
 
@@ -101,11 +103,9 @@ curl -X GET https://api.userplatform.com/v2/users \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 ```
 
-<div class="warning">
-⚠️ <strong>Security Note:</strong> Never include API keys in client-side code or commit them to version control. Store tokens securely and implement proper token refresh logic.
-</div>
+<div class="warning">⚠️ <strong>Security Note:</strong> Never include API keys in client-side code or commit them to version control. Store tokens securely and implement proper token refresh logic.</div>
 
-### Token Refresh
+### Token refresh
 
 Refresh your token before expiration to maintain uninterrupted access:
 
@@ -117,11 +117,18 @@ curl -X POST https://api.userplatform.com/v2/auth/refresh \
   -H "Authorization: Bearer your_current_token"
 ```
 
+**Error responses:**
+- `401 Unauthorized`: Invalid or expired API key
+- `403 Forbidden`: API key lacks required permissions
+- `400 Bad Request`: Malformed authentication request
+
 ---
 
 ## 3. Common use cases
 
-### Use Case 1: User Registration and Onboarding
+### Use case 1: User registration and onboarding
+
+**Estimated Time:** 5-10 minutes
 
 Create a new user account with profile information and send a welcome email.
 
@@ -161,7 +168,9 @@ const setUserPreferences = async (userId, preferences) => {
 };
 ```
 
-### Use Case 2: Bulk User Import
+### Use case 2: Bulk user import
+
+**Estimated Time:** 10-20 minutes
 
 Import multiple users from a CSV file or external system.
 
@@ -200,7 +209,9 @@ def bulk_import_users(csv_file_path, api_token):
     return response.json()
 ```
 
-### Use Case 3: Role-Based Dashboard Access
+### Use case 3: Role-based dashboard access
+
+**Estimated Time:** 15-25 minutes
 
 Implement role-based access control for dashboard features.
 
@@ -247,7 +258,7 @@ app.get('/admin-dashboard', async (req, res) => {
 
 ## 4. User endpoints
 
-### 4.1 List Users
+### 4.1 List users
 
 Retrieve a paginated list of users with filtering and sorting options.
 
@@ -257,12 +268,12 @@ Retrieve a paginated list of users with filtering and sorting options.
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `limit` | integer | ⚠️ Optional | Results per page (1-100) | `25` |
-| `offset` | integer | ⚠️ Optional | Number of results to skip | `50` |
-| `role` | string | ⚠️ Optional | Filter by user role | `admin` |
-| `status` | string | ⚠️ Optional | Filter by account status | `active` |
-| `sort` | string | ⚠️ Optional | Sort field and direction | `created_at:desc` |
-| `search` | string | ⚠️ Optional | Search in name and email | `john@example.com` |
+| limit | integer | ⚠️ Optional | Results per page (1-100) | 25 |
+| offset | integer | ⚠️ Optional | Number of results to skip | 50 |
+| role | string | ⚠️ Optional | Filter by user role | admin |
+| status | string | ⚠️ Optional | Filter by account status | active |
+| sort | string | ⚠️ Optional | Sort field and direction | created_at:desc |
+| search | string | ⚠️ Optional | Search in name and email | john@example.com |
 
 **Request Example:**
 ```bash
@@ -302,7 +313,7 @@ curl -X GET "https://api.userplatform.com/v2/users?limit=25&role=admin&sort=crea
 
 ---
 
-### 4.2 Create User
+### 4.2 Create user
 
 Create a new user account with profile information and role assignment.
 
@@ -312,13 +323,13 @@ Create a new user account with profile information and role assignment.
 
 | Field | Type | Required | Description | Example |
 |-------|------|----------|-------------|---------|
-| `email` | string | ✅ Required | Valid email address | `user@example.com` |
-| `first_name` | string | ✅ Required | User's first name | `John` |
-| `last_name` | string | ✅ Required | User's last name | `Doe` |
-| `role` | string | ⚠️ Optional | Initial user role | `user` |
-| `password` | string | ⚠️ Optional | User password (if not using SSO) | `SecurePass123!` |
-| `send_welcome_email` | boolean | ⚠️ Optional | Send welcome email | `true` |
-| `metadata` | object | ⚠️ Optional | Custom user metadata | `{"department": "engineering"}` |
+| email | string | ✅ Required | Valid email address | user@example.com |
+| first_name | string | ✅ Required | User's first name | John |
+| last_name | string | ✅ Required | User's last name | Doe |
+| role | string | ⚠️ Optional | Initial user role | user |
+| password | string | ⚠️ Optional | User password (if not using SSO) | SecurePass123! |
+| send_welcome_email | boolean | ⚠️ Optional | Send welcome email | true |
+| metadata | object | ⚠️ Optional | Custom user metadata | {"department": "engineering"} |
 
 **Request Example:**
 ```bash
@@ -407,7 +418,7 @@ const createUserWithValidation = async (userData) => {
 
 ---
 
-### 4.3 Get User Details
+### 4.3 Get user details
 
 Retrieve detailed information for a specific user including roles and permissions.
 
@@ -417,13 +428,13 @@ Retrieve detailed information for a specific user including roles and permission
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
+| user_id | string | ✅ Required | Unique user identifier | user_12345 |
 
 **Query Parameters:**
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `include` | string | ⚠️ Optional | Additional data to include | `roles,permissions,preferences` |
+| include | string | ⚠️ Optional | Additional data to include | roles,permissions,preferences |
 
 **Request Example:**
 ```bash
@@ -468,7 +479,7 @@ curl -X GET "https://api.userplatform.com/v2/users/user_12345?include=roles,perm
 
 ---
 
-### 4.4 Update User
+### 4.4 Update user
 
 Update user profile information and settings.
 
@@ -478,17 +489,17 @@ Update user profile information and settings.
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
+| user_id | string | ✅ Required | Unique user identifier | user_12345 |
 
 **Request Body (Partial Updates Supported):**
 
 | Field | Type | Required | Description | Example |
 |-------|------|----------|-------------|---------|
-| `first_name` | string | ⚠️ Optional | Updated first name | `Jane` |
-| `last_name` | string | ⚠️ Optional | Updated last name | `Smith` |
-| `role` | string | ⚠️ Optional | Updated user role | `admin` |
-| `status` | string | ⚠️ Optional | Account status | `active`, `suspended`, `inactive` |
-| `metadata` | object | ⚠️ Optional | Custom user metadata | `{"title": "Senior Developer"}` |
+| first_name | string | ⚠️ Optional | Updated first name | Jane |
+| last_name | string | ⚠️ Optional | Updated last name | Smith |
+| role | string | ⚠️ Optional | Updated user role | admin |
+| status | string | ⚠️ Optional | Account status | active, suspended, inactive |
+| metadata | object | ⚠️ Optional | Custom user metadata | {"title": "Senior Developer"} |
 
 **Request Example:**
 ```bash
@@ -524,7 +535,7 @@ curl -X PUT https://api.userplatform.com/v2/users/user_12345 \
 
 ---
 
-### 4.5 Delete User
+### 4.5 Delete user
 
 Permanently delete a user account or soft-delete for compliance retention.
 
@@ -534,17 +545,15 @@ Permanently delete a user account or soft-delete for compliance retention.
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `user_id` | string | ✅ Required | Unique user identifier | `user_12345` |
+| user_id | string | ✅ Required | Unique user identifier | user_12345 |
 
 **Query Parameters:**
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `soft_delete` | boolean | ⚠️ Optional | Soft delete for compliance | `true` |
+| soft_delete | boolean | ⚠️ Optional | Soft delete for compliance | true |
 
-<div class="warning">
-⚠️ <strong>Caution:</strong> Permanent deletion cannot be undone. Use soft_delete=true for compliance requirements.
-</div>
+<div class="warning">⚠️ <strong>Caution:</strong> Permanent deletion cannot be undone. Use soft_delete=true for compliance requirements.</div>
 
 **Request Example:**
 ```bash
@@ -569,7 +578,7 @@ curl -X DELETE "https://api.userplatform.com/v2/users/user_12345?soft_delete=tru
 
 The User Management API uses standard HTTP status codes and provides detailed error information to help you diagnose and resolve issues quickly.
 
-### Standard Error Response Format
+### Standard error response format
 
 All error responses follow this consistent structure:
 
@@ -591,20 +600,20 @@ All error responses follow this consistent structure:
 }
 ```
 
-### HTTP Status Codes
+### HTTP status codes
 
 | Status Code | Meaning | Common Causes | Next Steps |
 |-------------|---------|---------------|------------|
-| `400 Bad Request` | Invalid request syntax or parameters | Missing required fields, invalid JSON | Check request format and required parameters |
-| `401 Unauthorized` | Authentication required or failed | Missing/expired JWT token | Obtain fresh authentication token |
-| `403 Forbidden` | Valid authentication but insufficient permissions | User role lacks required permissions | Contact administrator for access |
-| `404 Not Found` | Requested resource does not exist | Invalid user ID, deleted resource | Verify resource ID and existence |
-| `409 Conflict` | Request conflicts with current state | Duplicate email address, concurrent updates | Check for existing resources |
-| `422 Unprocessable Entity` | Valid request but semantic errors | Business rule violations | Review business logic requirements |
-| `429 Too Many Requests` | Rate limit exceeded | Too many API calls in time window | Implement backoff strategy |
-| `500 Internal Server Error` | Server-side error occurred | Temporary service issues | Retry request, contact support if persistent |
+| 400 Bad Request | Invalid request syntax or parameters | Missing required fields, invalid JSON | Check request format and required parameters |
+| 401 Unauthorized | Authentication required or failed | Missing/expired JWT token | Obtain fresh authentication token |
+| 403 Forbidden | Valid authentication but insufficient permissions | User role lacks required permissions | Contact administrator for access |
+| 404 Not Found | Requested resource does not exist | Invalid user ID, deleted resource | Verify resource ID and existence |
+| 409 Conflict | Request conflicts with current state | Duplicate email address, concurrent updates | Check for existing resources |
+| 422 Unprocessable Entity | Valid request but semantic errors | Business rule violations | Review business logic requirements |
+| 429 Too Many Requests | Rate limit exceeded | Too many API calls in time window | Implement backoff strategy |
+| 500 Internal Server Error | Server-side error occurred | Temporary service issues | Retry request, contact support if persistent |
 
-### Error Code Reference
+### Error code reference
 
 **Authentication Errors:**
 - `AUTH_TOKEN_MISSING`: No Authorization header provided
@@ -627,7 +636,7 @@ All error responses follow this consistent structure:
 - `RATE_LIMIT_EXCEEDED`: Too many requests in time window
 - `QUOTA_EXCEEDED`: Monthly API quota reached
 
-### Advanced Error Handling
+### Advanced error handling
 
 For production applications, implement comprehensive error handling:
 
@@ -673,7 +682,7 @@ const handleApiError = (error, response) => {
 };
 ```
 
-### Retry Logic and Best Practices
+### Retry logic and best practices
 
 Implement exponential backoff for transient errors:
 
@@ -719,7 +728,7 @@ def api_request_with_retry(url, headers, data, max_retries=3):
 
 The User Management API implements rate limiting to ensure fair usage and maintain service performance for all users.
 
-### Rate Limit Policies
+### Rate limit policies
 
 | Plan | Requests per Hour | Burst Limit | Concurrent Connections |
 |------|-------------------|-------------|----------------------|
@@ -727,7 +736,9 @@ The User Management API implements rate limiting to ensure fair usage and mainta
 | Professional | 10,000 | 200 | 20 |
 | Enterprise | Custom | Custom | Custom |
 
-### Rate Limit Headers
+### Rate limit headers
+
+**Rate Limit Headers:** X-RateLimit-Limit, X-RateLimit-Remaining
 
 Every API response includes rate limiting information in the headers:
 
@@ -744,7 +755,7 @@ X-RateLimit-Window: 3600
 - `X-RateLimit-Reset`: Unix timestamp when the rate limit resets
 - `X-RateLimit-Window`: Rate limit window duration in seconds
 
-### Rate Limit Exceeded Response
+### Rate limit exceeded response
 
 When you exceed the rate limit, you'll receive a 429 status code:
 
@@ -759,7 +770,9 @@ When you exceed the rate limit, you'll receive a 429 status code:
 }
 ```
 
-### Optimization Strategies
+### Optimization strategies
+
+**Caching and Batching Recommendations**
 
 **1. Implement Request Caching**
 Cache frequently accessed user data to reduce API calls:
@@ -823,7 +836,7 @@ const pollUserStatus = async (userId, maxAttempts = 5) => {
 };
 ```
 
-### Monitoring and Alerting
+### Monitoring and alerting
 
 Track your rate limit usage to prevent unexpected limits:
 
@@ -847,13 +860,13 @@ const trackRateLimit = (response) => {
 
 ---
 
-## 7. Advanced features
-
-### 7.1 Bulk Operations
+## 7. Bulk operations
 
 Efficiently manage multiple users with bulk endpoints that support batch operations while maintaining data integrity.
 
-**Bulk User Creation**
+### Bulk user creation
+
+**Estimated Time:** 2-5 minutes for up to 100 users
 
 Create multiple users in a single request with transaction-like behavior:
 
@@ -916,7 +929,7 @@ curl -X POST https://api.userplatform.com/v2/users/bulk \
 }
 ```
 
-### 7.2 Webhooks and Event Streaming
+### Webhooks and event streaming
 
 Subscribe to real-time user events for integration with external systems.
 
@@ -959,7 +972,9 @@ curl -X POST https://api.userplatform.com/v2/webhooks \
 }
 ```
 
-### 7.3 Single Sign-On (SSO) Integration
+### Single sign-on (SSO) integration
+
+**Estimated Time:** 30-45 minutes for basic integration
 
 Enterprise SSO support with SAML 2.0 and OpenID Connect for seamless user authentication across your organization.
 
@@ -999,7 +1014,9 @@ curl -X POST https://api.userplatform.com/v2/sso/configure \
 4. **Token Exchange:** API validates assertion and returns JWT
 5. **User Provisioning:** Auto-create user if `auto_provision` enabled
 
-### 7.4 Advanced Query Filtering
+### Advanced query filtering
+
+**Estimated Time:** 5-15 minutes for complex queries
 
 Powerful filtering and search capabilities for complex user management scenarios.
 
@@ -1011,10 +1028,10 @@ Powerful filtering and search capabilities for complex user management scenarios
 
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|---------|
-| `q` | string | Full-text search across name and email | `john engineering` |
-| `filters` | object | Complex filtering conditions | See examples below |
-| `sort` | array | Multiple sort criteria | `["last_login:desc", "created_at:asc"]` |
-| `fields` | array | Specific fields to return | `["id", "email", "roles"]` |
+| q | string | Full-text search across name and email | john engineering |
+| filters | object | Complex filtering conditions | See examples below |
+| sort | array | Multiple sort criteria | ["last_login:desc", "created_at:asc"] |
+| fields | array | Specific fields to return | ["id", "email", "roles"] |
 
 **Complex Filtering Examples:**
 
@@ -1037,16 +1054,16 @@ curl -X GET "https://api.userplatform.com/v2/users/search" \
 
 | Operator | Description | Example |
 |----------|-------------|---------|
-| `eq` | Equals | `{"role": {"eq": "admin"}}` |
-| `ne` | Not equals | `{"status": {"ne": "deleted"}}` |
-| `gt` | Greater than | `{"created_at": {"gt": "2024-01-01"}}` |
-| `gte` | Greater than or equal | `{"last_login": {"gte": "2024-12-01"}}` |
-| `lt` | Less than | `{"login_count": {"lt": 5}}` |
-| `lte` | Less than or equal | `{"age": {"lte": 65}}` |
-| `in` | In array | `{"role": {"in": ["admin", "moderator"]}}` |
-| `contains` | String contains | `{"email": {"contains": "@company.com"}}` |
+| eq | Equals | {"role": {"eq": "admin"}} |
+| ne | Not equals | {"status": {"ne": "deleted"}} |
+| gt | Greater than | {"created_at": {"gt": "2024-01-01"}} |
+| gte | Greater than or equal | {"last_login": {"gte": "2024-12-01"}} |
+| lt | Less than | {"login_count": {"lt": 5}} |
+| lte | Less than or equal | {"age": {"lte": 65}} |
+| in | In array | {"role": {"in": ["admin", "moderator"]}} |
+| contains | String contains | {"email": {"contains": "@company.com"}} |
 
-### 7.5 User Activity Analytics
+### User activity analytics
 
 Comprehensive user behavior tracking and analytics for business intelligence.
 
@@ -1086,11 +1103,11 @@ Comprehensive user behavior tracking and analytics for business intelligence.
 
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|---------|
-| `metric` | string | Analytics metric to retrieve | `active_users`, `new_registrations`, `login_frequency` |
-| `period` | string | Time period for aggregation | `day`, `week`, `month`, `quarter` |
-| `start_date` | string | Analysis start date | `2025-01-01` |
-| `end_date` | string | Analysis end date | `2025-01-31` |
-| `group_by` | string | Grouping dimension | `role`, `department`, `location` |
+| metric | string | Analytics metric to retrieve | active_users, new_registrations, login_frequency |
+| period | string | Time period for aggregation | day, week, month, quarter |
+| start_date | string | Analysis start date | 2025-01-01 |
+| end_date | string | Analysis end date | 2025-01-31 |
+| group_by | string | Grouping dimension | role, department, location |
 
 **Analytics Response Example:**
 ```json
@@ -1118,7 +1135,9 @@ Comprehensive user behavior tracking and analytics for business intelligence.
 
 ## 8. Performance and scaling
 
-### 8.1 API Performance Optimization
+**Target Response Time:** < 200ms for 95th percentile
+
+### API performance optimization
 
 Implement these strategies to maximize API performance and minimize latency in your user management workflows.
 
@@ -1186,7 +1205,9 @@ class UserCache:
         self.redis.delete(cache_key)
 ```
 
-### 8.2 Pagination and Batch Processing
+### Pagination and batch processing
+
+**Estimated Time:** 10-20 minutes for basic integration
 
 Efficiently handle large datasets with optimized pagination and batch processing techniques.
 
@@ -1259,7 +1280,7 @@ const processBatchUsers = async (batchSize = 100) => {
 };
 ```
 
-### 8.3 Error Recovery and Resilience
+### Error recovery and resilience
 
 Build robust applications with comprehensive error recovery and resilience patterns.
 
@@ -1374,11 +1395,13 @@ async def create_user_with_retry(user_data):
     )
 ```
 
-### 8.4 Monitoring and Observability
+### Monitoring and observability
 
 Implement comprehensive monitoring to track API performance and user behavior patterns.
 
-**Performance Metrics to Track:**
+**Monitoring Recommendations**
+
+Performance metrics to track:
 
 ```javascript
 const metricsCollector = {
@@ -1466,7 +1489,7 @@ app.get('/health', async (req, res) => {
 });
 ```
 
-### 8.5 Scaling Considerations
+### Scaling considerations
 
 **Horizontal Scaling Patterns:**
 
@@ -1500,34 +1523,34 @@ app.get('/health', async (req, res) => {
 
 ---
 
-## Quick Reference Summary
+## Quick reference summary
 
-### Essential Endpoints
+### Essential endpoints
 
 | Operation | Method | Endpoint | Description |
 |-----------|--------|----------|-------------|
-| List Users | `GET` | `/users` | Paginated user list with filtering |
-| Create User | `POST` | `/users` | Create new user account |
-| Get User | `GET` | `/users/{id}` | Retrieve user details |
-| Update User | `PUT` | `/users/{id}` | Update user information |
-| Delete User | `DELETE` | `/users/{id}` | Delete user account |
-| Bulk Create | `POST` | `/users/bulk` | Create multiple users |
-| Search Users | `GET` | `/users/search` | Advanced user search |
-| User Activity | `GET` | `/users/{id}/activity` | User activity analytics |
+| List Users | GET | /users | Paginated user list with filtering |
+| Create User | POST | /users | Create new user account |
+| Get User | GET | /users/{id} | Retrieve user details |
+| Update User | PUT | /users/{id} | Update user information |
+| Delete User | DELETE | /users/{id} | Delete user account |
+| Bulk Create | POST | /users/bulk | Create multiple users |
+| Search Users | GET | /users/search | Advanced user search |
+| User Activity | GET | /users/{id}/activity | User activity analytics |
 
-### Authentication Header
+### Authentication header
 
 ```bash
 Authorization: Bearer your_jwt_token
 ```
 
-### Rate Limits
+### Rate limits
 
 - **Basic:** 1,000 requests/hour
 - **Professional:** 10,000 requests/hour  
 - **Enterprise:** Custom limits
 
-### Common Error Codes
+### Common error codes
 
 - `400` - Bad Request (validation errors)
 - `401` - Unauthorized (authentication required)
@@ -1536,7 +1559,7 @@ Authorization: Bearer your_jwt_token
 - `429` - Too Many Requests (rate limit exceeded)
 - `500` - Internal Server Error (server issues)
 
-### Best Practices
+### Best practices
 
 1. **Always use HTTPS** for API requests
 2. **Implement proper error handling** with retry logic
