@@ -1,4 +1,4 @@
-# API Reference: Prompt Execution API
+# Prompt Execution
 
 | **Field** | **Value** |
 |-----------|-----------|
