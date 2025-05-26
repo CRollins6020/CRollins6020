@@ -1,15 +1,12 @@
-# Prompt Execution API Documentation
+# Prompt Execution
 
-| **Field** | **Value** |
-|-----------|-----------|
-| **API Version** | v2.1 |
-| **Base URL** | `https://api.promptexec.ai/v2` |
-| **Authentication** | Bearer Token |
-| **Last Updated** | May 26, 2025 |
-| **Author** | Technical Writing Portfolio |
-| **Documentation Type** | API_DOCUMENTATION |
-| **Target Audience** | DEVELOPERS |
-| **Accessibility Level** | WCAG_AA |
+- **Version:** v2.1  
+- **Base URL:** `https://api.promptexec.ai/v2`
+- **Authentication:** Bearer Token
+- **Last Updated:** May 26, 2025
+- **OpenAPI Specification:** [Download Schema](https://api.analyticsplatform.com/v2/openapi.json)
+- **Status:** Production Ready
+- **Target Audience:** Developers with intermediate API integration experience
 
 ## Table of Contents
 
