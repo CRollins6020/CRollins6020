@@ -125,7 +125,7 @@ Use:
 flowchart TD
     A[Internal App] --> B[API Gateway]
     B --> C[LLM Integration Microservice]
-    C --> D[External AI Provider (OpenAI, Claude)]
+    C --> D["External AI Provider (OpenAI, Claude)"]
     C --> E[Rate Limiter / Circuit Breaker]
     C --> F[Prompt Logger]
     D --> G[Response Handler]
