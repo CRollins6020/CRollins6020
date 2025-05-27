@@ -1,152 +1,91 @@
-# 🎓 Create a Dashboard in Apache Superset
-*Learn how to create a functional data dashboard using the open-source Apache Superset platform.*
+📘 Create a Dashboard in Apache Superset
+🧾 Module Metadata
+Attribute	Value
+Module Title	Create a Dashboard in Apache Superset
+Target Audience	New users, data analysts, business users
+Duration	30–45 minutes
+Level	Beginner
+Platform	Apache Superset (latest stable version)
+Learning Mode	Self-paced
+Prerequisites	Basic familiarity with data tables
 
-| **Field**         | **Value**                                |
-|-------------------|------------------------------------------|
-| **Version**       | 1.0                                      |
-| **Author**        | Corey Rollins                            |
-| **Last Updated**  | May 21, 2025                             |
-| **Status**        | Draft                                    |
-| **Audience**      | New Users, Data Analysts                 |
-| **Estimated Time**| ~20–30 min                               |
+🎯 Learning Objectives
+By the end of this module, learners will be able to:
 
----
+Log into Apache Superset and navigate the main interface.
 
-## 🧠 Learning Objectives
+Explore available datasets and perform basic filtering.
 
-By the end of this module, you will be able to:
+Create simple visualizations such as bar and line charts.
 
-- ✅ Log in to Apache Superset and navigate the interface  
-- ✅ Create and customize charts in the `Explore` view  
-- ✅ Combine multiple charts into a single interactive dashboard  
+Assemble and customize a dashboard using created charts.
 
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
+Save and share the dashboard with stakeholders.
 
----
+🗺️ Module Outline
+1. Introduction to Apache Superset
+What is Superset?
 
-## 1. Introduction
+Key features and benefits
 
-Apache Superset is a powerful, open-source platform for data exploration and visualization. In this hands-on module, you’ll walk through the process of creating a basic dashboard using a sample dataset.
+Use cases for dashboards
 
-No prior Superset experience is required.
+2. Navigating the Interface
+Logging in
 
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
+Overview of menus: Charts, Dashboards, Datasets
 
----
+Accessing sample data
 
-## 2. Use Case Scenario
+3. Exploring Datasets
+Selecting a dataset
 
-**Scenario:**  
-You’re a business analyst who needs to monitor product performance by country. Your task is to create a dashboard using the `product_sales` dataset to visualize total revenue by region and product category.
+Filtering and previewing data
 
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
+Saving dataset views for reuse
 
----
+4. Creating Visualizations
+Choosing a chart type
 
-## 3. Step-by-Step Walkthrough
+Configuring chart options
 
-### Step 1 – Log In and Access Datasets
+Running queries
 
-1. Visit your Superset URL (e.g., `https://superset.company.com`)  
-2. Log in using SSO or your assigned credentials  
-3. From the left menu, go to `Data → Datasets`  
-4. Locate and select `product_sales`  
+Saving charts to the workspace
 
-💡 *Tip:* Use the search bar if your dataset list is long.
+5. Building the Dashboard
+Creating a new dashboard
 
----
+Adding and arranging charts
 
-### Step 2 – Create Your First Chart
+Applying filters
 
-1. Click `Explore` next to the `product_sales` dataset  
-2. In the `Explore` view:  
-   - Select `Bar Chart` as the visualization type  
-   - Set `X-axis` to `country`  
-   - Set `Y-axis` to `SUM(revenue)`  
-3. Click `Run` to preview the chart  
-4. Use the `Save` button to name your chart:  
-   📄 _“Revenue by Country”_  
+Formatting titles and layout
 
-📸 *[Insert screenshot: Bar Chart in Explore View]*
+6. Publishing and Sharing
+Saving the dashboard
 
----
+Exporting as PDF or image
 
-### Step 3 – Create a Second Chart
+Sharing a dashboard URL with permissions
 
-1. Click the Superset logo, then return to `Data → Datasets`  
-2. Click `Explore` on `product_sales` again  
-3. This time:  
-   - Select `Pie Chart`  
-   - Set `Dimension` to `product_category`  
-   - Set `Metric` to `SUM(revenue)`  
-4. Click `Run`, then `Save` this chart as:  
-   📄 _“Revenue by Product Category”_  
+7. Knowledge Check ✅
+5-question multiple choice or interactive quiz
 
----
+Scenario-based prompt: "Your team needs a dashboard showing monthly sales and user engagement—how would you set it up?"
 
-### Step 4 – Build a Dashboard
+📌 Tips & Best Practices
+Use filters sparingly to keep dashboards performant.
 
-1. Go to `Dashboards` → click `+ Dashboard`  
-2. Give it a title:  
-   🧾 _“Product Performance Dashboard”_  
-3. Add your two charts to the dashboard canvas:  
-   - Drag from `Your Charts` into the layout  
-4. Arrange charts side-by-side or in a column  
+Always label your axes and include tooltips for clarity.
 
-⚠️ *Warning:* Unsaved dashboards will be lost on refresh. Click `Save` frequently.
+Save your work frequently when editing dashboards.
 
----
+🔗 Resources
+Official Superset Docs
 
-### Step 5 – Add Filters *(Optional – for intermediate users)*
+Sample Dataset: World Bank Data
 
-1. Click `+ Filter Box`  
-2. Configure a filter for `country` or `date`  
-3. Save and test filter functionality on your dashboard  
+Open Source Visualization Tools Comparison
 
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
-
----
-
-## 4. Knowledge Check
-
-> 🧠 *Which of the following is required to display data in a Superset chart?*  
-> A. A filter set  
-> B. A dataset connection  
-> C. A saved dashboard  
-> D. An export token  
-
-✔️ **Correct Answer: B. A dataset connection**
-
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
-
----
-
-## 5. Summary and Next Steps
-
-You’ve created two charts and combined them into an interactive dashboard using Apache Superset. This is a key foundational skill for data exploration and reporting in any organization.
-
-✅ Next Steps:
-- Try adding more visualizations (e.g., line charts or tables)  
-- Experiment with dashboard filters and layout options  
-- Share your dashboard with teammates or stakeholders  
-
----
-
-### ✅ Completion Checklist
-
-- [x] Logged into Superset and accessed the dataset  
-- [x] Created and saved two different charts  
-- [x] Built a dashboard and arranged components  
-- [x] (Optional) Added dashboard filters  
-
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
-
----
-
-## 🔗 Resources
-
-- [Official Superset Docs](https://superset.apache.org/docs/intro)  
-- [Explore Chart Types](https://superset.apache.org/docs/creating-charts-dashboards/explore)  
-- [Dashboard Layout Tips](https://superset.apache.org/docs/creating-charts-dashboards/dashboards)  
-
-[🔝 Back to Top](#-create-a-dashboard-in-apache-superset)
+🔁 Back to Training Materials Index
