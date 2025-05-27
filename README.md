@@ -1,10 +1,10 @@
 # Hello, I'm Corey Rollins 👋
 
-I'm a Senior Instructional Designer turned Technical Writer, specializing in clear, user-focused documentation for SaaS products, APIs, and internal platforms. I create content that helps teams navigate complex technology—**clear without oversimplifying, thorough without overwhelming**.
+I'm a Senior Instructional Designer with deep SaaS enablement experience, now expanding into technical writing and documentation. I’ve always been drawn to the clarity and structure of great docs—and this portfolio is where I practice, refine, and showcase that craft.
 
 ## About This Repository
 
-This is my **Technical Writing Portfolio**, a curated collection of documentation samples built around real-world use cases. Each document highlights a different format, writing style, or user scenario—from API reference docs to onboarding guides and knowledge base articles.
+This is my **Technical Writing Portfolio**, a curated collection of documentation samples written for real-world scenarios. Each document demonstrates a different approach to solving communication challenges—whether it’s onboarding users, documenting APIs, or troubleshooting system issues.
 
 ## Repository Contents
 
@@ -13,7 +13,7 @@ This is my **Technical Writing Portfolio**, a curated collection of documentatio
 - [**Knowledge Base Articles**](https://github.com/CRollins6020/CRollins6020/tree/main/Knowledge-Base) – Tactical how-tos and troubleshooting playbooks
 - [**Training Materials**](https://github.com/CRollins6020/CRollins6020/tree/main/Training-Materials) – Modular, learning-oriented documentation
 
-Each folder contains a `README.md` describing what's inside.
+Each folder contains a `README.md` with summaries and context for the included documents.
 
 ## Tools & Formats
 
@@ -24,7 +24,7 @@ Each folder contains a `README.md` describing what's inside.
 
 ## How to Use This Repository
 
-Explore the folders above or jump directly into any document. Whether you're reviewing for **clarity, completeness, or technical accuracy**, each file demonstrates how I approach real documentation challenges in SaaS and AI-powered environments.
+Browse the sections above or jump directly into any sample. Whether you're reviewing my writing style, structure, or approach to clarity—each document reflects how I think about technical content and how I aim to support users with confidence and precision.
 
 ## Connect With Me
 
@@ -34,4 +34,4 @@ Explore the folders above or jump directly into any document. Whether you're rev
 
 ---
 
-*Thanks for visiting. This portfolio is a living project—I'm always refining, documenting, and learning better ways to explain technical systems.*
+*Thanks for visiting. This portfolio is an ongoing project—built to document my journey into technical writing and to continually improve how I explain complex systems to real users.*
