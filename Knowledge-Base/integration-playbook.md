@@ -1,217 +1,159 @@
+# 🔗 Integration Playbook: Connecting AI Services with Internal Platforms
 
-# 🔌 Integration Playbook
-
-*A tactical guide for integrating AI services with internal platforms. Covers environment setup, authentication, error handling, and deployment phase considerations.*
-
-| **Field**       | **Value**                      |
-|------------------|--------------------------------|
-| **Version**      | 1.0                            |
-| **Author**       | Corey Rollins                 |
-| **Last Updated** | May 21, 2025                  |
-| **Status**       | Draft                          |
-| **Source**       | GitHub Repository (TBD)        |
+**Applies to:** AI Integration, Internal Platform Engineering  
+**Audience:** Backend Engineers, Infra, DevOps  
+**Updated:** May 26, 2025  
+**Difficulty:** Intermediate–Advanced  
+**Contact:** integrations@example.com
 
 ---
 
-## Table of Contents
+## 🛠️ Problem
 
-1. [Overview](#1-overview)  
-2. [Environment Setup](#2-environment-setup)  
-3. [Authentication & Security](#3-authentication--security)  
-4. [Service Integration Flow](#4-service-integration-flow)  
-5. [Handling Edge Cases](#5-handling-edge-cases)  
-6. [Deployment Considerations](#6-deployment-considerations)  
-7. [Example Use Case](#7-example-use-case)  
-8. [Troubleshooting Tips](#8-troubleshooting-tips)  
-9. [Related Documents](#9-related-documents)  
+Your engineering team needs to securely integrate hosted AI services (e.g., OpenAI, Anthropic, Cohere) with internal tools and platforms. Common challenges include authentication, error handling, observability, and vendor flexibility.
 
 ---
 
-## 1. Overview
+## ✅ Solution
 
-Integrating AI services into internal systems requires a structured, secure, and repeatable approach. This playbook outlines technical best practices across all stages of integration—from local testing to enterprise deployment. It’s intended for internal engineering, DevOps, and enablement teams.
-
-[🔝 Back to top](#table-of-contents)
+This playbook provides a standardized integration strategy, code patterns, and troubleshooting guidance for embedding LLM services into internal apps, APIs, or workflows. It is optimized for scalability, maintainability, and cost-awareness.
 
 ---
 
-## 2. Environment Setup
+## 🧩 Integration Components
 
-___
+| Component         | Role                                      | Examples                             |
+|------------------|-------------------------------------------|--------------------------------------|
+| API Client        | Connect to external LLM services          | OpenAI SDK, Anthropic HTTP client    |
+| Middleware Layer  | Rate limit, retry, route requests         | Express.js, FastAPI                  |
+| Auth Handler      | Manage secure token access                | Vault, env vars, AWS Secrets Manager |
+| Formatter         | Input/output shaping                      | Markdown, JSON, plain text           |
 
-### 2.1 Define Integration Scope
+---
 
-- Identify systems that require AI capabilities (e.g., CRM, ticketing, data pipelines).
-- Choose the integration level: API, SDK, or embedded agent.
+## 🔐 Authentication and Key Management
 
-### 2.2 Provision Environments
+- Store tokens in env vars or a secret manager (e.g., AWS Secrets, Vault)  
+- Avoid hardcoding secrets or exposing them in logs  
+- Rotate API keys on a scheduled basis  
+- Use scope-limited API keys when available
 
-- Create **dev**, **stage**, and **prod** environments with isolated credentials and logging.
-- Use infrastructure-as-code tools (e.g., Terraform) to standardize setup.
-
-💡 **Tip**: Mirror production conditions in staging for the most accurate pre-deployment testing.
-
-### 2.3 Example `.env` Configuration
-
-```env
-# .env (example for internal AI integration)
-API_BASE_URL=https://ai.internal/api/v1
-OAUTH_CLIENT_ID=xxxxx
-OAUTH_CLIENT_SECRET=xxxxx
-AI_MODEL=agent-v3.5-secure
-ENVIRONMENT=staging
+**Example:**
+```bash
+export OPENAI_API_KEY="sk-xxxxx"
 ```
 
-⚠️ **Warning**: Never hardcode or expose secrets in source code repositories.
+---
 
-[🔝 Back to top](#table-of-contents)
+## 🔀 Routing and Version Control
+
+- Route traffic through internal API endpoints:
+  - `/api/ai/generate`
+  - `/api/ai/summarize`
+- Wrap vendor logic behind internal abstractions  
+- Support versioning: `/v1/ai/generate`  
+- Use feature flags for provider testing (e.g., switch between Claude and GPT-4)
 
 ---
 
-## 3. Authentication & Security
+## ⚙️ Rate Limiting & Retry Logic
 
-___
+**Recommended pattern:**
+```javascript
+const rateLimit = require("express-rate-limit");
 
-### 3.1 Authentication Options
+const limiter = rateLimit({
+  windowMs: 60000, // 1 minute
+  max: 60,
+  standardHeaders: true,
+});
 
-- **OAuth 2.0** – Use for user-facing integrations.
-- **API Keys** – Use for service-to-service communication with IP restrictions.
-- **SSO Integration** – For internal access, leverage your Identity Provider (IdP).
+app.use("/api/ai", limiter);
+```
 
-### 3.2 Token Management
-
-- Store credentials in a secure secrets manager.
-- Use short-lived tokens with auto-renewal for sensitive workflows.
-
-⚠️ **Warning**: Never store credentials in client-side code or local files.
-
-[🔝 Back to top](#table-of-contents)
+📌 For advanced cases, use sliding window or token bucket strategies.
 
 ---
 
-## 4. Service Integration Flow
+## 🔍 Observability and Logging
 
-___
+Track:
+- Prompt content (sanitized)
+- Token usage
+- Response latency
+- Retry count
+- Status codes
 
-### 4.1 High-Level Architecture
+Use:
+- OpenTelemetry, Prometheus, or DataDog
+- Trace IDs for cross-system correlation
+
+---
+
+## 🧪 Prompt/Response Example
+
+```json
+{
+  "prompt": "Summarize the following email.",
+  "context": "Please review the attached invoice and confirm delivery times for Q3."
+}
+```
+
+**Expected Output:**
+```json
+{
+  "summary": "Customer requests invoice review and Q3 delivery confirmation."
+}
+```
+
+---
+
+## 🧯 Troubleshooting Common Failures
+
+| Symptom                        | Likely Cause               | Recommended Action                       |
+|-------------------------------|----------------------------|------------------------------------------|
+| `401 Unauthorized`            | Expired or invalid key     | Regenerate or refresh API token          |
+| `429 Too Many Requests`       | Rate limit breach          | Apply backoff, increase quota            |
+| Null or empty response        | Formatting or prompt issue | Restructure prompt, reduce size          |
+| Cost spikes in usage          | Unbounded traffic loops     | Add rate caps per user/session           |
+
+---
+
+## 🗺️ Integration Request Flow
 
 ```mermaid
 flowchart TD
-    A[Client System] -->|Trigger or Webhook| B[Integration Layer]
-    B --> C[Pre-Processing]
-    C --> D[AI Prompt API]
-    D --> E[Post-Processing]
-    E --> F[Target System Update]
-    F --> G[Logs & Observability]
+    A[Internal App] --> B[API Gateway]
+    B --> C[LLM Integration Microservice]
+    C --> D[External AI Provider (OpenAI, Claude)]
+    C --> E[Rate Limiter / Circuit Breaker]
+    C --> F[Prompt Logger]
+    D --> G[Response Handler]
+    G --> A
 ```
 
-- **Client System**: e.g., CRM, helpdesk, app
-- **Integration Layer**: Service or lambda function
-- **AI Prompt API**: Internal LLM execution endpoint
-- **Target System Update**: UI update, new field, or alert
+---
 
-### 4.2 Request Pipeline
+## 📬 Support Escalation Template
 
-- **Input Collection**: Validate and sanitize data before transmission.
-- **Prompt Handling**: Format inputs for LLMs using templates.
-- **Post-Processing**: Normalize outputs, strip sensitive data, apply business logic.
-
-### 4.3 API Integration Example
-
-```python
-def call_ai_service(payload, token):
-    headers = {"Authorization": f"Bearer {token}"}
-    response = requests.post("https://ai.internal/api/v1/infer", json=payload, headers=headers)
-    return response.json()
+```
+Request ID: <trace-id>
+Timestamp: <UTC datetime>
+Service Name: AI Integration Gateway
+Endpoint: POST /api/ai/summarize
+Environment: staging | production
+Payload: (Include sanitized sample)
+Observed Error: e.g., 422 Unprocessable Entity
 ```
 
-[🔝 Back to top](#table-of-contents)
+---
+
+## 📚 Related Resources
+
+- [AI Prompt Design Guidelines (KB)](https://kb.example.com/ai-prompt-basics)  
+- [API Token Management SOP](https://confluence.example.com/security/api-tokens)  
+- [Observability Setup Playbook](https://confluence.example.com/infra/logging-traces)
 
 ---
 
-## 5. Handling Edge Cases
-
-___
-
-### 5.1 Timeout & Retry Logic
-
-- Set a timeout of 5–10s for prompt execution APIs.
-- Retry on `503` or `429` errors with exponential backoff.
-
-### 5.2 Fallback Behavior
-
-- Define safe fallback responses for AI timeouts or failures.
-- Example: “Sorry, I'm having trouble accessing that data. Please try again shortly.”
-
-[🔝 Back to top](#table-of-contents)
-
----
-
-## 6. Deployment Considerations
-
-___
-
-### 6.1 Rollout Strategy
-
-- Use feature flags or gradual rollout (% of users).
-- Monitor error rates and performance in real-time.
-
-### 6.2 Observability
-
-- Enable structured logging for all service interactions.
-- Integrate alerts for high latency, error spikes, or abnormal outputs.
-
-[🔝 Back to top](#table-of-contents)
-
----
-
-## 7. Example Use Case
-
-___
-
-**Scenario**: Integrating a summarization LLM into the internal support ticketing system (e.g., Jira Service Management).
-
-**Steps**:
-1. Configure a webhook to trigger on new ticket creation.
-2. Sanitize ticket data (remove attachments and sensitive metadata).
-3. Format content into a prompt template:
-
-    ```text
-    Summarize the following support ticket in 2–3 sentences for internal triage.
-    ---
-    {{ticket_description}}
-    ```
-
-4. Send payload to `/prompt-execute` endpoint using internal API key.
-5. Display summary in ticket UI under a custom field for Support Leads.
-
-💡 **Tip**: Use this pilot to evaluate latency, token cost, and user feedback before expanding to additional queues.
-
-[🔝 Back to top](#table-of-contents)
-
----
-
-## 8. Troubleshooting Tips
-
-___
-
-| **Error Code** | **Description**               | **Resolution**                        |
-|----------------|-------------------------------|----------------------------------------|
-| 401            | Unauthorized access           | Check token scope and expiration       |
-| 500            | Internal service failure      | Retry or report to engineering         |
-| Timeout        | No response from AI endpoint  | Use fallback; check network or logs    |
-
-💡 **Tip**: Keep a runbook of known errors, resolution steps, and support escalation paths.
-
-[🔝 Back to top](#table-of-contents)
-
----
-
-## 9. Related Documents
-
-- [Authentication Guide (TBD)](#)  
-- [Prompt Execution API Reference](https://github.com/CRollins6020/CRollins6020/blob/main/API-References/prompt-execution-api.md)  
-- [LangChain Admin Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/LangChain%20Agent%20Platform%20Admin%20Guide.md)  
-- [RAG Implementation Guide](https://github.com/CRollins6020/CRollins6020/blob/main/User-Guides/rag-implementation-guide.md)  
-
-[🔝 Back to top](#table-of-contents)
+*Article ID: KB-AI-INTEGRATION-001 | Updated: May 26, 2025*

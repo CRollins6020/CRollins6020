@@ -1,172 +1,132 @@
+# 🧠 Dev Writing Guidelines
 
-# 🧾 Dev Writing Guidelines
-
-*Documentation standards for engineers and technical writers contributing to internal content. Includes voice/tone recommendations, formatting tips, reusable content patterns, and sample templates.*
-
-| **Field**       | **Value**                     |
-|------------------|-------------------------------|
-| **Version**      | 1.0                           |
-| **Author**       | Corey Rollins                |
-| **Last Updated** | May 21, 2025                 |
-| **Status**       | Production                    |
-| **Source**       | GitHub Repository (TBD)       |
+**Applies to:** Internal Technical Documentation | **Updated:** May 26, 2025  
+**Audience:** Engineers & Technical Writers | **Difficulty:** Beginner–Intermediate  
+**Support Contact:** documentation@example.com
 
 ---
 
-## Table of Contents
+## 🎯 Purpose
 
-1. [Purpose](#1-purpose)  
-2. [Voice and Tone](#2-voice-and-tone)  
-3. [Formatting & Structure](#3-formatting--structure)  
-4. [Content Patterns](#4-content-patterns)  
-5. [Sample Templates](#5-sample-templates)  
-6. [Reusable Snippets](#6-reusable-snippets)  
+This article defines the documentation standards engineers and writers should follow when contributing to internal knowledge bases, developer portals, or operational runbooks. These guidelines ensure clarity, consistency, and ease of maintenance across all internal content.
 
 ---
 
-## 1. Purpose
+## ✍️ Style & Voice
 
-This guide ensures consistent, high-quality internal documentation across engineering and technical writing teams. It outlines clear standards for structure, tone, and formatting—supporting reusability and cross-team clarity.
-
-[🔝 Back to top](#table-of-contents)
-
-___
-
-## 2. Voice and Tone
-
-Use a professional, direct tone:
-
-- ✅ **Do:** “Configure the API by updating the environment variable.”
-- ❌ **Don't:** “Our amazing tool lets you magically integrate your service.”
-
-Guidelines:
-
-- Prefer active voice  
-- Use plain, domain-relevant language  
-- Explain the **why** as well as the **how**  
-- Clarify complexity without oversimplifying  
-
-[🔝 Back to top](#table-of-contents)
-
-___
-
-## 3. Formatting & Structure
-
-Use a modular, numbered format for ease of reuse and readability.
-
-| Element             | Format                                    |
-|:--------------------|:-------------------------------------------|
-| **Headings**        | Numbered H1–H4, consistent nesting         |
-| **Metadata Table**  | Top of doc or page 2                      |
-| **Tables**          | Header rows only; avoid merged cells      |
-| **Code blocks**     | Fenced, labeled, copyable, with context   |
-
-Example code block:
-```python
-# Validate user input
-if not user_data:
-    raise ValueError("Missing input")
-```
-
-[🔝 Back to top](#table-of-contents)
-
-___
-
-## 4. Content Patterns
-
-Use these content patterns to improve consistency:
-
-| Pattern            | Purpose                                 |
-|:-------------------|:------------------------------------------|
-| **Overview**       | High-level intro with context            |
-| **Steps**          | Use numbered lists for clear guidance    |
-| **Tips/Notes**     | Use callouts for emphasis or reminders   |
-| **Expected Result**| Close each procedure when applicable     |
-
-💡 **Tip:** Keep procedural steps short and scannable—1–2 lines max per step.
-
-[🔝 Back to top](#table-of-contents)
-
-___
-
-## 5. Sample Templates
-
-**🧰 KB Article**
-
-<!--
-```markdown
-# 🔧 <Title of KB>
-*<Short summary of task or problem>*
-
-| Field | Value |
-|-------|-------|
-| Version | x.x |
-| Author | Your Name |
-| Last Updated | Month Day, Year |
-| Status | Draft |
-| Source | [Repo link] |
-
-## 1. Overview
-
-Brief explanation of task or problem.
-
-## 2. Steps
-
-1. Step one  
-2. Step two  
-3. Step three  
-
-💡 Tip: Restart service after changes.
-
-## 3. Troubleshooting
-
-Describe common errors and fixes.
-```
--->
-
-**📄 API Method Block**
-
-<!--
-```markdown
-### `POST /users/create`
-
-Create a new user in the system.
-
-**Request Body**
-```json
-{
-  "email": "user@example.com",
-  "role": "admin"
-}
-```
-
-**Response**
-```json
-{
-  "status": "success",
-  "id": "12345"
-}
-```
-```
--->
-
-[🔝 Back to top](#table-of-contents)
-
-___
-
-## 6. Reusable Snippets
-
-Label snippets and reuse consistently:
-
-- ✅ `prompt-template-basic.md`
-- ✅ `auth-error-code-table.md`
-- ✅ `deployment-checklist.md`
-
-Store in a central `/docs/components` folder in your documentation repo.
-
-[🔝 Back to top](#table-of-contents)
+| Element              | Standard                                           |
+|----------------------|----------------------------------------------------|
+| Tone                 | Professional, concise, and neutral                 |
+| Perspective          | Second person ("you") for instructions; third person for explanations |
+| Jargon               | Avoid or define when first used                    |
+| Emojis               | ✅ Use sparingly and only for scannability (e.g., callouts, step indicators) |
+| Abbreviations        | Spell out on first use unless well-known (e.g., SSO) |
+| Tense                | Present tense unless explaining a historical action |
 
 ---
 
-✅ **You’re ready to standardize your internal docs.**  
-Use this guide as your source of truth and revisit quarterly for updates.
+## 🧱 Structure
+
+All documents should include the following sections where applicable:
+
+1. **Title** – Sentence case, short, descriptive  
+2. **Metadata Block** – Applies to, updated date, difficulty level, contact  
+3. **Overview or Purpose** – One or two sentences summarizing the document  
+4. **Steps or Sections** – Clearly numbered or bullet-listed for scannability  
+5. **Code Samples** – Indented with correct language syntax  
+6. **Troubleshooting (if applicable)** – Use table format for clarity  
+7. **Footer** – Document ID and last updated info
+
+---
+
+### 🧭 Visual Reference
+
+```mermaid
+graph TD
+    A[Title] --> B[Metadata Block]
+    B --> C[Overview / Purpose]
+    C --> D[Steps / Sections]
+    D --> E[Code Samples]
+    E --> F[Troubleshooting]
+    F --> G[Footer]
+```
+
+---
+
+## 💡 Formatting Rules
+
+- Use Markdown with GitHub-compatible syntax  
+- Use `**bold**` for UI elements and emphasis  
+- Use backticks (`) for inline code or CLI flags  
+- Use triple backticks for blocks of code (` ``` `)  
+- Always include input/output examples for API or CLI content  
+- Use tables for parameters, errors, options
+
+**Example:**
+```bash
+curl -X GET https://api.example.com/users \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+---
+
+## ✏️ Tone Examples
+
+**❌ Weak or informal:**
+> We'll go ahead and add the token here...
+
+**✅ Preferred:**
+> Add the token using the following syntax:
+
+**❌ Passive / unclear:**
+> The file should be uploaded before continuing.
+
+**✅ Preferred:**
+> Upload the file before continuing.
+
+---
+
+## ✅ Before & After Example
+
+| Type | Sample |
+|------|--------|
+| ❌ Before | “Clicking on the Submit button will result in the form being sent.” |
+| ✅ After | “Click **Submit** to send the form.” |
+
+| ❌ Before | “You must ensure the environment variables are correctly configured.” |
+| ✅ After | “Configure the required environment variables before running the command.” |
+
+---
+
+## 🔁 Reusability
+
+- Use shared terminology from the internal style guide  
+- Link to related articles when possible  
+- Avoid duplicating content—create modular references or KBs  
+- Store reusable examples in shared `/examples` or `/snippets` folders
+
+---
+
+## 📤 Submitting Documentation
+
+Before submitting, ensure the following:
+
+- ✅ Spellcheck completed  
+- ✅ Title and metadata block added  
+- ✅ All sections follow this guide  
+- ✅ Code tested or validated where applicable  
+- ✅ Peer-reviewed or proofread if possible
+
+Submit content via GitHub pull request or your team’s documentation intake form.
+
+---
+
+## 📚 Additional Resources
+
+- [Internal Style Guide (PDF)](https://intranet.example.com/docs/style-guide.pdf)  
+- [Markdown Syntax Reference](https://www.markdownguide.org/basic-syntax/)  
+- [KB Template Repo](https://github.com/yourorg/kb-templates)
+
+---
+
+*Article ID: KB-GUIDE-001 | Updated: May 26, 2025*

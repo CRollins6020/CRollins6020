@@ -1,21 +1,21 @@
-# Hello, I'm Corey Rollins
+# Hello, I'm Corey Rollins 👋
 
-I'm a Senior Instructional Designer with deep SaaS enablement experience, now specializing in technical writing and documentation. I create content that helps users confidently navigate complex technology—clear without oversimplifying, and thorough without overwhelming.
+I'm a Senior Instructional Designer turned Technical Writer, specializing in clear, user-focused documentation for SaaS products, APIs, and internal platforms. I create content that helps teams navigate complex technology—**clear without oversimplifying, thorough without overwhelming**.
 
 ## About This Repository
 
-This is my **Technical Writing Portfolio**. It features documentation that reflects real-world scenarios, technical accuracy, and user-first thinking. Each piece showcases a different format, writing style, or problem-solving approach used in modern documentation.
+This is my **Technical Writing Portfolio**, a curated collection of documentation samples built around real-world use cases. Each document highlights a different format, writing style, or user scenario—from API reference docs to onboarding guides and knowledge base articles.
 
 ## Repository Contents
 
-- [**User Guides & Tutorials**](https://github.com/CRollins6020/CRollins6020/tree/main/User-Guides) – End-user and admin-focused guides
-- [**API Documentation**](https://github.com/CRollins6020/CRollins6020/tree/main/API-Documentation) – Reference documentation and examples
-- [**Knowledge Base Articles**](https://github.com/CRollins6020/CRollins6020/tree/main/Knowledge-Base) – Targeted how-tos and troubleshooting articles
-- [**Training Materials**](https://github.com/CRollins6020/CRollins6020/tree/main/Training-Materials) – Learning-focused content and modular walkthroughs
+- [**User Guides & Tutorials**](https://github.com/CRollins6020/CRollins6020/tree/main/User-Guides) – Step-by-step walkthroughs and administrator guides
+- [**API Documentation**](https://github.com/CRollins6020/CRollins6020/tree/main/API-Documentation) – Reference docs, authentication guides, and endpoint usage
+- [**Knowledge Base Articles**](https://github.com/CRollins6020/CRollins6020/tree/main/Knowledge-Base) – Tactical how-tos and troubleshooting playbooks
+- [**Training Materials**](https://github.com/CRollins6020/CRollins6020/tree/main/Training-Materials) – Modular, learning-oriented documentation
 
-Each folder contains a `README.md` with details about the samples inside.
+Each folder contains a `README.md` describing what's inside.
 
-## Documentation Tools
+## Tools & Formats
 
 ![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
@@ -24,7 +24,7 @@ Each folder contains a `README.md` with details about the samples inside.
 
 ## How to Use This Repository
 
-Browse the sections above or jump into specific documents using the links. Whether you're evaluating my writing style, structure, or tooling familiarity—each example is built to be practical and reusable.
+Explore the folders above or jump directly into any document. Whether you're reviewing for **clarity, completeness, or technical accuracy**, each file demonstrates how I approach real documentation challenges in SaaS and AI-powered environments.
 
 ## Connect With Me
 
@@ -34,4 +34,4 @@ Browse the sections above or jump into specific documents using the links. Wheth
 
 ---
 
-*Thanks for visiting. This portfolio is a work in progress—I'm always learning, refining, and documenting better ways to communicate technical ideas.*
+*Thanks for visiting. This portfolio is a living project—I'm always refining, documenting, and learning better ways to explain technical systems.*

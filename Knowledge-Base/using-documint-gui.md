@@ -1,144 +1,109 @@
-# 🖥️ Creating a PDF with the Documint GUI  
-*Use the Documint web interface to design templates and generate PDFs—no coding required.*
+# 🖼️ Creating a PDF with the Documint GUI
 
-| **Field**        | **Value**                                                                 |
-|------------------|--------------------------------------------------------------------------|
-| **Version**      | 1.1                                                                      |
-| **Author**       | Corey Rollins                                                            |
-| **Last Updated** | May 21, 2025                                                             |
-| **Status**       | Draft                                                                    |
-| **Source**       | [Documint GUI](https://documint.me/)                                     |
+**Applies to:** Documint Web App  
+**Audience:** Business Users, QA, Analysts  
+**Updated:** May 26, 2025  
+**Difficulty:** Beginner  
+**Contact:** support@example.com
 
 ---
 
-## Table of Contents
+## 🛠️ Problem
 
-1. [Overview](#1-overview)  
-2. [Getting Started](#2-getting-started)  
-3. [Uploading a Template](#3-uploading-a-template)  
-4. [Importing Sample Data](#4-importing-sample-data)  
-5. [Binding Data to Fields](#5-binding-data-to-fields)  
-6. [Previewing and Generating PDF](#6-previewing-and-generating-pdf)  
-7. [Saving or Downloading Output](#7-saving-or-downloading-output)  
-8. [See Also](#8-see-also)  
+You need to generate a professional PDF—such as an invoice, certificate, or report—without writing code. You're using the Documint web interface but unsure how to upload templates, bind data, and export the final PDF.
 
 ---
 
-## 1. Overview
+## ✅ Solution
 
-The Documint GUI is a web-based tool for creating branded PDFs from templates and JSON data. It allows you to upload HTML templates, visually bind them to data fields, and generate professional PDFs in seconds.
-
-<details>
-<summary>📊 Click to view the process diagram</summary>
-
-```mermaid
-graph TD
-    A[Start in Documint GUI] --> B[Create New Project]
-    B --> C[Upload HTML Template]
-    C --> D[Import JSON Data File]
-    D --> E[Bind Fields via GUI Editor]
-    E --> F[Preview PDF with Sample Data]
-    F --> G[Generate Final PDF]
-    G --> H{Download or Share?}
-    H --> I[Download PDF Locally]
-    H --> J[Generate Share Link]
-```
-
-</details>
-
-[🔝 Back to top](#table-of-contents)
+This article walks you through generating a PDF with Documint's no-code graphical interface using pre-built templates and JSON-formatted data.
 
 ---
 
-## 2. Getting Started
+## 🧩 Prerequisites
 
-1. Visit [https://documint.me](https://documint.me)
-2. Create an account or log in
-3. Click **"New Project"** to begin a document setup
-
-💡 **Tip:** Projects group templates, data, and outputs together.
-
-[🔝 Back to top](#table-of-contents)
+- A Documint account with template access  
+- A published template with dynamic fields (e.g., `{{customer.name}}`)  
+- JSON data ready to upload  
+- A modern browser (Chrome, Edge, Safari)
 
 ---
 
-## 3. Uploading a Template
+## 🪜 Steps
 
-1. From your project dashboard, click **"Add Template"**
-2. Upload a `.html` file or start with a blank template
-3. Use the WYSIWYG editor or HTML editor to customize layout and styling
+### 1. Log In and Access Your Template
 
-⚠️ **Note:** Use `{{handlebars}}` syntax in templates to bind dynamic fields.
+1. Visit [https://app.documint.me](https://app.documint.me)  
+2. Log in with your credentials  
+3. Navigate to the **Templates** tab  
+4. Select your published template from the list
 
-![Documint template editor showing a WYSIWYG layout with dynamic field placeholders](assets/img/documint-template-ui.png "Documint Template Editor Interface")
-
-[🔝 Back to top](#table-of-contents)
+🎯 **You should see:** The template preview and a button labeled **Generate PDF**
 
 ---
 
-## 4. Importing Sample Data
+### 2. Upload JSON Data
 
-1. Navigate to the **Data** tab
-2. Upload a `.json` file with your data structure
-3. Validate the structure with the built-in preview panel
+1. Click the **Generate PDF** button  
+2. In the pop-up window, click **Upload JSON**  
+3. Choose or drag in your `.json` file
 
-Example:
-
+**Example:**
 ```json
 {
-  "name": "John Doe",
-  "invoice_id": "INV-1001",
-  "amount_due": "499.00"
+  "customer": {
+    "name": "Jordan Miles",
+    "email": "jmiles@example.com"
+  },
+  "invoice": {
+    "number": "INV-1024",
+    "total": "$3,200"
+  }
 }
 ```
 
-[🔝 Back to top](#table-of-contents)
+✅ Documint will validate the JSON keys against the dynamic fields in your template.
 
 ---
 
-## 5. Binding Data to Fields
+### 3. Generate and Download the PDF
 
-1. In the template editor, click on any placeholder text
-2. Choose the matching field from the left-hand sidebar
-3. Use the `{ }` tag to insert fields like `{{name}}`, `{{invoice_id}}`, etc.
+1. Click **Generate**  
+2. Wait for the preview to render (usually <10 seconds)  
+3. Click **Download PDF** to save your file
 
-💡 **Tip:** Conditional fields and loops are also supported via GUI options.  
-⚠️ **Note:** If a field renders as `{{field}}`, check that your JSON key matches exactly and the field is not nested unless explicitly referenced.
-
-[🔝 Back to top](#table-of-contents)
+🎯 **You should see:** A clean, styled document with your data filled in
 
 ---
 
-## 6. Previewing and Generating PDF
+## 🔍 If You Hit a Problem
 
-1. Click **"Preview"** to see a live rendering of the template with data
-2. If everything looks correct, click **"Generate PDF"**
-
-This creates a downloadable, styled PDF using the template and selected JSON input.
-
-![Documint PDF preview screen showing rendered output from a data-bound HTML template](assets/img/documint-preview-ui.png "Documint PDF Preview")
-
-[🔝 Back to top](#table-of-contents)
+| Symptom                            | Likely Cause                        | Resolution                                  |
+|------------------------------------|-------------------------------------|---------------------------------------------|
+| Fields show as `{{field.name}}`    | Data binding failed                 | Check that keys in JSON match template tags |
+| No preview renders                 | Invalid JSON format                 | Use a JSON linter or validator              |
+| Downloaded PDF is blank            | Template was saved without content  | Re-edit and publish the template            |
 
 ---
 
-## 7. Saving or Downloading Output
+## 📬 Support Escalation Template
 
-- Download directly from the preview window
-- Or return to the **Documents** tab to access past exports
-- PDFs can also be shared via secure link or embedded in other systems, with optional expiration dates and access permissions (if enabled)
-
-[🔝 Back to top](#table-of-contents)
-
----
-
-## 8. See Also
-
-- [Documint CLI Usage](./automating-pdf-generation-documint.md)
-- [Handlebars Documentation](https://handlebarsjs.com/)
-- [Documint Template Syntax Reference](https://docs.documint.me/docs/templates/syntax)
-- [Documint Support](https://documint.me/support)
+```
+Template Name: <e.g., Invoice_V1>
+Data File: <e.g., invoice1024.json>
+Steps Taken: Upload → Generate → Download
+Observed Issue: <description>
+Browser & OS: <e.g., Chrome 125 on Windows 11>
+```
 
 ---
 
-✅ With the Documint GUI, you can generate dynamic, personalized documents without touching a terminal—perfect for business users, HR teams, and client-facing workflows.
+## 📚 Related Resources
+
+- [Documint CLI Automation KB](https://kb.example.com/documint-cli-pdf)  
+- [Documint Template Designer Guide](https://kb.example.com/template-designer)  
+- [JSON Formatting Tips](https://www.jsonlint.com)
+
+---
+
+*Article ID: KB-DOC-GUI-001 | Updated: May 26, 2025*
