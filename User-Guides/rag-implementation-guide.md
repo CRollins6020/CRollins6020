@@ -43,7 +43,7 @@ RAG is ideal for:
 ```mermaid
 graph TD
     A[User Query] --> B[Retriever]
-    B --> C[Vector Store (FAISS / Weaviate)]
+    B --> C["Vector Store (FAISS / Weaviate)"]
     C --> D[Top-K Relevant Chunks]
     D --> E[Prompt Builder]
     E --> F[LLM Generator]
