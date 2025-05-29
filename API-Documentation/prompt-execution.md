@@ -13,7 +13,7 @@
 | **Version**       | v1.0.0                                     |
 | **Base URL**      | `https://api.promptengine.io/v1`           |
 | **Authentication**| Bearer Token                               |
-| **Last Updated**  | 2025-05-29                                 |
+| **Last Updated**  | 2025-05-29                             |
 | **OpenAPI Spec**  | [openapi.yaml](https://example.com/spec)   |
 | **Support Contact**| dev-support@promptengine.io               |
 
@@ -26,8 +26,6 @@
 3. [Rate Limits](#3-rate-limits)  
 4. [Error Codes](#4-error-codes)  
 5. [Endpoints](#5-endpoints)  
-    - [POST /prompts/execute](#post-promptsexecute)  
-    - [GET /prompts/{id}/status](#get-promptsidstatus)  
 6. [Common Use Cases](#6-common-use-cases)  
 7. [Data Models](#7-data-models)  
 8. [Changelog](#8-changelog)
@@ -36,86 +34,85 @@
 
 ## 1. Overview
 
-The Prompt Execution API lets you send text prompts to a language model and receive generated responses.
-It’s designed to integrate AI completions into your products, workflows, or internal systems.
-Whether you're building a chatbot, content generator, or automated QA system, this API gives you the power to scale language-based tasks easily.
+The Prompt Execution API allows developers to send prompt payloads to a hosted large language model (LLM), receive structured responses, and manage prompt execution lifecycles for integrations, internal tools, or user-facing applications.
 
 ### 🔍 How It Works
 
-1. **Submit a prompt**  
-   Send a `POST` request to `/prompts/execute` with the prompt text and optional configuration parameters (e.g., model name, streaming mode).
+1. **Prepare a Prompt Payload**  
+   Structure your prompt using the required fields such as model, input, and configuration parameters (e.g., temperature, max_tokens).
 
-2. **Receive an execution ID**  
-   The API responds with a unique `execution_id`, which tracks the lifecycle of the prompt execution.
+2. **POST to the Execution Endpoint**  
+   Submit the prompt to `/v1/prompt/execute` with appropriate headers and a JSON body.
 
-3. **Check execution status**  
-   Use a `GET` request to `/prompts/{id}/status` to retrieve the current status (queued, processing, completed, or failed).
+3. **Handle the Response**  
+   The API returns an output including generated text, usage metrics, and execution metadata.
 
-4. **Retrieve the result**  
-   Once processing is complete, the final output is returned in the `output` field of the response JSON.
-
-This architecture allows for flexible and scalable use of AI models in any system that can make secure HTTPS requests.
-
-
-The Prompt Execution API allows you to programmatically execute prompts, retrieve results, and track execution status.  
-Ideal for integrating AI-driven completion tasks into your own applications, workflows, or backend systems.
+4. **Monitor and Optimize**  
+   Use response metadata for logging, debugging, and cost tracking.
 
 ---
 
 ## 2. Authentication
 
-Authentication is required to access the API securely. Each request must include a valid access token in the `Authorization` header. These tokens help us verify your identity and ensure your usage is authorized and tracked appropriately.
+### 🔍 How It Works
 
+The API requires a valid access token to authorize each request. This token is included in the `Authorization` header using the Bearer scheme. Tokens are typically generated via a web interface or developer console, and they help ensure secure, auditable access to the system.
 
-This API uses **Bearer Token Authentication**.  
-Include the token in the `Authorization` header:
+Authentication is required to access the API securely.  
+Include a valid token in the `Authorization` header:
 
 ```http
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-Tokens are issued via the developer dashboard or admin endpoint.
+Tokens can be generated via the developer dashboard or an admin endpoint.
 
 ---
 
 ## 3. Rate Limits
 
-To ensure fair usage and system stability, the API enforces rate limits based on your subscription tier. If you exceed the allowed number of requests per minute, the API will return a `429 Too Many Requests` error. Consider upgrading your plan or spacing out your requests if you regularly hit the limit.
+### 🔍 How It Works
 
+Each plan tier defines how many requests a client can make per minute. When you exceed your rate limit, the server returns a `429` status. You can reduce request frequency, retry with a delay, or upgrade your plan to continue uninterrupted.
+
+Specify your plan's rate limits to ensure fair usage.  
 
 | Plan         | Requests per Minute |
 |--------------|---------------------|
-| Free         | 30                  |
-| Pro          | 500                 |
-| Enterprise   | 2,000               |
+| Free         | 60                  |
+| Pro          | 1,000               |
+| Enterprise   | 5,000               |
 
-A `429 Too Many Requests` error is returned when limits are exceeded.
+A `429 Too Many Requests` error will occur if the limit is exceeded.
 
 ---
 
 ## 4. Error Codes
 
-The API responds with standard HTTP status codes to indicate the outcome of your request. Understanding these codes can help you quickly diagnose and fix issues during development and integration.
+### 🔍 How It Works
 
+The API uses standard HTTP status codes to report the result of your request. These responses allow you to programmatically handle errors (e.g., retry a 500 error, prompt login on 401). The response body often includes an `error` object with a code and a message for troubleshooting.
 
-| Code | Meaning             | Description                               |
-|------|---------------------|-------------------------------------------|
-| 200  | OK                  | Request succeeded                         |
-| 202  | Accepted            | Execution request received and queued     |
-| 400  | Bad Request         | Invalid input format or parameters        |
-| 401  | Unauthorized        | Token is invalid or missing               |
-| 403  | Forbidden           | Access denied due to permissions          |
-| 404  | Not Found           | Resource does not exist                   |
-| 429  | Too Many Requests   | Rate limit exceeded                       |
-| 500  | Server Error        | Internal server error                     |
+These are the standard responses you can expect:
+
+| Code | Meaning             | Description                           |
+|------|---------------------|---------------------------------------|
+| 200  | OK                  | Request succeeded                     |
+| 202  | Accepted            | Request accepted, processing queued   |
+| 400  | Bad Request         | Invalid or missing parameters         |
+| 401  | Unauthorized        | Missing or invalid authentication     |
+| 403  | Forbidden           | Insufficient permissions              |
+| 404  | Not Found           | Requested resource doesn't exist      |
+| 429  | Too Many Requests   | Rate limit exceeded                   |
+| 500  | Server Error        | Internal server issue                 |
 
 ### Example Error Response
 
 ```json
 {
   "error": {
-    "code": "INVALID_PROMPT",
-    "message": "The provided prompt format is invalid."
+    "code": "ERROR_CODE",
+    "message": "Error message description."
   }
 }
 ```
@@ -124,56 +121,39 @@ The API responds with standard HTTP status codes to indicate the outcome of your
 
 ## 5. Endpoints
 
-### POST /prompts/execute
+### 🔍 How It Works
 
-Submit a prompt for execution.
+Each endpoint represents a specific API action or resource. Use HTTP methods (`GET`, `POST`, `PUT`, `DELETE`) to perform operations. Combine endpoints with the correct URL paths, headers, and request bodies to interact with the API programmatically.
+
+### POST /prompt/execute
+
+Execute a new prompt.
 
 ```http
-POST /v1/prompts/execute
+POST /v1/prompt/execute
 Content-Type: application/json
 ```
 
-**Body Parameters:**
+**Request Body:**
 
-| Name         | Type     | Required | Description                             |
-|--------------|----------|----------|-----------------------------------------|
-| `prompt`     | string   | Yes      | The text or structured prompt to execute |
-| `model`      | string   | No       | Model to use (default: `gpt-4`)         |
-| `stream`     | boolean  | No       | If true, enables streaming response     |
-| `metadata`   | object   | No       | Optional metadata to tag the request    |
+| Field         | Type     | Required | Description                      |
+|---------------|----------|----------|----------------------------------|
+| `model`       | string   | Yes      | LLM to use (e.g., "gpt-4")       |
+| `input`       | string   | Yes      | The prompt text                  |
+| `temperature` | float    | No       | Randomness control (0.0–1.0)     |
+| `max_tokens`  | integer  | No       | Limit on generated tokens        |
 
-**Response:**
-
-```json
-{
-  "execution_id": "abc123",
-  "status": "queued"
-}
-```
-
----
-
-### GET /prompts/{id}/status
-
-Check the status or result of a previously submitted execution.
-
-```http
-GET /v1/prompts/{id}/status
-```
-
-**Path Parameters:**
-
-| Name      | Type   | Required | Description                  |
-|-----------|--------|----------|------------------------------|
-| `id`      | string | Yes      | ID of the prompt execution   |
-
-**Response:**
+**Example Response:**
 
 ```json
 {
-  "execution_id": "abc123",
-  "status": "completed",
-  "output": "Here is your generated result."
+  "id": "exec_abc123",
+  "output": "The result of your prompt.",
+  "usage": {
+    "input_tokens": 25,
+    "output_tokens": 100
+  },
+  "status": "completed"
 }
 ```
 
@@ -181,97 +161,65 @@ GET /v1/prompts/{id}/status
 
 ## 6. Common Use Cases
 
-These examples show how to use the API in real-world scenarios. They demonstrate the basic request and response patterns for executing prompts and retrieving their results.
-
-
-- Execute a basic prompt:
+Use these examples to illustrate typical usage:
 
 ```http
-POST /v1/prompts/execute
+POST /v1/prompt/execute
 Content-Type: application/json
 
 {
-  "prompt": "Summarize the history of AI in 3 sentences."
+  "model": "gpt-4",
+  "input": "Explain quantum entanglement.",
+  "temperature": 0.7,
+  "max_tokens": 250
 }
 ```
 
-- Retrieve output after submission:
-
 ```http
-GET /v1/prompts/abc123/status
-```
-
-- Execute with metadata and a custom model:
-
-```http
-POST /v1/prompts/execute
-Content-Type: application/json
-
-{
-  "prompt": "Generate a list of technical documentation best practices.",
-  "model": "gpt-4-turbo",
-  "metadata": {
-    "project_id": "doc-suite",
-    "user": "writer-corey"
-  }
-}
+GET /v1/executions/exec_abc123/status
 ```
 
 ---
 
 ## 7. Data Models
 
-The following JSON models describe the structure of request and response payloads. They provide a clear view of what data to send and expect when interacting with the API.
+### 🔍 How It Works
 
+Data models define the expected structure of inputs and outputs for the API. Knowing the schema ahead of time allows you to validate requests, anticipate fields in responses, and build integrations that won’t break with changing data.
 
-### Execution Request
+### Example Request
 
 ```json
 {
-  "prompt": "string",
   "model": "gpt-4",
-  "stream": false,
-  "metadata": {
-    "key": "value"
-  }
+  "input": "Write a poem about the ocean.",
+  "temperature": 0.5,
+  "max_tokens": 100
 }
 ```
 
-| Field      | Type     | Description                                   |
-|------------|----------|-----------------------------------------------|
-| `prompt`   | string   | Prompt text to be executed                    |
-| `model`    | string   | Optional model name (e.g., gpt-4, gpt-3.5)    |
-| `stream`   | boolean  | Whether to receive results as a stream        |
-| `metadata` | object   | Optional key-value pairs for internal tagging |
+| Field         | Type     | Description                            |
+|---------------|----------|----------------------------------------|
+| `model`       | string   | Identifier for the LLM                 |
+| `input`       | string   | Prompt text to send                    |
+| `temperature` | float    | Controls randomness of output          |
+| `max_tokens`  | integer  | Maximum number of tokens in response   |
 
-### Execution Response
+### Example Response
 
 ```json
 {
-  "execution_id": "string",
-  "status": "queued"
+  "id": "exec_def456",
+  "output": "The sea was calm and blue...",
+  "status": "completed"
 }
 ```
 
-| Field          | Type   | Description                                 |
-|----------------|--------|---------------------------------------------|
-| `execution_id` | string | Unique ID used to retrieve execution status |
-| `status`       | string | One of: `queued`, `processing`, `completed`, `failed` |
-
-### Status Response
-
-```json
-{
-  "execution_id": "string",
-  "status": "completed",
-  "output": "string"
-}
-```
-
-| Field     | Type   | Description                  |
-|-----------|--------|------------------------------|
-| `status`  | string | Current execution status     |
-| `output`  | string | Final response text          |
+| Field     | Type   | Description               |
+|-----------|--------|---------------------------|
+| `id`      | string | Execution identifier      |
+| `output`  | string | Model's response text     |
+| `status`  | string | Execution state           |
 
 ---
 
@@ -279,7 +227,7 @@ The following JSON models describe the structure of request and response payload
 
 | Version | Date       | Notes                        |
 |---------|------------|------------------------------|
-| v1.0.0  | 2025-05-29 | Initial version of the API   |
+| v1.0.0  | 2025-05-29 | Initial release              |
 
 ---
 
