@@ -38,7 +38,25 @@
 
 ## 1. Overview
 
-The Prompt Execution API lets you send text prompts to a language model and receive generated responses. It’s designed to integrate AI completions into your products, workflows, or internal systems. Whether you're building a chatbot, content generator, or automated QA system, this API gives you the power to scale language-based tasks easily.
+The Prompt Execution API lets you send text prompts to a language model and receive generated responses.
+It’s designed to integrate AI completions into your products, workflows, or internal systems.
+Whether you're building a chatbot, content generator, or automated QA system, this API gives you the power to scale language-based tasks easily.
+
+### 🔍 How It Works
+
+1. **Submit a prompt**  
+   Send a `POST` request to `/prompts/execute` with the prompt text and optional configuration parameters (e.g., model name, streaming mode).
+
+2. **Receive an execution ID**  
+   The API responds with a unique `execution_id`, which tracks the lifecycle of the prompt execution.
+
+3. **Check execution status**  
+   Use a `GET` request to `/prompts/{id}/status` to retrieve the current status (queued, processing, completed, or failed).
+
+4. **Retrieve the result**  
+   Once processing is complete, the final output is returned in the `output` field of the response JSON.
+
+This architecture allows for flexible and scalable use of AI models in any system that can make secure HTTPS requests.
 
 
 The Prompt Execution API allows you to programmatically execute prompts, retrieve results, and track execution status.  
