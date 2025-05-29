@@ -34,48 +34,23 @@
 
 ## 1. Overview
 
-The Prompt Execution API allows developers to send prompt payloads to a hosted large language model (LLM), receive structured responses, and manage prompt execution lifecycles for integrations, internal tools, or user-facing applications.
-
-### 🔍 How It Works
-
-1. **Prepare a Prompt Payload**  
-   Structure your prompt using the required fields such as model, input, and configuration parameters (e.g., temperature, max_tokens).
-
-2. **POST to the Execution Endpoint**  
-   Submit the prompt to `/v1/prompt/execute` with appropriate headers and a JSON body.
-
-3. **Handle the Response**  
-   The API returns an output including generated text, usage metrics, and execution metadata.
-
-4. **Monitor and Optimize**  
-   Use response metadata for logging, debugging, and cost tracking.
+The Prompt Execution API allows developers to send prompts to a hosted large language model (LLM) and receive generated responses. It supports custom configurations such as model selection, temperature, and max token limits. Responses include output text, usage statistics, and execution metadata, enabling integration into applications or internal tools.
 
 ---
 
 ## 2. Authentication
 
-### 🔍 How It Works
-
-The API requires a valid access token to authorize each request. This token is included in the `Authorization` header using the Bearer scheme. Tokens are typically generated via a web interface or developer console, and they help ensure secure, auditable access to the system.
-
-Authentication is required to access the API securely.  
-Include a valid token in the `Authorization` header:
+The API uses Bearer tokens for authorization. Include your token in the `Authorization` header of each request. Tokens are typically generated from a developer dashboard or admin portal.
 
 ```http
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-Tokens can be generated via the developer dashboard or an admin endpoint.
-
 ---
 
 ## 3. Rate Limits
 
-### 🔍 How It Works
-
-Each plan tier defines how many requests a client can make per minute. When you exceed your rate limit, the server returns a `429` status. You can reduce request frequency, retry with a delay, or upgrade your plan to continue uninterrupted.
-
-Specify your plan's rate limits to ensure fair usage.  
+Rate limits vary by plan tier. Exceeding the limit returns a `429 Too Many Requests` response. Below are the default limits:
 
 | Plan         | Requests per Minute |
 |--------------|---------------------|
@@ -83,17 +58,13 @@ Specify your plan's rate limits to ensure fair usage.
 | Pro          | 1,000               |
 | Enterprise   | 5,000               |
 
-A `429 Too Many Requests` error will occur if the limit is exceeded.
+To avoid interruptions, manage request frequency or upgrade your plan as needed.
 
 ---
 
 ## 4. Error Codes
 
-### 🔍 How It Works
-
-The API uses standard HTTP status codes to report the result of your request. These responses allow you to programmatically handle errors (e.g., retry a 500 error, prompt login on 401). The response body often includes an `error` object with a code and a message for troubleshooting.
-
-These are the standard responses you can expect:
+The API uses standard HTTP status codes to report the result of a request. Error responses include a JSON object with a code and message to help you debug.
 
 | Code | Meaning             | Description                           |
 |------|---------------------|---------------------------------------|
@@ -102,11 +73,9 @@ These are the standard responses you can expect:
 | 400  | Bad Request         | Invalid or missing parameters         |
 | 401  | Unauthorized        | Missing or invalid authentication     |
 | 403  | Forbidden           | Insufficient permissions              |
-| 404  | Not Found           | Requested resource doesn't exist      |
+| 404  | Not Found           | Resource doesn't exist                |
 | 429  | Too Many Requests   | Rate limit exceeded                   |
-| 500  | Server Error        | Internal server issue                 |
-
-### Example Error Response
+| 500  | Server Error        | Internal server error                 |
 
 ```json
 {
@@ -121,13 +90,9 @@ These are the standard responses you can expect:
 
 ## 5. Endpoints
 
-### 🔍 How It Works
-
-Each endpoint represents a specific API action or resource. Use HTTP methods (`GET`, `POST`, `PUT`, `DELETE`) to perform operations. Combine endpoints with the correct URL paths, headers, and request bodies to interact with the API programmatically.
-
 ### POST /prompt/execute
 
-Execute a new prompt.
+Submits a prompt for LLM processing.
 
 ```http
 POST /v1/prompt/execute
@@ -139,16 +104,16 @@ Content-Type: application/json
 | Field         | Type     | Required | Description                      |
 |---------------|----------|----------|----------------------------------|
 | `model`       | string   | Yes      | LLM to use (e.g., "gpt-4")       |
-| `input`       | string   | Yes      | The prompt text                  |
-| `temperature` | float    | No       | Randomness control (0.0–1.0)     |
-| `max_tokens`  | integer  | No       | Limit on generated tokens        |
+| `input`       | string   | Yes      | Prompt to execute                |
+| `temperature` | float    | No       | Controls randomness (0.0–1.0)    |
+| `max_tokens`  | integer  | No       | Max tokens in response           |
 
 **Example Response:**
 
 ```json
 {
   "id": "exec_abc123",
-  "output": "The result of your prompt.",
+  "output": "Generated response here.",
   "usage": {
     "input_tokens": 25,
     "output_tokens": 100
@@ -161,7 +126,7 @@ Content-Type: application/json
 
 ## 6. Common Use Cases
 
-Use these examples to illustrate typical usage:
+These examples demonstrate typical prompt submissions:
 
 ```http
 POST /v1/prompt/execute
@@ -169,9 +134,9 @@ Content-Type: application/json
 
 {
   "model": "gpt-4",
-  "input": "Explain quantum entanglement.",
-  "temperature": 0.7,
-  "max_tokens": 250
+  "input": "Summarize the plot of Hamlet.",
+  "temperature": 0.5,
+  "max_tokens": 200
 }
 ```
 
@@ -183,43 +148,41 @@ GET /v1/executions/exec_abc123/status
 
 ## 7. Data Models
 
-### 🔍 How It Works
+Request and response formats follow standard JSON schemas. Define these clearly in your integration layer.
 
-Data models define the expected structure of inputs and outputs for the API. Knowing the schema ahead of time allows you to validate requests, anticipate fields in responses, and build integrations that won’t break with changing data.
-
-### Example Request
+### Request
 
 ```json
 {
   "model": "gpt-4",
-  "input": "Write a poem about the ocean.",
-  "temperature": 0.5,
-  "max_tokens": 100
+  "input": "Write a haiku about rain.",
+  "temperature": 0.7,
+  "max_tokens": 50
 }
 ```
 
 | Field         | Type     | Description                            |
 |---------------|----------|----------------------------------------|
-| `model`       | string   | Identifier for the LLM                 |
-| `input`       | string   | Prompt text to send                    |
-| `temperature` | float    | Controls randomness of output          |
-| `max_tokens`  | integer  | Maximum number of tokens in response   |
+| `model`       | string   | LLM to use                             |
+| `input`       | string   | Prompt content                         |
+| `temperature` | float    | Randomness control                     |
+| `max_tokens`  | integer  | Token limit for output                 |
 
-### Example Response
+### Response
 
 ```json
 {
-  "id": "exec_def456",
-  "output": "The sea was calm and blue...",
+  "id": "exec_xyz789",
+  "output": "Rain drips from branches / Silence stirs the waking ground / Clouds begin to clear",
   "status": "completed"
 }
 ```
 
-| Field     | Type   | Description               |
-|-----------|--------|---------------------------|
-| `id`      | string | Execution identifier      |
-| `output`  | string | Model's response text     |
-| `status`  | string | Execution state           |
+| Field     | Type   | Description             |
+|-----------|--------|-------------------------|
+| `id`      | string | Execution ID            |
+| `output`  | string | LLM-generated response  |
+| `status`  | string | Execution status        |
 
 ---
 
