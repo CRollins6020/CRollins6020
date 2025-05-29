@@ -32,8 +32,6 @@
 7. [Data Models](#7-data-models)  
 8. [Changelog](#8-changelog)
 
-[🔝 Back to Top](#prompt-execution-api-reference)
-
 ---
 
 ## 1. Overview
