@@ -1,162 +1,253 @@
-# Prompt Execution API Documentation
+---
+# Prompt Execution API Reference
 
-**Version:** v1.3 | **Base URL:** `https://api.exampleai.com/v1` | **Updated:** May 26, 2025  
-**Authentication:** Bearer Token | **Status:** Stable | **Support:** api-support@exampleai.com
+**Document Type:** API Reference  
+**Intended Audience:** Developers, System Integrators  
+**Format:** Markdown with GitHub-compatible HTML
 
 ---
 
-## Table of contents
+## 📘 Metadata
+
+| Field              | Value                                      |
+|-------------------|--------------------------------------------|
+| **Version**       | v1.0.0                                     |
+| **Base URL**      | `https://api.promptengine.io/v1`           |
+| **Authentication**| Bearer Token                               |
+| **Last Updated**  | 2025-05-29                                 |
+| **OpenAPI Spec**  | [openapi.yaml](https://example.com/spec)   |
+| **Support Contact**| dev-support@promptengine.io               |
+
+---
+
+## 📚 Table of Contents
 
 1. [Overview](#1-overview)  
 2. [Authentication](#2-authentication)  
-3. [Common use cases](#3-common-use-cases)  
-4. [Endpoints](#4-endpoints)  
-   - [Submit a prompt](#41-submit-a-prompt)  
-   - [Check prompt status](#42-check-prompt-status)  
-   - [Retrieve prompt result](#43-retrieve-prompt-result)  
-5. [Error handling](#5-error-handling)  
-6. [Rate limiting](#6-rate-limiting)  
+3. [Rate Limits](#3-rate-limits)  
+4. [Error Codes](#4-error-codes)  
+5. [Endpoints](#5-endpoints)  
+    - [POST /prompts/execute](#post-promptsexecute)  
+    - [GET /prompts/{id}/status](#get-promptsidstatus)  
+6. [Common Use Cases](#6-common-use-cases)  
+7. [Data Models](#7-data-models)  
+8. [Changelog](#8-changelog)
+
+[🔝 Back to Top](#prompt-execution-api-reference)
 
 ---
 
 ## 1. Overview
 
-The Prompt Execution API allows your application to submit natural language prompts to a hosted LLM agent, check the status of the request, and retrieve results once the output is generated.
-
-**Base URL:** `https://api.exampleai.com/v1`
-
-This API supports synchronous and asynchronous execution for high-availability use cases such as task automation, real-time query handling, and agent workflows.
+The Prompt Execution API allows you to programmatically execute prompts, retrieve results, and track execution status.  
+Ideal for integrating AI-driven completion tasks into your own applications, workflows, or backend systems.
 
 ---
 
 ## 2. Authentication
 
-All endpoints require a Bearer Token passed in the `Authorization` header.
+This API uses **Bearer Token Authentication**.  
+Include the token in the `Authorization` header:
 
-**Example:**
 ```http
-Authorization: Bearer sk_test_yourapikey123
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-🚨 **Important:** Never expose your token in frontend code or client applications.
+Tokens are issued via the developer dashboard or admin endpoint.
 
 ---
 
-## 3. Common use cases
+## 3. Rate Limits
 
-### 3.1 Submit a prompt for execution
+| Plan         | Requests per Minute |
+|--------------|---------------------|
+| Free         | 30                  |
+| Pro          | 500                 |
+| Enterprise   | 2,000               |
 
-Use this to send input to the AI system and receive a response in real-time or asynchronously.
+A `429 Too Many Requests` error is returned when limits are exceeded.
 
-```bash
-curl -X POST https://api.exampleai.com/v1/prompts \
-  -H "Authorization: Bearer sk_test_yourapikey123" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "prompt": "Summarize the key themes of Macbeth.",
-    "temperature": 0.7,
-    "mode": "sync"
-}'
+---
+
+## 4. Error Codes
+
+| Code | Meaning             | Description                               |
+|------|---------------------|-------------------------------------------|
+| 200  | OK                  | Request succeeded                         |
+| 202  | Accepted            | Execution request received and queued     |
+| 400  | Bad Request         | Invalid input format or parameters        |
+| 401  | Unauthorized        | Token is invalid or missing               |
+| 403  | Forbidden           | Access denied due to permissions          |
+| 404  | Not Found           | Resource does not exist                   |
+| 429  | Too Many Requests   | Rate limit exceeded                       |
+| 500  | Server Error        | Internal server error                     |
+
+### Example Error Response
+
+```json
+{
+  "error": {
+    "code": "INVALID_PROMPT",
+    "message": "The provided prompt format is invalid."
+  }
+}
 ```
 
-🎯 **You should see:** A JSON response with generated text or an execution ID for later retrieval.
-
 ---
 
-### 3.2 Check the status of a prompt
+## 5. Endpoints
 
-Useful for asynchronous calls where you need to poll for completion.
+### POST /prompts/execute
 
-```bash
-curl -X GET https://api.exampleai.com/v1/prompts/exec_456789/status \
-  -H "Authorization: Bearer sk_test_yourapikey123"
+Submit a prompt for execution.
+
+```http
+POST /v1/prompts/execute
+Content-Type: application/json
 ```
 
-🎯 **You should see:** `"status": "completed"` or `"status": "processing"`
+**Body Parameters:**
 
----
+| Name         | Type     | Required | Description                             |
+|--------------|----------|----------|-----------------------------------------|
+| `prompt`     | string   | Yes      | The text or structured prompt to execute |
+| `model`      | string   | No       | Model to use (default: `gpt-4`)         |
+| `stream`     | boolean  | No       | If true, enables streaming response     |
+| `metadata`   | object   | No       | Optional metadata to tag the request    |
 
-### 3.3 Retrieve completed output
+**Response:**
 
-Fetches the final result once the prompt has been processed.
-
-```bash
-curl -X GET https://api.exampleai.com/v1/prompts/exec_456789/result \
-  -H "Authorization: Bearer sk_test_yourapikey123"
+```json
+{
+  "execution_id": "abc123",
+  "status": "queued"
+}
 ```
 
-🎯 **You should see:** `"result": "Macbeth explores ambition, guilt, and fate..."`
+---
+
+### GET /prompts/{id}/status
+
+Check the status or result of a previously submitted execution.
+
+```http
+GET /v1/prompts/{id}/status
+```
+
+**Path Parameters:**
+
+| Name      | Type   | Required | Description                  |
+|-----------|--------|----------|------------------------------|
+| `id`      | string | Yes      | ID of the prompt execution   |
+
+**Response:**
+
+```json
+{
+  "execution_id": "abc123",
+  "status": "completed",
+  "output": "Here is your generated result."
+}
+```
 
 ---
 
-## 4. Endpoints
+## 6. Common Use Cases
+
+- Execute a basic prompt:
+
+```http
+POST /v1/prompts/execute
+Content-Type: application/json
+
+{
+  "prompt": "Summarize the history of AI in 3 sentences."
+}
+```
+
+- Retrieve output after submission:
+
+```http
+GET /v1/prompts/abc123/status
+```
+
+- Execute with metadata and a custom model:
+
+```http
+POST /v1/prompts/execute
+Content-Type: application/json
+
+{
+  "prompt": "Generate a list of technical documentation best practices.",
+  "model": "gpt-4-turbo",
+  "metadata": {
+    "project_id": "doc-suite",
+    "user": "writer-corey"
+  }
+}
+```
 
 ---
 
-### 4.1 Submit a prompt
+## 7. Data Models
 
-**Endpoint:** `POST /v1/prompts`  
-**Purpose:** Send a prompt for LLM execution, either synchronous or asynchronous.
+### Execution Request
 
-**Parameters:**
+```json
+{
+  "prompt": "string",
+  "model": "gpt-4",
+  "stream": false,
+  "metadata": {
+    "key": "value"
+  }
+}
+```
 
-| Parameter     | Type     | Required      | Description                             | Example                              |
-|--------------|----------|---------------|-----------------------------------------|--------------------------------------|
-| `prompt`     | string   | ✅ Required    | The natural language input to execute   | `"What's the weather in Boston?"`    |
-| `temperature`| float    | ⚠️ Optional    | Controls randomness (0–1)               | `0.7`                                |
-| `mode`       | string   | ⚠️ Optional    | Execution mode (`sync` or `async`)      | `"sync"`                             |
+| Field      | Type     | Description                                   |
+|------------|----------|-----------------------------------------------|
+| `prompt`   | string   | Prompt text to be executed                    |
+| `model`    | string   | Optional model name (e.g., gpt-4, gpt-3.5)    |
+| `stream`   | boolean  | Whether to receive results as a stream        |
+| `metadata` | object   | Optional key-value pairs for internal tagging |
 
----
+### Execution Response
 
-### 4.2 Check prompt status
+```json
+{
+  "execution_id": "string",
+  "status": "queued"
+}
+```
 
-**Endpoint:** `GET /v1/prompts/{execution_id}/status`  
-**Purpose:** Poll the API to check if the async job is complete.
+| Field          | Type   | Description                                 |
+|----------------|--------|---------------------------------------------|
+| `execution_id` | string | Unique ID used to retrieve execution status |
+| `status`       | string | One of: `queued`, `processing`, `completed`, `failed` |
 
-**Path parameter:**
+### Status Response
 
-| Parameter       | Type   | Required   | Description                     | Example         |
-|----------------|--------|------------|---------------------------------|-----------------|
-| `execution_id` | string | ✅ Required| Unique ID of the execution job  | `exec_abc123`   |
+```json
+{
+  "execution_id": "string",
+  "status": "completed",
+  "output": "string"
+}
+```
 
----
-
-### 4.3 Retrieve prompt result
-
-**Endpoint:** `GET /v1/prompts/{execution_id}/result`  
-**Purpose:** Retrieve the completed output for the given prompt.
-
----
-
-## 5. Error handling
-
-| Status Code | Meaning              | Description                                         |
-|-------------|----------------------|-----------------------------------------------------|
-| 400         | Bad Request          | Invalid or missing parameters                       |
-| 401         | Unauthorized         | Invalid or missing API key                          |
-| 403         | Forbidden            | Token lacks permissions for prompt execution        |
-| 429         | Too Many Requests    | Rate limit exceeded                                 |
-| 500         | Internal Server Error| Unexpected error on the server side                 |
-
-🚨 **Common error:** `401 Unauthorized` usually means your API key is incorrect or expired.
-
----
-
-## 6. Rate limiting
-
-This API enforces rate limits to ensure fair usage.
-
-| Plan Type | Max Requests per Minute |
-|-----------|-------------------------|
-| Free      | 30                      |
-| Pro       | 120                     |
-| Enterprise| Custom (contact support)|
-
-Exceeding the limit will return HTTP `429 Too Many Requests`.
+| Field     | Type   | Description                  |
+|-----------|--------|------------------------------|
+| `status`  | string | Current execution status     |
+| `output`  | string | Final response text          |
 
 ---
 
-**Need help?** [Support Portal](https://exampleai.com/support) | [Developer Forum](https://forum.exampleai.com) | [GitHub Issues](https://github.com/exampleai/issues)  
-**Resources:** [Code Examples](https://github.com/exampleai/snippets) | [SDKs](https://exampleai.com/sdk) | [Changelog](https://exampleai.com/changelog)
+## 8. Changelog
 
-*Last updated: May 26, 2025 | Next review: June 2025*
+| Version | Date       | Notes                        |
+|---------|------------|------------------------------|
+| v1.0.0  | 2025-05-29 | Initial version of the API   |
+
+---
+
+[🔝 Back to Top](#prompt-execution-api-reference)
