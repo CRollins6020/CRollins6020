@@ -38,12 +38,18 @@
 
 ## 1. Overview
 
+The Prompt Execution API lets you send text prompts to a language model and receive generated responses. It’s designed to integrate AI completions into your products, workflows, or internal systems. Whether you're building a chatbot, content generator, or automated QA system, this API gives you the power to scale language-based tasks easily.
+
+
 The Prompt Execution API allows you to programmatically execute prompts, retrieve results, and track execution status.  
 Ideal for integrating AI-driven completion tasks into your own applications, workflows, or backend systems.
 
 ---
 
 ## 2. Authentication
+
+Authentication is required to access the API securely. Each request must include a valid access token in the `Authorization` header. These tokens help us verify your identity and ensure your usage is authorized and tracked appropriately.
+
 
 This API uses **Bearer Token Authentication**.  
 Include the token in the `Authorization` header:
@@ -58,6 +64,9 @@ Tokens are issued via the developer dashboard or admin endpoint.
 
 ## 3. Rate Limits
 
+To ensure fair usage and system stability, the API enforces rate limits based on your subscription tier. If you exceed the allowed number of requests per minute, the API will return a `429 Too Many Requests` error. Consider upgrading your plan or spacing out your requests if you regularly hit the limit.
+
+
 | Plan         | Requests per Minute |
 |--------------|---------------------|
 | Free         | 30                  |
@@ -69,6 +78,9 @@ A `429 Too Many Requests` error is returned when limits are exceeded.
 ---
 
 ## 4. Error Codes
+
+The API responds with standard HTTP status codes to indicate the outcome of your request. Understanding these codes can help you quickly diagnose and fix issues during development and integration.
+
 
 | Code | Meaning             | Description                               |
 |------|---------------------|-------------------------------------------|
@@ -153,6 +165,9 @@ GET /v1/prompts/{id}/status
 
 ## 6. Common Use Cases
 
+These examples show how to use the API in real-world scenarios. They demonstrate the basic request and response patterns for executing prompts and retrieving their results.
+
+
 - Execute a basic prompt:
 
 ```http
@@ -189,6 +204,9 @@ Content-Type: application/json
 ---
 
 ## 7. Data Models
+
+The following JSON models describe the structure of request and response payloads. They provide a clear view of what data to send and expect when interacting with the API.
+
 
 ### Execution Request
 
