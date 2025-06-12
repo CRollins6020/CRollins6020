@@ -11,6 +11,7 @@ This is my **Technical Writing Portfolio**, a curated collection of documentatio
 - [**User Guides & Tutorials**](https://github.com/CRollins6020/CRollins6020/tree/main/User-Guides) – Step-by-step walkthroughs and administrator guides
 - [**API Documentation**](https://github.com/CRollins6020/CRollins6020/tree/main/API-Documentation) – Reference docs, authentication guides, and endpoint usage
 - [**Knowledge Base Articles**](https://github.com/CRollins6020/CRollins6020/tree/main/Knowledge-Base) – Tactical how-tos and troubleshooting playbooks
+- [**Personal Projects**](https://github.com/CRollins6020/CRollins6020/tree/main/Personal) – Side projects tied to my hobbies and other interests.
 
 Each folder contains a `README.md` with summaries and context for the included documents.
 
