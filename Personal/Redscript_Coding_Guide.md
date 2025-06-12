@@ -48,7 +48,6 @@
   - [6.2 CLI and Script Utilities](#62-cli-and-script-utilities)
 - [Section 7: Expert Techniques](#section-7-expert-techniques)
   - [7.1 Virtual Functions and Polymorphism](#71-virtual-functions-and-polymorphism)
-  - [7.1 Virtual Functions and Polymorphism](#71-virtual-functions-and-polymorphism)
     - [Key Concepts:](#key-concepts)
     - [Example:](#example)
   - [7.2 Lifecycle Hooks Deep Dive](#72-lifecycle-hooks-deep-dive)
@@ -63,7 +62,6 @@
   - [7.6 Annotation Chains and Inter-Mod Cooperation](#76-annotation-chains-and-inter-mod-cooperation)
     - [Coordinating Multiple Mods](#coordinating-multiple-mods)
     - [Exposing APIs:](#exposing-apis)
-    - [Exposing APIs:](#exposing-apis)
   - [7.7 Hybrid Redscript + Lua (CET) Integration](#77-hybrid-redscript-+-lua-cet-integration)
   - [7.8 UI Extension Techniques](#78-ui-extension-techniques)
     - [Null Reference Check Example](#null-reference-check-example)
@@ -75,9 +73,6 @@
     - [Packaging:](#packaging)
     - [Testing:](#testing)
     - [Automation:](#automation)
-    - [Packaging:](#packaging)
-    - [Testing:](#testing)
-    - [Automation:](#automation)
 - [Conclusion](#conclusion)
 - [Section 8: Expert Recommendations](#section-8-expert-recommendations)
   - [8.1 Type System Quick Reference](#81-type-system-quick-reference)
@@ -85,7 +80,7 @@
   - [8.3 Debug Error Glossary](#83-debug-error-glossary)
   - [8.4 Versioning Tip](#84-versioning-tip)
   - [8.5 Tooling Suggestions](#85-tooling-suggestions)
-## Section 1: Language Fundamentals
+## Section 1: Language Fundamentals ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 This section establishes the core syntax and structure of Redscript, the scripting language used to develop Cyberpunk 2077 gameplay modifications. It is intended for developers familiar with C-style languages, though no prior experience with game modding is required.
 
@@ -202,7 +197,7 @@ Log("Health as string: " + asString);
 
 ---
 
-## Section 2: Advanced Concepts
+## Section 2: Advanced Concepts ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 2.1 Modules and Namespacing
 
@@ -318,42 +313,7 @@ Also, always validate object references and avoid deep recursion or unnecessaril
 - Reuse objects
 - Validate references
 
----
-
-## Section 3: Use Case Patterns
-
-
-
-### 3.6 Custom Event Triggers
-
-You can define and dispatch custom events between systems or objects using the built-in event infrastructure. This enables mods to communicate cleanly without tight coupling.
-
-**Defining a Custom Event:**
-
-```swift
-public class MyModCustomEvent extends Event {
-  public let triggerSource: String;
-}
-```
-
-**Dispatching the Event:**
-
-```swift
-GameInstance.GetUISystem().QueueEvent(new MyModCustomEvent());
-```
-
-**Listening for the Event:**
-
-```swift
-public class MySystem extends ScriptableSystem {
-  protected cb func OnMyModCustomEvent(evt: ref<MyModCustomEvent>) -> Bool {
-    Log("Received custom event from: " + evt.triggerSource);
-    return true;
-  }
-}
-```
-
-This pattern allows scalable integration between mods or modular gameplay systems.
+## Section 3: Use Case Patterns ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 3.1 Modify AI Behavior
 
@@ -408,9 +368,36 @@ Replace or wrap functions in `PlayerPuppet` to alter movement, visibility, etc.
 
 Modify vehicle physics and input handlers using `VehicleComponent` methods.
 
----
+### 3.6 Custom Event Triggers
 
-## Section 4: Best Practices
+You can define and dispatch custom events between systems or objects using the built-in event infrastructure. This enables mods to communicate cleanly without tight coupling.
+
+**Defining a Custom Event:**
+
+```swift
+public class MyModCustomEvent extends Event {
+  public let triggerSource: String;
+}
+```
+
+**Dispatching the Event:**
+
+```swift
+GameInstance.GetUISystem().QueueEvent(new MyModCustomEvent());
+```
+
+**Listening for the Event:**
+
+```swift
+public class MySystem extends ScriptableSystem {
+  protected cb func OnMyModCustomEvent(evt: ref<MyModCustomEvent>) -> Bool {
+    Log("Received custom event from: " + evt.triggerSource);
+    return true;
+  }
+}
+```
+
+This pattern allows scalable integration between mods or modular gameplay systems.## Section 4: Best Practices ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 4.1 Namespace Discipline
 
@@ -465,8 +452,6 @@ if IsDefined(target) {
 
 This approach prevents null reference crashes and gracefully handles edge cases where a weak reference may resolve to null due to in-game state changes or cleanup.
 
-Check `IsDefined()` before calling on refs. Wrap critical logic in conditionals.
-
 ```swift
 let target: wref<GameObject>;
 if IsDefined(target) {
@@ -486,9 +471,7 @@ Use `@if ModuleExists()` to adapt to other mods.
 
 Test with a clean mod list. Use logging to trace logic paths.
 
----
-
-## Section 5: Troubleshooting and Debugging
+## Section 5: Troubleshooting and Debugging ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 5.1 Compile Errors
 
@@ -514,9 +497,7 @@ Clearing these ensures clean recompilation and helps diagnose mod conflicts or e
 
 Use `CyberCMD` or `RED4ext` to ensure Redscript functions in REDmod environments.
 
----
-
-## Section 6: Resources and References
+## Section 6: Resources and References ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 6.1 Tool Links
 
@@ -562,11 +543,7 @@ Use these for integration with CI/CD pipelines or to validate that new commits d
 
 - [CyberCMD](https://github.com/WopsS/CyberEngineTweaks) — Advanced launcher for REDmod and scripting environments.
 
----
-
-## Section 7: Expert Techniques
-
-### 7.1 Virtual Functions and Polymorphism
+## Section 7: Expert Techniques ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 7.1 Virtual Functions and Polymorphism
 
@@ -734,30 +711,6 @@ public class SharedAPI extends ScriptableSystem {
 }
 ```
 
-Multiple mods can wrap the same method. Use guard conditions or delegation to maintain compatibility.
-
-```swift
-@wrapMethod(PlayerPuppet)
-public func Update() -> Void {
-  if ShouldRunMyLogic() {
-    DoMyModBehavior();
-  }
-  wrappedMethod();
-}
-```
-
-#### Exposing APIs:
-
-Use `ScriptableSystem` singletons as shared bridges:
-
-```swift
-public class SharedAPI extends ScriptableSystem {
-  public func RegisterModListener(listener: wref<IModListener>) -> Void {
-    // implementation
-  }
-}
-```
-
 ### 7.7 Hybrid Redscript + Lua (CET) Integration
 
 Redscript can expose public methods that are callable from CET Lua:
@@ -809,23 +762,6 @@ if IsDefined(label) {
   label.Get().SetText("Active");
 }
 ```
-
-You can inject into HUD controllers:
-
-- `GameController` classes (e.g., `PlayerHUDGameController`)
-- Use `inkWidget` to add icons or stats
-
-```swift
-@wrapMethod(PlayerHUDGameController)
-protected func OnInitialize() -> Void {
-  wrappedMethod();
-  let widget: ref<inkText> = new inkText();
-  widget.SetText("MOD ACTIVE");
-  this.GetRootWidget().AddChild(widget);
-}
-```
-
-Use `inkCanvas` for layout and `inkAnimProxy` for effects.
 
 ### 7.9 Reverse Engineering Tools & Tactics
 
@@ -894,21 +830,6 @@ Include an `info.json` descriptor for REDmod:
 - Write shell scripts to clear cache and validate `redscript.log`
 - Create a JSON config file for your mod metadata and versioning
 
-#### Packaging:
-
-- Legacy: Place `.reds` files in `r6/scripts/MyMod`
-- REDmod: Create a mod folder with descriptor
-
-#### Testing:
-
-- Create a `ModStatus.reds` that logs startup success
-- Use `Log()` statements tagged with your mod name
-
-#### Automation:
-
-- Write shell scripts to clear cache and validate `redscript.log`
-- Create a JSON config file for your mod metadata and versioning
-
 ```json
 {
   "name": "MyAdvancedMod",
@@ -917,9 +838,7 @@ Include an `info.json` descriptor for REDmod:
 }
 ```
 
----
-
-## Conclusion
+## Conclusion ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 This guide is designed to serve as a comprehensive and reliable reference for modders working with Redscript in Cyberpunk 2077. From language fundamentals to expert-level integrations and best practices, each section is intended to empower developers to create stable, compatible, and innovative mods that extend and enrich the game experience.
 
@@ -928,7 +847,7 @@ As the Redscript and Cyberpunk modding ecosystems continue to evolve, this docum
 Happy modding, and see you in Night City.
 ---
 
-## Section 8: Expert Recommendations
+## Section 8: Expert Recommendations ✅ (CP2077 v2.21+, RED4ext v1.27+)
 
 ### 8.1 Type System Quick Reference
 
@@ -938,8 +857,6 @@ Happy modding, and see you in Night City.
 | `wref<Type>`| Weak reference (GC-safe) | `wref<GameObject>`   |
 | `Variant`   | Dynamic typing wrapper   | `let x: Variant`     |
 
----
-
 ### 8.2 Lifecycle Hook Summary
 
 | Event Hook     | Object Type         | Purpose                        | When It Runs              |
@@ -947,16 +864,12 @@ Happy modding, and see you in Night City.
 | `OnGameAttached` | All GameObjects      | Initialization phase           | On instance spawn         |
 | `OnUninitialize` | UI, systems, actors  | Cleanup                        | On object destruction     |
 
----
-
 ### 8.3 Debug Error Glossary
 
 | Error Type         | Meaning                                | Fix                              |
 |--------------------|----------------------------------------|----------------------------------|
 | `Invalid type cast`| You're casting to an incompatible type | Use `Cast<>` and check class hierarchy |
 | `Unresolved symbol`| Variable/class not found               | Check module/import              |
-
----
 
 ### 8.4 Versioning Tip
 
@@ -969,8 +882,6 @@ public func OnGameAttached() -> Void {
   ...
 }
 ```
-
----
 
 ### 8.5 Tooling Suggestions
 
